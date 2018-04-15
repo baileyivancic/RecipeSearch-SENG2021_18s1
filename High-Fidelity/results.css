@@ -1,11 +1,13 @@
-#recipeList{
+/* CSS for lists found in https://www.w3schools.com/howto/howto_js_todolist.asp with a few changes
+/* Style the list items */
+#ingredientList{
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
     background: #eee;
     font-size: 18px;
     transition: 0.2s;
-    height:85vh; 
+    height:200px; 
     width:100%;
     overflow:hidden; 
     overflow-y:scroll;
@@ -16,6 +18,8 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+#ingredientList li:nth-child(odd) { background: #f9f9f9; }
 
 .recipeItem {
     list-style-type: none;
@@ -45,4 +49,23 @@ body{
     background-image: url("veg.jpg");
 }
 
+/* CSS for lists found in https://www.w3schools.com/howto/howto_js_todolist.asp with a few changes
+/* Style the list items */
+#recipeList{
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    height:85vh; 
+    width:100%;
+    overflow:hidden; 
+    overflow-y:scroll;
 
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
