@@ -12,11 +12,3 @@ body{
 
 }
 
-.login-box{
-    position: fixed;
-    left:0%;
-    top: 0%;
-    width:100%;
-    padding:15px 15px;
-    z-index: 6;
-}
