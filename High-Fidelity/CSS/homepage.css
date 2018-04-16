@@ -6,12 +6,6 @@
     width: 102vw;
 }
 
-@media (max-width: 102vw) {
-    .block {
-        margin-left: -20px;
-        margin-right: -20px;
-    }
-}
 /* CSS for lists found in https://www.w3schools.com/howto/howto_js_todolist.asp with a few changes
 /* Style the list items */
 #ingredientList{
