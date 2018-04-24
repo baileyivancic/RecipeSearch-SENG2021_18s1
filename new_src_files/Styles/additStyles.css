@@ -6,3 +6,6 @@ Styles used here to override Bootstrap default formatting, colours style etc.
 /*
 TO DO - decide on a set of colours and apply to elements of application
 */
+.pink {
+  background: pink;
+}
