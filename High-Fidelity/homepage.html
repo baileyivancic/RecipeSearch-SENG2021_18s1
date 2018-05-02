@@ -73,9 +73,9 @@
                         <div id="RecipeCollapse" class="collapse multi-collapse">
                             <label>Recipe Name</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Input Recipe">
+                                <input type="text" class="form-control" placeholder="Input Recipe"id="recipeInput">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" onclick="window.location.href='results.html'">Search</button>
+                                    <button class="btn btn-default" type="button" id="recipeBut">Search</button>
                                 </span>
                             </div>
                         </div>
@@ -136,7 +136,20 @@
                     }
                 }
             }
-
+            $(document).ready(function(){
+                $("#recipeBut").click(function(){
+                    var recipeName = document.getElementById("recipeInput").value;
+                    if(recipeName == "") {
+                        alert("Please enter a recipe before searching.");
+                    } else {
+                        $.get("https://api.edamam.com/search?q="+recipeName+"&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                        function(data, status){
+                            localStorage.setItem("APIReturn",data);
+                            window.location.href='results.html'
+                        });
+                    }
+                });
+            });
 
         </script>
     </div>
