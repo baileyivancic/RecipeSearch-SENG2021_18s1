@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RecipeSearch</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="static/CSS/results.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">RecipeSearch</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="homepage.html">Home</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="w3-sidebar w3-bar-block" style="width:20vw;opacity:0.8;height:50vh">
+        <div id="Tagline" class="w3-container w3-white" style="text-align:center">
+            <label for="usr"><h3>Current Ingredients</h3></label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Input Ingredient" id="usr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="popList()">Add</button>
+                </span>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="window.location.href='results.html'">Search Again</button>
+                </span>
+            </div>
+            <nav>
+                <ul id="ingredientList"style="height:40vh">
+                    <li>Pasta</li>
+                    <li>Tomato</li>
+                    <li>Water</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="container"style="opacity:0.96;margin-left:20vw;width:75vw">
+        <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.6">
+            <h1>Results: Click to View</h1>
+        </div>
+        <nav>
+            <ul id="recipeList">
+                <li class="recipeItem" id="item1" data-toggle="modal" data-target="#recipeModal">
+
+                    <table>
+                        <tr>
+                            <a href="">
+                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
+                            </a>
+                        </tr>
+                        <tr>
+                            <div style="display:inline-block;width:400px">
+                                <h3>Spaghetti</h3>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div style="display:inline-block">
+                                Common Ingredients: 3
+                            </div>
+                        </tr>
+                    </table>
+
+
+                </li>
+                <li class="recipeItem" id="item2" data-toggle="modal" data-target="#recipeModal">
+                    <table>
+                        <tr>
+                            <a href="">
+                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
+                            </a>
+                        </tr>
+                        <tr>
+                            <div style="display:inline-block;width:400px">
+                                <h3>Electronic Spaghetti</h3>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div style="display:inline-block">
+                                Common Ingredients: 3
+                            </div>
+                        </tr>
+                    </table>
+                </li>
+                <li class="recipeItem" id="item3" data-toggle="modal" data-target="#recipeModal">
+                    <table>
+                        <tr>
+                            <a href="">
+                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
+                            </a>
+                        </tr>
+                        <tr>
+                            <div style="display:inline-block;width:400px">
+                                <h3>CIA Spaghetti</h3>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div style="display:inline-block">
+                                Common Ingredients: 3
+                            </div>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="modal fade" id="recipeModal" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recipeModal" style="display:inline">Spaghetti</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ingredients
+                        <br> Serves: 8
+                        <br> 500g beef mince
+                        <br> 1 onion, chopped
+                        <br> 4 cloves garlic, minced
+                        <br> 1 small green capsicum, diced
+                        <br> 1 (800g) tin diced tomatoes
+                        <br> 400g tomato pasta sauce
+                        <br> 185g tomato paste
+                        <br> 2 teaspoons dried oregano
+                        <br> 2 teaspoons dried basil
+                        <br> 1 teaspoon salt
+                        <br> 1/2 teaspoon black pepper
+                        <br>
+                        <br> Directions
+                        <br> Preparation:15min › Cook:1hour10min › Ready in:1hour25min
+                        <br> Combine beef mince, onion, garlic, and green capsicum in a large saucepan. Cook and stir until meat
+                        is brown and vegetables are tender. Drain grease.
+                        <br> Stir diced tomatoes, tomato sauce and tomato paste into the pan. Season with oregano, basil, salt
+                        and pepper. Simmer spaghetti sauce for 1 hour, stirring occasionally.
+                        <br>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save Recipe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var object = localStorage.getItem("APIReturn");
+            var recipe = JSON.parse(object);
+            alert(recipe.count);
+            /*
+            $.get("https://api.edamam.com/search?q="+recipe+"&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                        function(data, status){
+                            localStorage.setItem("APIReturn",data);
+                            alert(recipe);
+            });*/
+            /*for(var i = 0; i < 30;i++){
+                $('#recipeList').append('<li class="recipeItem" id="item3" data-toggle="modal" data-target="#recipeModal"> <table> <tr> <a href=""> <img src="Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>CIA Spaghetti</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: 3 </div> </tr> </table> </li>');
+            }*/
+        });
+    </script>
+</body>

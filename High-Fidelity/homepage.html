@@ -142,11 +142,7 @@
                     if(recipeName == "") {
                         alert("Please enter a recipe before searching.");
                     } else {
-                        $.get("https://api.edamam.com/search?q="+recipeName+"&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-                        function(data, status){
-                            localStorage.setItem("APIReturn",data);
-                            window.location.href='results.html'
-                        });
+                        window.location.href='results.html?recipe='+recipeName+''
                     }
                 });
             });

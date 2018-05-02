@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RecipeSearch</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/CSS/homepage.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">RecipeSearch</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Home</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="block">
+        <div class="carousel slide" data-ride="carousel">
+
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="static/Images/Salad.jpg" alt="salad">
+                </div>
+
+                <div class="item">
+                    <img src="static/Images/plate.jpg" alt="plate">
+                </div>
+
+                <div class="item">
+                    <img src="static/Images/corn.jpg" alt="corn">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+
+        <div id="IngredientHead" class="header">
+
+            <div class="w3-display-middle" style="width:50%;height:50%;">
+                <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.7">
+                    <h1>Recipes you want</h1>
+                    <h1>from ingredients you have</h1>
+                </div>
+                <div class="w3-bar w3-black">
+                    <button class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
+                        <i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
+                    <button class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
+                        <i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
+                </div>
+                <div id="Recipe" class="w3-container w3-pale-yellow w3-padding-16">
+                    <div id="allCollapse">
+                        <div id="RecipeCollapse" class="collapse multi-collapse">
+                            <label>Recipe Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Input Recipe"id="recipeInput">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" id="recipeBut">Search</button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div id="IngredientCollapse" class="collapse multi-collapse in">
+                            <label>Ingredient Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Input Ingredient">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" onclick="popList()">Add</button>
+                                </span>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" onclick="window.location.href='results.html'">Search</button>
+                                </span>
+                            </div>
+                            <nav>
+                                <ul id="ingredientList">
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+            $('body,html').css("overflow", "hidden");
+            // Click on a close button to hide the current list item
+            var close = document.getElementsByClassName("close");
+
+            for (var i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+            //Function creates a list node and appends a cross on the end to close it.
+            //Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
+            function popList() {
+                var node = document.createElement("LI");
+                var textnode = document.createTextNode("Water");
+                node.appendChild(textnode);
+                document.getElementById("ingredientList").appendChild(node);
+
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                node.appendChild(span);
+
+                for (var i = 0; i < close.length; i++) {
+                    close[i].onclick = function () {
+                        var div = this.parentElement;
+                        div.style.display = "none";
+                    }
+                }
+            }
+            $(document).ready(function(){
+                $("#recipeBut").click(function(){
+                    var recipeName = document.getElementById("recipeInput").value;
+                    if(recipeName == "") {
+                        alert("Please enter a recipe before searching.");
+                    } else {
+                        $.get("https://api.edamam.com/search?q="+recipeName+"&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                        function(data, status){
+                            localStorage.setItem("APIReturn",JSON.stringify(data));
+                            window.location.href='/results'
+                        });
+                        
+                    }
+                });
+            });
+
+        </script>
+    </div>
+
+</body>
+
+</html>
