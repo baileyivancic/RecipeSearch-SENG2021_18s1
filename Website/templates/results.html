@@ -62,48 +62,7 @@
         </div>
         <nav>
             <ul id="recipeList">
-                <li class="recipeItem" id="item1" data-toggle="modal" data-target="#recipeModal">
-
-                    <table>
-                        <tr>
-                            <a href="">
-                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
-                            </a>
-                        </tr>
-                        <tr>
-                            <div style="display:inline-block;width:400px">
-                                <h3>Spaghetti</h3>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div style="display:inline-block">
-                                Common Ingredients: 3
-                            </div>
-                        </tr>
-                    </table>
-
-
-                </li>
-                <li class="recipeItem" id="item2" data-toggle="modal" data-target="#recipeModal">
-                    <table>
-                        <tr>
-                            <a href="">
-                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
-                            </a>
-                        </tr>
-                        <tr>
-                            <div style="display:inline-block;width:400px">
-                                <h3>Electronic Spaghetti</h3>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div style="display:inline-block">
-                                Common Ingredients: 3
-                            </div>
-                        </tr>
-                    </table>
-                </li>
-                <li class="recipeItem" id="item3" data-toggle="modal" data-target="#recipeModal">
+                <!--<li class="recipeItem" id="item3" data-toggle="modal" data-target="#recipeModal">
                     <table>
                         <tr>
                             <a href="">
@@ -121,7 +80,7 @@
                             </div>
                         </tr>
                     </table>
-                </li>
+                </li>-->
             </ul>
         </nav>
     </div>
@@ -169,8 +128,8 @@
             var object = localStorage.getItem("APIReturn");
             var recipe = JSON.parse(object);
             //alert(recipe.count);
-            for(var i = 0; i < 30;i++){
-                $('#recipeList').append('<li class="recipeItem" id="item'+i+'" data-toggle="modal" data-target="#recipeModal"> <table> <tr> <a href=""> <img src="Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>'+recipe.hits[i].recipe.label+'</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: 3 </div> </tr> </table> </li>');
+            for(var i = 0; i < 2000;i++){
+                $('#recipeList').append('<li class="recipeItem" id="item'+i+'" data-toggle="modal" data-target="#recipeModal"> <table> <tr> <a href=""> <img src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>'+recipe.hits[i].recipe.label+'</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: 3 </div> </tr> </table> </li>');
             }
         });
     </script>
