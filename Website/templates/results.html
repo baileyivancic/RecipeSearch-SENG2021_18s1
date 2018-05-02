@@ -168,16 +168,10 @@
         $(document).ready(function () {
             var object = localStorage.getItem("APIReturn");
             var recipe = JSON.parse(object);
-            alert(recipe.count);
-            /*
-            $.get("https://api.edamam.com/search?q="+recipe+"&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-                        function(data, status){
-                            localStorage.setItem("APIReturn",data);
-                            alert(recipe);
-            });*/
-            /*for(var i = 0; i < 30;i++){
-                $('#recipeList').append('<li class="recipeItem" id="item3" data-toggle="modal" data-target="#recipeModal"> <table> <tr> <a href=""> <img src="Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>CIA Spaghetti</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: 3 </div> </tr> </table> </li>');
-            }*/
+            //alert(recipe.count);
+            for(var i = 0; i < 30;i++){
+                $('#recipeList').append('<li class="recipeItem" id="item'+i+'" data-toggle="modal" data-target="#recipeModal"> <table> <tr> <a href=""> <img src="Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>'+recipe.hits[i].recipe.label+'</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: 3 </div> </tr> </table> </li>');
+            }
         });
     </script>
 </body>
