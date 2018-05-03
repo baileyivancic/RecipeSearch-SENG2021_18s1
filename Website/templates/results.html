@@ -84,7 +84,7 @@
             </ul>
         </nav>
     </div>
-    <div class="modal fade" id="recipeModal" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true">
+    <!--<div class="modal fade" id="recipeModal" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -122,15 +122,27 @@
                 </div>
             </div>
         </div>
+    </div>-->
+    <div class="modals">
     </div>
     <script>
         $(document).ready(function () {
             var object = localStorage.getItem("APIReturn");
             var recipe = JSON.parse(object);
             //alert(recipe.count);
-            for(var i = 0; i < 2000;i++){
-                $('#recipeList').append('<li class="recipeItem" id="item'+i+'" data-toggle="modal" data-target="#recipeModal"> <table> <tr> <a href=""> <img src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>'+recipe.hits[i].recipe.label+'</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: 3 </div> </tr> </table> </li>');
+            //var i;
+            //alert(recipe.hits[1].recipe.url);
+            for(var i = 0; i < 100;i++){
+                
+                if(recipe.hits[i] != null){
+                    $('#recipeList').append('<li class="recipeItem" id="item'+i+'" data-toggle="modal" data-target="#recipeModal'+i+'"> <table> <tr> <a href=""> <img src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>'+recipe.hits[i].recipe.label+'</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: 3 </div> </tr> </table> </li>');
+                    $('.modals').append('<div class="modal fade" id="recipeModal'+i+'" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="recipeModal'+i+'" style="display:inline">'+recipe.hits[i].recipe.label+'</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body'+i+'">');
+                    $('.modal-body'+i+'').append('<p>Ingredients: </p>');
+                    $('.modal-body'+i+'').append('</div><div class="modal-footer"> <button type="button" class="btn btn-primary">Save Recipe</button> </div> </div> </div> </div>');
+                }
+
             }
+        
         });
     </script>
 </body>
