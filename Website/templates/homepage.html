@@ -162,17 +162,14 @@
 				$("#ingredientInput").click( ()=>{
 					var recipeName = $("#ingredientList li");
 					var recipeString = "";
-                    //alert(recipeName[0]);
 
                     $("#ingredientList li").each( function(i, li) {
-                        var product = $(li);
-						alert(product.text());
-                        recipeString.concat(product.text() + ',');
-
-                        // and the rest of your code
+                        var product = $(li).text();
+						product = product.replace("\u00D7", "");
+                        recipeString = recipeString.concat(product, ',');
                     });
 
-					//alert(recipeString);
+					alert(recipeString);
                     if(recipeName.length == 0) {
                         alert("Please enter ingredients before searching.");
                     }
