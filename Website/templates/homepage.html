@@ -20,10 +20,10 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">RecipeSearch</a>
+                <a class="navbar-brand disable" href="#">RecipeSearch</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="disabled">
                     <a href="#">Home</a>
                 </li>
             </ul>
@@ -141,6 +141,7 @@
                         div.style.display = "none";
                     }
                 }
+                document.getElementById("input-box-home").value = "";
             }
 
             $(document).ready(function(){
