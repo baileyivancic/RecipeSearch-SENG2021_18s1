@@ -92,7 +92,7 @@
                                     <button class="btn btn-default" type="button" onclick="popList()">Add</button>
                                 </span>
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" onclick="window.location.href='/results'">Search</button>
+                                    <button id="ingredientInput" class="btn btn-default" type="button" onclick="window.location.href='/results'">Search</button>
                                 </span>
                             </div>
                             <nav>
@@ -157,6 +157,25 @@
 
                     }
                 });
+
+				$("#ingredientInput").click( ()=>{
+					var recipeName =[];
+
+					$("#ingredientList").each( (index)=>{
+						recipeName.add($(this).text());
+					});
+					//document.getElementById("recipeInput").value;
+                    if(recipeName == "") {
+                        alert("Please enter a recipe before searching.");
+                    } else {
+                        $.get("https://api.edamam.com/search?q="+recipeName+"&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                        function(data, status){
+                            localStorage.setItem("APIReturn",JSON.stringify(data));
+                            window.location.href='/results'
+                        });
+
+                    }
+				});
 
 				$('#searchIngredient').click( ()=>{
 					localStorage.setItem("searchType", "Ingredient");
