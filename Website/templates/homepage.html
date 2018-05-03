@@ -173,15 +173,14 @@
 					alert(recipeString);
                     if(recipeName.length == 0) {
                         alert("Please enter ingredients before searching.");
+                    } else {
+                        $.get("https://api.edamam.com/search?q="+recipeString+"&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                        function(data, status){
+                            localStorage.setItem("APIReturn",JSON.stringify(data));
+                            window.location.href='/results'
+                        });
+
                     }
-					// else {
-                    //     $.get("https://api.edamam.com/search?q="+recipeName+"&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-                    //     function(data, status){
-                    //         localStorage.setItem("APIReturn",JSON.stringify(data));
-                    //         window.location.href='/results'
-                    //     });
-					//
-                    // }
 				});
 
 				$('#searchIngredient').click( ()=>{
