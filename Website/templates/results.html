@@ -35,7 +35,7 @@
             </ul>
         </div>
     </nav>
-    <div class="w3-sidebar w3-bar-block" style="width:20vw;opacity:0.8;height:50vh">
+    <div id="left-sidebar" class="w3-sidebar w3-bar-block" style="width:20vw;opacity:0.8;height:50vh">
         <div id="Tagline" class="w3-container w3-white" style="text-align:center">
             <label for="usr"><h3>Current Ingredients</h3></label>
             <div class="input-group">
@@ -56,7 +56,7 @@
             </nav>
         </div>
     </div>
-    <div class="container"style="opacity:0.96;margin-left:20vw;width:75vw">
+    <div id="main-container" lass="container"style="opacity:0.96;margin-left:20vw;width:75vw">
         <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.6">
             <h1>Results: Click to View</h1>
         </div>
@@ -126,9 +126,17 @@
     <div class="modals">
     </div>
     <script>
-        $(document).ready(function () {
+        $(document).ready( function () {
             var object = localStorage.getItem("APIReturn");
             var recipe = JSON.parse(object);
+
+			//Takes out the side bar depending on searchType
+			var searchType = localStorage.getItem("searchType");
+			if (searchType === "recipe") {
+				$("#left-sidebar").hide();
+				$("#main-container").css("margin-left", "auto");
+			}
+
             //alert(recipe.count);
             //var i;
             //alert(recipe.hits[1].recipe.url);
@@ -143,6 +151,9 @@
 
             }
 
-        });
+        }
+
+
+	);
     </script>
 </body>
