@@ -28,8 +28,20 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li id="loginNav">
                     <a href="/login">Login</a>
+                </li>
+                <li id="loggedNav">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        User7
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="btn btn-info btn-block" href="#" data-toggle="modal" data-target="#userModal"style="border-radius:0px">View User Page</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="btn btn-danger btn-block" id="logout-btn" href="#"style="border-radius:0px">Logout</a>
+                    </div>
+                    
                 </li>
             </ul>
         </div>
@@ -58,26 +70,28 @@
         <div id="IngredientHead" class="header">
 
             <div class="w3-display-middle" style="width:50%;height:50%;">
-                <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.7">
+                <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.7;border-radius: 15px 15px 0px 0px;">
                     <h1>Recipes you want</h1>
                     <h1>from ingredients you have</h1>
                 </div>
                 <div class="w3-bar w3-black">
-                    <button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
+                    <button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
+                        aria-controls="RecipeCollapse IngredientCollapse">
                         <i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
-                    <button id="searchRecipe" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
+                    <button id="searchRecipe" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
+                        aria-controls="RecipeCollapse IngredientCollapse">
                         <i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
 
                     <!-- TODO - Change icon as well as click action -->
                     <button class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
                         <i class="fa fa-search w3-margin-right"></i>Create a weekly meal plan</button>
                 </div>
-                <div id="Recipe" class="w3-container w3-pale-yellow w3-padding-16">
+                <div id="Recipe" class="w3-container w3-pale-yellow w3-padding-16"style="border-radius: 0px 0px 15px 15px;">
                     <div id="allCollapse">
                         <div id="RecipeCollapse" class="collapse multi-collapse">
                             <label>Recipe Name</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Input Recipe"id="recipeInput">
+                                <input type="text" class="form-control" placeholder="Input Recipe" id="recipeInput">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" id="recipeBut">Search</button>
                                 </span>
@@ -87,7 +101,7 @@
                         <div id="IngredientCollapse" class="collapse multi-collapse in">
                             <label>Ingredient Name</label>
                             <div class="input-group">
-                                <input id= "input-box-home" type="text" class="form-control" placeholder="Input Ingredient">
+                                <input id="input-box-home" type="text" class="form-control" placeholder="Input Ingredient">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" onclick="popList()">Add</button>
                                 </span>
@@ -144,60 +158,100 @@
                 document.getElementById("input-box-home").value = "";
             }
 
-            $(document).ready(function(){
-                $("#recipeBut").click( ()=>{
+            $(document).ready(function () {
+                var loggedin = localStorage.getItem("user");
+                if (loggedin == null || loggedin == "notlogged") {
+                    $("#loginNav").show();
+                    $("#loggedNav").hide();
+                } else {
+                    $("#loginNav").hide();
+                    $("#loggedNav").show();
+                }
+                $("#logout-btn").click(()=>{
+                    localStorage.setItem("user","notlogged");
+                    window.location.href = '/homepage'
+                });
+                $("#recipeBut").click(() => {
                     var recipeName = document.getElementById("recipeInput").value;
-                    if(recipeName == "") {
+                    if (recipeName == "") {
                         alert("Please enter a recipe before searching.");
                     } else {
-                        $.get("https://api.edamam.com/search?q="+recipeName+"&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-                        function(data, status){
-                            localStorage.setItem("APIReturn",JSON.stringify(data));
-                            window.location.href='/results'
-                        });
+                        $.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                            function (data, status) {
+                                localStorage.setItem("APIReturn", JSON.stringify(data));
+                                window.location.href = '/results'
+                            });
 
                     }
                 });
 
-				$("#ingredientInput").click( ()=>{
-					var recipeString = "";
+                $("#ingredientInput").click(() => {
+                    var recipeString = "";
 
-                    $("#ingredientList li").each( function(i, li) {
+                    $("#ingredientList li").each(function (i, li) {
                         var product = $(li).text();
-						product = product.replace("\u00D7", "");
+                        product = product.replace("\u00D7", "");
                         recipeString = recipeString.concat(product, ',');
                     });
-					recipeString = recipeString.slice(0, recipeString.length-1);
+                    recipeString = recipeString.slice(0, recipeString.length - 1);
 
-					//alert(recipeString);
-					localStorage.setItem("ingredientList", recipeString);
-                    if(recipeString.length == 0) {
+                    //alert(recipeString);
+                    localStorage.setItem("ingredientList", recipeString);
+                    if (recipeString.length == 0) {
                         alert("Please enter ingredients before searching.");
                     } else {
-						//alert("searching");
-                        $.get("https://api.edamam.com/search?q="+recipeString+"&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-                        function(data, status){
-                            localStorage.setItem("APIReturn",JSON.stringify(data));
-                            window.location.href='/results'
-                        });
+                        //alert("searching");
+                        $.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                            function (data, status) {
+                                localStorage.setItem("APIReturn", JSON.stringify(data));
+                                window.location.href = '/results'
+                            });
 
                     }
-				});
+                });
 
-				$('#searchIngredient').click( ()=>{
-					localStorage.setItem("searchType", "Ingredient");
-				});
+                $('#searchIngredient').click(() => {
+                    localStorage.setItem("searchType", "Ingredient");
+                });
 
-				$('#searchRecipe').click( ()=>{
-					localStorage.setItem("searchType", "recipe");
-				});
+                $('#searchRecipe').click(() => {
+                    localStorage.setItem("searchType", "recipe");
+                });
             });
 
         </script>
 
 
     </div>
-
+    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userModal" style="display:inline">User Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="usr">Saved Ingredients</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Input Ingredient" id="usr">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Add</button>
+                        </span>
+                    </div>
+                    <nav>
+                        <ul id="ingredientList">
+                        </ul>
+                    </nav>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Change Password</button>
+                    <button type="button" class="btn btn-primary">View Saved Recipes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

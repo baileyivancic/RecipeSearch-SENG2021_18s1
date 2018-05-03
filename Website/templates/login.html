@@ -47,12 +47,20 @@
                 <input type="text" class="form-control w3-margin" placeholder="Password" id="pass" style="text-align: center;width:20vw;">
             </div>
             <div style="text-align: center;">
-            <input style="width:20vw"class="btn btn-primary"id="login-btn" type="submit" value="Login" onclick="window.location.href='/homepage'">
+            <input style="width:20vw"class="btn btn-primary"id="login-btn" type="submit" value="Login">
             </div>
             <div style="text-align: center;">
-            <input style="width:20vw"class="btn btn-warning"id="login-btn" type="submit" value="Register" onclick="window.location.href='/register'">
+            <input style="width:20vw"class="btn btn-warning"id="register-btn" type="submit" value="Register" onclick="window.location.href='/register'">
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            $("#login-btn").click( ()=>{
+                localStorage.setItem("user","logged");
+                window.location.href='/homepage';
+            });
+        });
+    </script>
 </body>
 </html>

@@ -27,6 +27,7 @@
     padding-left:0px;
     padding-top: 25px;
     padding-bottom: 25px;
+    
 }
 .recipeItem:not(:last-child) {
     border-bottom: 1px solid black;   
@@ -67,7 +68,7 @@ body{
     background: #eee;
     font-size: 18px;
     transition: 0.2s;
-    height:85vh; 
+    height:100%; 
     width:100%;
     overflow:hidden; 
     overflow-y:scroll;
