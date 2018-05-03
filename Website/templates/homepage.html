@@ -92,7 +92,7 @@
                                     <button class="btn btn-default" type="button" onclick="popList()">Add</button>
                                 </span>
                                 <span class="input-group-btn">
-                                    <button id="ingredientInput" class="btn btn-default" type="button" onclick="window.location.href='/results'">Search</button>
+                                    <button id="ingredientInput" class="btn btn-default" type="button">Search</button>
                                 </span>
                             </div>
                             <nav>
@@ -159,14 +159,19 @@
                 });
 
 				$("#ingredientInput").click( ()=>{
-					var recipeName =[];
+					var recipeName = $("#ingredientList li");;
+					var recipeString;
+                    alert(recipeName[0]);
+                    recipeName.each(function(idx, li) {
+                        var product = $(li);
+                        alert(product);
+                        recipeString.concat(product + ',');
 
-					$("#ingredientList").each( (index)=>{
-						recipeName.add($(this).text());
-					});
-					//document.getElementById("recipeInput").value;
-                    if(recipeName == "") {
-                        alert("Please enter a recipe before searching.");
+                        // and the rest of your code
+                    });
+                    
+                    if(recipeName.length == 0) {
+                        alert("Please enter ingredients before searching.");
                     } else {
                         $.get("https://api.edamam.com/search?q="+recipeName+"&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
                         function(data, status){
