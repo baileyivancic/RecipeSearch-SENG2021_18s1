@@ -14,7 +14,7 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="CSS/results.css">
+    <link rel="stylesheet" type="text/css" href="static/CSS/results.css">
 </head>
 
 <body>
@@ -56,7 +56,7 @@
             </nav>
         </div>
     </div>
-    <div class="container"style="opacity:0.96;margin-left:20vw">
+    <div class="container"style="opacity:0.96;margin-left:20vw;width:75vw">
         <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.6">
             <h1>Results: Click to View</h1>
         </div>
@@ -67,7 +67,7 @@
                     <table>
                         <tr>
                             <a href="">
-                                <img src="Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
+                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
                             </a>
                         </tr>
                         <tr>
@@ -88,7 +88,7 @@
                     <table>
                         <tr>
                             <a href="">
-                                <img src="Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
+                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
                             </a>
                         </tr>
                         <tr>
@@ -107,7 +107,7 @@
                     <table>
                         <tr>
                             <a href="">
-                                <img src="Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
+                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
                             </a>
                         </tr>
                         <tr>
@@ -164,4 +164,19 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            //var recipe = localStorage.getItem("1");
+            alert("recipe");
+            /*
+            $.get("https://api.edamam.com/search?q="+recipe+"&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                        function(data, status){
+                            localStorage.setItem("APIReturn",data);
+                            alert(recipe);
+            });*/
+            /*for(var i = 0; i < 30;i++){
+                $('#recipeList').append('<li class="recipeItem" id="item3" data-toggle="modal" data-target="#recipeModal"> <table> <tr> <a href=""> <img src="Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>CIA Spaghetti</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: 3 </div> </tr> </table> </li>');
+            }*/
+        });
+    </script>
 </body>
