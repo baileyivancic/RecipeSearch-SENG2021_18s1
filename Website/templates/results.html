@@ -130,7 +130,7 @@
 
 		for (var i = 0; i < close.length; i++) {
 			close[i].onclick = function () {
-				$(this).remove();
+				$(this.parentElement).remove();
 			}
 		}
 		//Function creates a list node and appends a cross on the end to close it.
@@ -189,7 +189,6 @@
 					$(node).addClass("non-Deleted");
 	                for (var i = 0; i < close.length; i++) {
 	                    close[i].onclick = function () {
-	                        $(this.parentElement).removeClass("non-Deleted");
 	                        $(this.parentElement).remove();
 	                    }
 	                }

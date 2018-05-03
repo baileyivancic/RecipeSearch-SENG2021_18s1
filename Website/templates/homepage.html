@@ -115,10 +115,10 @@
 
             for (var i = 0; i < close.length; i++) {
                 close[i].onclick = function () {
-					$(this.parentElement).removeClass("non-Deleted")
                     $(this.parentElement).remove();
                 }
             }
+            var m = 0;
             //Function creates a list node and appends a cross on the end to close it.
             //Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
             function popList() {
@@ -127,6 +127,8 @@
                 //Adds value in text box
                 var textnode = document.createTextNode(document.getElementById('input-box-home').value);
                 node.appendChild(textnode);
+                node.id = toString(m);
+                m++;
                 document.getElementById("ingredientList").appendChild(node);
                 var span = document.createElement("SPAN");
                 var txt = document.createTextNode("\u00D7");
@@ -136,7 +138,6 @@
 
                 for (var i = 0; i < close.length; i++) {
                     close[i].onclick = function () {
-						$(this.parentElement).removeClass("non-Deleted");
                         $(this.parentElement).remove();
                     }
                 }
