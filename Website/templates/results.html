@@ -123,6 +123,34 @@
     <div class="modals">
     </div>
     <script>
+        //Function creates a list node and appends a cross on the end to close it.
+            //Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
+            function popList() {
+                var node = document.createElement("LI");
+
+                //Adds value in text box
+                var textnode = document.createTextNode(document.getElementById('input-box-home').value);
+                node.appendChild(textnode);
+                document.getElementById("ingredientList").appendChild(node);
+
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                node.appendChild(span);
+
+				document.getElementById('input-box-home').value = "";
+                for (var i = 0; i < close.length; i++) {
+                    close[i].onclick = function () {
+                        var div = this.parentElement;
+                        div.style.display = "none";
+                    }
+                }
+                document.getElementById("input-box-home").value = "";
+            }
+        
+        
+        
         $(document).ready( function () {
             var object = localStorage.getItem("APIReturn");
             var recipeObject = JSON.parse(object);
@@ -154,6 +182,7 @@
                 }
 
             }
+            
         });
     </script>
 </body>
