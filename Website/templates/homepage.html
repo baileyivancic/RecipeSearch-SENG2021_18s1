@@ -115,8 +115,8 @@
 
             for (var i = 0; i < close.length; i++) {
                 close[i].onclick = function () {
-                    var div = this.parentElement;
-                    div.style.display = "none";
+					$(this.parentElement).removeClass("non-Deleted")
+                    $(this.parentElement).remove();
                 }
             }
             //Function creates a list node and appends a cross on the end to close it.
@@ -128,7 +128,6 @@
                 var textnode = document.createTextNode(document.getElementById('input-box-home').value);
                 node.appendChild(textnode);
                 document.getElementById("ingredientList").appendChild(node);
-
                 var span = document.createElement("SPAN");
                 var txt = document.createTextNode("\u00D7");
                 span.className = "close";
@@ -137,8 +136,8 @@
 
                 for (var i = 0; i < close.length; i++) {
                     close[i].onclick = function () {
-                        var div = this.parentElement;
-                        div.style.display = "none";
+						$(this.parentElement).removeClass("non-Deleted");
+                        $(this.parentElement).remove();
                     }
                 }
                 document.getElementById("input-box-home").value = "";
