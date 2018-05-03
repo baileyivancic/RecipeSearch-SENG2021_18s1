@@ -132,7 +132,7 @@
 
 			//Takes out the side bar depending on searchType
 			var searchType = localStorage.getItem("searchType");
-			if (searchType === "recipe") {
+			if (searchType == "recipe") {
 				$("#left-sidebar").hide();
 				$("#main-container").css("margin-left", "15vw");
 			}
