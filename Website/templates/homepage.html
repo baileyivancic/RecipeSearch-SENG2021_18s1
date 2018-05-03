@@ -29,7 +29,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="login.html">Login</a>
+                    <a href="/login">Login</a>
                 </li>
             </ul>
         </div>
@@ -63,9 +63,9 @@
                     <h1>from ingredients you have</h1>
                 </div>
                 <div class="w3-bar w3-black">
-                    <button class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
+                    <button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
                         <i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
-                    <button class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
+                    <button id="searchRecipe" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="RecipeCollapse IngredientCollapse">
                         <i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
 
                     <!-- TODO - Change icon as well as click action -->
@@ -92,7 +92,7 @@
                                     <button class="btn btn-default" type="button" onclick="popList()">Add</button>
                                 </span>
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" onclick="window.location.href='results.html'">Search</button>
+                                    <button class="btn btn-default" type="button" onclick="window.location.href='/results'">Search</button>
                                 </span>
                             </div>
                             <nav>
@@ -142,8 +142,9 @@
                     }
                 }
             }
+
             $(document).ready(function(){
-                $("#recipeBut").click(function(){
+                $("#recipeBut").click( ()=>{
                     var recipeName = document.getElementById("recipeInput").value;
                     if(recipeName == "") {
                         alert("Please enter a recipe before searching.");
@@ -156,6 +157,14 @@
 
                     }
                 });
+
+				$('#searchIngredient').click( ()=>{
+					localStorage.setItem("searchType", "Ingredient");
+				});
+
+				$('#searchRecipe').click( ()=>{
+					localStorage.setItem("searchType", "recipe");
+				});
             });
 
         </script>
