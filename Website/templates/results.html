@@ -58,7 +58,7 @@
                     <button class="btn btn-default" type="button" onclick="popList()">Add</button>
                 </span>
                 <span class="input-group-btn">
-                    <button id="ingredientInput" class="btn btn-default" type="button" onclick="window.location.href='/results'">Search Again</button>
+                    <button id="ingredientInput" class="btn btn-default" type="button">Search Again</button>
                 </span>
             </div>
             <nav>
@@ -67,7 +67,7 @@
             </nav>
         </div>
     </div>
-    <div id="main-container" class="container" style="opacity:0.96;margin-left:20vw;width:75vw;">
+    <div id="main-container" class="container" style="opacity:0.96;margin-left:20vw;width:75vw;height:100vh">
         <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.6;border-radius: 15px 15px 0px 0px;">
             <h1>Results</h1>
         </div>
@@ -243,13 +243,13 @@
                 if (recipeString.length == 0) {
                     alert("Please enter ingredients before searching.");
                 } else {
-                    //alert("searching");
                     $.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
                         function (data, status) {
                             localStorage.setItem("APIReturn", JSON.stringify(data));
-                            window.location.href = '/results'
+                            window.location.href = '/results';
+                            
                         });
-
+                
                 }
             });
 
