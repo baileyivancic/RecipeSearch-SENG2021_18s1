@@ -137,7 +137,7 @@
             var node = document.createElement("LI");
 
             //Adds value in text box
-			//if (document.getElementById('input-box-result').value == "") return;
+			if (document.getElementById('input-box-result').value == "") return;
             var textnode = document.createTextNode(document.getElementById('input-box-result').value);
             node.appendChild(textnode);
             document.getElementById("ingredientList").appendChild(node);
