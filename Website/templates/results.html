@@ -137,7 +137,7 @@
             var node = document.createElement("LI");
 
             //Adds value in text box
-			//if (document.getElementById('input-box-result').value == null) return;
+			//if (document.getElementById('input-box-result').value == "") return;
             var textnode = document.createTextNode(document.getElementById('input-box-result').value);
             node.appendChild(textnode);
             document.getElementById("ingredientList").appendChild(node);
@@ -153,7 +153,7 @@
                     $(this.parentElement).remove();
                 }
             }
-            document.getElementById("input-box-result").value = null;
+            document.getElementById("input-box-result").value = "";
         }
 
         $(document).ready(function () {
