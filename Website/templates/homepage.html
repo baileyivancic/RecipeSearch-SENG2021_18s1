@@ -41,7 +41,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="btn btn-danger btn-block" id="logout-btn" href="#"style="border-radius:0px">Logout</a>
                     </div>
-                    
+
                 </li>
             </ul>
         </div>
@@ -139,11 +139,13 @@
                 var node = document.createElement("LI");
 
                 //Adds value in text box
+				if (document.getElementById('input-box-result').value == null) return;
                 var textnode = document.createTextNode(document.getElementById('input-box-home').value);
-                node.appendChild(textnode);
+				node.appendChild(textnode);
                 node.id = toString(m);
                 m++;
                 document.getElementById("ingredientList").appendChild(node);
+
                 var span = document.createElement("SPAN");
                 var txt = document.createTextNode("\u00D7");
                 span.className = "close";
@@ -155,7 +157,7 @@
                         $(this.parentElement).remove();
                     }
                 }
-                document.getElementById("input-box-home").value = "";
+                document.getElementById("input-box-home").value = null;
             }
 
             $(document).ready(function () {
