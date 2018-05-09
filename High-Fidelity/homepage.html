@@ -83,7 +83,7 @@
                         <div id="IngredientCollapse" class="collapse multi-collapse in">
                             <label>Ingredient Name</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Input Ingredient">
+                                <input type="text" id="recipeInput"class="form-control" placeholder="Input Ingredient">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" onclick="popList()">Add</button>
                                 </span>
@@ -119,7 +119,8 @@
             //Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
             function popList() {
                 var node = document.createElement("LI");
-                var textnode = document.createTextNode("Water");
+				var input = document.getElementById("recipeInput");
+                var textnode = document.createTextNode(input.value);
                 node.appendChild(textnode);
                 document.getElementById("ingredientList").appendChild(node);
 
@@ -136,17 +137,6 @@
                     }
                 }
             }
-            $(document).ready(function(){
-                $("#recipeBut").click(function(){
-                    var recipeName = document.getElementById("recipeInput").value;
-                    if(recipeName == "") {
-                        alert("Please enter a recipe before searching.");
-                    } else {
-                        window.location.href='results.html?recipe='+recipeName+''
-                    }
-                });
-            });
-
         </script>
     </div>
 
