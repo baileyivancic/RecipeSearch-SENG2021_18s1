@@ -73,9 +73,9 @@
                         <div id="RecipeCollapse" class="collapse multi-collapse">
                             <label>Recipe Name</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Input Recipe">
+                                <input type="text" class="form-control" placeholder="Input Recipe"id="recipeInput">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" onclick="window.location.href='results.html'">Search</button>
+                                    <button class="btn btn-default" type="button" id="recipeBut">Search</button>
                                 </span>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                         <div id="IngredientCollapse" class="collapse multi-collapse in">
                             <label>Ingredient Name</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Input Ingredient">
+                                <input type="text" id="recipeInput"class="form-control" placeholder="Input Ingredient">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" onclick="popList()">Add</button>
                                 </span>
@@ -119,7 +119,8 @@
             //Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
             function popList() {
                 var node = document.createElement("LI");
-                var textnode = document.createTextNode("Water");
+				var input = document.getElementById("recipeInput");
+                var textnode = document.createTextNode(input.value);
                 node.appendChild(textnode);
                 document.getElementById("ingredientList").appendChild(node);
 
@@ -136,8 +137,6 @@
                     }
                 }
             }
-
-
         </script>
     </div>
 
