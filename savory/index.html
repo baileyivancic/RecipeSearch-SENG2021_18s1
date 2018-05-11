@@ -81,122 +81,149 @@
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0 text-left">
+	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
+		<section class="block">
+			<div class="carousel slide" data-ride="carousel">
+
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="images/carousel/ingredients.jpg" alt="ingredients">
+					</div>
+
+					<div class="item">
+						<img src="images/carousel/rice.jpg" alt="rice">
+					</div>
+
+					<div class="item">
+						<img src="images/carousel/pizza.jpg" alt="pizza">
+					</div>
+
+					<div class="item">
+						<img src="images/carousel/asian-cuisine.jpg" alt="asian-cuisine">
+					</div>
+
+					<div class="item">
+						<img src="images/carousel/soup.jpg" alt="soup">
+					</div>
+				</div>
+			</div>
+		</section>
+<div class="overlay">
+
+				<div class="gtco-container">
+					<div class="row">
+						<div class="col-md-12 col-md-offset-0 text-left">
+							<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+								<h1 class="cursive-font">Recipes you want, </h1>
+								<h1 class="cursive-font"> from ingredients you have</h1>
+							</div>
+
+							<div class="row row-mt-15em">
+
+								<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw"data-animate-effect="fadeInRight">
+									<div class="form-wrap">
+										<div class="tab">
+
+											<div class="tab-content">
+												<div class="tab-content-inner active" data-content="signup">
+													<h3 class="cursive-font">Enter in ingredients or a recipe to get started.</h3>
+													<form action="#">
+														<div class="row form-group">
+															<div class="col-md-12">
+																<label for="activities">Ingredients</label>
+																<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
+															</div>
+														</div>
+														<div class="row form-group">
+															<div class="col-md-12">
+																<label for="date-start">Recipe</label>
+																<input type="text" class="form-control" placeholder="eg. Lasagna">
+															</div>
+														</div>
+														<div class="row form-group">
+															<div class="col-md-12">
+																<label for="cuisine">Cuisine</label>
+																<select name="#" id="cuisine" class="form-control">
+																	<option value="" selected disabled hidden>Select Cuisine</option>
+																	<option value="African">African</option>
+																	<option value="American">American</option>
+																	<option value="British">British</option>
+																	<option value="Cajun">Cajun</option>
+																	<option value="Caribbean">Caribbean</option>
+																	<option value="Chinese">Chinese</option>
+																	<option value="Eastern European">Eastern European</option>
+																	<option value="French">French</option>
+																	<option value="German">German</option>
+																	<option value="Greek">Greek</option>
+																	<option value="Indian">Indian</option>
+																	<option value="Irish">Irish</option>
+																	<option value="Italian">Italian</option>
+																	<option value="Japanese">Japanese</option>
+																	<option value="Jewish">Jewish</option>
+																	<option value="Korean">Korean</option>
+																	<option value="Latin American">Latin American</option>
+																	<option value="Mexican">Mexican</option>
+																	<option value="Middle Eastern">Middle Eastern</option>
+																	<option value="Nordic">Nordic</option>
+																	<option value="Southern">Southern</option>
+																	<option value="Spanish">Spanish</option>
+																	<option value="Thai">Thai</option>
+																	<option value="Vietnamese">Vietnamese</option>
+																</select>
+															</div>
+														</div>
+														<div class="row form-group">
+															<div class="col-md-12">
+																<label for="diet">Diet</label>
+																<select name="#" id="diet" class="form-control">
+																	<option value="" selected disabled hidden>Select Diet</option>
+																	<option value="Ketogenic">Ketogenic</option>
+																	<option value="Paleo">Paleo</option>
+																	<option value="Primal">Primal</option>
+																	<option value="Vegan">Vegan</option>
+																	<option value="Vegetarian">Vegetarian</option>
+																</select>
+															</div>
+														</div>
+														<div class="row form-group">
+															<div class="col-md-12">
+																<label for="intolerance">Intolerance</label>
+																<select name="#" id="intolerance" class="form-control">
+																	<option value="" selected disabled hidden>Select Intolerance</option>
+																	<option value="Dairy free">Dairy free</option>
+																	<option value="Egg free">Egg free</option>
+																	<option value="Gluten free">Gluten free</option>
+																	<option value="Grain free">Grain free</option>
+																	<option value="Peanut free">Peanut free</option>
+																	<option value="Seafood free">Seafood free</option>
+																	<option value="Sesame free">Sesame free</option>
+																	<option value="Shellfish free">Shellfish free</option>
+																	<option value="Soy free">Soy free</option>
+																	<option value="Wheat free">Wheat free</option>
+																</select>
+															</div>
+														</div>
+
+														<div class="row form-group">
+															<div class="col-md-12">
+																<input type="submit" class="btn btn-primary btn-block" value="Search">
+															</div>
+														</div>
+													</form>
+												</div>
 
 
-					<div class="row row-mt-15em">
-						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							<h1 class="cursive-font">Recipes you want, </h1>
-							<h1 class="cursive-font"> from ingredients you have</h1>
-						</div>
-						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
-							<div class="form-wrap">
-								<div class="tab">
-
-									<div class="tab-content">
-										<div class="tab-content-inner active" data-content="signup">
-											<h3 class="cursive-font">Hey! Enter in ingredients or a recipe to get started.</h3>
-											<form action="#">
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="activities">Ingredients</label>
-														<input type="text" class="form-control" placeholder = "eg. Chicken, Rice, Carrot">
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="date-start">Recipe</label>
-														<input type="text" class="form-control" placeholder = "eg. Lasagna">
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="cuisine">Cuisine</label>
-														<select name="#" id="cuisine" class="form-control">
-															<option value="" selected disabled hidden>Select Cuisine</option>
-															<option value="African">African</option>
-															<option value="American">American</option>
-															<option value="British">British</option>
-															<option value="Cajun">Cajun</option>
-															<option value="Caribbean">Caribbean</option>
-															<option value="Chinese">Chinese</option>
-															<option value="Eastern European">Eastern European</option>
-															<option value="French">French</option>
-															<option value="German">German</option>
-															<option value="Greek">Greek</option>
-															<option value="Indian">Indian</option>
-															<option value="Irish">Irish</option>
-															<option value="Italian">Italian</option>
-															<option value="Japanese">Japanese</option>
-															<option value="Jewish">Jewish</option>
-															<option value="Korean">Korean</option>
-															<option value="Latin American">Latin American</option>
-															<option value="Mexican">Mexican</option>
-															<option value="Middle Eastern">Middle Eastern</option>
-															<option value="Nordic">Nordic</option>
-															<option value="Southern">Southern</option>
-															<option value="Spanish">Spanish</option>
-															<option value="Thai">Thai</option>
-															<option value="Vietnamese">Vietnamese</option>
-														</select>
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="diet">Diet</label>
-														<select name="#" id="diet" class="form-control">
-															<option value="" selected disabled hidden>Select Diet</option>
-															<option value="Ketogenic">Ketogenic</option>
-															<option value="Paleo">Paleo</option>
-															<option value="Primal">Primal</option>
-															<option value="Vegan">Vegan</option>
-															<option value="Vegetarian">Vegetarian</option>
-														</select>
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="intolerance">Intolerance</label>
-														<select name="#" id="intolerance" class="form-control">
-															<option value="" selected disabled hidden>Select Intolerance</option>
-															<option value="Dairy free">Dairy free</option>
-															<option value="Egg free">Egg free</option>
-															<option value="Gluten free">Gluten free</option>
-															<option value="Grain free">Grain free</option>
-															<option value="Peanut free">Peanut free</option>
-															<option value="Seafood free">Seafood free</option>
-															<option value="Sesame free">Sesame free</option>
-															<option value="Shellfish free">Shellfish free</option>
-															<option value="Soy free">Soy free</option>
-															<option value="Wheat free">Wheat free</option>
-														</select>
-													</div>
-												</div>
-
-												<div class="row form-group">
-													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary btn-block" value="Search">
-													</div>
-												</div>
-											</form>
+											</div>
 										</div>
-
-
 									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
-
-
 				</div>
 			</div>
-		</div>
-	</header>
+		</header>
 
 
 	<!--
