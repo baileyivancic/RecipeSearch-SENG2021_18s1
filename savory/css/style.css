@@ -1956,3 +1956,26 @@ form label {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+#search-by {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.advanced-search {
+  background-color: transparent;
+  border: none;
+  color: white;
+  float: right;
+}
+
+.advanced-search:hover {
+  text-decoration: underline;
+}
+
+#title {
+  text-align: center;
+  width: 100%;
+}
+
