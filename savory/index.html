@@ -105,15 +105,24 @@
 							</div>
 
 							<div class="row row-mt-15em">
-
+								
 								<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left"data-animate-effect="fadeInRight">
+										<div class="w3-bar w3-black"style="opacity:0.7">
+												<button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
+													aria-controls="RecipeCollapse IngredientCollapse">
+													<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
+												<button id="searchRecipe" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
+													aria-controls="RecipeCollapse IngredientCollapse">
+													<i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
+
+											</div>
 									<div class="form-wrap">
 										<div class="tab">
 
 											<div class="tab-content">
 												<div class="tab-content-inner active" data-content="search">
 													<div>
-													<button id="search-by" data-toggle="collapse" data-target="#ingredient-search" aria-expanded="true" aria-controls="ingredient-search"><h3 class="cursive-font">Search by ingredients.</h3></button>
+													<h3 class="cursive-font">Search by ingredients.</h3>
 													</div>
 													<form action="#">
 														<div class="row form-group">
@@ -132,7 +141,7 @@
 
 
 														<div>
-														<button id="search-by" data-toggle="collapse" data-target="#recipe-search" aria-expanded="false" aria-controls="recipe-search"><h3 class="cursive-font">Search by recipe.</h3></button>
+														</h3>Search by recipe.</h3>
 														</div>
 														<div class="row form-group">
 															<div class="col-md-12" id="recipe-search" class="collapse">
@@ -557,7 +566,10 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	<script src="js/moment.min.js"></script>
 	<script src="js/bootstrap-datetimepicker.min.js"></script>
 
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
