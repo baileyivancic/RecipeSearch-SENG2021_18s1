@@ -113,9 +113,8 @@
 				<div class="gtco-container">
 					<div class="row">
 						<div class="col-md-12 col-md-offset-0 text-left">
-							<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-								<h1 class="cursive-font">Recipes you want, </h1>
-								<h1 class="cursive-font"> from ingredients you have</h1>
+							<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp" id="title">
+								<h1 class="cursive-font">Recipes you want, from ingredients you have.</h1>
 							</div>
 
 							<div class="row row-mt-15em">
@@ -125,92 +124,107 @@
 										<div class="tab">
 
 											<div class="tab-content">
-												<div class="tab-content-inner active" data-content="signup">
-													<h3 class="cursive-font">Enter ingredients or a recipe to get started.</h3>
+												<div class="tab-content-inner active" data-content="search">
+													<div>
+													<button id="search-by" data-toggle="collapse" data-target="#ingredient-search" aria-expanded="true" aria-controls="ingredient-search"><h3 class="cursive-font">Search by ingredients.</h3></button>
+													</div>
 													<form action="#">
 														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="activities">Ingredients</label>
+															<div class="col-md-12" id="ingredient-search" class="collapse">
 																<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
 															</div>
 														</div>
+
+
+
+														<!-- TO DO
+
+															CHANCE RECIPE/INGREDIENT SEARCH TO BUTTONS SIDE BY SIDE AT THE TOP OF MAIN CONTAINER
+
+														-->
+
+
+														<div>
+														<button id="search-by" data-toggle="collapse" data-target="#recipe-search" aria-expanded="false" aria-controls="recipe-search"><h3 class="cursive-font">Search by recipe.</h3></button>
+														</div>
 														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="date-start">Recipe</label>
+															<div class="col-md-12" id="recipe-search" class="collapse">
 																<input type="text" class="form-control" placeholder="eg. Lasagna">
 															</div>
 														</div>
 
 														<!-- ON CLICK SHOULD EXPAND TO SHOW ADVANCED OPTIONS -->
 														<div>
-														<button class="advanced-search">Advanced Search</button>
+														<button class="advanced-search" data-toggle="collapse" data-target="#advanced-options" aria-expanded="false" aria-controls="advanced-options"><a href="#advanced-options">Advanced Search</a></button>
 														</div>
 
-														<!-- ADVANCED OPTIONS
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="cuisine">Cuisine</label>
-																<select name="#" id="cuisine" class="form-control">
-																	<option value="" selected disabled hidden>Select Cuisine</option>
-																	<option value="African">African</option>
-																	<option value="American">American</option>
-																	<option value="British">British</option>
-																	<option value="Cajun">Cajun</option>
-																	<option value="Caribbean">Caribbean</option>
-																	<option value="Chinese">Chinese</option>
-																	<option value="Eastern European">Eastern European</option>
-																	<option value="French">French</option>
-																	<option value="German">German</option>
-																	<option value="Greek">Greek</option>
-																	<option value="Indian">Indian</option>
-																	<option value="Irish">Irish</option>
-																	<option value="Italian">Italian</option>
-																	<option value="Japanese">Japanese</option>
-																	<option value="Jewish">Jewish</option>
-																	<option value="Korean">Korean</option>
-																	<option value="Latin American">Latin American</option>
-																	<option value="Mexican">Mexican</option>
-																	<option value="Middle Eastern">Middle Eastern</option>
-																	<option value="Nordic">Nordic</option>
-																	<option value="Southern">Southern</option>
-																	<option value="Spanish">Spanish</option>
-																	<option value="Thai">Thai</option>
-																	<option value="Vietnamese">Vietnamese</option>
-																</select>
+														<!-- ADVANCED OPTIONS -->
+														<div id="advanced-options" class="collapse">
+															<div class="row form-group">
+																<div class="col-md-12">
+																	<label for="cuisine">Cuisine</label>
+																	<select name="#" id="cuisine" class="form-control">
+																		<option value="" selected disabled hidden>Select Cuisine</option>
+																		<option value="African">African</option>
+																		<option value="American">American</option>
+																		<option value="British">British</option>
+																		<option value="Cajun">Cajun</option>
+																		<option value="Caribbean">Caribbean</option>
+																		<option value="Chinese">Chinese</option>
+																		<option value="Eastern European">Eastern European</option>
+																		<option value="French">French</option>
+																		<option value="German">German</option>
+																		<option value="Greek">Greek</option>
+																		<option value="Indian">Indian</option>
+																		<option value="Irish">Irish</option>
+																		<option value="Italian">Italian</option>
+																		<option value="Japanese">Japanese</option>
+																		<option value="Jewish">Jewish</option>
+																		<option value="Korean">Korean</option>
+																		<option value="Latin American">Latin American</option>
+																		<option value="Mexican">Mexican</option>
+																		<option value="Middle Eastern">Middle Eastern</option>
+																		<option value="Nordic">Nordic</option>
+																		<option value="Southern">Southern</option>
+																		<option value="Spanish">Spanish</option>
+																		<option value="Thai">Thai</option>
+																		<option value="Vietnamese">Vietnamese</option>
+																	</select>
+																</div>
+															</div>
+															<div class="row form-group">
+																<div class="col-md-12">
+																	<label for="diet">Diet</label>
+																	<select name="#" id="diet" class="form-control">
+																		<option value="" selected disabled hidden>Select Diet</option>
+																		<option value="Ketogenic">Ketogenic</option>
+																		<option value="Paleo">Paleo</option>
+																		<option value="Primal">Primal</option>
+																		<option value="Vegan">Vegan</option>
+																		<option value="Vegetarian">Vegetarian</option>
+																	</select>
+																</div>
+															</div>
+															<div class="row form-group">
+																<div class="col-md-12">
+																	<label for="intolerance">Intolerance</label>
+																	<select name="#" id="intolerance" class="form-control">
+																		<option value="" selected disabled hidden>Select Intolerance</option>
+																		<option value="Dairy free">Dairy free</option>
+																		<option value="Egg free">Egg free</option>
+																		<option value="Gluten free">Gluten free</option>
+																		<option value="Grain free">Grain free</option>
+																		<option value="Peanut free">Peanut free</option>
+																		<option value="Seafood free">Seafood free</option>
+																		<option value="Sesame free">Sesame free</option>
+																		<option value="Shellfish free">Shellfish free</option>
+																		<option value="Soy free">Soy free</option>
+																		<option value="Wheat free">Wheat free</option>
+																	</select>
+																</div>
 															</div>
 														</div>
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="diet">Diet</label>
-																<select name="#" id="diet" class="form-control">
-																	<option value="" selected disabled hidden>Select Diet</option>
-																	<option value="Ketogenic">Ketogenic</option>
-																	<option value="Paleo">Paleo</option>
-																	<option value="Primal">Primal</option>
-																	<option value="Vegan">Vegan</option>
-																	<option value="Vegetarian">Vegetarian</option>
-																</select>
-															</div>
-														</div>
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="intolerance">Intolerance</label>
-																<select name="#" id="intolerance" class="form-control">
-																	<option value="" selected disabled hidden>Select Intolerance</option>
-																	<option value="Dairy free">Dairy free</option>
-																	<option value="Egg free">Egg free</option>
-																	<option value="Gluten free">Gluten free</option>
-																	<option value="Grain free">Grain free</option>
-																	<option value="Peanut free">Peanut free</option>
-																	<option value="Seafood free">Seafood free</option>
-																	<option value="Sesame free">Sesame free</option>
-																	<option value="Shellfish free">Shellfish free</option>
-																	<option value="Soy free">Soy free</option>
-																	<option value="Wheat free">Wheat free</option>
-																</select>
-															</div>
-														</div>
-														-->
+	
 
 														<div class="row form-group">
 															<div class="col-md-12">
