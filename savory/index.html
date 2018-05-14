@@ -5,13 +5,15 @@
 	URL: http://gettemplates.co
 -->
 <html>
-	<head>
+
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>RecipeSearch &mdash; The casual cook's companion</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
+	/>
 	<meta name="author" content="GetTemplates.co" />
 
 
@@ -43,8 +45,9 @@
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 
-	</head>
-	<body>
+</head>
+
+<body>
 
 
 
@@ -54,13 +57,25 @@
 
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="index.html">RecipeSearch <em>.</em></a></div>
+					<div id="gtco-logo">
+						<a href="index.html">RecipeSearch
+							<em>.</em>
+						</a>
+					</div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="contact.html">Contact</a></li>
-						<li><a href="about.html">About us</a></li>
-						<li class="btn-cta" id = "index-login-but"><a href="#"><span>Login</span></a></li>
+						<li>
+							<a href="contact.html">Contact</a>
+						</li>
+						<li>
+							<a href="about.html">About us</a>
+						</li>
+						<li class="btn-cta" id="index-login-but">
+							<a href="#">
+								<span>Login</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -72,7 +87,7 @@
 		<section class="block">
 			<div class="carousel slide" data-ride="carousel">
 
-				<div class="carousel-inner"style="height:100vh">
+				<div class="carousel-inner" style="height:100vh">
 					<div class="item active">
 						<img src="images/carousel/ingredients.jpg" alt="ingredients">
 					</div>
@@ -95,152 +110,78 @@
 				</div>
 			</div>
 		</section>
-		<div class="overlay"style="height:100vh">
+		<div class="overlay" style="height:100vh">
 
-				<div class="gtco-container"style="float:left;padding-left:10vw">
-					<div class="row"style="width:80vw;text-align:left">
-						<div class="col-md-12 col-md-offset-0">
-							<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp" id="title">
-								<h1 class="cursive-font">Recipes you want, from ingredients you have.</h1>
-							</div>
+			<div class="gtco-container" style="float:left;padding-left:10vw">
+				<div class="row" style="width:80vw;text-align:left">
+					<div class="col-md-12 col-md-offset-0">
+						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp" id="title">
+							<h1 class="cursive-font">Recipes you want, from ingredients you have.</h1>
+						</div>
 
-							<div class="row row-mt-15em">
-								
-								<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left"data-animate-effect="fadeInRight">
-										<div class="w3-bar w3-black"style="opacity:0.7">
-												<button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
-													aria-controls="RecipeCollapse IngredientCollapse">
-													<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
-												<button id="searchRecipe" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
-													aria-controls="RecipeCollapse IngredientCollapse">
-													<i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
+						<div class="row row-mt-15em">
 
-											</div>
-									<div class="form-wrap">
-										<div class="tab">
+							<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left" data-animate-effect="fadeInRight">
+								<div class="w3-bar w3-black" style="opacity:0.7">
+									<button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
+									 aria-controls="RecipeCollapse IngredientCollapse">
+										<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
+									<button id="searchRecipe" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
+									 aria-controls="RecipeCollapse IngredientCollapse">
+										<i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
 
-											<div class="tab-content">
-												<div class="tab-content-inner active" data-content="search">
-													<div>
+								</div>
+								<div class="form-wrap">
+									<div class="tab">
+
+										<div class="tab-content">
+											<div class="tab-content-inner active" data-content="search">
+												<div>
 													<h3 class="cursive-font">Search by ingredients.</h3>
-													</div>
-													<form action="#">
-														<div class="row form-group">
-															<div class="col-md-12" id="ingredient-search" class="collapse">
-																<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
-															</div>
-														</div>
-
-
-
-														<!-- TO DO
-
-															CHANCE RECIPE/INGREDIENT SEARCH TO BUTTONS SIDE BY SIDE AT THE TOP OF MAIN CONTAINER
-
-														-->
-
-
-														<div>
-														</h3>Search by recipe.</h3>
-														</div>
-														<div class="row form-group">
-															<div class="col-md-12" id="recipe-search" class="collapse">
-																<input type="text" class="form-control" placeholder="eg. Lasagna">
-															</div>
-														</div>
-
-														<!-- ON CLICK SHOULD EXPAND TO SHOW ADVANCED OPTIONS -->
-														<div>
-														<button class="advanced-search" data-toggle="collapse" data-target="#advanced-options" aria-expanded="false" aria-controls="advanced-options"><a href="#">Advanced Search</a></button>
-														</div>
-
-														<!-- ADVANCED OPTIONS -->
-														<div id="advanced-options" class="collapse">
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<label for="cuisine">Cuisine</label>
-																	<select name="#" id="cuisine" class="form-control">
-																		<option value="" selected disabled hidden>Select Cuisine</option>
-																		<option value="African">African</option>
-																		<option value="American">American</option>
-																		<option value="British">British</option>
-																		<option value="Cajun">Cajun</option>
-																		<option value="Caribbean">Caribbean</option>
-																		<option value="Chinese">Chinese</option>
-																		<option value="Eastern European">Eastern European</option>
-																		<option value="French">French</option>
-																		<option value="German">German</option>
-																		<option value="Greek">Greek</option>
-																		<option value="Indian">Indian</option>
-																		<option value="Irish">Irish</option>
-																		<option value="Italian">Italian</option>
-																		<option value="Japanese">Japanese</option>
-																		<option value="Jewish">Jewish</option>
-																		<option value="Korean">Korean</option>
-																		<option value="Latin American">Latin American</option>
-																		<option value="Mexican">Mexican</option>
-																		<option value="Middle Eastern">Middle Eastern</option>
-																		<option value="Nordic">Nordic</option>
-																		<option value="Southern">Southern</option>
-																		<option value="Spanish">Spanish</option>
-																		<option value="Thai">Thai</option>
-																		<option value="Vietnamese">Vietnamese</option>
-																	</select>
-																</div>
-															</div>
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<label for="diet">Diet</label>
-																	<select name="#" id="diet" class="form-control">
-																		<option value="" selected disabled hidden>Select Diet</option>
-																		<option value="Ketogenic">Ketogenic</option>
-																		<option value="Paleo">Paleo</option>
-																		<option value="Primal">Primal</option>
-																		<option value="Vegan">Vegan</option>
-																		<option value="Vegetarian">Vegetarian</option>
-																	</select>
-																</div>
-															</div>
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<label for="intolerance">Intolerance</label>
-																	<select name="#" id="intolerance" class="form-control">
-																		<option value="" selected disabled hidden>Select Intolerance</option>
-																		<option value="Dairy free">Dairy free</option>
-																		<option value="Egg free">Egg free</option>
-																		<option value="Gluten free">Gluten free</option>
-																		<option value="Grain free">Grain free</option>
-																		<option value="Peanut free">Peanut free</option>
-																		<option value="Seafood free">Seafood free</option>
-																		<option value="Sesame free">Sesame free</option>
-																		<option value="Shellfish free">Shellfish free</option>
-																		<option value="Soy free">Soy free</option>
-																		<option value="Wheat free">Wheat free</option>
-																	</select>
-																</div>
-															</div>
-														</div>
-	
-
-														<div class="row form-group">
-															<div class="col-md-12">
-																<input type="submit" class="btn btn-primary btn-block" value="Search">
-															</div>
-														</div>
-													</form>
 												</div>
+												<form action="#">
+													<div class="row form-group">
+														<div class="col-md-12" id="ingredient-search" class="collapse">
+															<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
+														</div>
+													</div>
+												</form>
 
 
+
+
+
+												<div>
+													<h3 class="cursive-font">Search by recipe.</h3>
+												</div>
+												<form action="#">
+													<div class="row form-group">
+														<div class="col-md-12" id="recipe-search" class="collapse">
+															<input type="text" class="form-control" placeholder="eg. Lasagna">
+														</div>
+													</div>
+												</form>
+
+
+												<div class="row form-group">
+													<div class="col-md-12">
+														<input type="submit" class="btn btn-primary btn-block" value="Search">
+													</div>
+												</div>
+												</form>
 											</div>
+
+
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</div>
+
 				</div>
 			</div>
+		</div>
 	</header>
 
 
@@ -327,7 +268,7 @@
 		</div>
 	</div> -->
 
-<!--
+	<!--
 	<div id="gtco-counter" class="gtco-section">
 		<div class="gtco-container">
 
@@ -372,7 +313,7 @@
 	</div>
 -->
 
-<!--
+	<!--
 PROBABLY NOT NEEDED, LEAVE FOR NOW
 
 	<div id="gtco-subscribe">
@@ -487,8 +428,8 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 				$("#loginNav").hide();
 				$("#loggedNav").show();
 			}
-			$("#logout-btn").click(()=>{
-				localStorage.setItem("user","notlogged");
+			$("#logout-btn").click(() => {
+				localStorage.setItem("user", "notlogged");
 				window.location.href = '/homepage'
 			});
 			$("#recipeBut").click(() => {
@@ -566,12 +507,13 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	<script src="js/moment.min.js"></script>
 	<script src="js/bootstrap-datetimepicker.min.js"></script>
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
-	</body>
+</body>
+
 </html>
