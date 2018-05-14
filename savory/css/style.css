@@ -19,6 +19,10 @@ body {
   background: #fff;
 }
 
+.top{
+  max-height: 10%;
+}
+
 #page {
   position: relative;
   overflow-x: hidden;
@@ -764,6 +768,13 @@ form label {
   clear: both;
   position: relative;
 }
+
+.section{
+  padding: 0.5em 0;
+  clear: both;
+  position: relative;
+}
+
 @media screen and (max-width: 768px) {
   #gtco-features,
   #gtco-features-2,
@@ -1978,4 +1989,3 @@ form label {
   text-align: center;
   width: 100%;
 }
-
