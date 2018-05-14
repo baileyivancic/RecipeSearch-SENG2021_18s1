@@ -161,14 +161,17 @@
 													<form action="#">
 														<div class="row form-group">
 															<div class="col-md-12" id="ingredient-search" class="collapse">
-																<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
-																<div style="padding-top:12px">
-																	<nav>
-																		<ul id="ingredientList">
 
-																		</ul>
-																	</nav>
+																<div class="input-group">
+																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion"style="height:45px">
+																	<span class="input-group-btn">
+																		<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
+																	</span>
 																</div>
+																<nav style="padding-top:12px;">
+																	<ul id="ingredientList">
+																	</ul>
+																</nav>
 															</div>
 														</div>
 													</form>
@@ -394,7 +397,7 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 
 		</div>
 	</footer>
-	<!-- </div> -->
+	 </div> -->
 	<script>
 		$('body,html').css("overflow", "hidden");
 		// Click on a close button to hide the current list item
