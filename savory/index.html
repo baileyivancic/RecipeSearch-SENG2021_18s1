@@ -112,7 +112,7 @@
 		</section>
 		<div class="overlay" style="height:100vh">
 
-			<div class="gtco-container" style="float:left;padding-left:10vw">
+			<div class="gtco-container" style="float:left;padding-left:10vw;">
 				<div class="row" style="width:80vw;text-align:left">
 					<div class="col-md-12 col-md-offset-0">
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp" id="title">
@@ -121,8 +121,8 @@
 
 						<div class="row row-mt-15em">
 
-							<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left" data-animate-effect="fadeInRight">
-								<div class="w3-bar w3-black" style="opacity:0.7">
+							<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left;" data-animate-effect="fadeInRight">
+								<div class="w3-bar w3-black" style="opacity:0.7;border-radius: 15px 15px 0px 0px;">
 									<button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
 									 aria-controls="RecipeCollapse IngredientCollapse">
 										<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
@@ -134,53 +134,66 @@
 								<div class="form-wrap">
 									<div class="tab">
 
-										<div class="tab-content">
-											<div class="tab-content-inner active" data-content="search">
-												<div>
-													<h3 class="cursive-font">Search by ingredients.</h3>
-												</div>
-												<form action="#">
-													<div class="row form-group">
-														<div class="col-md-12" id="ingredient-search" class="collapse">
-															<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
+										<div class="tab-content" style="border-radius: 0px 0px 15px 15px;">
+											<div id="allCollapse">
+												<div id="RecipeCollapse" class="collapse multi-collapse">
+													<div class="tab-content-inner active" data-content="search">
+														<div>
+															<h3 class="cursive-font">Search by Recipe Name</h3>
 														</div>
+														<form action="#">
+															<div class="row form-group">
+																<div class="col-md-12" id="recipe-search" class="collapse">
+																	<input type="text" class="form-control" placeholder="eg. Lasagna">
+																</div>
+															</div>
+														</form>
 													</div>
-												</form>
-
-
-
-
-
-												<div>
-													<h3 class="cursive-font">Search by recipe.</h3>
 												</div>
-												<form action="#">
-													<div class="row form-group">
-														<div class="col-md-12" id="recipe-search" class="collapse">
-															<input type="text" class="form-control" placeholder="eg. Lasagna">
+
+
+
+
+												<div id="IngredientCollapse" class="collapse multi-collapse in">
+													<div>
+														<h3 class="cursive-font">Search by Ingredient</h3>
+													</div>
+													<form action="#">
+														<div class="row form-group">
+															<div class="col-md-12" id="ingredient-search" class="collapse">
+																<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
+																<div style="padding-top:12px">
+																	<nav>
+																		<ul id="ingredientList">
+
+																		</ul>
+																	</nav>
+																</div>
+															</div>
 														</div>
-													</div>
-												</form>
-
-
-												<div class="row form-group">
-													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary btn-block" value="Search">
-													</div>
+													</form>
 												</div>
-												</form>
 											</div>
 
 
+											<div class="row form-group">
+												<div class="col-md-12">
+													<input type="submit" class="btn btn-primary btn-block" value="Search">
+												</div>
+											</div>
+											</form>
 										</div>
+
+
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
+
 			</div>
+		</div>
 		</div>
 	</header>
 
