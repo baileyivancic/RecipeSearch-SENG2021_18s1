@@ -4,7 +4,7 @@
 	Twitter: http://twitter.com/gettemplateco
 	URL: http://gettemplates.co
 -->
-<html>
+<html style="overflow:hidden;">
 
 <head>
 	<meta charset="utf-8">
@@ -56,7 +56,7 @@
 
 
 	<!-- <div class="page-inner"> -->
-	<nav class="gtco-nav" role="navigation">
+	<nav class="gtco-nav"role="navigation">
 		<div class="gtco-container">
 
 			<div class="row">
@@ -87,7 +87,7 @@
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
+	<header id="gtco-header" style="overflow:hidden" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
 		<section class="block">
 			<div class="carousel slide" data-ride="carousel">
 
@@ -407,7 +407,8 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	</footer>
 	 </div> -->
 	<script>
-		$('body,html').css("overflow", "hidden");
+		$('body').css("overflow", "hidden");
+		$('html').css("overflow", "hidden");
 		// Click on a close button to hide the current list item
 		var close = document.getElementsByClassName("close");
 
@@ -503,7 +504,7 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 			});
 		});
 
-	</script> -->
+	</script>
 
 
 
@@ -535,11 +536,11 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	<!-- TextboxList is not priceless for commercial use. See <http://devthought.com/projects/jquery/textboxlist/> -->
 
 	<!-- required stylesheet for TextboxList -->
-	<link rel="stylesheet" href="../Source/TextboxList.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="css/TextboxList.css" type="text/css" media="screen" charset="utf-8" />
 	<!-- required stylesheet for TextboxList.Autocomplete -->
-	<link rel="stylesheet" href="../Source/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="css/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
 
-	<script src="jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
 
 	<!-- required for TextboxList -->
 	<script src="js/GrowingInput.js" type="text/javascript" charset="utf-8"></script>
@@ -550,18 +551,10 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	<script src="js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
 
 
+
 	<script>
+		//Script to add the textBox Bubbles
 		var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
-		//create an instance
-		// var t2 = new TextboxList('myListElement', {
-		// 	bitsOptions: {
-		// 		editable: {
-		// 			addKeys: 188
-		// 		}
-		// 	}
-		// });
-		// //add a few just for giggles
-		// t2.add('Tag 1').add('Tag 2');
 	</script>
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
