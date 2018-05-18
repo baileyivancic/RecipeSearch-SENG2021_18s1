@@ -22,8 +22,8 @@ body {
 #page {
   position: relative;
   overflow-x: hidden;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -1991,7 +1991,7 @@ form label {
   border-radius: 10px 10px 10px 10px;
   box-shadow: inset 0 0 5px grey; 
   border-right:transparent;
-  overflow:hidden; 
+  overflow:auto; 
   overflow-y:scroll;
   transition: color .3s ease;
   /* make the list items unselectable */
@@ -2028,6 +2028,14 @@ form label {
     /*border-color: #fcbe61;*/
 
   }
+
+  .carousel .item {
+    width: 102vw; 
+    max-height: 93vh; 
+}
+.carousel .item img {
+    width: 102vw;
+}
 
 
 
