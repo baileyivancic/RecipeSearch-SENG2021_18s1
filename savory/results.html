@@ -27,6 +27,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
 
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
@@ -68,9 +69,10 @@
 
 
 	<!-- <div class="page-inner"> -->
+	<header id = "gtco-header" class = "gtco-cover gtco-cover-sm" role = "banner"
+		style="max-height: 250px; background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
 	<nav class="gtco-nav" role="navigation">
 		<div class="gtco-container">
-
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
 					<div id="gtco-logo"><a href="index.html">RecipeSearch<em>.</em></a></div>
@@ -85,124 +87,110 @@
 
 		</div>
 	</nav>
-
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+</header>
+<!--
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="max-height: 250px; background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0 text-center">
-					<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp"> <h1 class="cursive-font">Results</h1> </div>
-				</div>
-			</div>
+
 		</div>
 	</header>
+-->
 
+<div class="sideBar">
+					<div class="tab-content-inner active" data-content="signup">
+						<h3 class="cursive-font">Hey! Enter in ingredients or a recipe to get started.</h3>
+						<form action="#">
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="activities">Ingredients</label>
+									<input type="text" class="form-control" placeholder = "eg. Chicken, Rice, Carrot">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="date-start">Recipe</label>
+									<input type="text" class="form-control" placeholder = "eg. Lasagna">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="cuisine">Cuisine</label>
+									<select name="#" id="cuisine" class="form-control">
+										<option value="" selected disabled hidden>Select Cuisine</option>
+										<option value="African">African</option>
+										<option value="American">American</option>
+										<option value="British">British</option>
+										<option value="Cajun">Cajun</option>
+										<option value="Caribbean">Caribbean</option>
+										<option value="Chinese">Chinese</option>
+										<option value="Eastern European">Eastern European</option>
+										<option value="French">French</option>
+										<option value="German">German</option>
+										<option value="Greek">Greek</option>
+										<option value="Indian">Indian</option>
+										<option value="Irish">Irish</option>
+										<option value="Italian">Italian</option>
+										<option value="Japanese">Japanese</option>
+										<option value="Jewish">Jewish</option>
+										<option value="Korean">Korean</option>
+										<option value="Latin American">Latin American</option>
+										<option value="Mexican">Mexican</option>
+										<option value="Middle Eastern">Middle Eastern</option>
+										<option value="Nordic">Nordic</option>
+										<option value="Southern">Southern</option>
+										<option value="Spanish">Spanish</option>
+										<option value="Thai">Thai</option>
+										<option value="Vietnamese">Vietnamese</option>
+									</select>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="diet">Diet</label>
+									<select name="#" id="diet" class="form-control">
+										<option value="" selected disabled hidden>Select Diet</option>
+										<option value="Ketogenic">Ketogenic</option>
+										<option value="Paleo">Paleo</option>
+										<option value="Primal">Primal</option>
+										<option value="Vegan">Vegan</option>
+										<option value="Vegetarian">Vegetarian</option>
+									</select>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="intolerance">Intolerance</label>
+									<select name="#" id="intolerance" class="form-control">
+										<option value="" selected disabled hidden>Select Intolerance</option>
+										<option value="Dairy free">Dairy free</option>
+										<option value="Egg free">Egg free</option>
+										<option value="Gluten free">Gluten free</option>
+										<option value="Grain free">Grain free</option>
+										<option value="Peanut free">Peanut free</option>
+										<option value="Seafood free">Seafood free</option>
+										<option value="Sesame free">Sesame free</option>
+										<option value="Shellfish free">Shellfish free</option>
+										<option value="Soy free">Soy free</option>
+										<option value="Wheat free"></option>
+									</select>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12">
+									<input type="submit" class="btn btn-primary btn-block" value="Search">
+								</div>
+							</div>
+						</form>
+					</div>
+</div>
 
-
-
-
+	<div id="testing" style="position: fixed;margin:50px;"></div>
 	<div class="gtco-section">
 
 
-		<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
-			<div class="form-wrap">
-				<div class="tab">
-					<div class="tab-content">
-						<div class="tab-content-inner active" data-content="signup">
-							<h3 class="cursive-font">Hey! Enter in ingredients or a recipe to get started.</h3>
-							<form action="#">
-								<div class="row form-group">
-									<div class="col-md-12">
-										<label for="activities">Ingredients</label>
-										<input type="text" class="form-control" placeholder = "eg. Chicken, Rice, Carrot">
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-12">
-										<label for="date-start">Recipe</label>
-										<input type="text" class="form-control" placeholder = "eg. Lasagna">
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-12">
-										<label for="cuisine">Cuisine</label>
-										<select name="#" id="cuisine" class="form-control">
-											<option value="" selected disabled hidden>Select Cuisine</option>
-											<option value="African">African</option>
-											<option value="American">American</option>
-											<option value="British">British</option>
-											<option value="Cajun">Cajun</option>
-											<option value="Caribbean">Caribbean</option>
-											<option value="Chinese">Chinese</option>
-											<option value="Eastern European">Eastern European</option>
-											<option value="French">French</option>
-											<option value="German">German</option>
-											<option value="Greek">Greek</option>
-											<option value="Indian">Indian</option>
-											<option value="Irish">Irish</option>
-											<option value="Italian">Italian</option>
-											<option value="Japanese">Japanese</option>
-											<option value="Jewish">Jewish</option>
-											<option value="Korean">Korean</option>
-											<option value="Latin American">Latin American</option>
-											<option value="Mexican">Mexican</option>
-											<option value="Middle Eastern">Middle Eastern</option>
-											<option value="Nordic">Nordic</option>
-											<option value="Southern">Southern</option>
-											<option value="Spanish">Spanish</option>
-											<option value="Thai">Thai</option>
-											<option value="Vietnamese">Vietnamese</option>
-										</select>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-12">
-										<label for="diet">Diet</label>
-										<select name="#" id="diet" class="form-control">
-											<option value="" selected disabled hidden>Select Diet</option>
-											<option value="Ketogenic">Ketogenic</option>
-											<option value="Paleo">Paleo</option>
-											<option value="Primal">Primal</option>
-											<option value="Vegan">Vegan</option>
-											<option value="Vegetarian">Vegetarian</option>
-										</select>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-12">
-										<label for="intolerance">Intolerance</label>
-										<select name="#" id="intolerance" class="form-control">
-											<option value="" selected disabled hidden>Select Intolerance</option>
-											<option value="Dairy free">Dairy free</option>
-											<option value="Egg free">Egg free</option>
-											<option value="Gluten free">Gluten free</option>
-											<option value="Grain free">Grain free</option>
-											<option value="Peanut free">Peanut free</option>
-											<option value="Seafood free">Seafood free</option>
-											<option value="Sesame free">Sesame free</option>
-											<option value="Shellfish free">Shellfish free</option>
-											<option value="Soy free">Soy free</option>
-											<option value="Wheat free"></option>
-										</select>
-									</div>
-								</div>
-								<div class="row form-group">
-									<div class="col-md-12">
-										<input type="submit" class="btn btn-primary btn-block" value="Search">
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
-		<div class="gtco-container">
-
-
-
-
+		<div class="gtco-container main-container w3-container w3-white">
 
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
@@ -342,6 +330,18 @@
 	<script src="js/moment.min.js"></script>
 	<script src="js/bootstrap-datetimepicker.min.js"></script>
 
+	<!-- Testing -->
+	<!-- <script>
+		$(window).scroll(()=>{
+			var txt = "";
+			txt += "<p>innerWidth: " + (window.innerWidth) + "</p>";
+			txt += "<p>innerHeight: " + (window.innerHeight-$(window).scrollTop()) + "</p>";
+			txt += "<p>outerWidth: " + window.outerWidth + "</p>";
+			txt += "<p>outerHeight: " + window.outerHeight + "</p>";
+
+			document.getElementById("testing").innerHTML = txt;
+		});
+	</script> -->
 
 	<!-- Main -->
 	<script src="js/main.js"></script>

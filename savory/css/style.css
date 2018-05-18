@@ -1185,6 +1185,23 @@ form label {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
+
+.sideBar {
+	position: fixed;
+	bottom: 20px;
+	width: 700px;
+	z-index: 999;
+	opacity: 0;
+	visibility: hidden;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.sideBar.active {
+	opacity: 1;
+    visibility: visible;
+}
 .gototop.active {
   opacity: 1;
   visibility: visible;
