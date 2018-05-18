@@ -81,55 +81,17 @@
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
-		<section class="block">
-			<div class="carousel slide" data-ride="carousel">
+	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0 text-left">
 
-				<div class="carousel-inner">
-					<div class="item active">
-						<img src="images/carousel/ingredients.jpg" alt="ingredients">
-					</div>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-					<div class="item">
-						<img src="images/carousel/rice.jpg" alt="rice">
-					</div>
-
-					<div class="item">
-						<img src="images/carousel/pizza.jpg" alt="pizza">
-					</div>
-
-					<div class="item">
-						<img src="images/carousel/asian-cuisine.jpg" alt="asian-cuisine">
-=======
 					<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
 						<h1 class="cursive-font">Recipes you want, </h1>
 						<h1 class="cursive-font"> from ingredients you have</h1>
->>>>>>> master
 					</div>
 
-					<div class="item">
-						<img src="images/carousel/soup.jpg" alt="soup">
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="overlay">
-
-				<div class="gtco-container">
-					<div class="row">
-						<div class="col-md-12 col-md-offset-0 text-left">
-							<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp" id="title">
-								<h1 class="cursive-font">Recipes you want, from ingredients you have.</h1>
-							</div>
-
-							<div class="row row-mt-15em">
-
-								<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw"data-animate-effect="fadeInRight">
-									<div class="form-wrap">
-										<div class="tab">
-=======
 					<div class="row row-mt-15em">
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
 							<div>
@@ -214,142 +176,27 @@
 														</select>
 													</div>
 												</div>
->>>>>>> master
 
-											<div class="tab-content">
-												<div class="tab-content-inner active" data-content="search">
-													<div>
-													<button id="search-by" data-toggle="collapse" data-target="#ingredient-search" aria-expanded="true" aria-controls="ingredient-search"><h3 class="cursive-font">Search by ingredients.</h3></button>
+												<div class="row form-group">
+													<div class="col-md-12">
+														<input type="submit" class="btn btn-primary btn-block" value="Search">
 													</div>
-													<form action="#">
-														<div class="row form-group">
-															<div class="col-md-12" id="ingredient-search" class="collapse">
-																<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
-															</div>
-														</div>
-
-
-
-														<!-- TO DO
-
-															CHANCE RECIPE/INGREDIENT SEARCH TO BUTTONS SIDE BY SIDE AT THE TOP OF MAIN CONTAINER
-
-														-->
-
-
-														<div>
-														<button id="search-by" data-toggle="collapse" data-target="#recipe-search" aria-expanded="false" aria-controls="recipe-search"><h3 class="cursive-font">Search by recipe.</h3></button>
-														</div>
-														<div class="row form-group">
-															<div class="col-md-12" id="recipe-search" class="collapse">
-																<input type="text" class="form-control" placeholder="eg. Lasagna">
-															</div>
-														</div>
-
-														<!-- ON CLICK SHOULD EXPAND TO SHOW ADVANCED OPTIONS -->
-														<div>
-														<button class="advanced-search" data-toggle="collapse" data-target="#advanced-options" aria-expanded="false" aria-controls="advanced-options"><a href="#advanced-options">Advanced Search</a></button>
-														</div>
-
-														<!-- ADVANCED OPTIONS -->
-														<div id="advanced-options" class="collapse">
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<label for="cuisine">Cuisine</label>
-																	<select name="#" id="cuisine" class="form-control">
-																		<option value="" selected disabled hidden>Select Cuisine</option>
-																		<option value="African">African</option>
-																		<option value="American">American</option>
-																		<option value="British">British</option>
-																		<option value="Cajun">Cajun</option>
-																		<option value="Caribbean">Caribbean</option>
-																		<option value="Chinese">Chinese</option>
-																		<option value="Eastern European">Eastern European</option>
-																		<option value="French">French</option>
-																		<option value="German">German</option>
-																		<option value="Greek">Greek</option>
-																		<option value="Indian">Indian</option>
-																		<option value="Irish">Irish</option>
-																		<option value="Italian">Italian</option>
-																		<option value="Japanese">Japanese</option>
-																		<option value="Jewish">Jewish</option>
-																		<option value="Korean">Korean</option>
-																		<option value="Latin American">Latin American</option>
-																		<option value="Mexican">Mexican</option>
-																		<option value="Middle Eastern">Middle Eastern</option>
-																		<option value="Nordic">Nordic</option>
-																		<option value="Southern">Southern</option>
-																		<option value="Spanish">Spanish</option>
-																		<option value="Thai">Thai</option>
-																		<option value="Vietnamese">Vietnamese</option>
-																	</select>
-																</div>
-															</div>
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<label for="diet">Diet</label>
-																	<select name="#" id="diet" class="form-control">
-																		<option value="" selected disabled hidden>Select Diet</option>
-																		<option value="Ketogenic">Ketogenic</option>
-																		<option value="Paleo">Paleo</option>
-																		<option value="Primal">Primal</option>
-																		<option value="Vegan">Vegan</option>
-																		<option value="Vegetarian">Vegetarian</option>
-																	</select>
-																</div>
-															</div>
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<label for="intolerance">Intolerance</label>
-																	<select name="#" id="intolerance" class="form-control">
-																		<option value="" selected disabled hidden>Select Intolerance</option>
-																		<option value="Dairy free">Dairy free</option>
-																		<option value="Egg free">Egg free</option>
-																		<option value="Gluten free">Gluten free</option>
-																		<option value="Grain free">Grain free</option>
-																		<option value="Peanut free">Peanut free</option>
-																		<option value="Seafood free">Seafood free</option>
-																		<option value="Sesame free">Sesame free</option>
-																		<option value="Shellfish free">Shellfish free</option>
-																		<option value="Soy free">Soy free</option>
-																		<option value="Wheat free">Wheat free</option>
-																	</select>
-																</div>
-															</div>
-														</div>
-	
-
-														<div class="row form-group">
-															<div class="col-md-12">
-																<input type="submit" class="btn btn-primary btn-block" value="Search">
-															</div>
-														</div>
-													</form>
 												</div>
-<<<<<<< HEAD
-
-
-											</div>
-=======
 											</form>
->>>>>>> master
 										</div>
 									</div>
 
 								</div>
 							</div>
 						</div>
-<<<<<<< HEAD
-=======
 
 
 					</div>
 
->>>>>>> master
 
-					</div>
 				</div>
 			</div>
+		</div>
 	</header>
 
 
@@ -380,7 +227,77 @@ This section could be dual purpose, display saved recipes for logged in users, o
 						</div>
 					</a>
 				</div>
-				
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_2.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_2.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Cheese and Garlic Toast</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+							<p><span class="price cursive-font">$20.99</span></p>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_3.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_3.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Grilled Chiken Salad</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+							<p><span class="price cursive-font">$8.99</span></p>
+
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_4.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_4.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Organic Egg</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+							<p><span class="price cursive-font">$12.99</span></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_5.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_5.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Tomato Soup with Chicken</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+							<p><span class="price cursive-font">$23.10</span></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_6.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_6.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Salad with Crispy Chicken</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+							<p><span class="price cursive-font">$5.59</span></p>
+						</div>
+					</a>
+				</div>
+
 			</div>
 		</div>
 	</div>
