@@ -5,7 +5,8 @@
 	URL: http://gettemplates.co
 -->
 <html>
-	<head>
+
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>RecipeSearch - Results</title>
@@ -15,7 +16,29 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 	<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+	<!-- jQuery -->
+	<script src="static/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="static/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="static/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="static/js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="static/js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="static/js/jquery.countTo.js"></script>
 
+	<!-- Stellar Parallax -->
+	<script src="static/js/jquery.stellar.min.js"></script>
+
+	<!-- Magnific Popup -->
+	<script src="static/js/jquery.magnific-popup.min.js"></script>
+	<script src="static/js/magnific-popup-options.js"></script>
+
+	<script src="static/js/moment.min.js"></script>
+	<script src="static/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="static/js/main.js"></script>
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="static/css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -47,48 +70,49 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
-	</head>
+</head>
 
-	<header class = "section top">
-		<nav class="gtco-nav" role="navigation">
-			<div class="gtco-container">
+<header class="section top">
+	<nav class="gtco-nav" role="navigation">
+		<div class="gtco-container">
 
-				<div class="row">
-					<div class="col-sm-4 col-xs-12">
-						<div id="gtco-logo">
-							<a href="index.html">RecipeSearch
-								<em>.</em>
-							</a>
-						</div>
-					</div>
-					<div class="col-xs-8 text-right menu-1">
-						<ul>
-							<li>
-								<a href="contact.html">Contact</a>
-							</li>
-							<li>
-								<a href="about.html">About us</a>
-							</li>
-							<li class="btn-cta" id="index-login-but">
-								<a href="#">
-									<span>Login</span>
-								</a>
-							</li>
-						</ul>
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo">
+						<a href="/">RecipeSearch
+							<em>.</em>
+						</a>
 					</div>
 				</div>
-
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li>
+							<a href="contact.html">Contact</a>
+						</li>
+						<li>
+							<a href="about.html">About us</a>
+						</li>
+						<li class="btn-cta" id="index-login-but">
+							<a href="#">
+								<span>Login</span>
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</nav>
-	</header>
-	<body style="background-image: url('static/images/img_1.jpg')">
+
+		</div>
+	</nav>
+</header>
+
+<body style="background-image: url('static/images/img_1.jpg')">
 
 
 
 	<div class="gtco-loader"></div>
 	<div id="page">
 
-	<!-- <div class="page-inner">
+		<!-- <div class="page-inner">
 	<header class = "gtco-cover" role = "banner"
 		style="max-height: 15%; background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
 	<nav class="gtco-nav" role="navigation">
@@ -109,14 +133,14 @@
 	</nav>
 </header>
 -->
-<!--
+		<!--
 	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="max-height: 250px; background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 		</div>
 	</header>
 -->
-<!--
+		<!--
 <div class="sideBar">
 					<div class="tab-content-inner active" data-content="signup">
 						<h3 class="cursive-font">Hey! Enter in ingredients or a recipe to get started.</h3>
@@ -205,129 +229,69 @@
 					</div>
 </div>
 -->
-<div class = "gtco-section">
-	<div id="testing" style="position: fixed;margin:50px;"></div>
-	<div class=" col-lg-4">
-		<div class="gtco-container main-container w3-container w3-white">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2 class="cursive-font primary-color">Popular Dishes</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+		<div class="gtco-section">
+			<div id="testing" style="position: fixed;margin:50px;"></div>
+			<div class=" col-lg-4">
+				<div class="gtco-container main-container w3-container w3-white">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+							<h2 class="cursive-font primary-color">Search Criteria</h2>
+						</div>
+					</div>
+					<div class="row">
+
+						<!--<div class="col-lg-4 col-md-4 col-sm-6">
+							<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+								<figure>
+									<div class="overlay">
+										<i class="ti-plus"></i>
+									</div>
+									<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+								</figure>
+								<div class="fh5co-text">
+									<h2>Fresh Mushrooms</h2>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+									<p>
+										<span class="price cursive-font">$19.15</span>
+									</p>
+								</div>
+							</a>
+						</div>-->
+					</div>
 				</div>
 			</div>
-			<div class="row">
 
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_1.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Fresh Mushrooms</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">$19.15</span></p>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_2.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_2.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Cheese and Garlic Toast</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">$20.99</span></p>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_3.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_3.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Grilled Chiken Salad</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">$8.99</span></p>
-
-						</div>
-					</a>
-				</div>
-
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_4.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_4.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Organic Egg</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">$12.99</span></p>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_5.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_5.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Tomato Soup with Chicken</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">$23.10</span></p>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="images/img_6.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<div class="overlay"><i class="ti-plus"></i></div>
-							<img src="images/img_6.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Salad with Crispy Chicken</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-							<p><span class="price cursive-font">$5.59</span></p>
-						</div>
-					</a>
+			<div class="col-lg-8" style="background-color: transparent">
+				<div id="recipeList" class="main-container w3-container">
+					
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="col-lg-8">
-		<div class="main-container w3-container w3-white">
-			Put the recipes in here, in a scrolling list (of square recipes)
-		</div>
-	</div>
-</div>
-
-	<footer id="gtco-footer" role="contentinfo" style="background-image: url('/static/images/img_bg_1.jpg')'" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="gtco-container">
-			<div class="row row-pb-md">
-				<div class="col-md-12 text-center copyright">
-					<p><small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-						<small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+		<footer id="gtco-footer" role="contentinfo" style="background-image: url('/static/images/img_bg_1.jpg')'" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="gtco-container">
+				<div class="row row-pb-md">
+					<div class="col-md-12 text-center copyright">
+						<p>
+							<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+							<small class="block">Designed by
+								<a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images:
+								<a href="http://unsplash.com/" target="_blank">Unsplash</a>
+							</small>
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
-	<!-- </div> -->
+		</footer>
+		<!-- </div> -->
 
 	</div>
 
 	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+		<a href="#" class="js-gotop">
+			<i class="icon-arrow-up"></i>
+		</a>
 	</div>
 
 	<!-- jQuery -->
@@ -352,7 +316,7 @@
 
 	<script src="static/js/moment.min.js"></script>
 	<script src="static/js/bootstrap-datetimepicker.min.js"></script>
-
+	<script src="static/js/main.js"></script>
 	<!-- Testing -->
 	<!-- <script>
 		$(window).scroll(()=>{
@@ -364,9 +328,33 @@
 			document.getElementById("testing").innerHTML = txt;
 		});
 	</script> -->
+	<script>
+		$(document).ready(function () {
+			var object = localStorage.getItem("APIReturn");
+            var recipeObject = JSON.parse(object);
+			for (var i = 0; i < 100; i++) {
+                //alert(recipeObject.hits[i].recipe.url);
+                if (recipeObject.hits[i] != null) {
+                    //alert(recipeObject.hits[i].recipe.ingredients[0]);
+					$('#recipeList').append('<div class="col-lg-4 col-md-4 col-sm-6"> <a href="recipeObject.hits[i].recipe.image" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> <i class="ti-plus"></i> </div> <img src="recipeObject.hits[i].recipe.image" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>'+recipeObject.hits[i].recipe.label+'</h2> <p>Far far away, behind the word mountains, far from the countries Vokalia..</p> </div> </a> </div>');
+                    //$('#recipeList').append('<li class="recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <table> <tr> <a href=""> <img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>' + recipeObject.hits[i].recipe.label + '</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: '+Math.floor(1+Math.random()*4)+' </div> </tr> </table> </li>');
+                    /*$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
+                    $('.modal-body' + i + '').append('<table style="width:20vw"><tr style="width:20vw"><td style="width:20vw"><ul style="width:20vw" class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td><td><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" /></td></tr> </table>');
+                    $('.modal-body' + i + '').append('</div><div class="modal-footer"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
+                    for (var k = 0; recipeObject.hits[i].recipe.ingredients[k] != null; k++) {
+                        $('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');
+                    }*/
+
+                    //<img style="float:left" src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" />
+
+                }
+			}
+		});
+	</script>
 
 	<!-- Main -->
-	<script src="static/js/main.js"></script>
+	\
 
-	</body>
+</body>
+
 </html>
