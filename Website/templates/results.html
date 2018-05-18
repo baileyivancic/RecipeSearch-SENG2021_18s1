@@ -72,10 +72,10 @@
 
 </head>
 
-<body style="background-image: url('static/images/img_1.jpg')" style="height:95vh;">
+<body style="background-image: url('static/images/img_1.jpg')">
 
 	<div class="gtco-loader"></div>
-	<div id="page" style="height:95vh">
+	<div id="page">
 			<nav class="gtco-nav" role="navigation">
 					<div class="gtco-container">
 			
@@ -262,7 +262,6 @@
 				</div>
 			</div>
 		</div>
-
 		<footer id="gtco-footer" role="contentinfo" style="background-image: url('/static/images/img_bg_1.jpg')'" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="gtco-container">
@@ -279,6 +278,7 @@
 				</div>
 			</div>
 		</footer>
+
 		<!-- </div> -->
 
 	</div>
@@ -331,7 +331,7 @@
                 //alert(recipeObject.hits[i].recipe.url);
                 if (recipeObject.hits[i] != null) {
                     //alert(recipeObject.hits[i].recipe.ingredients[0]);
-					$('#recipeList').append('<div class="col-lg-4 col-md-4 col-sm-6"> <a href="'+recipeObject.hits[i].recipe.image+'" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> <i class="ti-plus"></i> </div> <img src="recipeObject.hits[i].recipe.image" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>'+recipeObject.hits[i].recipe.label+'</h2> <p>Far far away, behind the word mountains, far from the countries Vokalia..</p> </div> </a> </div>');
+					$('#recipeList').append('<div class="col-lg-4 col-md-4 col-sm-6"> <a href="'+recipeObject.hits[i].recipe.image+'" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> <i class="ti-plus"></i> </div> <img src="'+recipeObject.hits[i].recipe.image+'" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>'+recipeObject.hits[i].recipe.label+'</h2> <p>Far far away, behind the word mountains, far from the countries Vokalia..</p> </div> </a> </div>');
                     //$('#recipeList').append('<li class="recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <table> <tr> <a href=""> <img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>' + recipeObject.hits[i].recipe.label + '</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: '+Math.floor(1+Math.random()*4)+' </div> </tr> </table> </li>');
                     /*$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
                     $('.modal-body' + i + '').append('<table style="width:20vw"><tr style="width:20vw"><td style="width:20vw"><ul style="width:20vw" class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td><td><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" /></td></tr> </table>');
@@ -348,7 +348,7 @@
 	</script>
 
 	<!-- Main -->
-	\
+	
 
 </body>
 
