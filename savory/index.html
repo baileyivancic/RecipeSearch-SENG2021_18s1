@@ -49,6 +49,8 @@
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 
+	<script src="js/jquery-3.3.1.js"></script>
+
 </head>
 
 <body>
@@ -407,17 +409,19 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	</footer>
 	 </div> -->
 	<script>
-		$('body').css("overflow", "hidden");
-		$('html').css("overflow", "hidden");
-		// Click on a close button to hide the current list item
-		var close = document.getElementsByClassName("close");
+		$(document).ready(()=>{
+			$('body').css("overflow", "hidden");
+			$('html').css("overflow", "hidden");
+			// Click on a close button to hide the current list item
+			var close = document.getElementsByClassName("close");
 
-		for (var i = 0; i < close.length; i++) {
-			close[i].onclick = function () {
-				$(this.parentElement).remove();
+			for (var i = 0; i < close.length; i++) {
+				close[i].onclick = function () {
+					$(this.parentElement).remove();
+				}
 			}
-		}
-		var m = 0;
+			var m = 0;
+		});
 		//Function creates a list node and appends a cross on the end to close it.
 		//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
 		function popList() {
@@ -443,7 +447,8 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 			}
 			document.getElementById("input-box-home").value = "";
 		}
-
+	</script>
+	<script>
 		$(document).ready(function () {
 			var loggedin = localStorage.getItem("user");
 			if (loggedin == null || loggedin == "notlogged") {
@@ -540,7 +545,8 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	<!-- required stylesheet for TextboxList.Autocomplete -->
 	<link rel="stylesheet" href="css/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
 
-	<script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- For some reason this file is not found. imported another file-->
+	<!-- <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script> -->
 
 	<!-- required for TextboxList -->
 	<script src="js/GrowingInput.js" type="text/javascript" charset="utf-8"></script>
@@ -550,11 +556,14 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
 	<script src="js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
 
+	<!-- <script src="js/require.js"></script> -->
 
+	<script src="https://storage.googleapis.com/code-snippets/rapidapi.min.js"></script>
 
 	<script>
 		//Script to add the textBox Bubbles
 		var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
+
 	</script>
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
