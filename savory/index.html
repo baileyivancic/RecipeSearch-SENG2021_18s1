@@ -168,16 +168,12 @@
 														<div class="row form-group">
 															<div class="col-md-12" id="ingredient-search" class="collapse">
 
-																<div class="input-group" style="width:100%; cursor: text;">
+																<div class="input-group" style="width:100%; cursor: text; height:20px">
 																	<input type="text" class="form-control" id="myListElement" placeholder="eg. Chicken, Rice, Carrot">
-																	<!-- <input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion"style="height:45px">
-																	<span class="input-group-btn">
-																		<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
-																	</span> -->
+
 																</div>
 																<!-- <nav style="padding-top:12px;">
-																	<ul id="ingredientList">
-																	</ul>
+																	<div id="ingredientList-nav"></div>
 																</nav> -->
 															</div>
 														</div>
@@ -188,7 +184,7 @@
 
 											<div class="row form-group">
 												<div class="col-md-12">
-													<input type="submit" class="btn btn-primary btn-block" value="Search">
+													<input id="submit-button"type="submit" class="btn btn-primary btn-block" value="Search">
 												</div>
 											</div>
 											</form>
@@ -563,7 +559,18 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	<script>
 		//Script to add the textBox Bubbles
 		var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
+		var items = [];
 
+		$('#submit-button').click(()=>{
+			$(".textboxlist-bit-box-deletable").each((i, element)=>{
+				// alert("what");
+				var ingredient = $(element).html();
+				var end = ingredient.search("<a");
+				ingredient = ingredient.slice(0, end);
+				items.push(ingredient.concat(','));
+			});
+			//now we has items
+		});
 	</script>
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

@@ -1996,6 +1996,27 @@ form label {
   width: 100%;
 }
 
+#ingredientList-nav{
+	cursor: pointer;
+	position: relative;
+	margin: auto;
+	padding: 12px 8px 12px 40px;
+	color: rgba(255, 255, 255, 0.7);
+	height:200px;
+	width:100%;
+	border-radius: 10px 10px 10px 10px;
+    box-shadow: inset 0 0 5px grey;
+    border-right:transparent;
+    overflow:hidden;
+    overflow-y:scroll;
+	transition: color .3s ease;
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 #ingredientList{
 
   cursor: pointer;
@@ -2003,12 +2024,12 @@ form label {
   padding: 12px 8px 12px 40px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 18px;
-  height:200px; 
+  height:200px;
   width:100%;
   border-radius: 10px 10px 10px 10px;
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-right:transparent;
-  overflow:hidden; 
+  overflow:hidden;
   overflow-y:scroll;
   transition: color .3s ease;
   /* make the list items unselectable */
@@ -2026,9 +2047,9 @@ form label {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
-  
+
 }
 
 /* Handle */
@@ -2044,4 +2065,3 @@ form label {
   /*border-color: #fcbe61;*/
 
 }
-
