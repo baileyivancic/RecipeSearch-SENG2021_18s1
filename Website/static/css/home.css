@@ -1,0 +1,13 @@
+.carousel .item {
+    width: 102vw; 
+    max-height: 100vh; 
+}
+.carousel .item img {
+    width: 102vw;
+    height:100vh;
+}
+
+.carousel-inner {
+  width: 102vw;
+  height:100vh; 
+}
