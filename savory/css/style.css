@@ -19,10 +19,6 @@ body {
   background: #fff;
 }
 
-.top{
-  max-height: 10%;
-}
-
 #page {
   position: relative;
   overflow-x: hidden;
@@ -768,13 +764,6 @@ form label {
   clear: both;
   position: relative;
 }
-
-.section{
-  padding: 0.5em 0;
-  clear: both;
-  position: relative;
-}
-
 @media screen and (max-width: 768px) {
   #gtco-features,
   #gtco-features-2,
@@ -1195,23 +1184,6 @@ form label {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-}
-
-.sideBar {
-	position: fixed;
-	bottom: 20px;
-	width: 700px;
-	z-index: 999;
-	opacity: 0;
-	visibility: hidden;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-}
-
-.sideBar.active {
-	opacity: 1;
-    visibility: visible;
 }
 .gototop.active {
   opacity: 1;
@@ -2007,27 +1979,6 @@ form label {
   width: 100%;
 }
 
-#ingredientList-nav{
-	cursor: pointer;
-	position: relative;
-	margin: auto;
-	padding: 12px 8px 12px 40px;
-	color: rgba(255, 255, 255, 0.7);
-	height:200px;
-	width:100%;
-	border-radius: 10px 10px 10px 10px;
-    box-shadow: inset 0 0 5px grey;
-    border-right:transparent;
-    overflow:hidden;
-    overflow-y:scroll;
-	transition: color .3s ease;
-    /* make the list items unselectable */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 #ingredientList{
 
   cursor: pointer;
@@ -2035,12 +1986,12 @@ form label {
   padding: 12px 8px 12px 40px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 18px;
-  height:200px;
+  height:200px; 
   width:100%;
   border-radius: 10px 10px 10px 10px;
-  box-shadow: inset 0 0 5px grey;
+  box-shadow: inset 0 0 5px grey; 
   border-right:transparent;
-  overflow:hidden;
+  overflow:hidden; 
   overflow-y:scroll;
   transition: color .3s ease;
   /* make the list items unselectable */
@@ -2058,9 +2009,9 @@ form label {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
+  box-shadow: inset 0 0 5px grey; 
   border-radius: 10px;
-
+  
 }
 
 /* Handle */
@@ -2076,3 +2027,4 @@ form label {
   /*border-color: #fcbe61;*/
 
 }
+
