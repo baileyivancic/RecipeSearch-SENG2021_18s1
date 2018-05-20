@@ -12,8 +12,7 @@
 	<title>RecipeSearch &mdash; The casual cook's companion</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
-	/>
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"/>
 	<meta name="author" content="GetTemplates.co" />
 
 
@@ -126,11 +125,9 @@
 
 							<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left;" data-animate-effect="fadeInRight">
 								<div class="w3-bar w3-black" style="opacity:0.7;border-radius: 15px 15px 0px 0px;">
-									<button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
-									 aria-controls="RecipeCollapse IngredientCollapse">
+									<button id="searchIngredient" class="w3-bar-item w3-button">
 										<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
-									<button id="searchRecipe" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
-									 aria-controls="RecipeCollapse IngredientCollapse">
+									<button id="searchRecipe" class="w3-bar-item w3-button">
 										<i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
 
 								</div>
@@ -200,88 +197,39 @@
 
 			</div>
 		</div>
-		</div>
-	</header>
+	</div>
+</body>
 
-	<script>
-		$(document).ready(()=>{
-			$('body').css("overflow", "hidden");
-			$('html').css("overflow", "hidden");
-			// Click on a close button to hide the current list item
-			var close = document.getElementsByClassName("close");
+<script>
+	// Click on a close button to hide the current list item
 
-			for (var i = 0; i < close.length; i++) {
-				close[i].onclick = function () {
-					$(this.parentElement).remove();
-				}
-			}
-			var m = 0;
-		});
-		//Function creates a list node and appends a cross on the end to close it.
-		//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
-		function popList() {
-			var node = document.createElement("LI");
+	//Function creates a list node and appends a cross on the end to close it.
+	//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
+	function popList() {
+		var node = document.createElement("LI");
 
-			//Adds value in text box
-			if (document.getElementById('input-box-home').value === "") return;
-			var textnode = document.createTextNode(document.getElementById('input-box-home').value);
-			node.appendChild(textnode);
-			node.id = toString(m);
-			m++;
-			document.getElementById("ingredientList").appendChild(node);
-			var span = document.createElement("SPAN");
-			var txt = document.createTextNode("\u00D7");
-			span.className = "close";
-			span.appendChild(txt);
-			node.appendChild(span);
+		//Adds value in text box
+		if (document.getElementById('input-box-home').value === "") return;
+		var textnode = document.createTextNode(document.getElementById('input-box-home').value);
+		node.appendChild(textnode);
 
-			for (var i = 0; i < close.length; i++) {
-				close[i].onclick = function () {
-					$(this.parentElement).remove();
-				}
-			}
-			document.getElementById("input-box-home").value = "";
+		document.getElementById("ingredientList").appendChild(node);
+		var span = document.createElement("SPAN");
+		var txt = document.createTextNode("\u00D7");
+		span.className = "close";
+		span.appendChild(txt);
+		node.appendChild(span);
+		node.onclick = function () {
+			node.remove();
 		}
-	</script>
 
-	<script>
-		//Script to add the textBox Bubbles
-		$(document).ready(function () {
-		var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
-		var recipeString = [];
 
-		$('#submit-button').click(()=>{
-			$(".textboxlist-bit-box-deletable").each((i, element)=>{
-				// alert("what");
-				var ingredient = $(element).html();
-				var end = ingredient.search("<a");
-				ingredient = ingredient.slice(0, end);
-				if (ingredient != "") {
-					recipeString.push(ingredient.concat(','));
-				}
-			});
+		document.getElementById("input-box-home").value = "";
+	}
 
-			//process recipeString
-			console.log(recipeString);
-			localStorage.setItem("ingredientList", recipeString);
-			if (recipeString.length == 0) {
-				alert("Please enter ingredients before searching.");
-			} else {
-				alert("searching");
-				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-					function (data, status) {
-						localStorage.setItem("APIReturn", JSON.stringify(data));
-						window.location.href = '/results'
-					});
+	$(document).ready(()=>{
 
-			}
-		});
-	});
-	</script>
-
-	<script>
-		$(document).ready(function () {
-			var loggedin = localStorage.getItem("user");
+		 	var loggedin = localStorage.getItem("user");
 			if (loggedin == null || loggedin == "notlogged") {
 				$("#loginNav").show();
 				$("#loggedNav").hide();
@@ -289,36 +237,83 @@
 				$("#loginNav").hide();
 				$("#loggedNav").show();
 			}
+
 			$("#logout-btn").click(() => {
 				localStorage.setItem("user", "notlogged");
-				window.location.href = '/homepage'
+				window.location.href = '/homepage';
 			});
-			$("#recipeBut").click(() => {
-				var recipeName = document.getElementById("recipeInput").value;
-				if (recipeName == "") {
-					alert("Please enter a recipe before searching.");
+	});
+
+		// $("#recipeBut").click(() => {
+		// 	var recipeName = document.getElementById("recipeInput").value;
+		// 	if (recipeName == "") {
+		// 		alert("Please enter a recipe before searching.");
+		// 	} else {
+		// 		$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+		// 			function (data, status) {
+		// 				localStorage.setItem("APIReturn", JSON.stringify(data));
+		// 				window.location.href = '/results';
+		// 			});
+		// 	}
+		// 	var m = 0;
+		// });
+
+</script>
+<script>
+
+		//Script to add the textBox Bubbles
+		$(document).ready(()=>{
+			var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
+			var recipeString = [];
+
+			$('#submit-button').click(()=>{
+				$(".textboxlist-bit-box-deletable").each((i, element)=>{
+					// alert("what");
+					var ingredient = $(element).html();
+					var end = ingredient.search("<a");
+					ingredient = ingredient.slice(0, end);
+					if (ingredient != "") {
+						recipeString.push(ingredient.concat(','));
+					}
+				});
+
+				//process recipeString
+				console.log(recipeString);
+				localStorage.setItem("ingredientList", recipeString);
+				if (recipeString.length == 0) {
+					alert("Please enter ingredients before searching.");
 				} else {
-					$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					alert("searching");
+					$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
 						function (data, status) {
 							localStorage.setItem("APIReturn", JSON.stringify(data));
-							window.location.href = '/results';
+							window.location.href = '/results'
 						});
+
 				}
+
 			});
 
 			$('#searchIngredient').click(() => {
-				localStorage.setItem("searchType", "Ingredient");
+				$("#IngredientCollapse").collapse("show");
+				$("#RecipeCollapse").collapse("hide");
 			});
 
 			$('#searchRecipe').click(() => {
+				$("#RecipeCollapse").collapse("show");
+				$("#IngredientCollapse").collapse("hide");
+			});
+			$('#ingredientBut').click(() => {
+				localStorage.setItem("searchType", "ingredient");
+			});
+
+			$('#recipeBut').click(() => {
 				localStorage.setItem("searchType", "recipe");
 			});
+
 		});
 
 	</script>
-
-
-
 
 	<!-- jQuery -->
 	<script src="static/js/jquery.min.js"></script>
@@ -361,8 +356,6 @@
 	<script src="static/js/TextboxList.Autocomplete.js" type="text/javascript" charset="utf-8"></script>
 	<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
 	<script src="static/js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
-
-	<!-- <script src="js/require.js"></script> -->
 
 	<script src="https://storage.googleapis.com/code-snippets/rapidapi.min.js"></script>
 
