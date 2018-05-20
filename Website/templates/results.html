@@ -383,15 +383,7 @@
 				if (recipeObject.hits[i] != null) {
 					//alert(recipeObject.hits[i].recipe.ingredients[0]);
 					$('#recipeList').append('<div style="height:40vh;" class="col-lg-4 col-md-4 col-sm-6"> <a href="' + recipeObject.hits[i].recipe.image + '" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> <i class="ti-plus"></i> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
-					//$('#recipeList').append('<li class="recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <table> <tr> <a href=""> <img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>' + recipeObject.hits[i].recipe.label + '</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: '+Math.floor(1+Math.random()*4)+' </div> </tr> </table> </li>');
-                    /*$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
-                    $('.modal-body' + i + '').append('<table style="width:20vw"><tr style="width:20vw"><td style="width:20vw"><ul style="width:20vw" class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td><td><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" /></td></tr> </table>');
-                    $('.modal-body' + i + '').append('</div><div class="modal-footer"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
-                    for (var k = 0; recipeObject.hits[i].recipe.ingredients[k] != null; k++) {
-                        $('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');
-                    }*/
 
-					//<img style="float:left" src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" />
 
 				}
 			}
