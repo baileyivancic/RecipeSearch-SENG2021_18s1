@@ -441,6 +441,42 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 			document.getElementById("input-box-home").value = "";
 		}
 	</script>
+
+	<script>
+		//Script to add the textBox Bubbles
+		$(document).ready(function () {
+		var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
+		var recipeString = [];
+
+		$('#submit-button').click(()=>{
+			$(".textboxlist-bit-box-deletable").each((i, element)=>{
+				// alert("what");
+				var ingredient = $(element).html();
+				var end = ingredient.search("<a");
+				ingredient = ingredient.slice(0, end);
+				if (ingredient != "") {
+					recipeString.push(ingredient.concat(','));
+				}
+			});
+
+			//process recipeString
+			//console.log(recipeString);
+			localStorage.setItem("ingredientList", recipeString);
+			if (recipeString.length == 0) {
+				alert("Please enter ingredients before searching.");
+			} else {
+				//alert("searching");
+				// $.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+				// 	function (data, status) {
+				// 		localStorage.setItem("APIReturn", JSON.stringify(data));
+				// 		window.location.href = '/results'
+				// 	});
+
+			}
+		});
+	});
+	</script>
+
 	<script>
 		$(document).ready(function () {
 			var loggedin = localStorage.getItem("user");
@@ -468,30 +504,30 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 				}
 			});
 
-			$("#ingredientInput").click(() => {
-				var recipeString = "";
-
-				$("#ingredientList li").each(function (i, li) {
-					var product = $(li).text();
-					product = product.replace("\u00D7", "");
-					recipeString = recipeString.concat(product, ',');
-				});
-				recipeString = recipeString.slice(0, recipeString.length - 1);
-
-				//alert(recipeString);
-				localStorage.setItem("ingredientList", recipeString);
-				if (recipeString.length == 0) {
-					alert("Please enter ingredients before searching.");
-				} else {
-					//alert("searching");
-					$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-						function (data, status) {
-							localStorage.setItem("APIReturn", JSON.stringify(data));
-							window.location.href = '/results'
-						});
-
-				}
-			});
+			// $("#ingredientInput").click(() => {
+			// 	var recipeString = "";
+			//
+			// 	$("#ingredientList li").each(function (i, li) {
+			// 		var product = $(li).text();
+			// 		product = product.replace("\u00D7", "");
+			// 		recipeString = recipeString.concat(product, ',');
+			// 	});
+			// 	recipeString = recipeString.slice(0, recipeString.length - 1);
+			//
+			// 	//alert(recipeString);
+			// 	localStorage.setItem("ingredientList", recipeString);
+			// 	if (recipeString.length == 0) {
+			// 		alert("Please enter ingredients before searching.");
+			// 	} else {
+			// 		//alert("searching");
+			// 		$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+			// 			function (data, status) {
+			// 				localStorage.setItem("APIReturn", JSON.stringify(data));
+			// 				window.location.href = '/results'
+			// 			});
+			//
+			// 	}
+			// });
 
 			$('#searchIngredient').click(() => {
 				localStorage.setItem("searchType", "Ingredient");
@@ -552,23 +588,6 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 	<!-- <script src="js/require.js"></script> -->
 
 	<script src="https://storage.googleapis.com/code-snippets/rapidapi.min.js"></script>
-
-	<script>
-		//Script to add the textBox Bubbles
-		var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
-		var items = [];
-
-		$('#submit-button').click(()=>{
-			$(".textboxlist-bit-box-deletable").each((i, element)=>{
-				// alert("what");
-				var ingredient = $(element).html();
-				var end = ingredient.search("<a");
-				ingredient = ingredient.slice(0, end);
-				items.push(ingredient.concat(','));
-			});
-			//now we has items
-		});
-	</script>
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
