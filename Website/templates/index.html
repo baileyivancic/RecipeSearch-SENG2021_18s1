@@ -71,34 +71,24 @@
 	<script src="static/js/modernizr-2.6.2.min.js"></script>
 	<style>
 		/* width */
-
 		body {
 			overflow: hidden;
 			position: fixed;
 		}
-
 		#ingredientList::-webkit-scrollbar {
 			width: 20px;
 		}
-
 		/* Track */
-
 		#ingredientList::-webkit-scrollbar-track {
 			box-shadow: inset 0 0 5px grey;
 			border-radius: 10px;
-
 		}
-
 		/* Handle */
-
 		#ingredientList::-webkit-scrollbar-thumb {
 			background-color: #FBB448;
 			border-radius: 10px;
-
 		}
-
 		/* Handle on hover */
-
 		#ingredientList::-webkit-scrollbar-thumb:hover {
 			background-color: #fcbe61;
 			/*border-color: #fcbe61;*/
@@ -255,17 +245,14 @@
 
 <script>
 	// Click on a close button to hide the current list item
-
 	//Function creates a list node and appends a cross on the end to close it.
 	//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
 	function popList() {
 		var node = document.createElement("LI");
-
 		//Adds value in text box
 		if (document.getElementById('input-box-home').value === "") return;
 		var textnode = document.createTextNode(document.getElementById('input-box-home').value);
 		node.appendChild(textnode);
-
 		document.getElementById("ingredientList").appendChild(node);
 		var span = document.createElement("SPAN");
 		var txt = document.createTextNode("\u00D7");
@@ -275,13 +262,9 @@
 		node.onclick = function () {
 			node.remove();
 		}
-
-
 		document.getElementById("input-box-home").value = "";
 	}
-
 	$(document).ready(function () {
-
 		var loggedin = localStorage.getItem("user");
 		if (loggedin == null || loggedin == "notlogged") {
 			$("#loginNav").show();
@@ -290,7 +273,6 @@
 			$("#loginNav").hide();
 			$("#loggedNav").show();
 		}
-
 		$("#logout-btn").click(() => {
 			localStorage.setItem("user", "notlogged");
 			window.location.href = '/homepage'
@@ -307,17 +289,14 @@
 					});
 			}
 		});
-
 		$("#ingredientBut").click(() => {
 			var recipeString = "";
-
 			$("#ingredientList li").each(function (i, li) {
 				var product = $(li).text();
 				product = product.replace("\u00D7", "");
 				recipeString = recipeString.concat(product, ',');
 			});
 			recipeString = recipeString.slice(0, recipeString.length - 1);
-
 			//alert(recipeString);
 			localStorage.setItem("ingredientList", recipeString);
 			if (recipeString.length == 0) {
@@ -329,14 +308,12 @@
 						localStorage.setItem("APIReturn", JSON.stringify(data));
 						window.location.href = '/results'
 					});
-
 			}
 		});
 		$('#searchIngredient').click(() => {
 			$("#IngredientCollapse").collapse("show");
 			$("#RecipeCollapse").collapse("hide");
 		});
-
 		$('#searchRecipe').click(() => {
 			$("#RecipeCollapse").collapse("show");
 			$("#IngredientCollapse").collapse("hide");
@@ -344,12 +321,10 @@
 		$('#ingredientBut').click(() => {
 			localStorage.setItem("searchType", "ingredient");
 		});
-
 		$('#recipeBut').click(() => {
 			localStorage.setItem("searchType", "recipe");
 		});
 	});
-
 </script>
 <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true" style="background-image: url('static/images/loginpanel.jpg');">
 	<div class="modal-dialog" role="document" style="position: absolute;
@@ -374,7 +349,5 @@
 		</div>
 	</div>
 </div>
-
-
 
 </html>
