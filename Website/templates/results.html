@@ -62,7 +62,7 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="static/css/style.css">
-
+	<link rel="stylesheet" href="static/css/home.css">
 	<!-- Modernizr JS -->
 	<script src="static/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -72,175 +72,91 @@
 
 </head>
 
-<header class="section top">
-	<nav class="gtco-nav" role="navigation">
-		<div class="gtco-container">
-
-			<div class="row">
-				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo">
-						<a href="/">RecipeSearch
-							<em>.</em>
-						</a>
-					</div>
-				</div>
-				<div class="col-xs-8 text-right menu-1">
-					<ul>
-						<li>
-							<a href="contact.html">Contact</a>
-						</li>
-						<li>
-							<a href="about.html">About us</a>
-						</li>
-						<li class="btn-cta" id="index-login-but">
-							<a href="#">
-								<span>Login</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</nav>
-</header>
-
 <body style="background-image: url('static/images/img_1.jpg')">
-
-
 
 	<div class="gtco-loader"></div>
 	<div id="page">
+		<nav class="gtco-nav" role="navigation">
+			<div class="gtco-container">
 
-		<!-- <div class="page-inner">
-	<header class = "gtco-cover" role = "banner"
-		style="max-height: 15%; background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
-	<nav class="gtco-nav" role="navigation">
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="index.html">RecipeSearch<em>.</em></a></div>
-				</div>
-				<div class="col-xs-8 text-right menu-1">
-					<ul>
-						<li><a href="contact.html">Contact</a></li>
-						<li class="btn-cta"><a href="#"><span>Login</span></a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</nav>
-</header>
--->
-		<!--
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="max-height: 250px; background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="gtco-container">
-		</div>
-	</header>
--->
-		<!--
-<div class="sideBar">
-					<div class="tab-content-inner active" data-content="signup">
-						<h3 class="cursive-font">Hey! Enter in ingredients or a recipe to get started.</h3>
-						<form action="#">
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="activities">Ingredients</label>
-									<input type="text" class="form-control" placeholder = "eg. Chicken, Rice, Carrot">
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Recipe</label>
-									<input type="text" class="form-control" placeholder = "eg. Lasagna">
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="cuisine">Cuisine</label>
-									<select name="#" id="cuisine" class="form-control">
-										<option value="" selected disabled hidden>Select Cuisine</option>
-										<option value="African">African</option>
-										<option value="American">American</option>
-										<option value="British">British</option>
-										<option value="Cajun">Cajun</option>
-										<option value="Caribbean">Caribbean</option>
-										<option value="Chinese">Chinese</option>
-										<option value="Eastern European">Eastern European</option>
-										<option value="French">French</option>
-										<option value="German">German</option>
-										<option value="Greek">Greek</option>
-										<option value="Indian">Indian</option>
-										<option value="Irish">Irish</option>
-										<option value="Italian">Italian</option>
-										<option value="Japanese">Japanese</option>
-										<option value="Jewish">Jewish</option>
-										<option value="Korean">Korean</option>
-										<option value="Latin American">Latin American</option>
-										<option value="Mexican">Mexican</option>
-										<option value="Middle Eastern">Middle Eastern</option>
-										<option value="Nordic">Nordic</option>
-										<option value="Southern">Southern</option>
-										<option value="Spanish">Spanish</option>
-										<option value="Thai">Thai</option>
-										<option value="Vietnamese">Vietnamese</option>
-									</select>
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="diet">Diet</label>
-									<select name="#" id="diet" class="form-control">
-										<option value="" selected disabled hidden>Select Diet</option>
-										<option value="Ketogenic">Ketogenic</option>
-										<option value="Paleo">Paleo</option>
-										<option value="Primal">Primal</option>
-										<option value="Vegan">Vegan</option>
-										<option value="Vegetarian">Vegetarian</option>
-									</select>
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="intolerance">Intolerance</label>
-									<select name="#" id="intolerance" class="form-control">
-										<option value="" selected disabled hidden>Select Intolerance</option>
-										<option value="Dairy free">Dairy free</option>
-										<option value="Egg free">Egg free</option>
-										<option value="Gluten free">Gluten free</option>
-										<option value="Grain free">Grain free</option>
-										<option value="Peanut free">Peanut free</option>
-										<option value="Seafood free">Seafood free</option>
-										<option value="Sesame free">Sesame free</option>
-										<option value="Shellfish free">Shellfish free</option>
-										<option value="Soy free">Soy free</option>
-										<option value="Wheat free"></option>
-									</select>
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<input type="submit" class="btn btn-primary btn-block" value="Search">
-								</div>
-							</div>
-						</form>
+				<div class="row">
+					<div class="col-sm-4 col-xs-12">
+						<div id="gtco-logo">
+							<a href="/">RecipeSearch
+								<em>.</em>
+							</a>
+						</div>
 					</div>
-</div>
--->
+					<div class="col-xs-8 text-right menu-1">
+						<ul>
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
+							<li>
+								<a href="about.html">About us</a>
+							</li>
+							<li class="btn-cta" id="index-login-but">
+								<a href="#">
+									<span>Login</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</nav>
+
 		<div class="gtco-section">
 			<div id="testing" style="position: fixed;margin:50px;"></div>
 			<div class=" col-lg-4">
-				<div class="gtco-container main-container w3-container w3-white">
+
+				<div class="gtco-container main-container" style="position:fixed;width:25vw;padding-left:5vw;">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-							<h2 class="cursive-font primary-color">Search Criteria</h2>
+						<div id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5" style="height:50vh;border-radius: 15px 15px 15px 15px;">
+							<div class="gtco-cover gtco-cover-md">
+								<div class="overlay" style="height:50vh;border-radius: 15px 15px 15px 15px;">
+									<div class="w3-bar w3-black" style="text-align:center;border-radius: 15px 15px 0px 0px;">
+										<h3 style="color:white;padding-top:15px" class="cursive-font">Search Criteria</h3>
+									</div>
+									<div class="form-wrap">
+										<div class="tab">
+											<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+
+												<div class="sideBar">
+													<div class="tab-content-inner active" data-content="signup">
+														<form action="#">
+															<div class="row form-group">
+																<div class="col-md-12">
+																	<label for="activities">Ingredients</label>
+																	<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
+																</div>
+															</div>
+															<div class="row form-group">
+																<div class="col-md-12">
+																	<label for="date-start">Recipe</label>
+																	<input type="text" class="form-control" placeholder="eg. Lasagna">
+																</div>
+															</div>
+															<div class="row form-group">
+																<div class="col-md-12">
+																	<input type="submit" class="btn btn-primary btn-block" value="Search">
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="row">
 
-						<!--<div class="col-lg-4 col-md-4 col-sm-6">
+
+
+					<!--<div class="col-lg-4 col-md-4 col-sm-6">
 							<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
 								<figure>
 									<div class="overlay">
@@ -257,17 +173,16 @@
 								</div>
 							</a>
 						</div>-->
-					</div>
+
 				</div>
 			</div>
 
 			<div class="col-lg-8" style="background-color: transparent">
 				<div id="recipeList" class="main-container w3-container">
-					
+
 				</div>
 			</div>
 		</div>
-
 		<footer id="gtco-footer" role="contentinfo" style="background-image: url('/static/images/img_bg_1.jpg')'" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="gtco-container">
@@ -284,6 +199,7 @@
 				</div>
 			</div>
 		</footer>
+
 		<!-- </div> -->
 
 	</div>
@@ -317,27 +233,17 @@
 	<script src="static/js/moment.min.js"></script>
 	<script src="static/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="static/js/main.js"></script>
-	<!-- Testing -->
-	<!-- <script>
-		$(window).scroll(()=>{
-			var txt = "";
-			txt += "<p>innerWidth: " + (window.innerWidth) + "</p>";
-			txt += "<p>innerHeight: " + (window.innerHeight-$(window).scrollTop()) + "</p>";
-			txt += "<p>outerWidth: " + window.outerWidth + "</p>";
-			txt += "<p>outerHeight: " + window.outerHeight + "</p>";
-			document.getElementById("testing").innerHTML = txt;
-		});
-	</script> -->
+
 	<script>
 		$(document).ready(function () {
 			var object = localStorage.getItem("APIReturn");
-            var recipeObject = JSON.parse(object);
+			var recipeObject = JSON.parse(object);
 			for (var i = 0; i < 100; i++) {
-                //alert(recipeObject.hits[i].recipe.url);
-                if (recipeObject.hits[i] != null) {
-                    //alert(recipeObject.hits[i].recipe.ingredients[0]);
-					$('#recipeList').append('<div class="col-lg-4 col-md-4 col-sm-6"> <a href="recipeObject.hits[i].recipe.image" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> <i class="ti-plus"></i> </div> <img src="recipeObject.hits[i].recipe.image" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>'+recipeObject.hits[i].recipe.label+'</h2> <p>Far far away, behind the word mountains, far from the countries Vokalia..</p> </div> </a> </div>');
-                    //$('#recipeList').append('<li class="recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <table> <tr> <a href=""> <img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>' + recipeObject.hits[i].recipe.label + '</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: '+Math.floor(1+Math.random()*4)+' </div> </tr> </table> </li>');
+				//alert(recipeObject.hits[i].recipe.url);
+				if (recipeObject.hits[i] != null) {
+					//alert(recipeObject.hits[i].recipe.ingredients[0]);
+					$('#recipeList').append('<div style="height:40vh;" class="col-lg-4 col-md-4 col-sm-6"> <a href="' + recipeObject.hits[i].recipe.image + '" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> <i class="ti-plus"></i> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> <p>Far far away, behind the word mountains, far from the countries Vokalia..</p> </div> </a> </div>');
+					//$('#recipeList').append('<li class="recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <table> <tr> <a href=""> <img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>' + recipeObject.hits[i].recipe.label + '</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: '+Math.floor(1+Math.random()*4)+' </div> </tr> </table> </li>');
                     /*$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
                     $('.modal-body' + i + '').append('<table style="width:20vw"><tr style="width:20vw"><td style="width:20vw"><ul style="width:20vw" class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td><td><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" /></td></tr> </table>');
                     $('.modal-body' + i + '').append('</div><div class="modal-footer"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
@@ -345,16 +251,12 @@
                         $('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');
                     }*/
 
-                    //<img style="float:left" src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" />
+					//<img style="float:left" src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" />
 
-                }
+				}
 			}
 		});
 	</script>
-
-	<!-- Main -->
-	\
-
 </body>
 
 </html>

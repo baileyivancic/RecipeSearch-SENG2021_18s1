@@ -11,9 +11,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>RecipeSearch &mdash; The casual cook's companion</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
-	/>
 	<meta name="author" content="GetTemplates.co" />
 	<!-- jQuery -->
 	<script src="static/js/jquery.min.js"></script>
@@ -72,10 +69,45 @@
 
 	<!-- Modernizr JS -->
 	<script src="static/js/modernizr-2.6.2.min.js"></script>
+	<style>
+		/* width */
+
+		body {
+			overflow: hidden;
+			position: fixed;
+		}
+
+		#ingredientList::-webkit-scrollbar {
+			width: 20px;
+		}
+
+		/* Track */
+
+		#ingredientList::-webkit-scrollbar-track {
+			box-shadow: inset 0 0 5px grey;
+			border-radius: 10px;
+
+		}
+
+		/* Handle */
+
+		#ingredientList::-webkit-scrollbar-thumb {
+			background-color: #FBB448;
+			border-radius: 10px;
+
+		}
+
+		/* Handle on hover */
+
+		#ingredientList::-webkit-scrollbar-thumb:hover {
+			background-color: #fcbe61;
+			/*border-color: #fcbe61;*/
+		}
+	</style>
 
 </head>
 
-<body>
+<body style="height:200vh;">
 
 
 
@@ -111,11 +143,11 @@
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
+	<div id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
 		<section class="block">
 			<div class="carousel slide" data-ride="carousel">
 
-				<div class="carousel-inner" style="height:100vh">
+				<div class="carousel-inner" style="height:100vh;">
 					<div class="item active">
 						<img src="static/images/carousel/ingredients.jpg" alt="ingredients">
 					</div>
@@ -138,18 +170,18 @@
 				</div>
 			</div>
 		</section>
-		<div class="overlay" style="height:100vh">
+		<div class="overlay" style="height:100vh;">
 
 			<div class="gtco-container" style="float:left;padding-left:10vw;">
 				<div class="row" style="width:80vw;text-align:left">
 					<div class="col-md-12 col-md-offset-0">
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp" id="title">
-							<h1 class="cursive-font">Recipes you want, from ingredients you have.</h1>
+							<h1 class="cursive-font" style="font-size:4vw">Recipes you want, from ingredients you have.</h1>
 						</div>
 
 						<div class="row row-mt-15em">
 
-							<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left;" data-animate-effect="fadeInRight">
+							<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left;margin-top:-4vh;" data-animate-effect="fadeInRight">
 								<div class="w3-bar w3-black" style="opacity:0.7;border-radius: 15px 15px 0px 0px;">
 									<button id="searchIngredient" class="w3-bar-item w3-button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"
 									 aria-controls="RecipeCollapse IngredientCollapse">
@@ -172,7 +204,7 @@
 														<form action="#">
 															<div class="row form-group">
 																<div class="col-md-12" id="recipe-search" class="collapse">
-																	<input id="recipeInput" type="text" class="form-control" placeholder="eg. Lasagna">
+																	<input id="recipeInput" type="text" class="form-control" placeholder="e.g. Lasagna">
 																</div>
 															</div>
 														</form>
@@ -196,13 +228,13 @@
 															<div class="col-md-12" id="ingredient-search" class="collapse">
 
 																<div class="input-group">
-																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion"style="height:45px">
+																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion" style="height:45px">
 																	<span class="input-group-btn">
 																		<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
 																	</span>
 																</div>
 																<nav style="padding-top:12px;">
-																	<ul id="ingredientList">
+																	<ul style="height:20vh" id="ingredientList">
 																	</ul>
 																</nav>
 															</div>
@@ -216,7 +248,7 @@
 												</div>
 											</div>
 
-											
+
 										</div>
 
 
@@ -229,104 +261,99 @@
 
 			</div>
 		</div>
-		</div>
-	</header>
+	</div>
+</body>
 
+<script>
+	// Click on a close button to hide the current list item
 
-	<script>
-		// Click on a close button to hide the current list item
+	//Function creates a list node and appends a cross on the end to close it.
+	//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
+	function popList() {
+		var node = document.createElement("LI");
 
-		//Function creates a list node and appends a cross on the end to close it.
-		//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
-		function popList() {
-			var node = document.createElement("LI");
+		//Adds value in text box
+		if (document.getElementById('input-box-home').value === "") return;
+		var textnode = document.createTextNode(document.getElementById('input-box-home').value);
+		node.appendChild(textnode);
 
-			//Adds value in text box
-			if (document.getElementById('input-box-home').value === "") return;
-			var textnode = document.createTextNode(document.getElementById('input-box-home').value);
-			node.appendChild(textnode);
-
-			document.getElementById("ingredientList").appendChild(node);
-			var span = document.createElement("SPAN");
-			var txt = document.createTextNode("\u00D7");
-			span.className = "close";
-			span.appendChild(txt);
-			node.appendChild(span);
-			node.onclick = function () {
-				node.remove();
-			}
-
-			
-			document.getElementById("input-box-home").value = "";
+		document.getElementById("ingredientList").appendChild(node);
+		var span = document.createElement("SPAN");
+		var txt = document.createTextNode("\u00D7");
+		span.className = "close";
+		span.appendChild(txt);
+		node.appendChild(span);
+		node.onclick = function () {
+			node.remove();
 		}
 
-		$(document).ready(function () {
-			var loggedin = localStorage.getItem("user");
-			if (loggedin == null || loggedin == "notlogged") {
-				$("#loginNav").show();
-				$("#loggedNav").hide();
+
+		document.getElementById("input-box-home").value = "";
+	}
+
+	$(document).ready(function () {
+		var loggedin = localStorage.getItem("user");
+		if (loggedin == null || loggedin == "notlogged") {
+			$("#loginNav").show();
+			$("#loggedNav").hide();
+		} else {
+			$("#loginNav").hide();
+			$("#loggedNav").show();
+		}
+		$("#logout-btn").click(() => {
+			localStorage.setItem("user", "notlogged");
+			window.location.href = '/homepage'
+		});
+		$("#recipeBut").click(() => {
+			var recipeName = document.getElementById("recipeInput").value;
+			if (recipeName == "") {
+				alert("Please enter a recipe before searching.");
 			} else {
-				$("#loginNav").hide();
-				$("#loggedNav").show();
+				$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					function (data, status) {
+						localStorage.setItem("APIReturn", JSON.stringify(data));
+						window.location.href = '/results';
+					});
 			}
-			$("#logout-btn").click(() => {
-				localStorage.setItem("user", "notlogged");
-				window.location.href = '/homepage'
-			});
-			$("#recipeBut").click(() => {
-				var recipeName = document.getElementById("recipeInput").value;
-				if (recipeName == "") {
-					alert("Please enter a recipe before searching.");
-				} else {
-					$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-						function (data, status) {
-							localStorage.setItem("APIReturn", JSON.stringify(data));
-							window.location.href = '/results';
-						});
-				}
-			});
-
-			$("#ingredientBut").click(() => {
-				var recipeString = "";
-
-				$("#ingredientList li").each(function (i, li) {
-					var product = $(li).text();
-					product = product.replace("\u00D7", "");
-					recipeString = recipeString.concat(product, ',');
-				});
-				recipeString = recipeString.slice(0, recipeString.length - 1);
-
-				//alert(recipeString);
-				localStorage.setItem("ingredientList", recipeString);
-				if (recipeString.length == 0) {
-					alert("Please enter ingredients before searching.");
-				} else {
-					//alert("searching");
-					$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-						function (data, status) {
-							localStorage.setItem("APIReturn", JSON.stringify(data));
-							window.location.href = '/results'
-						});
-
-				}
-			});
-
-			$('#searchIngredient').click(() => {
-				localStorage.setItem("searchType", "ingredient");
-			});
-
-			$('#searchRecipe').click(() => {
-				localStorage.setItem("searchType", "recipe");
-			});
 		});
 
-	</script>
+		$("#ingredientBut").click(() => {
+			var recipeString = "";
+
+			$("#ingredientList li").each(function (i, li) {
+				var product = $(li).text();
+				product = product.replace("\u00D7", "");
+				recipeString = recipeString.concat(product, ',');
+			});
+			recipeString = recipeString.slice(0, recipeString.length - 1);
+
+			//alert(recipeString);
+			localStorage.setItem("ingredientList", recipeString);
+			if (recipeString.length == 0) {
+				alert("Please enter ingredients before searching.");
+			} else {
+				//alert("searching");
+				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					function (data, status) {
+						localStorage.setItem("APIReturn", JSON.stringify(data));
+						window.location.href = '/results'
+					});
+
+			}
+		});
+
+		$('#searchIngredient').click(() => {
+			localStorage.setItem("searchType", "ingredient");
+		});
+
+		$('#searchRecipe').click(() => {
+			localStorage.setItem("searchType", "recipe");
+		});
+	});
+
+</script>
 
 
 
-
-
-
-</body>
 
 </html>
