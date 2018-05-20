@@ -460,17 +460,17 @@ PROBABLY NOT NEEDED, LEAVE FOR NOW
 			});
 
 			//process recipeString
-			//console.log(recipeString);
+			console.log(recipeString);
 			localStorage.setItem("ingredientList", recipeString);
 			if (recipeString.length == 0) {
 				alert("Please enter ingredients before searching.");
 			} else {
-				//alert("searching");
-				// $.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-				// 	function (data, status) {
-				// 		localStorage.setItem("APIReturn", JSON.stringify(data));
-				// 		window.location.href = '/results'
-				// 	});
+				alert("searching");
+				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					function (data, status) {
+						localStorage.setItem("APIReturn", JSON.stringify(data));
+						window.location.href = '/results'
+					});
 
 			}
 		});
