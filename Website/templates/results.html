@@ -121,7 +121,7 @@
 					</div>
 					<div class="col-xs-8 text-right menu-1">
 						<ul>
-							<li class="btn-cta" id="index-login-but">
+							<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#userModal">
 								<a href="#">
 									<span>Login</span>
 								</a>
@@ -425,5 +425,27 @@
 		});
 	</script>
 </body>
-
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true" style="background-image: url('static/images/loginpanel.jpg');">
+	<div class="modal-dialog" role="document" style="position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="userModal" style="display:inline">Login</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form-control" placeholder="Username" id="usr">
+				<input type="password" class="form-control" placeholder="Password" id="usr">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">Login</button>
+				<button type="button" class="btn btn-primary">Register</button>
+			</div>
+		</div>
+	</div>
+</div>
 </html>
