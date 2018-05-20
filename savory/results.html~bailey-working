@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RecipeSearch</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="static/CSS/results.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">RecipeSearch</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/homepage">Home</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="loginNav">
+                    <a href="/login">Login</a>
+                </li>
+                <li id="loggedNav">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        User7
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="btn btn-info btn-block" href="#" data-toggle="modal" data-target="#userModal" style="border-radius:0px">View User Page</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="btn btn-danger btn-block" id="logout-btn" href="#" style="border-radius:0px">Logout</a>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="left-sidebar" class="w3-sidebar w3-bar-block" style="width:20vw;opacity:0.8;height:55vh;border-radius: 15px 15px 15px 15px;">
+        <div id="Tagline" class="w3-container w3-white" style="text-align:center">
+            <label for="usr">
+                <h3>Current Ingredients</h3>
+            </label>
+            <div class="input-group">
+                <input id="input-box-result" type="text" class="form-control" placeholder="Input Ingredient" id="usr">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="popList()">Add</button>
+                </span>
+                <span class="input-group-btn">
+                    <button id="ingredientInput" class="btn btn-default" type="button">Search Again</button>
+                </span>
+            </div>
+            <nav>
+                <ul id="ingredientList" style="height:40vh">
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="main-container" class="container" style="opacity:0.96;margin-left:20vw;width:75vw;height:100vh">
+        <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.6;border-radius: 15px 15px 0px 0px;">
+            <h1>Results</h1>
+        </div>
+        <div>
+            <nav style="height:70vh;">
+                <ul id="recipeList">
+                    <!--<li class="recipeItem" id="item3" data-toggle="modal" data-target="#recipeModal">
+                    <table>
+                        <tr>
+                            <a href="">
+                                <img src="static/Images/spag.jpg" alt="icon" class="alignnone size-full wp-image-156" />
+                            </a>
+                        </tr>
+                        <tr>
+                            <div style="display:inline-block;width:400px">
+                                <h3>CIA Spaghetti</h3>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div style="display:inline-block">
+                                Common Ingredients: 3
+                            </div>
+                        </tr>
+                    </table>
+                </li>-->
+                </ul>
+            </nav>
+        </div>
+        <div id="Tagline" class="w3-container w3-white" style="text-align:center;opacity:0.6;border-radius: 0px 0px 15px 15px;">
+            <h1 style="color:transparent">words</h1>
+        </div>
+    </div>
+    <!--<div class="modal fade" id="recipeModal" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recipeModal" style="display:inline">Spaghetti</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ingredients
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save Recipe</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="modals">
+    </div>
+    <script>
+        $('body,html').css("overflow", "hidden");
+        // Click on a close button to hide the current list item
+        var close = document.getElementsByClassName("close");
+
+        for (var i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                $(this.parentElement).remove();
+            }
+        }
+        //Function creates a list node and appends a cross on the end to close it.
+        //Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
+        function popList() {
+            var node = document.createElement("LI");
+
+            //Adds value in text box
+			if (document.getElementById('input-box-result').value == "") return;
+            var textnode = document.createTextNode(document.getElementById('input-box-result').value);
+            node.appendChild(textnode);
+            document.getElementById("ingredientList").appendChild(node);
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            node.appendChild(span);
+
+            for (var i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    $(this.parentElement).remove();
+                }
+            }
+            document.getElementById("input-box-result").value = "";
+        }
+
+        $(document).ready(function () {
+            var loggedin = localStorage.getItem("user");
+            if (loggedin == null || loggedin == "notlogged") {
+                $("#loginNav").show();
+                $("#loggedNav").hide();
+            } else {
+                $("#loginNav").hide();
+                $("#loggedNav").show();
+            }
+            $("#logout-btn").click(() => {
+                localStorage.setItem("user", "notlogged");
+                window.location.href = '/results'
+            });
+            var object = localStorage.getItem("APIReturn");
+            var recipeObject = JSON.parse(object);
+
+            //Takes out the side bar depending on searchType
+            var searchType = localStorage.getItem("searchType");
+            if (searchType == "recipe") {
+                $("#left-sidebar").hide();
+                $("#main-container").css("margin-left", "15vw");
+            }
+
+            //adds the ingredient list from the previous page to this page
+            var list = localStorage.getItem("ingredientList");
+            if (list != 'empty') {
+                list = list.split(",");
+                $.each(list, (i, ingredient) => {
+                    var node = document.createElement("LI");
+
+                    //Adds value in text box
+                    var textnode = document.createTextNode(ingredient);
+                    node.appendChild(textnode);
+                    document.getElementById("ingredientList").appendChild(node);
+
+                    var span = document.createElement("SPAN");
+                    var txt = document.createTextNode("\u00D7");
+                    span.className = "close";
+                    span.appendChild(txt);
+                    node.appendChild(span);
+
+                    $(node).addClass("non-Deleted");
+                    for (var i = 0; i < close.length; i++) {
+                        close[i].onclick = function () {
+                            $(this.parentElement).remove();
+                        }
+                    }
+                });
+                localStorage.setItem("ingredientList", 'empty');
+            }
+
+            //alert(recipe.count);
+            //var i;
+            //alert(recipe.hits[1].recipe.url);
+            for (var i = 0; i < 100; i++) {
+                //alert(recipeObject.hits[i].recipe.url);
+                if (recipeObject.hits[i] != null) {
+                    //alert(recipeObject.hits[i].recipe.ingredients[0]);
+                    $('#recipeList').append('<li class="recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <table> <tr> <a href=""> <img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>' + recipeObject.hits[i].recipe.label + '</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: '+Math.floor(1+Math.random()*4)+' </div> </tr> </table> </li>');
+                    $('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
+                    $('.modal-body' + i + '').append('<table style="width:20vw"><tr style="width:20vw"><td style="width:20vw"><ul style="width:20vw" class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td><td><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" /></td></tr> </table>');
+                    $('.modal-body' + i + '').append('</div><div class="modal-footer"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
+                    for (var k = 0; recipeObject.hits[i].recipe.ingredients[k] != null; k++) {
+                        $('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');
+                    }
+
+                    //<img style="float:left" src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" />
+
+                }
+
+            }
+
+            $("#ingredientInput").click(() => {
+                var recipeString = "";
+
+                $("#ingredientList li").each(function (i, li) {
+                    var product = $(li).text();
+                    //alert("wait");
+                    product = product.replace("\u00D7", "");
+                    recipeString = recipeString.concat(product, ',');
+                });
+                recipeString = recipeString.slice(0, recipeString.length - 1);
+
+                //alert(recipeString);
+                localStorage.setItem("ingredientList", recipeString);
+                if (recipeString.length == 0) {
+                    alert("Please enter ingredients before searching.");
+                } else {
+                    $.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+                        function (data, status) {
+                            localStorage.setItem("APIReturn", JSON.stringify(data));
+                            window.location.href = '/results';
+
+                        });
+
+                }
+            });
+
+        });
+    </script>
+        <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="userModal" style="display:inline">User Info</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="usr">Saved Ingredients</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Input Ingredient" id="usr">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Add</button>
+                            </span>
+                        </div>
+                        <nav>
+                            <ul id="ingredientList">
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Change Password</button>
+                        <button type="button" class="btn btn-primary">View Saved Recipes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
