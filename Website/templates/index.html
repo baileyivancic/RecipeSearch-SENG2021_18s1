@@ -28,6 +28,23 @@
 	<!-- Stellar Parallax -->
 	<script src="static/js/jquery.stellar.min.js"></script>
 
+	<!-- required stylesheet for TextboxList -->
+	<link rel="stylesheet" href="static/css/TextboxList.css" type="text/css" media="screen" charset="utf-8" />
+	<!-- required stylesheet for TextboxList.Autocomplete -->
+	<link rel="stylesheet" href="static/css/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
+
+	<!-- For some reason this file is not found. imported another file-->
+	<!-- <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<!-- required for TextboxList -->
+	<script src="static/js/GrowingInput.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="static/js/TextboxList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/TextboxList.Autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
+	<script src="static/js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
+
+
 	<!-- Magnific Popup -->
 	<script src="static/js/jquery.magnific-popup.min.js"></script>
 	<script src="static/js/magnific-popup-options.js"></script>
@@ -206,7 +223,10 @@
 														<div class="row form-group">
 															<div class="col-md-12" id="ingredient-search" class="collapse">
 
-																<div class="input-group">
+																<div class="input-group" style="width:100%; cursor: text; height:20px">
+																	<input type="text" class="form-control" id="myListElement" placeholder="eg. Chicken, Rice, Carrot">
+																</div>
+																<!-- <div class="input-group">
 																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion" style="height:45px">
 																	<span class="input-group-btn">
 																		<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
@@ -215,7 +235,7 @@
 																<nav style="padding-top:12px;">
 																	<ul style="height:20vh" id="ingredientList">
 																	</ul>
-																</nav>
+																</nav> -->
 															</div>
 														</div>
 													</form>
@@ -244,6 +264,8 @@
 </body>
 
 <script>
+	var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
+
 	// Click on a close button to hide the current list item
 	//Function creates a list node and appends a cross on the end to close it.
 	//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
@@ -291,24 +313,48 @@
 		});
 		$("#ingredientBut").click(() => {
 			var recipeString = "";
-			$("#ingredientList li").each(function (i, li) {
-				var product = $(li).text();
-				product = product.replace("\u00D7", "");
-				recipeString = recipeString.concat(product, ',');
+			$(".textboxlist-bit-box-deletable").each((i, element)=>{
+				var ingredient = $(element).html();
+				var end = ingredient.search("<a");
+				ingredient = ingredient.slice(0, end);
+				if ( ingredient != "" ) {
+					recipeString.concat(ingredient, ',');
+				}
 			});
-			recipeString = recipeString.slice(0, recipeString.length - 1);
-			//alert(recipeString);
+
+			//process recipeString
+			console.log(recipeString);
 			localStorage.setItem("ingredientList", recipeString);
 			if (recipeString.length == 0) {
 				alert("Please enter ingredients before searching.");
 			} else {
-				//alert("searching");
+				alert("searching");
 				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
 					function (data, status) {
 						localStorage.setItem("APIReturn", JSON.stringify(data));
 						window.location.href = '/results'
 					});
+
 			}
+			// var recipeString = "";
+			// $("#ingredientList li").each(function (i, li) {
+			// 	var product = $(li).text();
+			// 	product = product.replace("\u00D7", "");
+			// 	recipeString = recipeString.concat(product, ',');
+			// });
+			// recipeString = recipeString.slice(0, recipeString.length - 1);
+			// //alert(recipeString);
+			// localStorage.setItem("ingredientList", recipeString);
+			// if (recipeString.length == 0) {
+			// 	alert("Please enter ingredients before searching.");
+			// } else {
+			// 	//alert("searching");
+			// 	$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+			// 		function (data, status) {
+			// 			localStorage.setItem("APIReturn", JSON.stringify(data));
+			// 			window.location.href = '/results'
+			// 		});
+			// }
 		});
 		$('#searchIngredient').click(() => {
 			$("#IngredientCollapse").collapse("show");
