@@ -16,6 +16,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 	<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- jQuery -->
 	<script src="static/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -69,13 +73,41 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style>
+		#ingredientList::-webkit-scrollbar {
+			width: 20px;
+		}
+
+		/* Track */
+
+		#ingredientList::-webkit-scrollbar-track {
+			box-shadow: inset 0 0 5px grey;
+			border-radius: 10px;
+
+		}
+
+		/* Handle */
+
+		#ingredientList::-webkit-scrollbar-thumb {
+			background-color: #FBB448;
+			border-radius: 10px;
+
+		}
+
+		/* Handle on hover */
+
+		#ingredientList::-webkit-scrollbar-thumb:hover {
+			background-color: #fcbe61;
+			/*border-color: #fcbe61;*/
+		}
+	</style>
 
 </head>
 
-<body style="background-image: url('static/images/img_1.jpg')">
+<body style="background-image: url('static/images/img_3.jpg')">
 
-	<div class="gtco-loader"></div>
 	<div id="page">
+
 		<nav class="gtco-nav" role="navigation">
 			<div class="gtco-container">
 
@@ -89,13 +121,7 @@
 					</div>
 					<div class="col-xs-8 text-right menu-1">
 						<ul>
-							<li>
-								<a href="contact.html">Contact</a>
-							</li>
-							<li>
-								<a href="about.html">About us</a>
-							</li>
-							<li class="btn-cta" id="index-login-but">
+							<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#userModal">
 								<a href="#">
 									<span>Login</span>
 								</a>
@@ -108,48 +134,95 @@
 		</nav>
 
 		<div class="gtco-section">
-			<div id="testing" style="position: fixed;margin:50px;"></div>
+
+
 			<div class=" col-lg-4">
 
-				<div class="gtco-container main-container" style="position:fixed;width:25vw;padding-left:5vw;">
-					<div class="row">
-						<div id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5" style="height:50vh;border-radius: 15px 15px 15px 15px;">
-							<div class="gtco-cover gtco-cover-md">
-								<div class="overlay" style="height:50vh;border-radius: 15px 15px 15px 15px;">
-									<div class="w3-bar w3-black" style="text-align:center;border-radius: 15px 15px 0px 0px;">
-										<h3 style="color:white;padding-top:15px" class="cursive-font">Search Criteria</h3>
-									</div>
-									<div class="form-wrap">
-										<div class="tab">
-											<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 
-												<div class="sideBar">
-													<div class="tab-content-inner active" data-content="signup">
-														<form action="#">
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<label for="activities">Ingredients</label>
-																	<input type="text" class="form-control" placeholder="eg. Chicken, Rice, Carrot">
+				<div class="row">
+					<div id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5" style="background-color:transparent;">
+						<div class="gtco-container" style="position:fixed;transform: translateY(-25%);">
+							<div class="row">
+								<div class="col-md-12 col-md-offset-0">
+
+									<div class="row row-mt-15em">
+
+										<div class="col-md-4 col-md-push-1 animate-box" style="width:30vw;" data-animate-effect="fadeInRight">
+											<div class="w3-bar w3-black" style="opacity:0.7;border-radius: 15px 15px 0px 0px;">
+												<button id="searchIngredient" class="w3-bar-item w3-button">
+													<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
+												<button id="searchRecipe" class="w3-bar-item w3-button">
+													<i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
+
+											</div>
+											<div class="form-wrap" style="border-radius: 0px 0px 15px 15px;">
+												<div class="tab">
+
+													<div class="tab-content" style="border-radius: 0px 0px 15px 15px;">
+														<div id="allCollapse">
+															<div id="RecipeCollapse" class="collapse multi-collapse">
+																<div class="tab-content-inner active" data-content="search">
+																	<div>
+																		<h3 class="cursive-font">Search by Recipe Name</h3>
+																	</div>
+																	<form action="#">
+																		<div class="row form-group">
+																			<div class="col-md-12" id="recipe-search" class="collapse">
+																				<input id="recipeInput" type="text" class="form-control" placeholder="e.g. Lasagna">
+																			</div>
+																		</div>
+																	</form>
+																	<div class="row form-group">
+																		<div class="col-md-12">
+																			<input id="recipeBut" type="submit" class="btn btn-primary btn-block" value="Search Again">
+																		</div>
+																	</div>
 																</div>
 															</div>
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<label for="date-start">Recipe</label>
-																	<input type="text" class="form-control" placeholder="eg. Lasagna">
+
+
+
+
+															<div id="IngredientCollapse" class="collapse multi-collapse">
+																<div>
+																	<h3 class="cursive-font">Search by Ingredient</h3>
+																</div>
+																<form action="#">
+																	<div class="row form-group">
+																		<div class="col-md-12" id="ingredient-search" class="collapse">
+
+																			<div class="input-group">
+																				<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion" style="height:45px">
+																				<span class="input-group-btn">
+																					<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
+																				</span>
+																			</div>
+																			<nav style="padding-top:12px;">
+																				<ul style="height:20vh" id="ingredientList">
+																				</ul>
+																			</nav>
+																		</div>
+																	</div>
+																</form>
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<input id="ingredientBut" type="submit" class="btn btn-primary btn-block" value="Search Again">
+																	</div>
 																</div>
 															</div>
-															<div class="row form-group">
-																<div class="col-md-12">
-																	<input type="submit" class="btn btn-primary btn-block" value="Search">
-																</div>
-															</div>
-														</form>
+														</div>
+
+
 													</div>
+
+
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+
+
 							</div>
 						</div>
 					</div>
@@ -182,6 +255,7 @@
 
 				</div>
 			</div>
+
 		</div>
 		<footer id="gtco-footer" role="contentinfo" style="background-image: url('/static/images/img_bg_1.jpg')'" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
@@ -202,12 +276,6 @@
 
 		<!-- </div> -->
 
-	</div>
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop">
-			<i class="icon-arrow-up"></i>
-		</a>
 	</div>
 
 	<!-- jQuery -->
@@ -235,7 +303,73 @@
 	<script src="static/js/main.js"></script>
 
 	<script>
+		$("#recipeBut").click(() => {
+			var recipeName = document.getElementById("recipeInput").value;
+			if (recipeName == "") {
+				alert("Please enter a recipe before searching.");
+			} else {
+				$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					function (data, status) {
+						localStorage.setItem("APIReturn", JSON.stringify(data));
+						window.location.href = '/results';
+					});
+			}
+		});
+
+		$("#ingredientBut").click(() => {
+			var recipeString = "";
+
+			$("#ingredientList li").each(function (i, li) {
+				var product = $(li).text();
+				product = product.replace("\u00D7", "");
+				recipeString = recipeString.concat(product, ',');
+			});
+			recipeString = recipeString.slice(0, recipeString.length - 1);
+
+			//alert(recipeString);
+			localStorage.setItem("ingredientList", recipeString);
+			if (recipeString.length == 0) {
+				alert("Please enter ingredients before searching.");
+			} else {
+				//alert("searching");
+				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					function (data, status) {
+						localStorage.setItem("APIReturn", JSON.stringify(data));
+						window.location.href = '/results'
+					});
+
+			}
+		});
+		function popList() {
+			var node = document.createElement("LI");
+
+			//Adds value in text box
+			if (document.getElementById('input-box-home').value === "") return;
+			var textnode = document.createTextNode(document.getElementById('input-box-home').value);
+			node.appendChild(textnode);
+
+			document.getElementById("ingredientList").appendChild(node);
+			var span = document.createElement("SPAN");
+			var txt = document.createTextNode("\u00D7");
+			span.className = "close";
+			span.appendChild(txt);
+			node.appendChild(span);
+			node.onclick = function () {
+				node.remove();
+			}
+
+
+			document.getElementById("input-box-home").value = "";
+		}
 		$(document).ready(function () {
+			var searchType = localStorage.getItem("searchType");
+			if (searchType == null || searchType == "recipe") {
+				$("#RecipeCollapse").collapse("show");
+				$("#IngredientCollapse").collapse("hide");
+			} else {
+				$("#IngredientCollapse").collapse("show");
+				$("#RecipeCollapse").collapse("hide");
+			}
 			var object = localStorage.getItem("APIReturn");
 			var recipeObject = JSON.parse(object);
 			for (var i = 0; i < 100; i++) {
@@ -243,20 +377,75 @@
 				if (recipeObject.hits[i] != null) {
 					//alert(recipeObject.hits[i].recipe.ingredients[0]);
 					$('#recipeList').append('<div style="height:40vh;" class="col-lg-4 col-md-4 col-sm-6"> <a href="' + recipeObject.hits[i].recipe.image + '" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> <i class="ti-plus"></i> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
-					//$('#recipeList').append('<li class="recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <table> <tr> <a href=""> <img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" height="60vh" width="10vw" /> </a> </tr> <tr> <div style="display:inline-block;width:400px"> <h3>' + recipeObject.hits[i].recipe.label + '</h3> </div> </tr> <tr> <div style="display:inline-block"> Common Ingredients: '+Math.floor(1+Math.random()*4)+' </div> </tr> </table> </li>');
-                    /*$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
-                    $('.modal-body' + i + '').append('<table style="width:20vw"><tr style="width:20vw"><td style="width:20vw"><ul style="width:20vw" class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td><td><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone size-full wp-image-156" /></td></tr> </table>');
-                    $('.modal-body' + i + '').append('</div><div class="modal-footer"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
-                    for (var k = 0; recipeObject.hits[i].recipe.ingredients[k] != null; k++) {
-                        $('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');
-                    }*/
 
-					//<img style="float:left" src='+recipe.hits[i].recipe.image+' alt="icon" class="alignnone size-full wp-image-156" />
 
 				}
 			}
+			//adds the ingredient list from the previous page to this page
+			var list = localStorage.getItem("ingredientList");
+			if (list != 'empty') {
+				list = list.split(",");
+				$.each(list, (i, ingredient) => {
+					var node = document.createElement("LI");
+
+					//Adds value in text box
+					var textnode = document.createTextNode(ingredient);
+					node.appendChild(textnode);
+					document.getElementById("ingredientList").appendChild(node);
+
+					var span = document.createElement("SPAN");
+					var txt = document.createTextNode("\u00D7");
+					span.className = "close";
+					span.appendChild(txt);
+					node.appendChild(span);
+
+					$(node).addClass("non-Deleted");
+					node.onclick = function () {
+						node.remove();
+					}
+				});
+				localStorage.setItem("ingredientList", 'empty');
+			}
+		});
+		$('#searchIngredient').click(() => {
+			$("#IngredientCollapse").collapse("show");
+			$("#RecipeCollapse").collapse("hide");
+		});
+
+		$('#searchRecipe').click(() => {
+			$("#RecipeCollapse").collapse("show");
+			$("#IngredientCollapse").collapse("hide");
+		});
+		$('#ingredientBut').click(() => {
+			localStorage.setItem("searchType", "ingredient");
+		});
+
+		$('#recipeBut').click(() => {
+			localStorage.setItem("searchType", "recipe");
 		});
 	</script>
 </body>
-
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true" style="background-image: url('static/images/loginpanel.jpg');">
+	<div class="modal-dialog" role="document" style="position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="userModal" style="display:inline">Login</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form-control" placeholder="Username" id="usr">
+				<input type="password" class="form-control" placeholder="Password" id="usr">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">Login</button>
+				<button type="button" class="btn btn-primary">Register</button>
+			</div>
+		</div>
+	</div>
+</div>
 </html>
