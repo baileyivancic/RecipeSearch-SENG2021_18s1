@@ -318,10 +318,11 @@
 				var end = ingredient.search("<a");
 				ingredient = ingredient.slice(0, end);
 				if ( ingredient != "" ) {
-					recipeString.concat(ingredient, ',');
+					recipeString = recipeString.concat(ingredient, ',');
 				}
 			});
 
+			recipeString = recipeString.slice(0, recipeString.length - 1);
 			//process recipeString
 			console.log(recipeString);
 			localStorage.setItem("ingredientList", recipeString);

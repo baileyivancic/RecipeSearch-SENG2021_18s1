@@ -1,7 +1,6 @@
 /*
 Script: TextboxList.js
 	Displays a textbox as a combination of boxes an inputs (eg: facebook tokenizer)
-
 	Authors:
 		Guillermo Rauch
 
@@ -37,12 +36,10 @@ $.TextboxList = function(element, _options){
   }, _options);
 
 	element = $(element);
-	// element = $("#ingredientList-nav");
 
 	var self = this;
 	var init = function(){
 		original = element.css('display', 'none').attr('autocomplete', 'off').focus(focusLast);
-		//var div = document.getElementById('ingredientList-nav');
 		container = $('<div class="'+options.prefix+'" />')
 			.insertAfter(element)
 			.click(function(e){
