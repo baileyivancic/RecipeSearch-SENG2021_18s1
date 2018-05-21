@@ -421,13 +421,26 @@
 		});
 
 		$('#registerBut').click(() => {
-			$("#register").collapse("show");
-			$("#login").collapse("hide");
+			//console.log("register: "+$("#register").attr('aria-expanded'));
+			if (!$("#register").attr('aria-expanded')) {
+				//console.log("NOT");
+			} else{
+				//console.log("collapse");
+				$("#register").collapse("show");
+				$("#login").collapse("hide");
+			}
 		});
 
 		$('#loginBut').click(() => {
-			$("#register").collapse("hide");
-			$("#login").collapse("show");
+			//console.log("login: "+$("#login").attr('aria-expanded'));
+			if (!$("#login").attr('aria-expanded')) {
+				//console.log("NOT");
+				$(loginForm).submit();
+			} else {
+				//console.log("collapse");
+				$("#register").collapse("hide");
+				$("#login").collapse("show");
+			}
 		});
 	});
 </script>
@@ -472,12 +485,19 @@
 					</button>
 				</div>
 
+				<!-- <div class="modal-body">
+					<input type="text" class="form-control" placeholder="Set Username" id="registerUsername">
+					<input type="password" class="form-control" placeholder="Set Password" id="registerPassword">
+				</div> -->
+			</div>
+
+			<Form id="loginForm" method="Post">
 				<div class="modal-body">
 					<input type="text" class="form-control" placeholder="Username" id="usr">
 					<input type="password" class="form-control" placeholder="Password" id="usrpass">
 					<input type="password" class="form-control" placeholder="Confirm Password" id="usrpasscon">
 				</div>
-			</div>
+			</Form>
 
 			<div class="modal-footer">
 				<button type="button" id="registerBut" value="register" class="btn btn-primary">Create Account</button>

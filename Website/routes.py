@@ -23,6 +23,11 @@ Controller = Controller()
 
 @app.route("/")
 def index():
+	if request.method == "POST":
+		if request.form["button"] == 'login':
+			print("Login Attempt")
+		if request.form["bt"] == 'register':
+			return redirect(url_for("register"))
 	return render_template("index.html")
 
 @app.route("/homepage")
@@ -35,11 +40,6 @@ def results():
 
 @app.route("/login",  methods=["GET", "POST"])
 def login():
-	if request.method == "POST":
-		if request.form["bt"] == 'login':
-			print("Login Attempt")
-		if request.form["bt"] == 'register':
-			return redirect(url_for("register"))
 	return render_template("login.html")
 
 @app.route("/register",  methods=["GET", "POST"])
