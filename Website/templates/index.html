@@ -409,6 +409,7 @@
 			$("#RecipeCollapse").collapse("show");
 			$("#IngredientCollapse").collapse("hide");
 		});
+
 		$('#ingredientBut').click(() => {
 			localStorage.setItem("searchType", "ingredient");
 		});
@@ -417,11 +418,13 @@
 		});
 
 		$('#registerBut').click(() => {
-			localStorage.setItem("loginType", "register");
+			$("#register").collapse("show");
+			$("#login").collapse("hide");
 		});
 
 		$('#loginBut').click(() => {
-			localStorage.setItem("loginType", "login");
+			$("#register").collapse("hide");
+			$("#login").collapse("show");
 		});
 	});
 </script>
@@ -430,6 +433,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);">
+<<<<<<< HEAD
 		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
 			<div id="login">
 				<div class="modal-header">
