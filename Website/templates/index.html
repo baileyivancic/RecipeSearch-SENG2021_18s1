@@ -86,6 +86,21 @@
 
 	<!-- Modernizr JS -->
 	<script src="static/js/modernizr-2.6.2.min.js"></script>
+
+	<style type="text/css" media="screen">
+		.form_tags { margin-bottom: 10px; }
+
+		/* Preloader for autocomplete */
+		.textboxlist-loading { background: url('../image/spinner.gif') no-repeat 380px center; }
+
+		/* Autocomplete results styling */
+		.form_friends .textboxlist-autocomplete-result { overflow: hidden; zoom: 1; }
+		.form_friends .textboxlist-autocomplete-result img { float: left; padding-right: 10px; }
+
+		.note { color: #666; font-size: 90%; }
+		#footer { margin: 50px; text-align: center; }
+	</style>
+
 	<style>
 		/* width */
 		body {
@@ -221,10 +236,13 @@
 													</div>
 													<form action="#">
 														<div class="row form-group">
-															<div class="col-md-12" id="ingredient-search" style=" overflow:hidden" class="collapse">
+															<div class="col-md-12" id="ingredient-search" class="collapse">
 
-																<div class="input-group" style="width:100%; cursor: text; overflow:hidden">
+																<!-- <div class="form_tags" style="width:100%;">
 																	<input type="text"  id="myListElement" placeholder="eg. Chicken, Rice, Carrot">
+																</div> -->
+																<div class="form_tags">
+																	<input type="text" name="test" value="" id="form_tags_input" />
 																</div>
 																<!-- <div class="input-group">
 																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion" style="height:45px">
@@ -264,8 +282,10 @@
 </body>
 
 <script>
-	t =new $.TextboxList('#myListElement', {  });
-	t.add('Tag 1').add('Tag 2').add('Tag 3');
+	t =new $.TextboxList('#form_tags_input', {  });
+	t.add('Press enter to add ingredient');
+	//t =new $.TextboxList('#myListElement', {  });
+	//t.add('Tag 1').add('Tag 2').add('Tag 3');
 
 	// Click on a close button to hide the current list item
 	//Function creates a list node and appends a cross on the end to close it.
