@@ -312,18 +312,13 @@
 			}
 		});
 		$("#ingredientBut").click(() => {
-			var recipeString = [];
+			var recipeString = "";
 			$(".textboxlist-bit-box-deletable").each((i, element)=>{
-				// alert("what");
 				var ingredient = $(element).html();
 				var end = ingredient.search("<a");
 				ingredient = ingredient.slice(0, end);
 				if ( ingredient != "" ) {
-					if (i%2 == 0 && i!=0 ) {
-						recipeString.push(ingredient.concat(','));
-					} else {
-						recipeString.push(ingredient);
-					}
+					recipeString.concat(ingredient, ',');
 				}
 			});
 
