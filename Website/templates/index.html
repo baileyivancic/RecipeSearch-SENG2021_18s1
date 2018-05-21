@@ -264,7 +264,8 @@
 </body>
 
 <script>
-	var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
+	t =new $.TextboxList('#myListElement', {  });
+	t.add('Tag 1').add('Tag 2').add('Tag 3');
 
 	// Click on a close button to hide the current list item
 	//Function creates a list node and appends a cross on the end to close it.

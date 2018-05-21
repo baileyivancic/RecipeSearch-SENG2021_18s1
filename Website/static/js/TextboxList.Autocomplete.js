@@ -4,22 +4,22 @@ Script: TextboxList.Autocomplete.js
 
 	Authors:
 		Guillermo Rauch
-	
+
 	Note:
 		TextboxList is not priceless for commercial use. See <http://devthought.com/projects/jquery/textboxlist/>
 		Purchase to remove this message.
 */
 
 (function(){
-	
+
 $.TextboxList.Autocomplete = function(textboxlist, _options){
-	
-  var index, prefix, method, container, list, values = [], searchValues = [], results = [], placeholder = false, current, currentInput, suggestInput, hidetimer, doAdd, currentSearch, currentRequest;
+  var othis = this;
+  var keyup_timer = null;
+  var index, prefix, method, container, list, values = [], searchValues = [], results = [], placeholder = false, current, currentInput, hidetimer, doAdd, currentSearch, currentRequest;
 	var options = $.extend(true, {
 		minLength: 1,
 		maxResults: 10,
 		insensitive: true,
-		inlineSuggest: true,
 		highlight: true,
 		highlightSelector: null,
 		mouseInteraction: true,
@@ -29,12 +29,13 @@ $.TextboxList.Autocomplete = function(textboxlist, _options){
 			url: '',
 			param: 'search',
 			extraParams: {},
-			loadPlaceholder: 'Please wait...'
+			loadPlaceholder: 'Please wait...',
+			onResultFormat: null //add by maoqi 2016.11.02
     },
 		method: 'standard',
 		placeholder: 'Type to receive suggestions'
 	}, _options);
-	
+
 	var init = function(){
 		textboxlist.addEvent('bitEditableAdd', setupBit)
 			.addEvent('bitEditableFocus', search)
@@ -44,26 +45,25 @@ $.TextboxList.Autocomplete = function(textboxlist, _options){
 		prefix = textboxlist.getOptions().prefix + '-autocomplete';
 		method = $.TextboxList.Autocomplete.Methods[options.method];
 		container = $('<div class="'+ prefix +'" />').width(textboxlist.getContainer().width()).appendTo(textboxlist.getContainer());
-		if (chk(options.placeholder)) placeholder = $('<div class="'+ prefix +'-placeholder" />').html(options.placeholder).appendTo(container);		
+		if (chk(options.placeholder)) placeholder = $('<div class="'+ prefix +'-placeholder" />').html(options.placeholder).appendTo(container);
 		list = $('<ul class="'+ prefix +'-results" />').appendTo(container).click(function(ev){
 			ev.stopPropagation(); ev.preventDefault();
 		});
 	};
-	
-	var self = this;
+
 	var setupBit = function(bit){
-		bit.getInput().keydown(navigate).keyup(function(){ search(); });
-		if(options.inlineSuggest) {
-		  suggestInput = new $.SuggestInput(bit, textboxlist, self);
-		}
+		bit.toElement().keydown(navigate).keyup(function(){ 
+			//search();
+			clearTimeout(keyup_timer);
+			keyup_timer = search.delay(500);
+		});
 	};
-	
+
 	var search = function(bit){
 		if (bit) currentInput = bit;
 		if (!options.queryRemote && !values.length) return;
 		var search = $.trim(currentInput.getValue()[1]);
-		search.length == 0 ? showPlaceholder() : hidePlaceholder();
-    if (search.length < options.minLength) current = null;
+		if (search.length < options.minLength) showPlaceholder();
 		if (search == currentSearch) return;
 		currentSearch = search;
 		list.css('display', 'none');
@@ -80,6 +80,15 @@ $.TextboxList.Autocomplete = function(textboxlist, _options){
 					data: data,
 					dataType: 'json',
 					success: function(r){
+						//modify by maoqi 2016.11.02, to handle the auto complete result; 
+						if(options.remote.onResultFormat && $.type(options.remote.onResultFormat) == "function"){
+							//options.remote.onSuccess.apply(othis,[list,bit,r]);
+							r = options.remote.onResultFormat.apply(othis,[list,bit,r]);
+							r = r?r:[];//values need to be array;
+							//return;
+						}
+						//--------------------------
+						
 						searchValues[search] = r;
 						values = r;
 						showResults(search);
@@ -89,35 +98,37 @@ $.TextboxList.Autocomplete = function(textboxlist, _options){
 		}
 		showResults(search);
 	};
-	
+
 	var showResults = function(search){
 		var results = method.filter(values, search, options.insensitive, options.maxResults);
 		if (textboxlist.getOptions().unique){
-			results = $.grep(results, function(v){ return textboxlist.isDuplicate(v) == -1; });		
+			results = $.grep(results, function(v){ return textboxlist.isDuplicate(v) == -1; });
 		}
 		hidePlaceholder();
-		if (!results.length) {
-		  if (options.inlineSuggest) suggestInput.clearSuggest();
-		  current = null; return;
-		}
+		if (!results.length) return;
 		blur();
-		list.empty().show();
+		
+		//add by maoqi 2016.11.02, textboxlist parent is hide when init the textboxlit the width is 0
+		if(list.parent().width()==0){
+			list.parent().css("width",textboxlist.getContainer().width());
+		}
+		//--------------------------------
+		
+		list.empty().css('display', 'block');		
 		$.each(results, function(i, r){ addResult(r, search); });
 		if (options.onlyFromValues) focusFirst();
-		if (options.inlineSuggest) suggestInput.suggest(results[0][1]);
 		results = results;
 	};
-	
+
 	var addResult = function(r, searched){
-		var element = $('<li class="'+ prefix +'-result" />').html(r[3] ? r[3] : r[1]).data('textboxlist:auto:value', r);		
+		var element = $('<li class="'+ prefix +'-result" />').html(r[3] ? r[3] : r[1]).data('textboxlist:auto:value', r);
 		element.appendTo(list);
 		if (options.highlight) $(options.highlightSelector ? element.find(options.highlightSelector) : element).each(function(){
 			if ($(this).html()) method.highlight($(this), searched, options.insensitive, prefix + '-highlight');
 		});
 		if (options.mouseInteraction){
 			element.css('cursor', 'pointer').hover(function(){ focus(element); }).mousedown(function(ev){
-			  if(ev.which != 1) return;
-				ev.stopPropagation(); 
+				ev.stopPropagation();
 				ev.preventDefault();
 				clearTimeout(hidetimer);
 				doAdd = true;
@@ -129,48 +140,54 @@ $.TextboxList.Autocomplete = function(textboxlist, _options){
 					doAdd = false;
 				}
 			});
-			if (!options.onlyFromValues) element.mouseleave(function(){ if (current && (current.get(0) == element.get(0))) blur(); });	
+			if (!options.onlyFromValues) element.mouseleave(function(){ if (current && (current.get(0) == element.get(0))) blur(); });
 		}
 	};
-	
+
 	var hide = function(){
 		hidetimer = setTimeout(function(){
 			hidePlaceholder();
-			list.hide();
-			currentSearch = null;			
+			list.css('display', 'none');
+			currentSearch = null;
 		}, $.browser.msie ? 150 : 0);
 	};
-	
+
 	var showPlaceholder = function(){
-		if (placeholder) placeholder.css('display', 'block');		
+		//add by maoqi 2016.11.02, textboxlist parent is hide when init the textboxlit the width is 0
+		if(list.parent().width()==0){
+			list.parent().css("width",textboxlist.getContainer().width());
+		}
+		//--------------------------------
+		
+		if (placeholder) placeholder.css('display', 'block');
 	};
-	
+
 	var hidePlaceholder = function(){
 		if (placeholder) placeholder.css('display', 'none');
 	};
-	
+
 	var focus = function(element){
 		if (!element || !element.length) return;
 		blur();
 		current = element.addClass(prefix + '-result-focus');
 	};
-	
+
 	var blur = function(){
 		if (current && current.length){
 			current.removeClass(prefix + '-result-focus');
 			current = null;
 		}
 	};
-	
+
 	var focusFirst = function(){
 		return focus(list.find(':first'));
 	};
-	
+
 	var focusRelative = function(dir){
 		if (!current || !current.length) return self;
 		return focus(current[dir]());
 	};
-	
+
 	var addCurrent = function(){
 		var value = current.data('textboxlist:auto:value');
 		var b = textboxlist.create('box', value.slice(0, 3));
@@ -183,56 +200,45 @@ $.TextboxList.Autocomplete = function(textboxlist, _options){
 		blur();
 		return self;
 	};
-	
+
 	var navigate = function(ev){
 		var evStop = function(){ ev.stopPropagation(); ev.preventDefault(); };
 		switch (ev.which){
-			case 38: //up
+			case 38:
 				evStop();
 				(!options.onlyFromValues && current && current.get(0) === list.find(':first').get(0)) ? blur() : focusRelative('prev');
 				break;
-			case 40: //down
+			case 40:
 				evStop();
 				(current && current.length) ? focusRelative('next') : focusFirst();
 				break;
-			case 39: //right
-			  if ((!current || current.length == 0) || (currentInput.getCaret() < currentInput.getValue()[1].length))
-			    break;
-			case 9: //tab
+			case 13:
 				evStop();
-				if (current && current.length) addCurrent();
+				if (current && current.length) {
+					evStop();
+					addCurrent();
+				}
 				else if (!options.onlyFromValues){
-					var value = currentInput.getValue();				
+					evStop();
+					var value = currentInput.getValue();
 					var b = textboxlist.create('box', value);
 					if (b){
 						b.inject(currentInput.toElement(), 'before');
 						currentInput.setValue([null, '', null]);
 					}
 				}
-			  break;
-			case 13: //enter
-			  if (current && current.length) {
-			    evStop();
-			    addCurrent();
-			  }
-			  else if(options.stopEnter)
-			    evStop();
 		}
 	};
-	
+
 	this.setValues = function(v){
 		values = v;
 	};
-	
-	this.getOptions = function(){
-		return options;
-	};
-	
+
 	init();
 };
 
 $.TextboxList.Autocomplete.Methods = {
-	
+
 	standard: {
 		filter: function(values, search, insensitive, max){
 			var newvals = [], regexp = new RegExp('\\b' + escapeRegExp(search), insensitive ? 'i' : '');
@@ -242,15 +248,15 @@ $.TextboxList.Autocomplete.Methods = {
 			}
 			return newvals;
 		},
-		
+
 		highlight: function(element, search, insensitive, klass){
 			var regex = new RegExp('(<[^>]*>)|(\\b'+ escapeRegExp(search) +')', insensitive ? 'ig' : 'g');
 			return element.html(element.html().replace(regex, function(a, b, c){
-				return (a.charAt(0) == '<') ? a : '<strong class="'+ klass +'">' + c + '</strong>'; 
+				return (a.charAt(0) == '<') ? a : '<strong class="'+ klass +'">' + c + '</strong>';
 			}));
 		}
 	}
-	
+
 };
 
 var chk = function(v){ return !!(v || v === 0); };

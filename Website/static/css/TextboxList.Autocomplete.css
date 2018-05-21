@@ -11,9 +11,6 @@
 .textboxlist-autocomplete-result { margin: 0; padding: 5px; list-style-type: none; background: #eee; }
 .textboxlist-autocomplete-result-focus { background: #C6D9E4; }
 .textboxlist-autocomplete-highlight { background: #EEF0C4; font-weight: bold; }
-.textboxlist-bit-editable { height: 18px; position: relative; }
-.textboxlist-bit-editable-input { background-color: transparent; position: absolute; z-index: 3; }
-.textboxlist-autocomplete-suggest { color: silver; z-index: 1; }
 
 /*  TextboxList.Autocomplete Style guidelines 
 			Try to keep .textboxlist-autocomplete {} as it is now
