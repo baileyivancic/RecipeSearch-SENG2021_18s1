@@ -265,8 +265,7 @@
 
 <script>
 	var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
-</script>
-<script>
+
 	// Click on a close button to hide the current list item
 	//Function creates a list node and appends a cross on the end to close it.
 	//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
@@ -319,8 +318,12 @@
 				var ingredient = $(element).html();
 				var end = ingredient.search("<a");
 				ingredient = ingredient.slice(0, end);
-				if (ingredient != "") {
-					recipeString.push(ingredient.concat(','));
+				if ( ingredient != "" ) {
+					if (i%2 == 0 && i!=0 ) {
+						recipeString.push(ingredient.concat(','));
+					} else {
+						recipeString.push(ingredient);
+					}
 				}
 			});
 
