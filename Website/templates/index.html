@@ -89,27 +89,59 @@
 
 	<style>
 		/* width */
+
 		body {
 			overflow: hidden;
 			position: fixed;
 		}
+
 		#ingredientList::-webkit-scrollbar {
 			width: 20px;
 		}
+
 		/* Track */
+
 		#ingredientList::-webkit-scrollbar-track {
 			box-shadow: inset 0 0 5px grey;
 			border-radius: 10px;
 		}
+
 		/* Handle */
+
 		#ingredientList::-webkit-scrollbar-thumb {
 			background-color: #FBB448;
 			border-radius: 10px;
 		}
+
 		/* Handle on hover */
+
 		#ingredientList::-webkit-scrollbar-thumb:hover {
 			background-color: #fcbe61;
 			/*border-color: #fcbe61;*/
+		}
+
+		.form_tags .form_tags_text {
+			visibility: hidden;
+			width: 300px;
+			background-color: black;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 5px 0;
+			position: absolute;
+			z-index: 1;
+			bottom: 100%;
+			left: 50%;
+			margin-left: -10%;
+
+			/* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.form_tags:hover .form_tags_text {
+			visibility: visible;
+			opacity: 1;
 		}
 	</style>
 
@@ -136,6 +168,11 @@
 						<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#userModal">
 							<a href="#">
 								<span>Login</span>
+							</a>
+						</li>
+						<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#registerModal">
+							<a href="#">
+								<span>Register</span>
 							</a>
 						</li>
 					</ul>
@@ -228,7 +265,8 @@
 																	<input type="text"  id="myListElement" placeholder="eg. Chicken, Rice, Carrot">
 																</div> -->
 																<div class="form_tags">
-																	<input type="text" name="test" value="" id="form_tags_input" />
+																	<span class="form_tags_text">Press enter to add an Ingredient</span>
+																	<input type="text" name="test" value="" id="form_tags_input">
 																</div>
 																<!-- <div class="input-group">
 																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion" style="height:45px">
@@ -268,8 +306,7 @@
 </body>
 
 <script>
-	t =new $.TextboxList('#form_tags_input', {  });
-	t.add('Press enter to add ingredient');
+	t = new $.TextboxList('#form_tags_input', {});
 	//t =new $.TextboxList('#myListElement', {  });
 	//t.add('Tag 1').add('Tag 2').add('Tag 3');
 
@@ -320,11 +357,11 @@
 		});
 		$("#ingredientBut").click(() => {
 			var recipeString = "";
-			$(".textboxlist-bit-box-deletable").each((i, element)=>{
+			$(".textboxlist-bit-box-deletable").each((i, element) => {
 				var ingredient = $(element).html();
 				var end = ingredient.search("<a");
 				ingredient = ingredient.slice(0, end);
-				if ( ingredient != "" ) {
+				if (ingredient != "") {
 					recipeString = recipeString.concat(ingredient, ',');
 				}
 			});
@@ -388,37 +425,62 @@
 		});
 	});
 </script>
-<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true" style="background-image: url('static/images/loginpanel.jpg');">
-	<div class="modal-dialog" role="document" style= "position: absolute;
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
+	<div class="modal-dialog" role="document" style="position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);">
-		<div class="modal-content collapse multi-collapse">
-			<div id="login" class="modal-header">
-				<h5 class="modal-title" style="display:inline">Login</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
+			<div id="login">
+				<div class="modal-header">
+					<h5 class="modal-title" style="display:inline">Login</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<input type="text" class="form-control" placeholder="Username" id="usr">
+					<input type="password" class="form-control" placeholder="Password" id="usr">
+				</div>
 			</div>
 
-			<div id="register" class="modal-header">
-				<h5 class="modal-title" style="display:inline">Login</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-
-			<div class="modal-body">
-				<input type="text" class="form-control" placeholder="Username" id="usr">
-				<input type="password" class="form-control" placeholder="Password" id="usr">
-			</div>
 			<div class="modal-footer">
 				<button type="button" id="loginBut" value="login" class="btn btn-primary">Login</button>
-				<button type="button" id="registerBut" value="login" class="btn btn-primary">Register</button>
 			</div>
 
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
+	<div class="modal-dialog" role="document" style="position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);">
+		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
+			<div id="register">
+				<div class="modal-header">
+					<h5 class="modal-title" style="display:inline">Register</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<input type="text" class="form-control" placeholder="Username" id="usr">
+					<input type="password" class="form-control" placeholder="Password" id="usr">
+					<input type="password" class="form-control" placeholder="Confirm Password" id="usr">
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" id="registerBut" value="register" class="btn btn-primary">Create Account</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
 
 </html>
