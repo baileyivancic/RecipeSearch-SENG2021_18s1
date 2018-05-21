@@ -87,20 +87,6 @@
 	<!-- Modernizr JS -->
 	<script src="static/js/modernizr-2.6.2.min.js"></script>
 
-	<style type="text/css" media="screen">
-		.form_tags { margin-bottom: 10px; }
-
-		/* Preloader for autocomplete */
-		.textboxlist-loading { background: url('../image/spinner.gif') no-repeat 380px center; }
-
-		/* Autocomplete results styling */
-		.form_friends .textboxlist-autocomplete-result { overflow: hidden; zoom: 1; }
-		.form_friends .textboxlist-autocomplete-result img { float: left; padding-right: 10px; }
-
-		.note { color: #666; font-size: 90%; }
-		#footer { margin: 50px; text-align: center; }
-	</style>
-
 	<style>
 		/* width */
 		body {
@@ -392,6 +378,14 @@
 		$('#recipeBut').click(() => {
 			localStorage.setItem("searchType", "recipe");
 		});
+
+		$('#registerBut').click(() => {
+			localStorage.setItem("loginType", "register");
+		});
+
+		$('#loginBut').click(() => {
+			localStorage.setItem("loginType", "login");
+		});
 	});
 </script>
 <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true" style="background-image: url('static/images/loginpanel.jpg');">
@@ -399,21 +393,30 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="userModal" style="display:inline">Login</h5>
+		<div class="modal-content collapse multi-collapse">
+			<div id="login" class="modal-header">
+				<h5 class="modal-title" style="display:inline">Login</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
+
+			<div id="register" class="modal-header">
+				<h5 class="modal-title" style="display:inline">Login</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
 			<div class="modal-body">
 				<input type="text" class="form-control" placeholder="Username" id="usr">
 				<input type="password" class="form-control" placeholder="Password" id="usr">
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">Login</button>
-				<button type="button" class="btn btn-primary">Register</button>
+				<button type="button" id="loginBut" value="login" class="btn btn-primary">Login</button>
+				<button type="button" id="registerBut" value="login" class="btn btn-primary">Register</button>
 			</div>
+
 		</div>
 	</div>
 </div>
