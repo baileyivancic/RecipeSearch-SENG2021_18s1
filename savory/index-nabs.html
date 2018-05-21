@@ -4,7 +4,7 @@
 	Twitter: http://twitter.com/gettemplateco
 	URL: http://gettemplates.co
 -->
-<html>
+<html style="overflow:hidden;">
 
 <head>
 	<meta charset="utf-8">
@@ -12,7 +12,8 @@
 	<title>RecipeSearch &mdash; The casual cook's companion</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"/>
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
+	/>
 	<meta name="author" content="GetTemplates.co" />
 
 
@@ -41,17 +42,20 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 
+	<!-- TextBox Bubbles -->
+	<link rel="stylesheet" href="css/TextboxList.css">
+	<link rel="stylesheet" href="css/TextboxList.Autocomplete.css">
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+
+	<script src="js/jquery-3.3.1.js"></script>
 
 </head>
 
 <body>
-
-
-
 	<!-- <div class="page-inner"> -->
-	<nav class="gtco-nav" role="navigation">
+	<nav class="gtco-nav"role="navigation">
 		<div class="gtco-container">
 
 			<div class="row">
@@ -82,11 +86,11 @@
 		</div>
 	</nav>
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
+	<header id="gtco-header" style="overflow:hidden" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
 		<section class="block">
 			<div class="carousel slide" data-ride="carousel">
 
-				<div class="carousel-inner" style="height:100vh">
+				<div class="carousel-inner" style="height:100%">
 					<div class="item active">
 						<img src="images/carousel/ingredients.jpg" alt="ingredients">
 					</div>
@@ -161,16 +165,13 @@
 														<div class="row form-group">
 															<div class="col-md-12" id="ingredient-search" class="collapse">
 
-																<div class="input-group">
-																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion"style="height:45px">
-																	<span class="input-group-btn">
-																		<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
-																	</span>
+																<div class="input-group" style="width:100%; cursor: text; height:20px">
+																	<input type="text" class="form-control" id="myListElement" placeholder="eg. Chicken, Rice, Carrot">
+
 																</div>
-																<nav style="padding-top:12px;">
-																	<ul id="ingredientList">
-																	</ul>
-																</nav>
+																<!-- <nav style="padding-top:12px;">
+																	<div id="ingredientList-nav"></div>
+																</nav> -->
 															</div>
 														</div>
 													</form>
@@ -180,7 +181,7 @@
 
 											<div class="row form-group">
 												<div class="col-md-12">
-													<input type="submit" class="btn btn-primary btn-block" value="Search">
+													<input id="submit-button"type="submit" class="btn btn-primary btn-block" value="Search">
 												</div>
 											</div>
 											</form>
@@ -188,9 +189,12 @@
 
 
 									</div>
+
 								</div>
 							</div>
 						</div>
+
+
 					</div>
 				</div>
 
@@ -200,16 +204,19 @@
 	</header>
 
 	<script>
-		$('body,html').css("overflow", "hidden");
-		// Click on a close button to hide the current list item
-		var close = document.getElementsByClassName("close");
+		$(document).ready(()=>{
+			$('body').css("overflow", "hidden");
+			$('html').css("overflow", "hidden");
+			// Click on a close button to hide the current list item
+			var close = document.getElementsByClassName("close");
 
-		for (var i = 0; i < close.length; i++) {
-			close[i].onclick = function () {
-				$(this.parentElement).remove();
+			for (var i = 0; i < close.length; i++) {
+				close[i].onclick = function () {
+					$(this.parentElement).remove();
+				}
 			}
-		}
-		var m = 0;
+			var m = 0;
+		});
 		//Function creates a list node and appends a cross on the end to close it.
 		//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
 		function popList() {
@@ -235,7 +242,44 @@
 			}
 			document.getElementById("input-box-home").value = "";
 		}
+	</script>
 
+	<script>
+		//Script to add the textBox Bubbles
+		$(document).ready(function () {
+		var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
+		var recipeString = [];
+
+		$('#submit-button').click(()=>{
+			$(".textboxlist-bit-box-deletable").each((i, element)=>{
+				// alert("what");
+				var ingredient = $(element).html();
+				var end = ingredient.search("<a");
+				ingredient = ingredient.slice(0, end);
+				if (ingredient != "") {
+					recipeString.push(ingredient.concat(','));
+				}
+			});
+
+			//process recipeString
+			console.log(recipeString);
+			localStorage.setItem("ingredientList", recipeString);
+			if (recipeString.length == 0) {
+				alert("Please enter ingredients before searching.");
+			} else {
+				alert("searching");
+				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					function (data, status) {
+						localStorage.setItem("APIReturn", JSON.stringify(data));
+						window.location.href = '/results'
+					});
+
+			}
+		});
+	});
+	</script>
+
+	<script>
 		$(document).ready(function () {
 			var loggedin = localStorage.getItem("user");
 			if (loggedin == null || loggedin == "notlogged") {
@@ -259,31 +303,6 @@
 							localStorage.setItem("APIReturn", JSON.stringify(data));
 							window.location.href = '/results';
 						});
-				}
-			});
-
-			$("#ingredientInput").click(() => {
-				var recipeString = "";
-
-				$("#ingredientList li").each(function (i, li) {
-					var product = $(li).text();
-					product = product.replace("\u00D7", "");
-					recipeString = recipeString.concat(product, ',');
-				});
-				recipeString = recipeString.slice(0, recipeString.length - 1);
-
-				//alert(recipeString);
-				localStorage.setItem("ingredientList", recipeString);
-				if (recipeString.length == 0) {
-					alert("Please enter ingredients before searching.");
-				} else {
-					//alert("searching");
-					$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-						function (data, status) {
-							localStorage.setItem("APIReturn", JSON.stringify(data));
-							window.location.href = '/results'
-						});
-
 				}
 			});
 
@@ -323,6 +342,29 @@
 
 	<script src="js/moment.min.js"></script>
 	<script src="js/bootstrap-datetimepicker.min.js"></script>
+
+
+	<!-- TextboxList is not priceless for commercial use. See <http://devthought.com/projects/jquery/textboxlist/> -->
+
+	<!-- required stylesheet for TextboxList -->
+	<link rel="stylesheet" href="css/TextboxList.css" type="text/css" media="screen" charset="utf-8" />
+	<!-- required stylesheet for TextboxList.Autocomplete -->
+	<link rel="stylesheet" href="css/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
+
+	<!-- For some reason this file is not found. imported another file-->
+	<!-- <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<!-- required for TextboxList -->
+	<script src="js/GrowingInput.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="js/TextboxList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/TextboxList.Autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
+	<script src="js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- <script src="js/require.js"></script> -->
+
+	<script src="https://storage.googleapis.com/code-snippets/rapidapi.min.js"></script>
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">

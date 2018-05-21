@@ -206,7 +206,10 @@
 														<div class="row form-group">
 															<div class="col-md-12" id="ingredient-search" class="collapse">
 
-																<div class="input-group">
+																<div class="input-group" style="width:100%; cursor: text; height:20px">
+																	<input type="text" class="form-control" id="myListElement" placeholder="eg. Chicken, Rice, Carrot">
+																</div>
+																<!-- <div class="input-group">
 																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion" style="height:45px">
 																	<span class="input-group-btn">
 																		<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
@@ -215,7 +218,7 @@
 																<nav style="padding-top:12px;">
 																	<ul style="height:20vh" id="ingredientList">
 																	</ul>
-																</nav>
+																</nav> -->
 															</div>
 														</div>
 													</form>
@@ -243,6 +246,10 @@
 	</div>
 </body>
 
+<script>
+	var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
+	var recipeString = [];
+</script>
 <script>
 	// Click on a close button to hide the current list item
 	//Function creates a list node and appends a cross on the end to close it.
@@ -290,25 +297,49 @@
 			}
 		});
 		$("#ingredientBut").click(() => {
-			var recipeString = "";
-			$("#ingredientList li").each(function (i, li) {
-				var product = $(li).text();
-				product = product.replace("\u00D7", "");
-				recipeString = recipeString.concat(product, ',');
+			$(".textboxlist-bit-box-deletable").each((i, element)=>{
+				// alert("what");
+				var ingredient = $(element).html();
+				var end = ingredient.search("<a");
+				ingredient = ingredient.slice(0, end);
+				if (ingredient != "") {
+					recipeString.push(ingredient.concat(','));
+				}
 			});
-			recipeString = recipeString.slice(0, recipeString.length - 1);
-			//alert(recipeString);
+
+			//process recipeString
+			console.log(recipeString);
 			localStorage.setItem("ingredientList", recipeString);
 			if (recipeString.length == 0) {
 				alert("Please enter ingredients before searching.");
 			} else {
-				//alert("searching");
+				alert("searching");
 				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
 					function (data, status) {
 						localStorage.setItem("APIReturn", JSON.stringify(data));
 						window.location.href = '/results'
 					});
+
 			}
+			// var recipeString = "";
+			// $("#ingredientList li").each(function (i, li) {
+			// 	var product = $(li).text();
+			// 	product = product.replace("\u00D7", "");
+			// 	recipeString = recipeString.concat(product, ',');
+			// });
+			// recipeString = recipeString.slice(0, recipeString.length - 1);
+			// //alert(recipeString);
+			// localStorage.setItem("ingredientList", recipeString);
+			// if (recipeString.length == 0) {
+			// 	alert("Please enter ingredients before searching.");
+			// } else {
+			// 	//alert("searching");
+			// 	$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+			// 		function (data, status) {
+			// 			localStorage.setItem("APIReturn", JSON.stringify(data));
+			// 			window.location.href = '/results'
+			// 		});
+			// }
 		});
 		$('#searchIngredient').click(() => {
 			$("#IngredientCollapse").collapse("show");
@@ -327,7 +358,7 @@
 	});
 </script>
 <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true" style="background-image: url('static/images/loginpanel.jpg');">
-	<div class="modal-dialog" role="document" style="position: absolute;
+	<div class="modal-dialog" role="document" style= "position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);">
