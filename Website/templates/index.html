@@ -372,6 +372,7 @@
 			$("#RecipeCollapse").collapse("show");
 			$("#IngredientCollapse").collapse("hide");
 		});
+
 		$('#ingredientBut').click(() => {
 			localStorage.setItem("searchType", "ingredient");
 		});
@@ -380,11 +381,13 @@
 		});
 
 		$('#registerBut').click(() => {
-			localStorage.setItem("loginType", "register");
+			$("#register").collapse("show");
+			$("#login").collapse("hide");
 		});
 
 		$('#loginBut').click(() => {
-			localStorage.setItem("loginType", "login");
+			$("#register").collapse("hide");
+			$("#login").collapse("show");
 		});
 	});
 </script>
@@ -393,25 +396,32 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);">
-		<div class="modal-content collapse multi-collapse">
-			<div id="login" class="modal-header">
+		<div class="modal-content">
+
+			<div id="login" class="modal-header  collapse multi-collapse  in">
 				<h5 class="modal-title" style="display:inline">Login</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
+
+				<div class="modal-body">
+					<input type="text" class="form-control" placeholder="Username" id="username">
+					<input type="password" class="form-control" placeholder="Password" id="password">
+				</div>
 			</div>
 
-			<div id="register" class="modal-header">
-				<h5 class="modal-title" style="display:inline">Login</h5>
+			<div id="register" class="modal-header  collapse multi-collapse">
+				<h5 class="modal-title" style="display:inline">Register</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
+
+				<div class="modal-body">
+					<input type="text" class="form-control" placeholder="Set Username" id="username">
+					<input type="password" class="form-control" placeholder="Set Password" id="password">
+				</div>
 			</div>
 
-			<div class="modal-body">
-				<input type="text" class="form-control" placeholder="Username" id="usr">
-				<input type="password" class="form-control" placeholder="Password" id="usr">
-			</div>
 			<div class="modal-footer">
 				<button type="button" id="loginBut" value="login" class="btn btn-primary">Login</button>
 				<button type="button" id="registerBut" value="login" class="btn btn-primary">Register</button>
