@@ -27,3 +27,15 @@ def register():
 @app.route("/savedresults")
 def savedresults():
 	return render_template("savedresults.html")
+
+@app.route("/savedingredients")
+def savedingredients():
+	return render_template("saved-ingredients.html")
+
+@app.route("/savedrecipes")
+def savedrecipes():
+	return render_template("saved-recipes.html")
+
+@app.route("/weeklyplanner")
+def weeklyplanner():
+	return render_template("weekly-planner.html")
