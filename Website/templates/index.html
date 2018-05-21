@@ -28,6 +28,23 @@
 	<!-- Stellar Parallax -->
 	<script src="static/js/jquery.stellar.min.js"></script>
 
+	<!-- required stylesheet for TextboxList -->
+	<link rel="stylesheet" href="static/css/TextboxList.css" type="text/css" media="screen" charset="utf-8" />
+	<!-- required stylesheet for TextboxList.Autocomplete -->
+	<link rel="stylesheet" href="static/css/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
+
+	<!-- For some reason this file is not found. imported another file-->
+	<!-- <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<!-- required for TextboxList -->
+	<script src="static/js/GrowingInput.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="static/js/TextboxList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/TextboxList.Autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
+	<script src="static/js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
+
+
 	<!-- Magnific Popup -->
 	<script src="static/js/jquery.magnific-popup.min.js"></script>
 	<script src="static/js/magnific-popup-options.js"></script>
@@ -248,7 +265,6 @@
 
 <script>
 	var t2 = $('#myListElement').textboxlist({bitsOptions:{editable:{addKeys: [188]}}});
-	var recipeString = [];
 </script>
 <script>
 	// Click on a close button to hide the current list item
@@ -297,6 +313,7 @@
 			}
 		});
 		$("#ingredientBut").click(() => {
+			var recipeString = [];
 			$(".textboxlist-bit-box-deletable").each((i, element)=>{
 				// alert("what");
 				var ingredient = $(element).html();
