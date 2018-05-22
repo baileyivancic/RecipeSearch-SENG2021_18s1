@@ -60,9 +60,7 @@
 	<![endif]-->
 
 	</head>
-	<body>
-
-	<div class="gtco-loader"></div>
+	<body style= "background-image: url('static/Images/back.gif');">
 
 	<div id="page">
 
@@ -73,21 +71,22 @@
 
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="index.html">Savory <em>.</em></a></div>
+					<div id="gtco-logo">
+						<a href="/">RecipeSearch <em>.</em> </a>
+					</div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="menu.html">Menu</a></li>
-						<li class="has-dropdown active">
-							<a href="services.html">Services</a>
+						<li  class = "has-dropdown"> <a href="#">Testing</a>
 							<ul class="dropdown">
-								<li><a href="#">Food Catering</a></li>
-								<li><a href="#">Wedding Celebration</a></li>
-								<li><a href="#">Birthday's Celebration</a></li>
+								<li><a href="/savedingredients">Saved ingredients</a></li>
+								<li><a href="/savedrecipes">Saved recipes</a></li>
+								<li><a href="/weeklyplanner">weekly planner</a></li>
 							</ul>
 						</li>
-						<li><a href="contact.html">Contact</a></li>
-						<li class="btn-cta"><a href="#"><span>Reservation</span></a></li>
+						<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#userModal">
+							<a href="#"> <span>Login</span> </a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -95,72 +94,98 @@
 		</div>
 	</nav>
 
-	<div id="gtco-features">
-		<div class="gtco-container">
+
+	<div class="gtco-section">
+
+
+		<div class="col-lg-8" style="background-color: red;">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-					<h2 class="cursive-font">Our Services</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-face-smile"></i>
-						</span>
-						<h3>Happy People</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-thought"></i>
-						</span>
-						<h3>Creative Culinary</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-truck"></i>
-						</span>
-						<h3>Food Delivery</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-face-smile"></i>
-						</span>
-						<h3>Happy People</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-thought"></i>
-						</span>
-						<h3>Creative Culinary</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-truck"></i>
-						</span>
-						<h3>Food Delivery</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+				<div id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5" style="background-color:transparent;">
+					<div class="gtco-container" style="position:fixed;transform: translateY(-25%);">
+						<div class="row">
+							<div class="col-md-12 col-md-offset-0">
+
+								<div class="row row-mt-15em">
+
+									<div class="col-md-4 col-md-push-1 animate-box" style="width:30vw;" data-animate-effect="fadeInRight">
+										<div class="w3-bar w3-black" style="opacity:0.7;border-radius: 15px 15px 0px 0px;">
+											<button id="searchIngredient" class="w3-bar-item w3-button">
+												<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
+											<button id="searchRecipe" class="w3-bar-item w3-button">
+												<i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
+
+										</div>
+										<div class="form-wrap" style="border-radius: 0px 0px 15px 15px;">
+											<div class="tab">
+
+												<div class="tab-content" style="border-radius: 0px 0px 15px 15px;">
+													<div id="allCollapse">
+														<div id="RecipeCollapse" class="collapse multi-collapse">
+															<div class="tab-content-inner active" data-content="search">
+																<div>
+																	<h3 class="cursive-font">Search by Recipe Name</h3>
+																</div>
+																<form action="#">
+																	<div class="row form-group">
+																		<div class="col-md-12" id="recipe-search" class="collapse">
+																			<input id="recipeInput" type="text" class="form-control" placeholder="e.g. Lasagna">
+																		</div>
+																	</div>
+																</form>
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<input id="recipeBut" type="submit" class="btn btn-primary btn-block" value="Search Again">
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
 					</div>
 				</div>
 
+
+
+				<!--<div class="col-lg-4 col-md-4 col-sm-6">
+						<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+							<figure>
+								<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+							</figure>
+							<div class="fh5co-text">
+								<h2>Fresh Mushrooms</h2>
+								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+								<p>
+									<span class="price cursive-font">$19.15</span>
+								</p>
+							</div>
+						</a>
+					</div>-->
+
 			</div>
 		</div>
+
+		<div class="col-lg-4" style="background-color: blue">
+			<div> <h1> Saved recipes </h1> <div>
+			<div id="recipeList" class="main-container w3-container">
+
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+	<!-- </div> -->
+
 	</div>
 
 	<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
@@ -179,9 +204,6 @@
 
 		</div>
 	</footer>
-	<!-- </div> -->
-
-	</div>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
