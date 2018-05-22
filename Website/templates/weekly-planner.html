@@ -98,8 +98,9 @@
 	<div class="gtco-section">
 
 		<!-- First section -->
-		<div class="col-lg-8">
+		<div class="col-lg-8" style="padding-bottom: 10px;">
 			<h2 class="cursive-font primary-color">Weekly planner</h2>
+			<p style="color: white;">Welcome to the RecipeSearch weekly meal planner. Simply drag a saved recipe into the correct box, and eith er save the meal plan for a later time, or generate a weekly shopping list for all your meals. </p>
 			<table style="width: 100%">
 
 				<tr class="titles">
@@ -115,13 +116,13 @@
 
 				<tr class="breakfast">
 					<th class="empty"> Breakfast </th>
-					<th id="monday" class="tel"> </th>
-					<th id="tuesday" class="tel"> </th>
-					<th id="wednesday" class="tel"> </th>
-					<th id="thursday" class="tel"> </th>
-					<th id="friday" class="tel"> </th>
-					<th id="saturday" class="tel"> </th>
-					<th id="sunday" class="tel"> </th>
+					<th id="monday" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					<th id="tuesday" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					<th id="wednesday" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					<th id="thursday" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					<th id="friday" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					<th id="saturday" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					<th id="sunday" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
 				</tr>
 
 				<tr class="lunch">
@@ -147,6 +148,23 @@
 				</tr>
 
 			</table>
+
+
+			<div style="height: 20px;"> </div>
+
+			<!-- Put text box of saved plans in here -->
+
+			<div style="height: 20px;"> </div>
+
+			<div class="row form-group">
+				<div class="col-sm-4" style="height: 20px; width: 50%;">
+					<input id="save-plan" type="submit" class="btn btn-primary btn-block" value="Save week plan">
+				</div>
+				<div class="col-sm-4" style="red; height: 20px; width: 50%;">
+					<input id="gen-ing-list" type="submit" class="btn btn-primary btn-block" value="Generate ingredient list">
+				</div>
+			</div>
+
 			<!--
 				- grid
 				- Save button
@@ -162,7 +180,7 @@
 		<div class="col-lg-4">
 			<div> <h2 class="cursive-font primary-color">Saved recipes</h2> </div>
 			<div id="recipeList" class="main-container w3-container">
-
+				<img id="test" src="static/Images/banana.png" draggable="true" ondragstart="drag(event)">
 			</div>
 		</div>
 
@@ -219,6 +237,22 @@
 
 	<!-- Main -->
 	<script src="static/js/main.js"></script>
+
+	<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
 
 	</body>
 </html>
