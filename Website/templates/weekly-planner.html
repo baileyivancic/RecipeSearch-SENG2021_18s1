@@ -8,7 +8,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Savory &mdash; Free Website Template, Free HTML5 Template by GetTemplates.co</title>
+	<title>RecipeSearch - Weekly Planner</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -97,96 +97,80 @@
 
 	<div class="gtco-section">
 
+		<!-- First section -->
+		<div class="col-lg-8">
+			<h2 class="cursive-font primary-color">Weekly planner</h2>
+			<table style="width: 100%">
 
-		<div class="col-lg-8" style="background-color: red;">
-			<div class="row">
-				<div id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5" style="background-color:transparent;">
-					<div class="gtco-container" style="position:fixed;transform: translateY(-25%);">
-						<div class="row">
-							<div class="col-md-12 col-md-offset-0">
+				<tr class="titles">
+					<th class="empty-left"> </th>
+					<th class="empty-left"> Monday </th>
+					<th class="empty-left"> Tuesday </th>
+					<th class="empty-left"> Wednesday </th>
+					<th class="empty-left"> Thursday </th>
+					<th class="empty-left"> Friday </th>
+					<th class="empty-left"> Saturday </th>
+					<th class="empty-left"> Sunday </th>
+				</tr>
 
-								<div class="row row-mt-15em">
+				<tr class="breakfast">
+					<th class="empty"> Breakfast </th>
+					<th id="monday" class="tel"> </th>
+					<th id="tuesday" class="tel"> </th>
+					<th id="wednesday" class="tel"> </th>
+					<th id="thursday" class="tel"> </th>
+					<th id="friday" class="tel"> </th>
+					<th id="saturday" class="tel"> </th>
+					<th id="sunday" class="tel"> </th>
+				</tr>
 
-									<div class="col-md-4 col-md-push-1 animate-box" style="width:30vw;" data-animate-effect="fadeInRight">
-										<div class="w3-bar w3-black" style="opacity:0.7;border-radius: 15px 15px 0px 0px;">
-											<button id="searchIngredient" class="w3-bar-item w3-button">
-												<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
-											<button id="searchRecipe" class="w3-bar-item w3-button">
-												<i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
+				<tr class="lunch">
+					<th class="empty"> Lunch </th>
+					<th id="monday" class="tel"> </th>
+					<th id="tuesday" class="tel"> </th>
+					<th id="wednesday" class="tel"> </th>
+					<th id="thursday" class="tel"> </th>
+					<th id="friday" class="tel"> </th>
+					<th id="saturday" class="tel"> </th>
+					<th id="sunday" class="tel"> </th>
+				</tr>
 
-										</div>
-										<div class="form-wrap" style="border-radius: 0px 0px 15px 15px;">
-											<div class="tab">
+				<tr class="dinner">
+					<th class="empty"> Dinner </th>
+					<th id="monday" class="tel"> </th>
+					<th id="tuesday" class="tel"> </th>
+					<th id="wednesday" class="tel"> </th>
+					<th id="thursday" class="tel"> </th>
+					<th id="friday" class="tel"> </th>
+					<th id="saturday" class="tel"> </th>
+					<th id="sunday" class="tel"> </th>
+				</tr>
 
-												<div class="tab-content" style="border-radius: 0px 0px 15px 15px;">
-													<div id="allCollapse">
-														<div id="RecipeCollapse" class="collapse multi-collapse">
-															<div class="tab-content-inner active" data-content="search">
-																<div>
-																	<h3 class="cursive-font">Search by Recipe Name</h3>
-																</div>
-																<form action="#">
-																	<div class="row form-group">
-																		<div class="col-md-12" id="recipe-search" class="collapse">
-																			<input id="recipeInput" type="text" class="form-control" placeholder="e.g. Lasagna">
-																		</div>
-																	</div>
-																</form>
-																<div class="row form-group">
-																	<div class="col-md-12">
-																		<input id="recipeBut" type="submit" class="btn btn-primary btn-block" value="Search Again">
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+			</table>
+			<!--
+				- grid
+				- Save button
+				- List of all Weekly planners created under user profile
+				- Generate ingredients from weekly planner -> generates a list of ingredients from all the recipes in the planner.
+			-->
 
-
-						</div>
-					</div>
-				</div>
-
-
-
-				<!--<div class="col-lg-4 col-md-4 col-sm-6">
-						<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
-							<figure>
-								<img src="images/img_1.jpg" alt="Image" class="img-responsive">
-							</figure>
-							<div class="fh5co-text">
-								<h2>Fresh Mushrooms</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-								<p>
-									<span class="price cursive-font">$19.15</span>
-								</p>
-							</div>
-						</a>
-					</div>-->
-
-			</div>
 		</div>
 
-		<div class="col-lg-4" style="background-color: blue">
-			<div> <h1> Saved recipes </h1> <div>
+
+		<!-- Second section -->
+
+		<div class="col-lg-4">
+			<div> <h2 class="cursive-font primary-color">Saved recipes</h2> </div>
 			<div id="recipeList" class="main-container w3-container">
 
 			</div>
 		</div>
 
+</div>
 	</div>
 
 
-
-
-	<!-- </div> -->
-
-	</div>
+	<!-- Footer -->
 
 	<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
