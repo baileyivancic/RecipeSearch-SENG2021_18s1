@@ -2002,3 +2002,27 @@ form label {
 }
 
 #ingredientList li:nth-child(odd) { background-color: rgba(255, 255, 255, 0.13); }
+
+.tel {
+  height: 150px;
+  border: 3px solid white;
+  width: 12%;
+  overflow: hidden;
+}
+
+.empty {
+  color: white;
+  width: 12%;
+  text-align: center;
+}
+
+.empty-left {
+  color: white;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  padding-right: 12%;
+  padding-bottom: 10px;
+}
