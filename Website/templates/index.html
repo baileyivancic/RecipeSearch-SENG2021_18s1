@@ -420,33 +420,34 @@
 			localStorage.setItem("searchType", "recipe");
 		});
 
-		$('#registerBut').click(() => {
-			//console.log("register: "+$("#register").attr('aria-expanded'));
-			if (!$("#register").attr('aria-expanded')) {
-				//console.log("NOT");
-			} else{
-				//console.log("collapse");
-				$("#register").collapse("show");
-				$("#login").collapse("hide");
-			}
-		});
-
-		$('#loginBut').click(() => {
-			//console.log("login: "+$("#login").attr('aria-expanded'));
-			if (!$("#login").attr('aria-expanded')) {
-				//console.log("NOT");
-				$(loginForm).submit();
-			} else {
-				//console.log("collapse");
-				$("#register").collapse("hide");
-				$("#login").collapse("show");
-			}
-		});
+		//Useless now
+		// $('#registerBut').click(() => {
+		// 	//console.log("register: "+$("#register").attr('aria-expanded'));
+		// 	if (!$("#register").attr('aria-expanded')) {
+		// 		//console.log("NOT");
+		// 	} else{
+		// 		//console.log("collapse");
+		// 		$("#register").collapse("show");
+		// 		$("#login").collapse("hide");
+		// 	}
+		// });
+		//
+		// $('#loginBut').click(() => {
+		// 	//console.log("login: "+$("#login").attr('aria-expanded'));
+		// 	if (!$("#login").attr('aria-expanded')) {
+		// 		//console.log("NOT");
+		// 		$(loginForm).submit();
+		// 	} else {
+		// 		//console.log("collapse");
+		// 		$("#register").collapse("hide");
+		// 		$("#login").collapse("show");
+		// 	}
+		// });
 	});
 </script>
 
 <!-- login model -->
-<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
 	<div class="modal-dialog" role="document" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
 			<div id="login">
@@ -456,23 +457,24 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
+			</div>
 
+			<form id="registerForm" method="POST">
 				<div class="modal-body">
 					<input type="text" class="form-control" name="loginUser" placeholder="Username" id="usrname">
 					<input type="password" class="form-control" name="loginPass" placeholder="Password" id="pass">
 				</div>
-			</div>
+				<div class="modal-footer">
+					<button type="submit" name="loginBut" value="login" class="btn btn-primary">Login</button>
+				</div>
 
-			<div class="modal-footer">
-				<button type="button" id="loginBut" value="login" class="btn btn-primary">Login</button>
-			</div>
-
+			</form>
 		</div>
 	</div>
 </div>
 
 <!-- Register modal -->
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
 	<div class="modal-dialog" role="document" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
 			<div id="register">
@@ -484,17 +486,16 @@
 				</div>
 			</div>
 
-			<form id="loginForm" method="Post">
+			<form id="loginForm" method="POST">
 				<div class="modal-body">
 					<input type="text" class="form-control" name="registerUser" placeholder="Username" id="usr">
 					<input type="password" class="form-control" name="registerPass" placeholder="Password" id="usrpass">
 					<input type="password" class="form-control" name="registerPassCon" placeholder="Confirm Password" id="usrpasscon">
 				</div>
+				<div class="modal-footer">
+					<button type="submit" name="registerBut" value="register" class="btn btn-primary">Create Account</button>
+				</div>
 			</form>
-
-			<div class="modal-footer">
-				<button type="button" id="registerBut" value="register" class="btn btn-primary">Create Account</button>
-			</div>
 
 		</div>
 	</div>

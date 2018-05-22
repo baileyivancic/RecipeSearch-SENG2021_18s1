@@ -21,13 +21,14 @@ class Controller:
 
 Controller = Controller()
 
-@app.route("/")
+@app.route("/",  methods=["GET", "POST"])
+@app.route("/#", methods=["GET", "POST"])
 def index():
 	if request.method == "POST":
-		if request.form["button"] == 'login':
+		if request.form["loginBut"] == 'login':
 			print("Login Attempt")
-		if request.form["bt"] == 'register':
-			return redirect(url_for("register"))
+		if request.form["registerBut"] == 'register':
+			print("register Attempt")
 	return render_template("index.html")
 
 @app.route("/homepage")
