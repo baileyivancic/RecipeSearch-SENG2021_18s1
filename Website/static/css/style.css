@@ -2007,6 +2007,7 @@ form label {
   height: 150px;
   border: 3px solid white;
   width: 12%;
+  overflow: hidden;
 }
 
 .empty {
