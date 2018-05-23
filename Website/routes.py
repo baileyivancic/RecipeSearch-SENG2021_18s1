@@ -105,7 +105,7 @@ def register():
 
 @app.route("/logged-in")
 @login_required
-def logginIn():
+def logginInIndex():
 	return render_template("index.html", loggedin = 1)
 
 #TODO find out how many other pages need to be managed
@@ -115,7 +115,11 @@ def home():
 
 @app.route("/results")
 def results():
-	return render_template("results.html")
+	return render_template("results.html", loggedin=0)
+
+@app.route("/results-logged")
+def resultsLogged():
+	return render_template("results.html", loggedin=1)
 
 @app.route("/savedresults")
 @login_required

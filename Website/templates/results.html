@@ -146,6 +146,10 @@
 		.form_tags .textboxlist{
 			line-height: 2;
 		}
+
+		.logo {
+			text-shadow: 0px 0px 10px rgb(243, 215, 116);
+		}
 	</style>
 
 </head>
@@ -154,32 +158,56 @@
 
 	<div id="page" >
 
-    <nav class="gtco-nav" role="navigation">
-  		<div class="gtco-container">
+		<nav id="loginNav" class="gtco-nav" role="navigation">
+			<div class="gtco-container">
 
-  			<div class="row">
-  				<div class="col-sm-4 col-xs-12">
-  					<div id="gtco-logo">
-  						<a href="/">RecipeSearch <em>.</em> </a>
-  					</div>
-  				</div>
-  				<div class="col-xs-8 text-right menu-1">
-  					<ul>
-  						<li><a href="/savedingredients">Saved ingredients</a></li>
-  						<li><a href="/savedrecipes">Saved recipes</a></li>
-  						<li><a href="/weeklyplanner">Weekly planner</a></li>
-  						<li class="btn-cta" id="index-login-but">
-  							<a href="#"> <span>Login</span> </a>
-  						</li>
-  						<li class="btn-cta" id="index-register-but" >
-  							<a href="#"> <span>Register</span> </a>
-  						</li>
-  					</ul>
-  				</div>
-  			</div>
+				<div class="row">
+					<div class="col-sm-4 col-xs-12">
+						<div id="gtco-logo">
+							<a class="logo" href="/">RecipeSearch <em>.</em> </a>
+						</div>
+					</div>
+					<div class="col-xs-8 text-right menu-1">
+						<ul>
+							<li><a href="/savedingredients">Saved ingredients</a></li>
+							<li><a href="/savedrecipes">Saved recipes</a></li>
+							<li><a href="/weeklyplanner">Weekly planner</a></li>
+							<li class="btn-cta" data-toggle="modal" data-target="#userModal">
+								<a id="index-login-but" href="#"> <span>Login</span> </a>
+							</li>
+							<li class="btn-cta" data-toggle="modal" data-target="#registerModal">
+								<a id="index-register-but" href="#"> <span>Register</span> </a>
+							</li>
+						</ul>
+					</div>
+				</div>
 
-  		</div>
-  	</nav>
+			</div>
+		</nav>
+
+		<nav id="loggedNav" class="gtco-nav" role="navigation">
+			<div class="gtco-container">
+
+				<div class="row">
+					<div class="col-sm-4 col-xs-12">
+						<div id="gtco-logo">
+							<a class="logo" href="/logged-in">RecipeSearch <em>.</em> </a>
+						</div>
+					</div>
+					<div class="col-xs-8 text-right menu-1">
+						<ul>
+							<li><a href="/savedingredients">Saved ingredients</a></li>
+							<li><a href="/savedrecipes">Saved recipes</a></li>
+							<li><a href="/weeklyplanner">Weekly planner</a></li>
+							<li class="btn-cta" >
+								<a id="index-register-but" href="/logout"> <span>logout</span> </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</nav>
 
 		<div class="gtco-section">
 
@@ -358,7 +386,11 @@
 				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
 					function (data, status) {
 						localStorage.setItem("APIReturn", JSON.stringify(data));
-						window.location.href = '/results'
+						if (loggedin == 0) {
+							window.location.href = '/results'
+						} else if (loggedin == 1) {
+							window.location.href = '/results-logged'
+						}
 					});
 
 			}
@@ -385,6 +417,21 @@
 			document.getElementById("input-box-home").value = "";
 		}
 		$(document).ready(function () {
+
+			var loggedin = {{ loggedin }}
+
+			//console.log(loggedin)
+
+			if (loggedin == 0) {
+				//console.log( "false" )
+				$("#loginNav").show();
+				$("#loggedNav").hide();
+			} else if (loggedin == 1) {
+				//console.log( "true" )
+				$("#loginNav").hide();
+				$("#loggedNav").show();
+			}
+
 			var searchType = localStorage.getItem("searchType");
 
 			if (searchType == null || searchType == "recipe") {
@@ -419,7 +466,7 @@
 				});
 				localStorage.setItem("ingredientList", 'empty');
 			}
-			
+
 			});
 
 		$('#searchIngredient').click(() => {
