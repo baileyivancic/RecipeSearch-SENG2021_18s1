@@ -73,6 +73,23 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- required stylesheet for TextboxList -->
+	<link rel="stylesheet" href="static/css/TextboxList.css" type="text/css" media="screen" charset="utf-8" />
+	<!-- required stylesheet for TextboxList.Autocomplete -->
+	<link rel="stylesheet" href="static/css/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
+
+	<!-- For some reason this file is not found. imported another file-->
+	<!-- <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<!-- required for TextboxList -->
+	<script src="static/js/GrowingInput.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="static/js/TextboxList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/TextboxList.Autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
+	<script src="static/js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
+
 	<style>
 		#ingredientList::-webkit-scrollbar {
 			width: 20px;
@@ -100,6 +117,33 @@
 			background-color: #fcbe61;
 			/*border-color: #fcbe61;*/
 		}
+
+		.form_tags .form_tags_text {
+			visibility: hidden;
+			width: 300px;
+			background-color: black;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 5px 0;
+			position: absolute;
+			z-index: 1;
+			bottom: 100%;
+			left: 50%;
+			margin-left: -10%;
+
+			/* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.form_tags:hover .form_tags_text {
+			visibility: visible;
+			opacity: 1;
+		}
+		.form_tags .textboxlist{
+			line-height: 2;
+		}
 	</style>
 
 </head>
@@ -122,10 +166,10 @@
   						<li><a href="/savedingredients">Saved ingredients</a></li>
   						<li><a href="/savedrecipes">Saved recipes</a></li>
   						<li><a href="/weeklyplanner">Weekly planner</a></li>
-  						<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#userModal">
+  						<li class="btn-cta" id="index-login-but">
   							<a href="#"> <span>Login</span> </a>
   						</li>
-  						<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#registerModal">
+  						<li class="btn-cta" id="index-register-but" >
   							<a href="#"> <span>Register</span> </a>
   						</li>
   					</ul>
@@ -188,7 +232,12 @@
 																	<div class="row form-group">
 																		<div class="col-md-12" id="ingredient-search" class="collapse">
 
-																			<div class="input-group">
+																			<div class="form_tags">
+																				<span class="form_tags_text">Press enter to add an Ingredient</span>
+																				<input class="form-control" type="text" name="test" value="" id="form_tags_input">
+																			</div>
+
+																			<!-- <div class="input-group">
 																				<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion" style="height:45px">
 																				<span class="input-group-btn">
 																					<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
@@ -196,7 +245,7 @@
 																			</div>
 																			<nav style="padding-top:12px;">
 																				<ul style="height:20vh" id="ingredientList"> </ul>
-																			</nav>
+																			</nav> -->
 																		</div>
 																	</div>
 																</form>
@@ -295,6 +344,8 @@
 	<script src="static/js/main.js"></script>
 
 	<script>
+		t = new $.TextboxList('#form_tags_input', {});
+
 		$("#recipeBut").click(() => {
 			var recipeName = document.getElementById("recipeInput").value;
 			if (recipeName == "") {
@@ -355,6 +406,7 @@
 		}
 		$(document).ready(function () {
 			var searchType = localStorage.getItem("searchType");
+
 			if (searchType == null || searchType == "recipe") {
 				$("#RecipeCollapse").collapse("show");
 				$("#IngredientCollapse").collapse("hide");
@@ -362,6 +414,7 @@
 				$("#IngredientCollapse").collapse("show");
 				$("#RecipeCollapse").collapse("hide");
 			}
+
 			var object = localStorage.getItem("APIReturn");
 			var recipeObject = JSON.parse(object);
 			for (var i = 0; i < 100; i++) {
@@ -374,31 +427,31 @@
 				}
 			}
 			//adds the ingredient list from the previous page to this page
-			var list = localStorage.getItem("ingredientList");
-			if (list != 'empty') {
-				list = list.split(",");
-				$.each(list, (i, ingredient) => {
-					var node = document.createElement("LI");
+			// var list = localStorage.getItem("ingredientList");
+			// if (list != 'empty') {
+			// 	list = list.split(",");
+			// 	$.each(list, (i, ingredient) => {
+			// 		var node = document.createElement("LI");
+			//
+			// 		//Adds value in text box
+			// 		var textnode = document.createTextNode(ingredient);
+			// 		node.appendChild(textnode);
+			// 		document.getElementById("ingredientList").appendChild(node);
+			//
+			// 		var span = document.createElement("SPAN");
+			// 		var txt = document.createTextNode("\u00D7");
+			// 		span.className = "close";
+			// 		span.appendChild(txt);
+			// 		node.appendChild(span);
+			//
+			// 		$(node).addClass("non-Deleted");
+			// 		node.onclick = function () {
+			// 			node.remove();
+			// 		}
+			// 	});
+			// 	localStorage.setItem("ingredientList", 'empty');
+			});
 
-					//Adds value in text box
-					var textnode = document.createTextNode(ingredient);
-					node.appendChild(textnode);
-					document.getElementById("ingredientList").appendChild(node);
-
-					var span = document.createElement("SPAN");
-					var txt = document.createTextNode("\u00D7");
-					span.className = "close";
-					span.appendChild(txt);
-					node.appendChild(span);
-
-					$(node).addClass("non-Deleted");
-					node.onclick = function () {
-						node.remove();
-					}
-				});
-				localStorage.setItem("ingredientList", 'empty');
-			}
-		});
 		$('#searchIngredient').click(() => {
 			$("#IngredientCollapse").collapse("show");
 			$("#RecipeCollapse").collapse("hide");
@@ -415,9 +468,20 @@
 		$('#recipeBut').click(() => {
 			localStorage.setItem("searchType", "recipe");
 		});
+
+		$("#index-login-but").click(()=>{
+			//enable login button
+			window.location.href = '/login'
+		});
+
+		$("#index-register-but").click(()=>{
+			//enable register button
+			window.location.href = '/register'
+		});
+
 	</script>
 </body>
-<div class= "modal fade" id = "userModal" tabindex= "-1" role= "dialog" aria-labelledby ="userModal" aria-hidden= "true" style="background-image: url('static/images/loginpanel.jpg');">
+<!-- <div class= "modal fade" id = "userModal" tabindex= "-1" role= "dialog" aria-labelledby ="userModal" aria-hidden= "true" style="background-image: url('static/images/loginpanel.jpg');">
 	<div class= "modal-dialog" role="document" style= "position: absolute;
 	top: 50%;
 	left: 50%;
@@ -439,5 +503,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 </html>
