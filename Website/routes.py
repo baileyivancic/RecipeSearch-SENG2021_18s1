@@ -64,6 +64,7 @@ login_manager.login_message = u"Bonvolu ensaluti por uzi tiun paĝon."
 def index():
 	#TODO try and put back into modal form
 	if request.method == "POST":
+		print("POST")
 		if request.form.get("login", None) == 'login':
 			print("loggin Attempt")
 			user = request.form["loginUser"].strip()
