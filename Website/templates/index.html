@@ -330,8 +330,6 @@
 
 <script>
 	t = new $.TextboxList('#form_tags_input', {});
-	//t =new $.TextboxList('#myListElement', {  });
-	//t.add('Tag 1').add('Tag 2').add('Tag 3');
 
 	// Click on a close button to hide the current list item
 	//Function creates a list node and appends a cross on the end to close it.
@@ -396,7 +394,7 @@
 			$(".textboxlist-bit-box-deletable").each((i, element) => {
 				var ingredient = $(element).html();
 				var end = ingredient.search("<a");
-				ingredient = ingredient.slice(0, end);
+				ingredient = ingredient.slice(0, end).trim().toLowerCase();
 				if (ingredient != "") {
 					recipeString = recipeString.concat(ingredient, ',');
 				}
