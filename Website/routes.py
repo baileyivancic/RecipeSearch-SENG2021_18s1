@@ -90,7 +90,11 @@ def index():
 				return redirect("/logged-in")
 			else:
 				#TODO handle not valid registration info
-				return redirect(url_for("register"))
+				pass
+
+		if request.form.get("dummy", None) == 'dummy':
+			#Hacky as shit
+			pass
 
 	return render_template("index.html", loggedin = 0)
 
