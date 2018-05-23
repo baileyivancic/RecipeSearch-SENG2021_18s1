@@ -168,14 +168,14 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#userModal">
+						<li class="btn-cta" data-toggle="modal" data-target="#userModal">
 							<a href="#">
-								<span>Login</span>
+								<span id="index-login-but">Login</span>
 							</a>
 						</li>
-						<li class="btn-cta" id="index-login-but" data-toggle="modal" data-target="#registerModal">
+						<li class="btn-cta" data-toggle="modal" data-target="#registerModal">
 							<a href="#">
-								<span>Register</span>
+								<span id="index-register-but">Register</span>
 							</a>
 						</li>
 					</ul>
@@ -336,6 +336,13 @@
 		document.getElementById("input-box-home").value = "";
 	}
 	$(document).ready(function () {
+		//disabling login button until later
+		$("#loginBut").value = "inactive"
+		$("#loginBut").disabled = true
+		//disabling register button until later
+		$("#registerBut").value = "inactive"
+		$("#registerBut").disabled = true
+
 		var loggedin = localStorage.getItem("user");
 		if (loggedin == null || loggedin == "notlogged") {
 			$("#loginNav").show();
@@ -422,6 +429,18 @@
 			localStorage.setItem("searchType", "recipe");
 		});
 
+		$("#index-login-but").click(()=>{
+			//enable login button
+			window.location.href = '/login'
+		});
+
+		$("#index-register-but").click(()=>{
+			//enable register button
+			window.location.href = '/register'
+		});
+
+
+
 		//Useless now
 		// $('#registerBut').click(() => {
 		// 	//console.log("register: "+$("#register").attr('aria-expanded'));
@@ -449,7 +468,7 @@
 </script>
 
 <!-- login model -->
-<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
+<!-- <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
 	<div class="modal-dialog" role="document" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
 			<div id="login">
@@ -461,23 +480,21 @@
 				</div>
 			</div>
 
-			<form id="registerForm" method="POST">
+			<form method="POST">
 				<div class="modal-body">
 					<input type="text" class="form-control" name="loginUser" placeholder="Username" id="usrname">
 					<input type="password" class="form-control" name="loginPass" placeholder="Password" id="pass">
 				</div>
 				<div class="modal-footer">
-					<button type="submit" name="loginBut" value="login" class="btn btn-primary">Login</button>
+					<button id="loginBut" type="submit" name="login" value="login" class="btn btn-primary">Login</button>
 				</div>
 
-			</form>
 		</div>
 	</div>
-</div>
+</div> -->
 
-<!-- Register modal -->
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
-	<div class="modal-dialog" role="document" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+<!-- <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
+	<div class="modal-dialog" role="document" style="background-image: url('static/images/loginpanel.jpg'); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
 			<div id="register">
 				<div class="modal-header">
@@ -488,19 +505,18 @@
 				</div>
 			</div>
 
-			<form id="loginForm" method="POST">
 				<div class="modal-body">
 					<input type="text" class="form-control" name="registerUser" placeholder="Username" id="usr">
 					<input type="password" class="form-control" name="registerPass" placeholder="Password" id="usrpass">
 					<input type="password" class="form-control" name="registerPassCon" placeholder="Confirm Password" id="usrpasscon">
 				</div>
 				<div class="modal-footer">
-					<button type="submit" name="registerBut" value="register" class="btn btn-primary">Create Account</button>
+					<button id="registerBut" type="submit" name="register" value="register" class="btn btn-primary">Create Account</button>
 				</div>
 			</form>
 
 		</div>
 	</div>
-</div>
+</div> -->
 
 </html>

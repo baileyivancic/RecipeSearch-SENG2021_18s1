@@ -16,19 +16,80 @@ class Controller:
 			self.database = Database()
 			self.database.first_run()
 
-		def register_user(username, password):
-			this.database.register_user(username, password)
+		def register_user(self, username, password):
+			self.database.register_user(username, password)
 
-Controller = Controller()
+		def isValidUser(self, username, password):
+			return self.database.isValidUser(username, password)
+
+class User(UserMixin):
+	def __init__(self, id):
+		self.id = id
+
+	def get_id(self):
+		return self.id
+
+control = Controller()
+
+def check_password(user_id, password):
+	if control.isValidUser(user_id, password):
+		user = User(user_id)
+		login_user(user)
+		return True
+	return False
+
+def get_user(user_id):
+
+	return User(user_id)
+
+@login_manager.user_loader
+def load_user(user_id):
+	# get user information from db
+	user = get_user(user_id)
+	return user
 
 @app.route("/",  methods=["GET", "POST"])
-@app.route("/#", methods=["GET", "POST"])
 def index():
+	#TODO try and put back into modal form
+	return render_template("index.html")
+
+@app.route("/login",  methods=["GET", "POST"])
+def login():
 	if request.method == "POST":
-		if request.form["loginBut"] == 'login':
-			print("Login Attempt")
-		if request.form["registerBut"] == 'register':
-			print("register Attempt")
+		if request.form["login"] == 'login':
+			#TODO gonna need to user request.form.get("something", False)
+			user = request.form["loginUser"]
+			password = request.form["loginPass"]
+
+			if check_password(user, password):
+				print("loggedin")
+				return redirect("/logged-in")
+			else:
+				#TODO handle not valid username and password
+				pass
+
+	return render_template("login.html")
+
+@app.route("/register",  methods=["GET", "POST"])
+def register():
+	if request.method == "POST":
+		if request.form["register"] == 'register':
+			#TODO gonna need to user request.form.get("something", False)
+			user = request.form["registerUser"]
+			password = request.form["registerPass"]
+			print("register Attempt: user:" + user + " pass: " + password)
+
+			if control.register_user(user, password):
+				return redirect("logged-in")
+			else:
+				#TODO handle not valid registration info
+				return redirect(url_for("register"))
+	return render_template("register.html")
+
+@app.route("/logged-in")
+@login_required
+def logginIn():
+	#TODO change into a proper logged in page
 	return render_template("index.html")
 
 @app.route("/homepage")
@@ -38,14 +99,6 @@ def home():
 @app.route("/results")
 def results():
 	return render_template("results.html")
-
-@app.route("/login",  methods=["GET", "POST"])
-def login():
-	return render_template("login.html")
-
-@app.route("/register",  methods=["GET", "POST"])
-def register():
-	return render_template("register.html")
 
 @app.route("/savedresults")
 def savedresults():

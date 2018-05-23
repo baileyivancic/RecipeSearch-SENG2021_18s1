@@ -18,20 +18,21 @@ class Database(object):
 		db.commit()
 		db.close()
 
-	def register_user(username, password):
+	def register_user(self, username, password):
 		db = sqlite3.connect('database.db')
 		cursor = db.cursor()
 
-		cursor.execute("SELECT EXISTS(SELECT 1 FROM loginDetails WHERE username=?)", (username, ))
-		temp =  cursor.fetchone
+		cursor.execute("SELECT EXISTS(SELECT 1 FROM loginDetails WHERE username=? AND password=?)", (username, password))
+		temp =  cursor.fetchone()
 
 		isValid = True;
 
+		print("result from db ", temp);
 		if temp != (0, ):
 			# there is already a user using this user name
-			isValid = false;
+			isValid = False;
 		else :
-			cursor.execute('''SELECT MAX(id) FROM loginDetails''')
+			cursor.execute('''SELECT MAX(userID) FROM loginDetails''')
 			i = cursor.fetchone()
 			if i[0]!=None:
 				x = i[0] + 1
@@ -39,6 +40,24 @@ class Database(object):
 				x = 1
 			cursor.execute('''INSERT INTO loginDetails (userID, username, password) VALUES (?,?,?)''',
 							(x, username, password))
+
+		db.commit()
+		db.close()
+		return isValid
+
+	def isValidUser(self, username, password):
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+
+		cursor.execute("SELECT EXISTS(SELECT 1 FROM loginDetails WHERE username=? AND password=?)", (username, password, ))
+		temp =  cursor.fetchone()
+
+		isValid = False;
+
+		if temp != (0, ):
+			# there is already a user using this user name
+			isValid = True;
+
 
 		db.commit()
 		db.close()
