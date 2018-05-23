@@ -106,7 +106,7 @@
 
 				<form method="POST">
 					<div class="modal-body">
-						<input type="text" class="form-control" name="loginUser" placeholder="Username" id="usrname" required>
+						<input type="text" class="form-control" name="loginUser" placeholder="Username" id="username" required>
 						<input type="password" class="form-control" name="loginPass" placeholder="Password" id="pass" required>
 					</div>
 					<div class="modal-footer">
@@ -116,4 +116,31 @@
 			</div>
 		</div>
 </body>
+
+<style>
+	input:required {
+	  border-width: 2px;
+	}
+
+	input:invalid {
+	  border-color: #FF6600;
+	}
+</style>
+
+<script>
+
+	$(document).ready( ()=>{
+		document.getElementById("username").oninput = ()=>{
+			var value = document.getElementById("username").value;
+			var element = document.getElementById("username");
+
+			var response = {{ response }}
+			if ( response == 0 ) {
+				document.getElementById("username").setCustomValidity("wrong");
+			}
+
+			document.getElementById("username").setCustomValidity("");
+		}
+	});
+</script>
 </html>

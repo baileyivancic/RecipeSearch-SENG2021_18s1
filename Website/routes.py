@@ -62,7 +62,6 @@ login_manager.login_message = u"Bonvolu ensaluti por uzi tiun paĝon."
 
 @app.route("/",  methods=["GET", "POST"])
 def index():
-	#TODO try and put back into modal form
 	return render_template("index.html", loggedin = 0)
 
 @app.route("/logout",  methods=["GET", "POST"])
@@ -76,44 +75,37 @@ def logout():
 def login():
 	if request.method == "POST":
 		if request.form["login"] == 'login':
-			#TODO gonna need to user request.form.get("something", False)
 			user = request.form["loginUser"].strip()
 			password = request.form["loginPass"].strip()
 
-			#registered_user = User.query.filter_by(username=username,password=password).first()
 			if check_password(user, password):
-				print("loggedin")
 				login_user(User(user), remember= False)
 				return redirect("/logged-in")
 			else:
-				#TODO handle not valid username and password
+				return render_template("login.html", response=0)
 				pass
 
-	return render_template("login.html")
+	return render_template("login.html", response= 1)
 
 @app.route("/register",  methods=["GET", "POST"])
 def register():
 	if request.method == "POST":
 		if request.form["register"] == 'register':
-			#TODO gonna need to user request.form.get("something", False)
 			user = request.form["registerUser"].strip()
 			password = request.form["registerPass"].strip()
 			print("register Attempt: user:" + user + " pass: " + password)
 
 			if control.register_user(user, password):
-				print("loggedin")
 				login_user(User(user), remember= False)
 				return redirect("/logged-in")
 			else:
-				#TODO handle not valid registration info
-				return redirect(url_for("register"))
+				return render_template("register.html", response=0)
 
-	return render_template("register.html")
+	return render_template("register.html", response=1)
 
 @app.route("/logged-in")
 @login_required
 def logginIn():
-	#TODO change into a proper logged in page
 	return render_template("index.html", loggedin = 1)
 
 #TODO find out how many other pages need to be managed
