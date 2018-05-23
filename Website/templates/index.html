@@ -259,13 +259,11 @@
 														<div>
 															<h3 class="cursive-font">Search by Recipe Name</h3>
 														</div>
-														<form action="#">
 															<div class="row form-group">
 																<div class="col-md-12" id="recipe-search" class="collapse">
 																	<input id="recipeInput" type="text" class="form-control" placeholder="e.g. Lasagna">
 																</div>
 															</div>
-														</form>
 														<div class="row form-group">
 															<div class="col-md-12">
 																<input id="recipeBut" type="submit" class="btn btn-primary btn-block" value="Search">
@@ -278,7 +276,6 @@
 													<div>
 														<h3 class="cursive-font">Search by Ingredient</h3>
 													</div>
-													<form action="#">
 														<div class="row form-group">
 															<div class="col-md-12" id="ingredient-search" class="collapse">
 
@@ -303,7 +300,6 @@
 																</nav> -->
 															</div>
 														</div>
-													</form>
 													<div class="row form-group">
 														<div class="col-md-12">
 															<input id="ingredientBut" type="submit" class="btn btn-primary btn-block" value="Search">
@@ -446,40 +442,29 @@
 			localStorage.setItem("searchType", "recipe");
 		});
 
-		// $("#index-login-but").click(()=>{
-		// 	//enable login button
-		// 	window.location.href = '/login'
-		// });
-		//
-		// $("#index-register-but").click(()=>{
-		// 	//enable register button
-		// 	window.location.href = '/register'
-		// });
+		$("#index-login-but").click(()=>{
+			//enable login button
+			console.log("loggin in")
+			document.getElementById('login_Modal').style.zIndex = 0;
+			document.getElementById('register_Modal').style.zIndex = 999;
+		});
+
+		$("#index-register-but").click(()=>{
+			//enable register button
+			console.log("registering")
+			document.getElementById('login_Modal').style.zIndex = 999;
+			document.getElementById('register_Modal').style.zIndex = 000;
+		});
 
 
 
-		//Useless now
+		// //Useless now
 		// $('#registerBut').click(() => {
-		// 	//console.log("register: "+$("#register").attr('aria-expanded'));
-		// 	if (!$("#register").attr('aria-expanded')) {
-		// 		//console.log("NOT");
-		// 	} else{
-		// 		//console.log("collapse");
-		// 		$("#register").collapse("show");
-		// 		$("#login").collapse("hide");
-		// 	}
+		//
 		// });
 		//
 		// $('#loginBut').click(() => {
-		// 	//console.log("login: "+$("#login").attr('aria-expanded'));
-		// 	if (!$("#login").attr('aria-expanded')) {
-		// 		//console.log("NOT");
-		// 		$(loginForm).submit();
-		// 	} else {
-		// 		//console.log("collapse");
-		// 		$("#register").collapse("hide");
-		// 		$("#login").collapse("show");
-		// 	}
+		//
 		// });
 	});
 </script>
@@ -508,6 +493,7 @@
 			</div>
 
 			<form method="POST">
+			<div id="login_Modal">
 				<div class="modal-body">
 					<input type="text" class="form-control" name="loginUser" placeholder="Username" id="usrname" required>
 					<input type="password" class="form-control" name="loginPass" placeholder="Password" id="pass" required>
@@ -515,13 +501,13 @@
 				<div class="modal-footer">
 					<button id="loginBut" type="submit" name="login" value="login" class="btn btn-primary">Login</button>
 				</div>
-
+			</div>
 		</div>
 	</div>
 </div>
 
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
-	<div class="modal-dialog" role="document" style="background-image: url('static/images/loginpanel.jpg'); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+	<div class="modal-dialog" role="document" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
 			<div id="register">
 				<div class="modal-header">
@@ -532,13 +518,15 @@
 				</div>
 			</div>
 
-				<div class="modal-body">
-					<input type="text" class="form-control" name="registerUser" placeholder="Username" id="usr" required>
-					<input type="password" class="form-control" name="registerPass" placeholder="Password" id="usrpass" required>
-					<input type="password" class="form-control" name="registerPassCon" placeholder="Confirm Password" id="usrpasscon" required>
-				</div>
-				<div class="modal-footer">
-					<button id="registerBut" type="submit" name="register" value="register" class="btn btn-primary">Create Account</button>
+				<div id="register_Modal">
+					<div class="modal-body">
+						<input type="text" class="form-control" name="registerUser" placeholder="Username" id="usr" required>
+						<input type="password" class="form-control" name="registerPass" placeholder="Password" id="usrpass" required>
+						<input type="password" class="form-control" name="registerPassCon" placeholder="Confirm Password" id="usrpasscon" required>
+					</div>
+					<div class="modal-footer">
+						<button id="registerBut" type="submit" name="register" value="register" class="btn btn-primary">Create Account</button>
+					</div>
 				</div>
 			</form>
 

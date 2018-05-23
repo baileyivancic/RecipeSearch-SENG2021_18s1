@@ -64,7 +64,6 @@ login_manager.login_message = u"Bonvolu ensaluti por uzi tiun paĝon."
 def index():
 	#TODO try and put back into modal form
 	if request.method == "POST":
-		print("POST")
 		if request.form.get("login", None) == 'login':
 			print("loggin Attempt")
 			user = request.form["loginUser"].strip()
@@ -92,10 +91,6 @@ def index():
 			else:
 				#TODO handle not valid registration info
 				pass
-
-		if request.form.get("dummy", None) == 'dummy':
-			#Hacky as shit
-			pass
 
 	return render_template("index.html", loggedin = 0)
 
