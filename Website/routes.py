@@ -63,20 +63,9 @@ login_manager.login_message = u"Bonvolu ensaluti por uzi tiun paĝon."
 @app.route("/",  methods=["GET", "POST"])
 def index():
 	#TODO try and put back into modal form
-	return render_template("index.html", loggedin = 0)
-
-@app.route("/logout",  methods=["GET", "POST"])
-@login_required
-def logout():
-	logout_user()
-	return render_template("index.html", loggedin = 0)
-
-
-@app.route("/login",  methods=["GET", "POST"])
-def login():
 	if request.method == "POST":
-		if request.form["login"] == 'login':
-			#TODO gonna need to user request.form.get("something", False)
+		if request.form.get("login", None) == 'login':
+			print("loggin Attempt")
 			user = request.form["loginUser"].strip()
 			password = request.form["loginPass"].strip()
 
@@ -89,13 +78,8 @@ def login():
 				#TODO handle not valid username and password
 				pass
 
-	return render_template("login.html")
-
-@app.route("/register",  methods=["GET", "POST"])
-def register():
-	if request.method == "POST":
-		if request.form["register"] == 'register':
-			#TODO gonna need to user request.form.get("something", False)
+		if request.form.get("register", None) == 'register':
+			print("register Attempt")
 			user = request.form["registerUser"].strip()
 			password = request.form["registerPass"].strip()
 			print("register Attempt: user:" + user + " pass: " + password)
@@ -108,7 +92,51 @@ def register():
 				#TODO handle not valid registration info
 				return redirect(url_for("register"))
 
-	return render_template("register.html")
+	return render_template("index.html", loggedin = 0)
+
+@app.route("/logout",  methods=["GET", "POST"])
+@login_required
+def logout():
+	logout_user()
+	return render_template("index.html", loggedin = 0)
+
+
+# @app.route("/login",  methods=["GET", "POST"])
+# def login():
+# 	if request.method == "POST":
+# 		if request.form["login"] == 'login':
+# 			user = request.form["loginUser"].strip()
+# 			password = request.form["loginPass"].strip()
+#
+# 			#registered_user = User.query.filter_by(username=username,password=password).first()
+# 			if check_password(user, password):
+# 				print("loggedin")
+# 				login_user(User(user), remember= False)
+# 				return redirect("/logged-in")
+# 			else:
+# 				#TODO handle not valid username and password
+# 				pass
+#
+# 	return render_template("login.html")
+#
+# @app.route("/register",  methods=["GET", "POST"])
+# def register():
+# 	if request.method == "POST":
+# 		if request.form["register"] == 'register':
+# 			#TODO gonna need to use request.form.get("something", False)
+# 			user = request.form["registerUser"].strip()
+# 			password = request.form["registerPass"].strip()
+# 			print("register Attempt: user:" + user + " pass: " + password)
+#
+# 			if control.register_user(user, password):
+# 				print("loggedin")
+# 				login_user(User(user), remember= False)
+# 				return redirect("/logged-in")
+# 			else:
+# 				#TODO handle not valid registration info
+# 				return redirect(url_for("register"))
+#
+# 	return render_template("register.html")
 
 @app.route("/logged-in")
 @login_required
