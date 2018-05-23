@@ -124,17 +124,21 @@ def results():
 	return render_template("results.html")
 
 @app.route("/savedresults")
+@login_required
 def savedresults():
 	return render_template("savedresults.html")
 
 @app.route("/savedingredients")
+@login_required
 def savedingredients():
 	return render_template("saved-ingredients.html")
 
 @app.route("/savedrecipes")
+@login_required
 def savedrecipes():
 	return render_template("saved-recipes.html")
 
 @app.route("/weeklyplanner")
+@login_required
 def weeklyplanner():
 	return render_template("weekly-planner.html")
