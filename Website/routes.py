@@ -64,6 +64,12 @@ def index():
 	#TODO try and put back into modal form
 	return render_template("index.html", loggedin = 0)
 
+@app.route("/logout",  methods=["GET", "POST"])
+@login_required
+def logout():
+	logout_user()
+	return render_template("index.html", loggedin = 0)
+
 
 @app.route("/login",  methods=["GET", "POST"])
 def login():
