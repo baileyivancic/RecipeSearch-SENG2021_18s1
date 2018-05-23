@@ -322,7 +322,6 @@
   </div>
 
 	<script>
-		t = new $.TextboxList('#form_tags_input', {});
 
 		$("#recipeBut").click(() => {
 			var recipeName = document.getElementById("recipeInput").value;
@@ -339,20 +338,23 @@
 
 		$("#ingredientBut").click(() => {
 			var recipeString = "";
-
-			$("#ingredientList li").each(function (i, li) {
-				var product = $(li).text();
-				product = product.replace("\u00D7", "");
-				recipeString = recipeString.concat(product, ',');
+			$(".textboxlist-bit-box-deletable").each((i, element) => {
+				var ingredient = $(element).html();
+				var end = ingredient.search("<a");
+				ingredient = ingredient.slice(0, end).trim().toLowerCase();
+				if (ingredient != "") {
+					recipeString = recipeString.concat(ingredient, ',');
+				}
 			});
-			recipeString = recipeString.slice(0, recipeString.length - 1);
 
-			//alert(recipeString);
+			recipeString = recipeString.slice(0, recipeString.length - 1);
+			//process recipeString
+			console.log(recipeString);
 			localStorage.setItem("ingredientList", recipeString);
 			if (recipeString.length == 0) {
 				alert("Please enter ingredients before searching.");
 			} else {
-				//alert("searching");
+				alert("searching");
 				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
 					function (data, status) {
 						localStorage.setItem("APIReturn", JSON.stringify(data));
@@ -404,30 +406,20 @@
 
 				}
 			}
+
 			//adds the ingredient list from the previous page to this page
-			// var list = localStorage.getItem("ingredientList");
-			// if (list != 'empty') {
-			// 	list = list.split(",");
-			// 	$.each(list, (i, ingredient) => {
-			// 		var node = document.createElement("LI");
-			//
-			// 		//Adds value in text box
-			// 		var textnode = document.createTextNode(ingredient);
-			// 		node.appendChild(textnode);
-			// 		document.getElementById("ingredientList").appendChild(node);
-			//
-			// 		var span = document.createElement("SPAN");
-			// 		var txt = document.createTextNode("\u00D7");
-			// 		span.className = "close";
-			// 		span.appendChild(txt);
-			// 		node.appendChild(span);
-			//
-			// 		$(node).addClass("non-Deleted");
-			// 		node.onclick = function () {
-			// 			node.remove();
-			// 		}
-			// 	});
-			// 	localStorage.setItem("ingredientList", 'empty');
+
+			t = new $.TextboxList('#form_tags_input', {});
+
+			var list = localStorage.getItem("ingredientList");
+			if (list != 'empty') {
+				list = list.split(",");
+				$.each(list, (i, ingredient) => {
+					t.add(ingredient)
+				});
+				localStorage.setItem("ingredientList", 'empty');
+			}
+			
 			});
 
 		$('#searchIngredient').click(() => {
