@@ -2001,7 +2001,7 @@ form label {
   user-select: none;
 }
 
-#ingredientList li:nth-child(odd) { background-color: rgba(255, 255, 255, 0.13); }
+/*#ingredientList li:nth-child(odd) { background-color: rgba(255, 255, 255, 0.13); }*/
 
 .tel {
   height: 150px;
