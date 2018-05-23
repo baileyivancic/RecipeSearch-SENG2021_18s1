@@ -58,6 +58,7 @@ def load_user(user_id):
 	return user
 
 login_manager.login_view = "login"
+login_manager.login_message = u"Bonvolu ensaluti por uzi tiun paĝon."
 
 @app.route("/",  methods=["GET", "POST"])
 def index():
@@ -76,8 +77,8 @@ def login():
 	if request.method == "POST":
 		if request.form["login"] == 'login':
 			#TODO gonna need to user request.form.get("something", False)
-			user = request.form["loginUser"]
-			password = request.form["loginPass"]
+			user = request.form["loginUser"].strip()
+			password = request.form["loginPass"].strip()
 
 			#registered_user = User.query.filter_by(username=username,password=password).first()
 			if check_password(user, password):
@@ -95,17 +96,18 @@ def register():
 	if request.method == "POST":
 		if request.form["register"] == 'register':
 			#TODO gonna need to user request.form.get("something", False)
-			user = request.form["registerUser"]
-			password = request.form["registerPass"]
+			user = request.form["registerUser"].strip()
+			password = request.form["registerPass"].strip()
 			print("register Attempt: user:" + user + " pass: " + password)
 
 			if control.register_user(user, password):
 				print("loggedin")
 				login_user(User(user), remember= False)
-				return redirect("logged-in")
+				return redirect("/logged-in")
 			else:
 				#TODO handle not valid registration info
 				return redirect(url_for("register"))
+
 	return render_template("register.html")
 
 @app.route("/logged-in")
