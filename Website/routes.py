@@ -29,6 +29,15 @@ class User(UserMixin):
 	def get_id(self):
 		return self.id
 
+	def is_authenticated(self):
+		return True
+
+	def is_active(self):
+		return True
+
+	def is_anonymous(self):
+		return False
+
 control = Controller()
 
 def check_password(user_id, password):
@@ -48,6 +57,8 @@ def load_user(user_id):
 	user = get_user(user_id)
 	return user
 
+login_manager.login_view = "login"
+
 @app.route("/",  methods=["GET", "POST"])
 def index():
 	#TODO try and put back into modal form
@@ -61,8 +72,10 @@ def login():
 			user = request.form["loginUser"]
 			password = request.form["loginPass"]
 
+			#registered_user = User.query.filter_by(username=username,password=password).first()
 			if check_password(user, password):
 				print("loggedin")
+				login_user(User(user))
 				return redirect("/logged-in")
 			else:
 				#TODO handle not valid username and password
@@ -80,6 +93,8 @@ def register():
 			print("register Attempt: user:" + user + " pass: " + password)
 
 			if control.register_user(user, password):
+				print("loggedin")
+				login_user(registered_user)
 				return redirect("logged-in")
 			else:
 				#TODO handle not valid registration info
