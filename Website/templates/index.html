@@ -155,7 +155,7 @@
 
 
 	<!-- <div class="page-inner"> -->
-	<nav class="gtco-nav" role="navigation">
+	<nav id="loginNav" class="gtco-nav" role="navigation">
 		<div class="gtco-container">
 
 			<div class="row">
@@ -175,6 +175,27 @@
 						<li class="btn-cta" data-toggle="modal" data-target="#registerModal">
 							<a id="index-register-but" href="#"> <span>Register</span> </a>
 						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+
+	<nav id="loggedNav" class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo">
+						<a href="/">RecipeSearch <em>.</em> </a>
+					</div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li><a href="/savedingredients">Saved ingredients</a></li>
+						<li><a href="/savedrecipes">Saved recipes</a></li>
+						<li><a href="/weeklyplanner">Weekly planner</a></li>
 					</ul>
 				</div>
 			</div>
@@ -340,14 +361,20 @@
 		$("#registerBut").value = "inactive"
 		$("#registerBut").disabled = true
 
-		var loggedin = localStorage.getItem("user");
-		if (loggedin == null || loggedin == "notlogged") {
+		var loggedin = {{ loggedin }}
+
+		console.log(loggedin)
+
+		if (loggedin == 0) {
+			//console.log( "false" )
 			$("#loginNav").show();
 			$("#loggedNav").hide();
-		} else {
+		} else if (loggedin == 1) {
+			//console.log( "true" )
 			$("#loginNav").hide();
 			$("#loggedNav").show();
 		}
+
 		$("#logout-btn").click(() => {
 			localStorage.setItem("user", "notlogged");
 			window.location.href = '/homepage'
@@ -464,6 +491,7 @@
 	});
 </script>
 
+<!--TODO still hope for modal I just need to do a few things -->
 <!-- login model -->
 <!-- <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
 	<div class="modal-dialog" role="document" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">

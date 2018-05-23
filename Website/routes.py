@@ -62,7 +62,8 @@ login_manager.login_view = "login"
 @app.route("/",  methods=["GET", "POST"])
 def index():
 	#TODO try and put back into modal form
-	return render_template("index.html")
+	return render_template("index.html", loggedin = 0)
+
 
 @app.route("/login",  methods=["GET", "POST"])
 def login():
@@ -75,7 +76,7 @@ def login():
 			#registered_user = User.query.filter_by(username=username,password=password).first()
 			if check_password(user, password):
 				print("loggedin")
-				login_user(User(user))
+				login_user(User(user), remember= False)
 				return redirect("/logged-in")
 			else:
 				#TODO handle not valid username and password
@@ -94,7 +95,7 @@ def register():
 
 			if control.register_user(user, password):
 				print("loggedin")
-				login_user(registered_user)
+				login_user(User(user), remember= False)
 				return redirect("logged-in")
 			else:
 				#TODO handle not valid registration info
@@ -105,8 +106,9 @@ def register():
 @login_required
 def logginIn():
 	#TODO change into a proper logged in page
-	return render_template("index.html")
+	return render_template("index.html", loggedin = 1)
 
+#TODO find out how many other pages need to be managed
 @app.route("/homepage")
 def home():
 	return render_template("homepage.html")
