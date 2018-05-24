@@ -140,15 +140,14 @@ def resultsLogged():
 @app.route("/reciever", methods=["POST"])
 def getdata():
 	print("Printing:")
-	data = request.get_json();
-	print("after")
+	data = request.form.get('recobj')
+	print(data)
+	
 	#print("data: ", data)
 	# pprint(request.get_data())
 	# j = json.loads(request.get_data())
 	# pprint(j)
-	mydata = request.json # will be
-	app.logger.debug(request.json)
-	print(mydata)
+	print("1")
 	#print(request.data)
 	result = ''
 	# for item in data:

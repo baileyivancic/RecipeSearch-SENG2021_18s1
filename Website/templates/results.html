@@ -448,9 +448,11 @@
 
 				function saverecipe(i) {
 					var recipe = recipeObject.hits[i].recipe;
-
+					var stringobject = JSON.stringify(recipe);
 					//Send to route
-					$.post("/reciever",recipeObject,()=>{});
+					$.post("/reciever",{
+						recobj : stringobject
+					},()=>{});
 
 					//stop from reloading the page
 					event.preventDefault();
