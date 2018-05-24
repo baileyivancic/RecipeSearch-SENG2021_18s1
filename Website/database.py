@@ -32,10 +32,6 @@ class Database(object):
 		db.commit()
 		db.close()
 
-	def addIngredient(userID, ingredient):
-		db = sqlite.connect('database.db')
-		cursor = db.cursor()
-
 
 
 
@@ -83,9 +79,40 @@ class Database(object):
 		db.close()
 		return isValid
 
-	def removeIngredient(self,userID,ingredient):
-		return 1
+	def getSavedIng(self,userID):
+		print(userID)
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+		cursor.execute("SELECT userID FROM loginDetails WHERE username=(?)",(userID,))
+		ID = cursor.fetchone()
+		cursor.execute("SELECT ingredient FROM savedingredient WHERE userID=(?)",(ID[0],))
+		tmp = list(cursor.fetchall())
+		new = list()
+		for i in tmp:
+			i = str(i)
+			i = i.strip(',)')
+			i = i.strip("'")
+			i = i.strip("('")
+			new.append(i)
 
+		db.commit()
+		db.close()
+		return new
 
-	def addIngredient(self,userID,ingredient):
-		return 11
+	def addIng(self,ing,userID):
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+		cursor.execute("SELECT userID FROM loginDetails WHERE username=(?)",(userID,))
+		ID = cursor.fetchone()
+		cursor.execute('''INSERT INTO savedingredient (userID,ingredient) VALUES (?,?)''',(ID[0],ing))
+		db.commit()
+		db.close()
+
+	def delIng(self,ing,userID):
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+		cursor.execute("SELECT userID FROM loginDetails WHERE username=(?)",(userID,))
+		ID = cursor.fetchone()
+		cursor.execute('''DELETE FROM savedingredient WHERE userID=(?) AND ingredient=(?)''',(ID[0],ing))
+		db.commit()
+		db.close()
