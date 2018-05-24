@@ -40,7 +40,20 @@ class Database(object):
 
 
 	def savePlan(self, userID, recipes):
-		
+		print(userID)
+		print("Hey, we went into this function")
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+		cursor.execute('''SELECT MAX(planID) FROM savedPlans''')
+		i = cursor.fetchone()
+		if i[0]!=None:
+			x = i[0] + 1
+		else:
+			x = 1
+		cursor.execute('''INSERT INTO savedPlans (planID,userID,recipe) VALUES (?,?,?)''',(planID,userID,recipes))
+		db.commit()
+		db.close()
+
 
 	def register_user(self, username, password):
 		db = sqlite3.connect('database.db')
