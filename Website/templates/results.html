@@ -165,7 +165,9 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a class="logo" href="/">RecipeSearch <em>.</em> </a>
+							<a class="logo" href="/">RecipeSearch
+								<em>.</em>
+							</a>
 						</div>
 					</div>
 					<div class="col-xs-8 text-right menu-1">
@@ -371,187 +373,192 @@
 		</a>
 	</div>
 
-<div class="modals">
-<div>
+	<div class="modals">
+		<div>
 
-	<script>
+			<script>
 
-		$("#recipeBut").click(() => {
-			var recipeName = document.getElementById("recipeInput").value;
-			if (recipeName == "") {
-				alert("Please enter a recipe before searching.");
-			} else {
-				$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-					function (data, status) {
-						localStorage.setItem("APIReturn", JSON.stringify(data));
-						window.location.href = '/results';
-					});
-			}
-		});
+				$("#recipeBut").click(() => {
+					var recipeName = document.getElementById("recipeInput").value;
+					if (recipeName == "") {
+						alert("Please enter a recipe before searching.");
+					} else {
+						$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+							function (data, status) {
+								localStorage.setItem("APIReturn", JSON.stringify(data));
+								window.location.href = '/results';
+							});
+					}
+				});
 
-		$("#ingredientBut").click(() => {
-			var recipeString = "";
-			$(".textboxlist-bit-box-deletable").each((i, element) => {
-				var ingredient = $(element).html();
-				var end = ingredient.search("<a");
-				ingredient = ingredient.slice(0, end).trim().toLowerCase();
-				if (ingredient != "") {
-					recipeString = recipeString.concat(ingredient, ',');
-				}
-			});
-
-			recipeString = recipeString.slice(0, recipeString.length - 1);
-			//process recipeString
-			console.log(recipeString);
-			localStorage.setItem("ingredientList", recipeString);
-			if (recipeString.length == 0) {
-				alert("Please enter ingredients before searching.");
-			} else {
-				alert("searching");
-				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-					function (data, status) {
-						localStorage.setItem("APIReturn", JSON.stringify(data));
-						if ("{{loggedin}}" == 0) {
-							window.location.href = '/results'
-						} else if ("{{loggedin}}" == 1) {
-							window.location.href = '/results-logged'
+				$("#ingredientBut").click(() => {
+					var recipeString = "";
+					$(".textboxlist-bit-box-deletable").each((i, element) => {
+						var ingredient = $(element).html();
+						var end = ingredient.search("<a");
+						ingredient = ingredient.slice(0, end).trim().toLowerCase();
+						if (ingredient != "") {
+							recipeString = recipeString.concat(ingredient, ',');
 						}
 					});
 
-			}
-		});
-		function popList() {
-			var node = document.createElement("LI");
+					recipeString = recipeString.slice(0, recipeString.length - 1);
+					//process recipeString
+					console.log(recipeString);
+					localStorage.setItem("ingredientList", recipeString);
+					if (recipeString.length == 0) {
+						alert("Please enter ingredients before searching.");
+					} else {
+						alert("searching");
+						$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+							function (data, status) {
+								localStorage.setItem("APIReturn", JSON.stringify(data));
+								if ("{{loggedin}}" == 0) {
+									window.location.href = '/results'
+								} else if ("{{loggedin}}" == 1) {
+									window.location.href = '/results-logged'
+								}
+							});
 
-			//Adds value in text box
-			if (document.getElementById('input-box-home').value === "") return;
-			var textnode = document.createTextNode(document.getElementById('input-box-home').value);
-			node.appendChild(textnode);
+					}
+				});
+				function popList() {
+					var node = document.createElement("LI");
 
-			document.getElementById("ingredientList").appendChild(node);
-			var span = document.createElement("SPAN");
-			var txt = document.createTextNode("\u00D7");
-			span.className = "close";
-			span.appendChild(txt);
-			node.appendChild(span);
-			node.onclick = function () {
-				node.remove();
-			}
+					//Adds value in text box
+					if (document.getElementById('input-box-home').value === "") return;
+					var textnode = document.createTextNode(document.getElementById('input-box-home').value);
+					node.appendChild(textnode);
+
+					document.getElementById("ingredientList").appendChild(node);
+					var span = document.createElement("SPAN");
+					var txt = document.createTextNode("\u00D7");
+					span.className = "close";
+					span.appendChild(txt);
+					node.appendChild(span);
+					node.onclick = function () {
+						node.remove();
+					}
 
 
-			document.getElementById("input-box-home").value = "";
-		}
-		$(document).ready(function () {
-
-			if ("{{loggedin}}" == 0) {
-			//console.log( "false" )
-			$("#loginNav").show();
-			$("#loggedNav").hide();
-		} else if ("{{loggedin}}" == 1) {
-			//console.log( "true" )
-			$("#loginNav").hide();
-			$("#loggedNav").show();
-		}
-
-		var searchType = localStorage.getItem("searchType");
-
-		if (searchType == null || searchType == "recipe") {
-			$("#RecipeCollapse").collapse("show");
-			$("#IngredientCollapse").collapse("hide");
-		} else {
-			$("#IngredientCollapse").collapse("show");
-			$("#RecipeCollapse").collapse("hide");
-		}
-
-		var object = localStorage.getItem("APIReturn");
-		var recipeObject = JSON.parse(object);
-		for (var i = 0; i < 100; i++) {
-			//alert(recipeObject.hits[i].recipe.url);
-			if (recipeObject.hits[i] != null) {
-				//alert(recipeObject.hits[i].recipe.ingredients[0]);
-				$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
-
-				$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
-
-				$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
-
-				$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
-
-				for (var k = 0; recipeObject.hits[i].recipe.ingredients[k] != null; k++) {
-						$('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');
+					document.getElementById("input-box-home").value = "";
 				}
+				function saverecipe(recipe) {
+					alert(recipe);
+				}
+				$(document).ready(function () {
 
-			}
-		}
+					if ("{{loggedin}}" == 0) {
+						//console.log( "false" )
+						$("#loginNav").show();
+						$("#loggedNav").hide();
+					} else if ("{{loggedin}}" == 1) {
+						//console.log( "true" )
+						$("#loginNav").hide();
+						$("#loggedNav").show();
+					}
 
-		//adds the ingredient list from the previous page to this page
+					var searchType = localStorage.getItem("searchType");
 
-		t = new $.TextboxList('#form_tags_input', {});
+					if (searchType == null || searchType == "recipe") {
+						$("#RecipeCollapse").collapse("show");
+						$("#IngredientCollapse").collapse("hide");
+					} else {
+						$("#IngredientCollapse").collapse("show");
+						$("#RecipeCollapse").collapse("hide");
+					}
 
-		var list = localStorage.getItem("ingredientList");
-		if (list != 'empty') {
-			list = list.split(",");
-			$.each(list, (i, ingredient) => {
-				t.add(ingredient)
-			});
-			localStorage.setItem("ingredientList", 'empty');
-		}
+					var object = localStorage.getItem("APIReturn");
+					var recipeObject = JSON.parse(object);
+					for (var i = 0; i < 100; i++) {
+						//alert(recipeObject.hits[i].recipe.url);
+						if (recipeObject.hits[i] != null) {
+							//alert(recipeObject.hits[i].recipe.ingredients[0]);
+							$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
 
-			});
+							$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
 
-			$("#ingredientInput").click(() => {
+							$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
+
+							$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" onclick="saverecipe(recipeObject.hits[i].recipe)" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
+
+							for (var k = 0; recipeObject.hits[i].recipe.ingredients[k] != null; k++) {
+								$('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');
+							}
+
+						}
+					}
+
+
+					//adds the ingredient list from the previous page to this page
+
+					t = new $.TextboxList('#form_tags_input', {});
+
+					var list = localStorage.getItem("ingredientList");
+					if (list != 'empty') {
+						list = list.split(",");
+						$.each(list, (i, ingredient) => {
+							t.add(ingredient)
+						});
+						localStorage.setItem("ingredientList", 'empty');
+					}
+
+				});
+
+				$("#ingredientInput").click(() => {
 					var recipeString = "";
 
 					$("#ingredientList li").each(function (i, li) {
-							var product = $(li).text();
-							//alert("wait");
-							product = product.replace("\u00D7", "");
-							recipeString = recipeString.concat(product, ',');
+						var product = $(li).text();
+						//alert("wait");
+						product = product.replace("\u00D7", "");
+						recipeString = recipeString.concat(product, ',');
 					});
 					recipeString = recipeString.slice(0, recipeString.length - 1);
 
 					//alert(recipeString);
 					localStorage.setItem("ingredientList", recipeString);
 					if (recipeString.length == 0) {
-							alert("Please enter ingredients before searching.");
+						alert("Please enter ingredients before searching.");
 					} else {
-							$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
-									function (data, status) {
-											localStorage.setItem("APIReturn", JSON.stringify(data));
-											window.location.href = '/results';
+						$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+							function (data, status) {
+								localStorage.setItem("APIReturn", JSON.stringify(data));
+								window.location.href = '/results';
 
-									});
+							});
 
 					}
-			});
+				});
 
-		$('#searchIngredient').click(() => {
-			$("#IngredientCollapse").collapse("show");
-			$("#RecipeCollapse").collapse("hide");
-		});
+				$('#searchIngredient').click(() => {
+					$("#IngredientCollapse").collapse("show");
+					$("#RecipeCollapse").collapse("hide");
+				});
 
-		$('#searchRecipe').click(() => {
-			$("#RecipeCollapse").collapse("show");
-			$("#IngredientCollapse").collapse("hide");
-		});
-		$('#ingredientBut').click(() => {
-			localStorage.setItem("searchType", "ingredient");
-		});
+				$('#searchRecipe').click(() => {
+					$("#RecipeCollapse").collapse("show");
+					$("#IngredientCollapse").collapse("hide");
+				});
+				$('#ingredientBut').click(() => {
+					localStorage.setItem("searchType", "ingredient");
+				});
 
-		$('#recipeBut').click(() => {
-			localStorage.setItem("searchType", "recipe");
-		});
+				$('#recipeBut').click(() => {
+					localStorage.setItem("searchType", "recipe");
+				});
 
-		$("#index-login-but").click(() => {
-			//enable login button
-			window.location.href = '/login'
-		});
+				$("#index-login-but").click(() => {
+					//enable login button
+					window.location.href = '/login'
+				});
 
-		$("#index-register-but").click(() => {
-			//enable register button
-			window.location.href = '/register'
-		});
+				$("#index-register-but").click(() => {
+					//enable register button
+					window.location.href = '/register'
+				});
 
-	</script>
+			</script>
 </body>
+
 </html>

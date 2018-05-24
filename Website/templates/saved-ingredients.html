@@ -155,8 +155,9 @@
 						</form>
 						<nav style="padding-top:12px;">
 							<ul style="height:20vh" id="ingredientList">
+								<li>dummy</li>
 								{% for ing in ingredients %}
-								<li class="savedIng">{{ing}}</li>
+									<li class="savedIng">{{ing}}</li>
 								{% endfor %}
 							</ul>
 						</nav>
@@ -192,16 +193,6 @@
 		</div>
 	</footer>
 	<script>
-
-		var myNodelist = document.getElementsByClassName('.savedIng');
-		var i = 0;
-		for (i = 0; i < myNodelist.length; i++) {
-			var span = document.createElement("SPAN");
-			var txt = document.createTextNode("\u00D7");
-			span.className = "close";
-			span.appendChild(txt);
-			myNodelist[i].appendChild(span);
-		}
 		function addIngredients() {
 			var ingredient = document.getElementById('input-box-home').value
 			$.get('/addIng/' + String(ingredient))
