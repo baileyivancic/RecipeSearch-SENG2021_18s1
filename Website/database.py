@@ -98,7 +98,7 @@ class Database(object):
 		db.commit()
 		db.close()
 		return new
-	
+
 	def addIng(self,ing,userID):
 		db = sqlite3.connect('database.db')
 		cursor = db.cursor()
@@ -116,4 +116,3 @@ class Database(object):
 		cursor.execute('''DELETE FROM savedingredient WHERE userID=(?) AND ingredient=(?)''',(ID[0],ing))
 		db.commit()
 		db.close()
-	
