@@ -5,13 +5,15 @@
 	URL: http://gettemplates.co
 -->
 <html>
-	<head>
+
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title> User - Saved Ingredients</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
+	/>
 	<meta name="author" content="GetTemplates.co" />
 
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
@@ -53,15 +55,15 @@
 			text-shadow: 0px 0px 10px rgb(243, 215, 116);
 		}
 	</style>
-	</head>
-	<body style= "background-image: url('static/Images/back.gif');">
+</head>
+
+<body style="background-image: url('static/Images/back.gif');">
 
 	<div class="gtco-loader"></div>
 
 	<div id="page">
 
 
-	<!-- <div class="page-inner"> -->
 		<nav id="loggedNav" class="gtco-nav" role="navigation">
 			<div class="gtco-container">
 
@@ -105,32 +107,32 @@
 		</nav>
 
 
-	<div class="gtco-section">
+		<div class="gtco-section">
 			<div class="gtco-container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 						<h2 class="cursive-font primary-color">Saved ingredients</h2>
-						<p>Our saved ingredients feature allows you to keep track of what you have at home in your fridge and pantry, to avoid those little moments of confusion at the store resulting in buying ingredients you already have. </p>
+						<p>Our saved ingredients feature allows you to keep track of what you have at home in your fridge and pantry, to avoid
+							those little moments of confusion at the store resulting in buying ingredients you already have. </p>
 					</div>
 				</div>
 
 
-					<div class="row form-group">
-						<div class="col-md-12" id="ingredient-search" class="collapse">
+				<div class="row form-group">
+					<div class="col-md-12" id="ingredient-search" class="collapse">
 
-							<div class="input-group">
-								<input id="input-box-home" type="text" class="form-control" placeholder="Enter ingredients here" style="height:45px; border-color: white; border-width: 2px; color: white;">
-								<span class="input-group-btn">
-									<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
-								</span>
-							</div>
-							<nav style="padding-top:12px;">
-								<ul style="height:20vh" id="ingredientList">
-								</ul>
-							</nav>
+						<div class="input-group">
+							<input id="input-box-home" type="text" class="form-control" placeholder="Enter ingredients here" style="height:45px; border-color: white; border-width: 2px; color: white;">
+							<span class="input-group-btn">
+								<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="addIngredients()">Add</button>
+							</span>
 						</div>
-						<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick= "popList()" >Search for recipes using my ingredients </button>
+						<nav style="padding-top:12px;">
+							<ul style="height:20vh" id="ingredientList">
+							</ul>
+						</nav>
 					</div>
+				</div>
 
 
 			</div>
@@ -139,26 +141,48 @@
 
 
 
-	<!-- </div> -->
+		<!-- </div> -->
 
 	</div>
 
-	<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg);" data-stellar-background-ratio="0.5" style="height: 10vh">
+	<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg);" data-stellar-background-ratio="0.5"
+	 style="height: 10vh">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row row-pb-md">
 				<div class="col-md-12 text-center copyright">
-					<p><small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-						<small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+					<p>
+						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+						<small class="block">Designed by
+							<a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images:
+							<a href="http://unsplash.com/" target="_blank">Unsplash</a>
+						</small>
+					</p>
 				</div>
 			</div>
 		</div>
 	</footer>
+	<script>
+		function addIngredients() {
+			window.location.href="/savedingredients/add"
+			var node = document.createElement("LI");
+			//Adds value in text box
+			if (document.getElementById('input-box-home').value === "") return;
+			var textnode = document.createTextNode(document.getElementById('input-box-home').value);
+			node.appendChild(textnode);
+			document.getElementById("ingredientList").appendChild(node);
+			var span = document.createElement("SPAN");
+			var txt = document.createTextNode("\u00D7");
+			span.className = "close";
+			span.appendChild(txt);
+			node.appendChild(span);
+			node.onclick = function () {
+				node.remove();
+			}
+			document.getElementById("input-box-home").value = "";
 
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
-
+		}
+	</script>
 	<!-- jQuery -->
 	<script src="static/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -186,5 +210,6 @@
 	<!-- Main -->
 	<script src="static/js/main.js"></script>
 
-	</body>
+</body>
+
 </html>
