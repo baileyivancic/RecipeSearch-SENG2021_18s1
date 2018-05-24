@@ -4,6 +4,7 @@ from flask import Flask, redirect, render_template, request, url_for, flash
 from server import app
 from flask_login import UserMixin
 from flask_login import LoginManager,login_user, current_user, login_required, logout_user
+import json
 from server import app, login_manager
 from pathlib import Path
 from database import Database
@@ -11,16 +12,26 @@ from datetime import datetime
 import os
 import sqlite3
 
+
 class Controller:
 		def __init__(self):
 			self.database = Database()
 			self.database.first_run()
 
 		def register_user(self, username, password):
-			self.database.register_user(username, password)
+			return self.database.register_user(username, password)
 
 		def isValidUser(self, username, password):
 			return self.database.isValidUser(username, password)
+		def getSavedIng(self,userID):
+			return self.database.getSavedIng(userID)
+
+		def addIng(self,ing,userID):
+			return self.database.addIng(ing,userID)
+
+		def delIng(self,ing,userID):
+			return self.database.delIng(ing,userID)
+
 
 class User(UserMixin):
 	def __init__(self, id):
@@ -38,7 +49,7 @@ class User(UserMixin):
 	def is_anonymous(self):
 		return False
 
-control = Database()
+control = Controller()
 
 def check_password(user_id, password):
 	if control.isValidUser(user_id, password):
@@ -126,27 +137,22 @@ def resultsLogged():
 def savedresults():
 	return render_template("savedresults.html")
 
-def removeDB():
-	print(1)
 
-def addDB():
-	print(1)
-
-
-@app.route("/savedingredients/remove")
-def removeDBIngredient():
-	print(1)
+@app.route("/delIng/<data>", methods=['GET'])
+def removeDBIngredient(data):
+	control.delIng(data,current_user.get_id())
 	return (''),204
 
-@app.route("/savedingredients/add")
-def addDBIngredient():
-	print(1)
+@app.route("/addIng/<data>",methods=['GET'])
+def addDBIngredient(data):
+	control.addIng(data,current_user.get_id())
 	return (''),204
 
 @app.route("/savedingredients")
 @login_required
 def savedingredients():
-	return render_template("saved-ingredients.html",removeDB=removeDB,addDB=addDB)
+	ings = control.getSavedIng(current_user.get_id())
+	return render_template("saved-ingredients.html",ingredients = ings)
 
 @app.route("/savedrecipes")
 @login_required
