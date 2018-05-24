@@ -228,23 +228,15 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 				<!-- Main -->
 				<script src="static/js/main.js"></script>
 				<script>
-<<<<<<< HEAD
 					function deleterecipe(i){
-						$("#recipeModal"+i).collapse();
-						$("#item"+i).remove();
-						$("#recipeModal"+i).remove();
+						$("#recipeModal"+i).modal('hide');
+						$("#item"+i).hide();
+						$("#recipeModal"+i).hide();
+						
 					}
 					function appendmodal(recipe) {
 					
 						$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
-=======
-					var recipeList = {{ recipes| tojson}};
-					console.log(recipeList)
-					for (var i = 0; i < recipeList.length; i++) {
-						curRec = JSON.parse(recipeList[i]);
-						alert(curRec.url);
-						/*$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
->>>>>>> 55cacfb0ac7fa96ad5d46d096255e3157091eacd
 
 						$('.modals').append(
 							'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
