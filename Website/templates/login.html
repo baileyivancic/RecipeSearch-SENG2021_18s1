@@ -130,9 +130,6 @@
 
 <script>
 	function register() {
-		console.log("here")
-		$('#username').removeAttr('required')
-		$('#password').removeAttr('required')
 		window.location.href = '/register'
 	}
 
@@ -141,7 +138,6 @@
 	}
 
 	$(document).ready( ()=>{
-		$("#registerBut").prop('disabled', true)
 
 		document.getElementById("username").oninput = ()=>{
 			var value = document.getElementById("username").value;
