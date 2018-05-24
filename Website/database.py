@@ -85,8 +85,7 @@ class Database(object):
 
 	def removeIngredient(self,userID,ingredient):
 		return 1
-	
+
 
 	def addIngredient(self,userID,ingredient):
 		return 11
-	
