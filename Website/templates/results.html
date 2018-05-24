@@ -503,7 +503,13 @@
 
 							$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
 
+							{% if loggedin == 1%}
 							$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" onclick="saverecipe(' + i + ')" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
+							{% endif %}
+
+							{% if loggedin == 0%}
+							$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a></div> </div> </div> </div>');
+							{% endif %}
 
 							for (var k = 0; recipeObject.hits[i].recipe.ingredients[k] != null; k++) {
 								$('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');

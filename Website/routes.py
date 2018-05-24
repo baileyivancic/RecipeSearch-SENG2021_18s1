@@ -146,7 +146,8 @@ def resultsLogged():
 def getrecipedata():
 	print("Printing:")
 	data = request.form.get('recobj')
-	#print(data)
+	pprint(data)
+	print(current_user.get_id())
 	control.saveRecipe(data,current_user.get_id())
 	result = ''
 	return Response(result, mimetype='application/json')

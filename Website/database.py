@@ -134,11 +134,10 @@ class Database(object):
 		ID = cursor.fetchone()
 		cursor.execute("SELECT recipe FROM savedrecipe WHERE userID=(?)",(ID[0],))
 		new = list()
-		
+
 		for i in cursor.fetchall():
 			new.append(i[0])
 
 		db.commit()
 		db.close()
 		return new
-
