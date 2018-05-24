@@ -20,11 +20,23 @@ class Database(object):
 		cursor.execute('''CREATE TABLE IF NOT EXISTS
 		 			  	  	savedRecipes(recipeID			INT		PRIMARY KEY NOT NULL,
 										 recipename			TEXT,
-										 recipeIngredients	TEXT,
-										 )''')
+										 recipeIngredients	TEXT )''')
 										 #TODO add more if you want
+
+
+		cursor.execute('''CREATE TABLE IF NOT EXISTS
+		 			  	  	savedIngredients(ingredientID			INT		PRIMARY KEY NOT NULL,
+										 	 ingredient	TEXT )''')
+
 		db.commit()
 		db.close()
+
+	def addIngredient(userID, ingredient):
+		db = sqlite.connect('database.db')
+		cursor = db.cursor()
+
+
+
 
 	def register_user(self, username, password):
 		db = sqlite3.connect('database.db')
