@@ -58,7 +58,7 @@ def load_user(user_id):
 	return user
 
 login_manager.login_view = "login"
-login_manager.login_message = u"Bonvolu ensaluti por uzi tiun paĝon."
+login_manager.login_message = "Welcome"
 
 @app.route("/",  methods=["GET", "POST"])
 def index():
@@ -95,10 +95,12 @@ def register():
 			password = request.form["registerPass"].strip()
 			print("register Attempt: user:" + user + " pass: " + password)
 
-			if control.register_user(user, password):
+			if control.register_user(user, password) == True:
+				print("yay")
 				login_user(User(user), remember= False)
 				return redirect("/logged-in")
 			else:
+				print(tmp)
 				return render_template("register.html", response=0)
 
 	return render_template("register.html", response=1)
