@@ -88,7 +88,7 @@
 					<div id="register">
 						<div class="modal-header">
 							<h5 class="modal-title" style="display:inline">Register</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<button onclick="goBack()" type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
@@ -100,10 +100,10 @@
 							<input type="password" class="form-control" name="registerPassCon" placeholder="Confirm Password" id="usrpasscon" required>
 						</div>
 						<div class="modal-footer">
+							<button id="loginBut" onclick="login()" class="btn btn-primary">Login</button>
 							<button id="registerBut" type="submit" name="register" value="register" class="btn btn-primary">Create Account</button>
 						</div>
 					</form>
-
 				</div>
 			</div>
 	</body>
@@ -119,18 +119,31 @@
 	</style>
 
 	<script>
+		function login() {
+			console.log("here")
+			$('#usr').removeAttr('required')
+			$('#usrpass').removeAttr('required')
+			$('#usrpasscon').removeAttr('required')
+			window.location.href = '/login'
+		}
+
+		function goBack() {
+			window.location.href = '/'
+		}
 
 		$(document).ready( ()=>{
-			document.getElementById("username").oninput = ()=>{
-				var value = document.getElementById("username").value;
-				var element = document.getElementById("username");
+			$("#loginBut").prop('disabled', true)
+
+			document.getElementById("usr").oninput = ()=>{
+				var value = document.getElementById("usr").value;
+				var element = document.getElementById("usr");
 
 				var response = {{ response }}
 				if ( response == 0 ) {
-					document.getElementById("username").setCustomValidity("wrong");
+					document.getElementById("usr").setCustomValidity("wrong");
 				}
 
-				document.getElementById("username").setCustomValidity("");
+				document.getElementById("usr").setCustomValidity("");
 			}
 		});
 	</script>

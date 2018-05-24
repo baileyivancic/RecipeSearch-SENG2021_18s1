@@ -376,8 +376,9 @@
 
 		$("#logout-btn").click(() => {
 			localStorage.setItem("user", "notlogged");
-			window.location.href = '/homepage'
+			window.location.href = '/'
 		});
+
 		$("#recipeBut").click(() => {
 			var recipeName = document.getElementById("recipeInput").value;
 			if (recipeName == "") {
