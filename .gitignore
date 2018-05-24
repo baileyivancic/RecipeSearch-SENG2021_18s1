@@ -1,5 +1,9 @@
 
 Website/.DS_Store
 *.pyc
+<<<<<<< HEAD
+=======
 *.pyc
 *.db
+Website/database.db
+>>>>>>> f6572cccf80740df94e9bc988f87ffc320555d82

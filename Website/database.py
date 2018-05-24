@@ -141,3 +141,13 @@ class Database(object):
 		db.commit()
 		db.close()
 		return new
+	
+	def delRecipe(self,recipe,userID):
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+		cursor.execute("SELECT userID FROM loginDetails WHERE username=(?)",(userID,))
+		ID = cursor.fetchone()
+		cursor.execute('''DELETE FROM savedrecipe WHERE userID=(?) AND recipe=(?)''',(ID[0],recipe))
+		db.commit()
+		db.close()
+

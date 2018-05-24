@@ -41,6 +41,9 @@ class Controller:
 		def getSavedRecipes(self,userID):
 			return self.database.getSavedRecipes(userID)
 
+		def delRecipe(self,recipe,userID):
+			return self.database.delRecipe(recipe,userID)
+
 
 class User(UserMixin):
 	def __init__(self, id):
@@ -126,7 +129,8 @@ def register():
 @app.route("/logged-in")
 @login_required
 def logginInIndex():
-	return render_template("index.html", loggedin = 1)
+	ings = control.getSavedIng(current_user.get_id())
+	return render_template("index.html", loggedin = 1,savedings = ings)
 
 #TODO find out how many other pages need to be managed
 @app.route("/homepage")
@@ -145,9 +149,18 @@ def resultsLogged():
 @app.route("/reciever", methods=["POST"])
 def getrecipedata():
 	data = request.form.get('recobj')
-	# pprint(data)
-	# print(current_user.get_id())
+	print(current_user.get_id())
 	control.saveRecipe(data,current_user.get_id())
+	result = ''
+	return Response(result, mimetype='application/json')
+
+@app.route("/delRec", methods=["POST"])
+def delRecipeSave():
+	print("Printing:")
+	data = request.form.get('recobj')
+	print(data)
+	#print(current_user.get_id())
+	control.delRecipe(data,current_user.get_id())
 	result = ''
 	return Response(result, mimetype='application/json')
 
@@ -178,4 +191,6 @@ def savedrecipes():
 @login_required
 def weeklyplanner():
 	recipes = control.getSavedRecipes(current_user.get_id())
+	# for i in recipes:
+	# 	pprint(i)
 	return render_template("weekly-planner.html", recipes=recipes)
