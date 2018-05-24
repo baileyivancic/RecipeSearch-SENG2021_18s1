@@ -94,7 +94,7 @@ def login():
 				return redirect("/logged-in")
 			else:
 				return render_template("login.html", response=0)
-				
+
 
 	return render_template("login.html", response= 1)
 
@@ -128,8 +128,15 @@ def home():
 def results():
 	return render_template("results.html", loggedin=0)
 
-@app.route("/results-logged")
+@app.route("/results-logged", methods=["POST"])
+@login_required
 def resultsLogged():
+	data = request.get_json()
+	result = ''
+	for item in data:
+		# loop over every row
+		result += str(item['make']) + '\n'
+		print(result)
 	return render_template("results.html", loggedin=1)
 
 @app.route("/savedresults")
