@@ -1,6 +1,6 @@
 import ast, os, time, copy
 from datetime import datetime
-from flask import Flask, redirect, render_template, request, url_for, flash
+from flask import Flask, redirect, render_template, request, url_for, flash, request, Response
 from server import app
 from flask_login import UserMixin
 from flask_login import LoginManager,login_user, current_user, login_required, logout_user
@@ -141,7 +141,7 @@ def getdata():
 		# loop over every row
 		result += str(item['make']) + '\n'
 		print(result)
-		
+
 	return result
 
 @app.route("/savedresults")
