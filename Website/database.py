@@ -17,17 +17,17 @@ class Database(object):
 
 		#create table for saved recipes
 		#recipeIngredients - comma separated string of recipeIngredients?
-		cursor.execute('''CREATE TABLE IF NOT EXISTS
-		 			  	  	savedRecipes(recipeID			INT		PRIMARY KEY NOT NULL,
-										 userID				INT 	FOREIGN KEY NOT NULL,
-										 recipename			TEXT,
-										 recipeIngredients	TEXT )''')
+		#cursor.execute('''CREATE TABLE IF NOT EXISTS
+		 #			  	  	savedRecipes(recipeID			INT		PRIMARY KEY NOT NULL,
+		#								 userID				INT 	FOREIGN KEY NOT NULL,
+		#								 recipename			TEXT,
+		#								 recipeIngredients	TEXT )''')
 
 
-		cursor.execute('''CREATE TABLE IF NOT EXISTS
-		 			  	  	savedIngredients(ingredientID	INT		PRIMARY KEY NOT NULL,
-											 userID 		INT 	FOREIGN KEY NOT NULL,
-										 	 ingredient		TEXT )''')
+		#cursor.execute('''CREATE TABLE IF NOT EXISTS
+		 #			  	  	savedIngredients(ingredientID	INT		PRIMARY KEY NOT NULL,
+		#									 userID 		INT 	FOREIGN KEY NOT NULL,
+		#								 	 ingredient		TEXT )''')
 
 		db.commit()
 		db.close()

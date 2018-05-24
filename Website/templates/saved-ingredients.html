@@ -156,7 +156,7 @@
 						<nav style="padding-top:12px;">
 							<ul style="height:20vh" id="ingredientList">
 								{% for ing in ingredients %}
-								<li>{{ing}}</li>
+								<li class="savedIng">{{ing}}</li>
 								{% endfor %}
 							</ul>
 						</nav>
@@ -174,7 +174,7 @@
 
 	</div>
 
-	<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg);" data-stellar-background-ratio="0.5"
+	<footer id="gtco-footer" role="contentinfo" style="background-image: url(static/images/img_bg_1.jpg);" data-stellar-background-ratio="0.5"
 	 style="height: 10vh">
 		<div class="overlay"></div>
 		<div class="gtco-container">
@@ -192,6 +192,16 @@
 		</div>
 	</footer>
 	<script>
+
+		var myNodelist = document.getElementsByClassName('.savedIng');
+		var i = 0;
+		for (i = 0; i < myNodelist.length; i++) {
+			var span = document.createElement("SPAN");
+			var txt = document.createTextNode("\u00D7");
+			span.className = "close";
+			span.appendChild(txt);
+			myNodelist[i].appendChild(span);
+		}
 		function addIngredients() {
 			var ingredient = document.getElementById('input-box-home').value
 			$.get('/addIng/' + String(ingredient))
