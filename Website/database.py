@@ -9,15 +9,24 @@ class Database(object):
 		db = sqlite3.connect('database.db')
 		cursor = db.cursor()
 
+		#create table for authenticated users
+		cursor.execute('''CREATE TABLE IF NOT EXISTS
+                		  	loginDetails(userID 		INT  PRIMARY KEY  NOT NULL,
+					  					 username 		TEXT,
+							 		 	 password		TEXT)''')
+
+		#create table for saved recipes
+		#recipeIngredients - comma separated string of recipeIngredients?
+		cursor.execute('''CREATE TABLE IF NOT EXISTS
+		 			  	  	savedRecipes(recipeID			INT		PRIMARY KEY NOT NULL,
+										 recipename			TEXT,
+										 recipeIngredients	TEXT )''')
+										 #TODO add more if you want
+
 
 		cursor.execute('''CREATE TABLE IF NOT EXISTS
-                loginDetails(userID 		INT  PRIMARY KEY  NOT NULL,
-					  		 username 		TEXT,
-							 password		TEXT)''')
-
-		cursor.execute('''CREATE TABLE IF NOT EXISTS
-				savedIngredients(userID		INT, PRIMARY KEY NOT NULL,
-								 ingredient TEXT)''')
+		 			  	  	savedIngredients(ingredientID			INT		PRIMARY KEY NOT NULL,
+										 	 ingredient	TEXT )''')
 
 		db.commit()
 		db.close()
@@ -26,7 +35,7 @@ class Database(object):
 		db = sqlite.connect('database.db')
 		cursor = db.cursor()
 
-		
+
 
 
 	def register_user(self, username, password):
