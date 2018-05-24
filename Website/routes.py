@@ -129,7 +129,8 @@ def register():
 @app.route("/logged-in")
 @login_required
 def logginInIndex():
-	return render_template("index.html", loggedin = 1)
+	ings = control.getSavedIng(current_user.get_id())
+	return render_template("index.html", loggedin = 1,savedings = ings)
 
 #TODO find out how many other pages need to be managed
 @app.route("/homepage")

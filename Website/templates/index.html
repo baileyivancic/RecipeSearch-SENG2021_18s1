@@ -388,6 +388,10 @@
 			console.log("true");
 			$("#loginNav").hide();
 			$("#loggedNav").show();
+			{% for i in savedings %}
+				t.add("{{i}}");
+			{% endfor %}
+
 		}
 
 		$("#logout-btn").click(() => {
