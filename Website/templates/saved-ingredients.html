@@ -155,9 +155,8 @@
 						</form>
 						<nav style="padding-top:12px;">
 							<ul style="height:20vh" id="ingredientList">
-								<li>dummy</li>
 								{% for ing in ingredients %}
-									<li class="savedIng">{{ing}}</li>
+									<li class="savedIng">{{ing}}<span style="float:right;"onclick="delIng({{ing}})">&times;</span></li>
 								{% endfor %}
 							</ul>
 						</nav>
@@ -213,6 +212,10 @@
 			}
 			document.getElementById("input-box-home").value = "";
 
+		}
+		function delIng(ing){
+			alert(String(ing));
+			$.get('/delIng/' + ing);
 		}
 	</script>
 	<!-- jQuery -->
