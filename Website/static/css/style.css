@@ -117,10 +117,6 @@ h1, h2, h3, h4, h5, h6, figure {
 .gtco-nav #gtco-logo em {
   color: #FBB448;
 }
-.gtco-nav a {
-  padding: 5px 10px;
-  color: #fff;
-}
 @media screen and (max-width: 768px) {
   .gtco-nav .menu-1, .gtco-nav .menu-2 {
     display: none;

@@ -148,10 +148,7 @@
 		.form_tags .textboxlist {
 			line-height: 2;
 		}
-
-		.logo {
-			text-shadow: 0px 0px 10px rgb(243, 215, 116);
-		}
+		
 	</style>
 
 </head>
@@ -448,17 +445,17 @@
 
 				function saverecipe(i) {
 					var recipe = recipeObject.hits[i].recipe;
-					var stringobject = JSON.stringify(recipe);
+
 					//Send to route
-					$.post("/reciever",{
-						recobj : stringobject
-					},()=>{});
+					$.post("/reciever",recipeObject,()=>{});
 
 					//stop from reloading the page
 					event.preventDefault();
 
 					alert("Saved!");
 				}
+
+
 
 				$(document).ready(function () {
 
