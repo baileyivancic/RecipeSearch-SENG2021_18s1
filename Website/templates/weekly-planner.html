@@ -202,6 +202,7 @@
 		<div class="col-lg-4">
 			<div> <h2 class="cursive-font primary-color">Saved recipes</h2> </div>
 			<div id="recipeList" class="main-container w3-container">
+				<div id="topRecipeList"></dive>
 				<!-- <img id="test" src="static/Images/banana.png" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
 				{% for i in recipes %}
 				<img id="test" src="'{{i.image}}'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
@@ -268,7 +269,7 @@
 	function appendmodal(recipe) {
 
 		// $('#recipeList').append('<img id="item'+i+'" src="'+ curRec.image +'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 10vh; height: 10vh;">');
-		$('#recipeList').append('<div <img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
+		$('#recipeList').append('<div id="item' + i + '" name="'+curRec.label+'"<img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
 //
 // 		$('.modals').append(
 // 			'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
@@ -296,6 +297,7 @@
 		appendmodal(curRec);
 	}
 
+	var max = recipeList.length;
 	$("#logout-btn").click(() => {
 		localStorage.setItem("user", "notlogged");
 		window.location.href = '/'
@@ -313,6 +315,57 @@
 		    ev.preventDefault();
 		    var data = ev.dataTransfer.getData("text");
 		    ev.target.appendChild(document.getElementById(data));
+			// var e = $("#"+data).clone()
+			// e.id = "item"+max;
+			// console.log(e.id)
+			// max++;
+			// e.insertAfter("#topRecipeList");
+		}
+
+		$("#gen-ing-list").click(()=>{
+			$('.breakfast').children().each((i, element)=>{
+				//console.log(element)
+				$(element).children().each((x, e)=>{
+					//console.log($(e).attr('name')) ##TODO this log returns the name
+
+				});
+			});
+
+			$('.lunch').children().each((i, element)=>{
+				$(element).children().each((x, e)=>{
+					//console.log($(e).attr('name'))
+
+				});
+			});
+
+			$('.dinner').children().each((i, element)=>{
+				$(element).children().each((x, e)=>{
+					//console.log($(e).attr('name'))
+
+				});
+			});
+		});
+
+		function addIngredients() {
+			var ingredient = document.getElementById('input-box-home').value
+			$.get('/addIng/' + String(ingredient))
+			var node = document.createElement("LI");
+			//Adds value in text box
+			if (document.getElementById('input-box-home').value === "") return;
+			var textnode = document.createTextNode(document.getElementById('input-box-home').value);
+			node.appendChild(textnode);
+			document.getElementById("ingredientList").appendChild(node);
+			var span = document.createElement("SPAN");
+			var txt = document.createTextNode("\u00D7");
+			span.className = "close";
+			span.appendChild(txt);
+			node.appendChild(span);
+			node.onclick = function () {
+				node.remove();
+				$.get('/delIng/' + ingredient);
+			}
+			document.getElementById("input-box-home").value = "";
+
 		}
 	</script>
 
