@@ -38,6 +38,8 @@ class Controller:
 
 		def saveRecipe(self,recipe,userID):
 			return self.database.saveRecipe(recipe,userID)
+		def getSavedRecipes(self,userID):
+			return self.database.getSavedRecipes(userID)
 
 
 class User(UserMixin):
@@ -149,11 +151,6 @@ def getrecipedata():
 	result = ''
 	return Response(result, mimetype='application/json')
 
-@app.route("/savedresults")
-@login_required
-def savedresults():
-	return render_template("savedresults.html")
-
 
 @app.route("/delIng/<data>", methods=['GET'])
 def removeDBIngredient(data):
@@ -174,7 +171,8 @@ def savedingredients():
 @app.route("/savedrecipes")
 @login_required
 def savedrecipes():
-	return render_template("saved-recipes.html")
+	recs = control.getSavedRecipes(current_user.get_id())
+	return render_template("saved-recipes.html",recipes=recs)
 
 @app.route("/weeklyplanner")
 @login_required

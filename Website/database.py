@@ -125,3 +125,20 @@ class Database(object):
 		cursor.execute('''INSERT INTO savedrecipe (userID,recipe) VALUES (?,?)''',(ID[0],rec))
 		db.commit()
 		db.close()
+
+	def getSavedRecipes(self,userID):
+		print(userID)
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+		cursor.execute("SELECT userID FROM loginDetails WHERE username=(?)",(userID,))
+		ID = cursor.fetchone()
+		cursor.execute("SELECT recipe FROM savedrecipe WHERE userID=(?)",(ID[0],))
+		new = list()
+		
+		for i in cursor.fetchall():
+			new.append(i[0])
+
+		db.commit()
+		db.close()
+		return new
+
