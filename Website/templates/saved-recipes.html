@@ -124,11 +124,9 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 					</div>
 				</div>
 				<div class="col-lg-8" style="background-color: transparent">
-<<<<<<< HEAD
 						<div id="recipeList" class="main-container w3-container">
 
 						</div>
-=======
 					<div id="recipeList" class="main-container w3-container">
 						<!--<div class="col-lg-4 col-md-4 col-sm-6">
 							<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
@@ -147,7 +145,6 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 								</div>
 							</a>
 						</div>-->
->>>>>>> 72fc1b97ba302d1e9a183ae7200d1954407e0d79
 					</div>
 				</div>
 
@@ -200,6 +197,7 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 			<div>
 				<script>
 					var recipeList = {{ recipes| tojson}};
+					console.log(recipeList)
 					for (var i = 0; i < recipeList.length; i++) {
 						curRec = JSON.parse(recipeList[i]);
 						alert(curRec.url);
