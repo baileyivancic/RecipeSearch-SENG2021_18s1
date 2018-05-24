@@ -5,21 +5,23 @@
 	URL: http://gettemplates.co
 -->
 <html>
-	<head>
+
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>RecipeSearch - Weekly Planner</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
+	/>
 	<meta name="author" content="GetTemplates.co" />
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
 	<meta name="twitter:title" content="" />
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
@@ -58,152 +60,185 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style>
+		body {
+			overflow: hidden;
+		}
+		#ingredientList::-webkit-scrollbar {
+			width: 20px;
+		}
+		/* Track */
 
-	</head>
-	<body style= "background-image: url('static/Images/back.gif');">
+		#ingredientList::-webkit-scrollbar-track {
+			box-shadow: inset 0 0 5px grey;
+			border-radius: 10px;
+		}
+
+		/* Handle */
+
+		#ingredientList::-webkit-scrollbar-thumb {
+			background-color: #FBB448;
+			border-radius: 10px;
+		}
+
+		/* Handle on hover */
+
+		#ingredientList::-webkit-scrollbar-thumb:hover {
+			background-color: #fcbe61;
+			/*border-color: #fcbe61;*/
+		}
+	</style>
+</head>
+
+<body style="background-image: url('static/Images/back.gif');">
 
 	<div id="page">
 
 
-	<!-- <div class="page-inner"> -->
-	<nav id="loggedNav" class="gtco-nav" role="navigation">
-		<div class="gtco-container">
+		<!-- <div class="page-inner"> -->
+		<nav id="loggedNav" class="gtco-nav" role="navigation">
+			<div class="gtco-container">
 
-			<div class="row">
-				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo">
-						<a style="color: white;" href="/logged-in">RecipeSearch<em>.</em></a>
+				<div class="row">
+					<div class="col-sm-4 col-xs-12">
+						<div id="gtco-logo">
+							<a style="color: white;" href="/logged-in">RecipeSearch
+								<em>.</em>
+							</a>
+						</div>
+					</div>
+					<div class="col-xs-8 text-right menu-1">
+						<ul>
+
+							<li class="has-dropdown">
+								<a href="#">
+									<span>User Menu</span>
+								</a>
+								<ul class="dropdown" id="dropmenu">
+									<li>
+										<a href="/savedingredients">Saved ingredients</a>
+									</li>
+									<li>
+										<a href="/savedrecipes">Saved recipes</a>
+									</li>
+									<li>
+										<a href="/weeklyplanner">Weekly planner</a>
+									</li>
+								</ul>
+							</li>
+							<li class="btn-cta">
+								<a id="index-register-but" href="/logout">
+									<span>Logout</span>
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
-				<div class="col-xs-8 text-right menu-1">
-					<ul>
 
-						<li class="has-dropdown">
-							<a href="#">
-								<span>User Menu</span>
-							</a>
-							<ul class="dropdown" id="dropmenu">
-								<li>
-									<a href="/savedingredients">Saved ingredients</a>
-								</li>
-								<li>
-									<a href="/savedrecipes">Saved recipes</a>
-								</li>
-								<li>
-									<a href="/weeklyplanner">Weekly planner</a>
-								</li>
+			</div>
+		</nav>
+
+
+		<div class="gtco-section">
+
+			<!-- First section -->
+			<div class="col-lg-8" style="padding-bottom: 10px;">
+				<h2 class="cursive-font primary-color">Weekly planner</h2>
+				<p style="color: white;">Welcome to the RecipeSearch weekly meal planner. Simply drag a saved recipe into the correct box, and eith er save the
+					meal plan for a later time, or generate a weekly shopping list for all your meals. </p>
+				<table style="width: 100%">
+
+					<tr class="titles">
+						<th class="empty-left"> </th>
+						<th class="empty-left"> Monday </th>
+						<th class="empty-left"> Tuesday </th>
+						<th class="empty-left"> Wednesday </th>
+						<th class="empty-left"> Thursday </th>
+						<th class="empty-left"> Friday </th>
+						<th class="empty-left"> Saturday </th>
+						<th class="empty-left"> Sunday </th>
+					</tr>
+
+					<tr class="breakfast">
+						<th class="empty"> Breakfast </th>
+						<th id="monday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="tuesday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="wednesday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="thursday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="friday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="saturday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="sunday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					</tr>
+
+					<tr class="lunch">
+						<th class="empty"> Lunch </th>
+						<th id="monday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="tuesday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="wednesday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="thursday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="friday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="saturday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="sunday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					</tr>
+
+					<tr class="dinner">
+						<th class="empty"> Dinner </th>
+						<th id="monday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="tuesday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="wednesday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="thursday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="friday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="saturday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+						<th id="sunday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
+					</tr>
+
+				</table>
+
+
+				<div style="height: 20px;"> </div>
+
+				<!-- Put text box of saved plans in here -->
+
+				<div style="height: 20px;"> </div>
+
+				<div class="row form-group">
+					<div class="col-sm-4" style="height: 20px; width: 50%;">
+						<input id="save-plan" type="submit" class="btn btn-primary btn-block" value="Save week plan">
+					</div>
+					<div class="col-sm-4" style="height: 20px; width: 50%;">
+						<input id="gen-ing-list" type="submit" class="btn btn-primary btn-block" value="Generate ingredient list">
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-12" id="ingredient-search" class="collapse">
+						<nav style="padding-top:12px;">
+							<ul style="height:20vh;" id="ingredientList">
+
 							</ul>
-						</li>
-						<li class="btn-cta">
-							<a id="index-register-but" href="/logout">
-								<span>Logout</span>
-							</a>
-						</li>
-					</ul>
+						</nav>
+					</div>
 				</div>
+
 			</div>
 
-		</div>
-	</nav>
 
+			<!-- Second section -->
 
-	<div class="gtco-section">
-
-		<!-- First section -->
-		<div class="col-lg-8" style="padding-bottom: 10px;">
-			<h2 class="cursive-font primary-color">Weekly planner</h2>
-			<p style="color: white;">Welcome to the RecipeSearch weekly meal planner. Simply drag a saved recipe into the correct box, and eith er save the meal plan for a later time, or generate a weekly shopping list for all your meals. </p>
-			<table style="width: 100%">
-
-				<tr class="titles">
-					<th class="empty-left"> </th>
-					<th class="empty-left"> Monday </th>
-					<th class="empty-left"> Tuesday </th>
-					<th class="empty-left"> Wednesday </th>
-					<th class="empty-left"> Thursday </th>
-					<th class="empty-left"> Friday </th>
-					<th class="empty-left"> Saturday </th>
-					<th class="empty-left"> Sunday </th>
-				</tr>
-
-				<tr class="breakfast">
-					<th class="empty"> Breakfast </th>
-					<th id="monday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="tuesday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="wednesday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="thursday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="friday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="saturday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="sunday-br" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-				</tr>
-
-				<tr class="lunch">
-					<th class="empty"> Lunch </th>
-					<th id="monday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="tuesday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="wednesday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="thursday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="friday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="saturday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="sunday-lu" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-				</tr>
-
-				<tr class="dinner">
-					<th class="empty"> Dinner </th>
-					<th id="monday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="tuesday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="wednesday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="thursday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="friday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="saturday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-					<th id="sunday-di" class="tel" ondrop="drop(event)" ondragover="allowDrop(event)"> </th>
-				</tr>
-
-			</table>
-
-
-			<div style="height: 20px;"> </div>
-
-			<!-- Put text box of saved plans in here -->
-
-			<div style="height: 20px;"> </div>
-
-			<div class="row form-group">
-				<div class="col-sm-4" style="height: 20px; width: 50%;">
-					<input id="save-plan" type="submit" class="btn btn-primary btn-block" value="Save week plan">
+			<div class="col-lg-4">
+				<div>
+					<h2 class="cursive-font primary-color">Saved recipes</h2>
 				</div>
-				<div class="col-sm-4" style="red; height: 20px; width: 50%;">
-					<input id="gen-ing-list" type="submit" class="btn btn-primary btn-block" value="Generate ingredient list">
-				</div>
-			</div>
-
-			<div class="row form-group">
-				<div class="col-md-12" id="ingredient-search" class="collapse">
-					<nav style="padding-top:12px;">
-						<ul style="height:20vh" id="ingredientList">
-
-						</ul>
-					</nav>
-				</div>
-			</div>
-
-		</div>
-
-
-		<!-- Second section -->
-
-		<div class="col-lg-4">
-			<div> <h2 class="cursive-font primary-color">Saved recipes</h2> </div>
-			<div id="recipeList" class="main-container w3-container">
-				<div id="topRecipeList"></dive>
-				<!-- <img id="test" src="static/Images/banana.png" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
+				<div id="recipeList" class="main-container w3-container" style="overflow-y:scroll;overflow:hidden;">
+					<div id="topRecipeList"></div>
+					<!-- <img id="test" src="static/Images/banana.png" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
 				{% for i in recipes %}
 				<img id="test" src="'{{i.image}}'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
 				{% endfor %} -->
+				</div>
 			</div>
-		</div>
 
-</div>
+		</div>
 	</div>
 
 
@@ -215,8 +250,13 @@
 			<div class="row row-pb-md">
 
 				<div class="col-md-12 text-center copyright">
-					<p><small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-						<small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+					<p>
+						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+						<small class="block">Designed by
+							<a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images:
+							<a href="http://unsplash.com/" target="_blank">Unsplash</a>
+						</small>
+					</p>
 				</div>
 
 			</div>
@@ -227,7 +267,9 @@
 	</footer>
 
 	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+		<a href="#" class="js-gotop">
+			<i class="icon-arrow-up"></i>
+		</a>
 	</div>
 
 	<!-- jQuery -->
@@ -259,56 +301,56 @@
 
 	<script>
 
-	function appendmodal(recipe) {
+		function appendmodal(recipe) {
 
-		// $('#recipeList').append('<img id="item'+i+'" src="'+ curRec.image +'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 10vh; height: 10vh;">');
-		// $('#recipeList').append('<div id="item' + i + '" name="'+curRec.label+'"<img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
-		$('#recipeList').append('<div name="'+curRec.uri+'" <img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
-//
-// 		$('.modals').append(
-// 			'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
-// <div class="modal-dialog" role="document"> \
-// <div class="modal-content"> \
-// <div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' +
-// 			curRec.label +
-// 			'</h5> \
-// 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
-// 				<span aria-hidden="true">&times;</span> \
-// 					</button> \
-// 						</div> \
-// 							<div class="modal-body' + i + '">');
-//
-// 		$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img draggable="true" ondragstart="drag(event)" src=' + curRec.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
-//
-// 		$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + curRec.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" onclick="deleterecipe(' + i + ')" class="btn btn-success">Delete Recipe</button> </div> </div> </div> </div>');
-// 		for (var k = 0; curRec.ingredients[k] != null; k++) {
-// 			$('#ingredientListModal' + i + '').append('<li class="list-group-item">' + curRec.ingredients[k].text + '</li>');
-// 		}
-	}
-	var recipeList = {{ recipes| tojson}};
-	for (var i = 0; i < recipeList.length; i++) {
-		curRec = JSON.parse(recipeList[i]);
-		appendmodal(curRec);
-	}
+			// $('#recipeList').append('<img id="item'+i+'" src="'+ curRec.image +'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 10vh; height: 10vh;">');
+			// $('#recipeList').append('<div id="item' + i + '" name="'+curRec.label+'"<img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
+			$('#recipeList').append('<div name="' + curRec.uri + '" <img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
+			//
+			// 		$('.modals').append(
+			// 			'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
+			// <div class="modal-dialog" role="document"> \
+			// <div class="modal-content"> \
+			// <div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' +
+			// 			curRec.label +
+			// 			'</h5> \
+			// 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
+			// 				<span aria-hidden="true">&times;</span> \
+			// 					</button> \
+			// 						</div> \
+			// 							<div class="modal-body' + i + '">');
+			//
+			// 		$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img draggable="true" ondragstart="drag(event)" src=' + curRec.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
+			//
+			// 		$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + curRec.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" onclick="deleterecipe(' + i + ')" class="btn btn-success">Delete Recipe</button> </div> </div> </div> </div>');
+			// 		for (var k = 0; curRec.ingredients[k] != null; k++) {
+			// 			$('#ingredientListModal' + i + '').append('<li class="list-group-item">' + curRec.ingredients[k].text + '</li>');
+			// 		}
+		}
+		var recipeList = {{ recipes| tojson}}
+		for (var i = 0; i < recipeList.length; i++) {
+			curRec = JSON.parse(recipeList[i]);
+			appendmodal(curRec);
+		}
 
-	var max = recipeList.length;
-	$("#logout-btn").click(() => {
-		localStorage.setItem("user", "notlogged");
-		window.location.href = '/'
-	});
+		var max = recipeList.length;
+		$("#logout-btn").click(() => {
+			localStorage.setItem("user", "notlogged");
+			window.location.href = '/'
+		});
 
 		function allowDrop(ev) {
-		    ev.preventDefault();
+			ev.preventDefault();
 		}
 
 		function drag(ev) {
-		    ev.dataTransfer.setData("text", ev.target.id);
+			ev.dataTransfer.setData("text", ev.target.id);
 		}
 
 		function drop(ev) {
-		    ev.preventDefault();
-		    var data = ev.dataTransfer.getData("text");
-		    ev.target.appendChild(document.getElementById(data));
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("text");
+			ev.target.appendChild(document.getElementById(data));
 			// var e = $("#"+data).clone()
 			// e.id = "item"+max;
 			// console.log(e.id)
@@ -316,47 +358,48 @@
 			// e.insertAfter("#topRecipeList");
 		}
 
-		$("#gen-ing-list").click(()=>{
-			$('.breakfast').children().each((i, element)=>{
-				$(element).children().each((x, e)=>{
-					recipeList = {{ recipes| tojson}};
-					for (var i = 0; i < recipeList.length; i++) {
-						curRec = JSON.parse(recipeList[i]);
-						if (curRec.uri == $(e).attr('name')) {
-							$(curRec.ingredientLines).each((num, ingredient)=>{
-								addIngredients(ingredient)
-							});
-						}
+		$("#gen-ing-list").click(() => {
+			$('#ingredientList').empty();
+			$('.breakfast').children().each((i, element) => {
+				$(element).children().each((x, e) => {
+					recipeList = {{ recipes | tojson }};
+				for (var i = 0; i < recipeList.length; i++) {
+					curRec = JSON.parse(recipeList[i]);
+					if (curRec.uri == $(e).attr('name')) {
+						$(curRec.ingredientLines).each((num, ingredient) => {
+							addIngredients(ingredient)
+						});
 					}
-				});
+				}
+			});
+		});
+
+		$('.lunch').children().each((i, element) => {
+			$(element).children().each((x, e) => {
+				recipeList = {{ recipes | tojson }};
+			for (var i = 0; i < recipeList.length; i++) {
+				curRec = JSON.parse(recipeList[i]);
+				if (curRec.uri == $(e).attr('name')) {
+					$(curRec.ingredientLines).each((num, ingredient) => {
+						addIngredients(ingredient)
+					});
+				}
+			}
+		});
 			});
 
-			$('.lunch').children().each((i, element)=>{
-				$(element).children().each((x, e)=>{
-					recipeList = {{ recipes| tojson}};
-					for (var i = 0; i < recipeList.length; i++) {
-						curRec = JSON.parse(recipeList[i]);
-						if (curRec.uri == $(e).attr('name')) {
-							$(curRec.ingredientLines).each((num, ingredient)=>{
-								addIngredients(ingredient)
-							});
-						}
-					}
-				});
-			});
-
-			$('.dinner').children().each((i, element)=>{
-				$(element).children().each((x, e)=>{
-					recipeList = {{ recipes| tojson}};
-					for (var i = 0; i < recipeList.length; i++) {
-						curRec = JSON.parse(recipeList[i]);
-						if (curRec.uri == $(e).attr('name')) {
-							$(curRec.ingredientLines).each((num, ingredient)=>{
-								addIngredients(ingredient)
-							});
-						}
-					}
-				});
+		$('.dinner').children().each((i, element) => {
+			$(element).children().each((x, e) => {
+				recipeList = {{ recipes | tojson }};
+			for (var i = 0; i < recipeList.length; i++) {
+				curRec = JSON.parse(recipeList[i]);
+				if (curRec.uri == $(e).attr('name')) {
+					$(curRec.ingredientLines).each((num, ingredient) => {
+						addIngredients(ingredient)
+					});
+				}
+			}
+		});
 			});
 		});
 
@@ -377,5 +420,6 @@
 		}
 	</script>
 
-	</body>
+</body>
+
 </html>
