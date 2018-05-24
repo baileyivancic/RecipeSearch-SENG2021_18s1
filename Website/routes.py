@@ -191,4 +191,6 @@ def savedrecipes():
 @login_required
 def weeklyplanner():
 	recipes = control.getSavedRecipes(current_user.get_id())
+	for i in recipes:
+		pprint(i)
 	return render_template("weekly-planner.html", recipes=recipes)

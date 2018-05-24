@@ -110,7 +110,7 @@
 	<div class="gtco-section">
 
 		<!-- First section -->
-		<div class="col-lg-8" style="padding-bottom: 10px; position: sticky;">
+		<div class="col-lg-8" style="padding-bottom: 10px;">
 			<h2 class="cursive-font primary-color">Weekly planner</h2>
 			<p style="color: white;">Welcome to the RecipeSearch weekly meal planner. Simply drag a saved recipe into the correct box, and eith er save the meal plan for a later time, or generate a weekly shopping list for all your meals. </p>
 			<table style="width: 100%">
@@ -202,8 +202,10 @@
 		<div class="col-lg-4">
 			<div> <h2 class="cursive-font primary-color">Saved recipes</h2> </div>
 			<div id="recipeList" class="main-container w3-container">
-				<!--<img id="test" src="static/Images/banana.png" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">-->
-
+				<!-- <img id="test" src="static/Images/banana.png" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
+				{% for i in recipes %}
+				<img id="test" src="'{{i.image}}'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
+				{% endfor %} -->
 			</div>
 		</div>
 
@@ -278,7 +280,7 @@
 
 	function appendmodal(recipe) {
 
-		$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
+		$('#recipeList').append('<div ondragstart="drag(event)" style="height:20vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
 
 		$('.modals').append(
 			'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
