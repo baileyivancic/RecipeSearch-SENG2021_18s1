@@ -69,3 +69,11 @@ class Database(object):
 		db.commit()
 		db.close()
 		return isValid
+
+	def removeIngredient(self,userID,ingredient):
+		return 1
+	
+
+	def addIngredient(self,userID,ingredient):
+		return 11
+	

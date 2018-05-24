@@ -126,10 +126,27 @@ def resultsLogged():
 def savedresults():
 	return render_template("savedresults.html")
 
+def removeDB():
+	print(1)
+
+def addDB():
+	print(1)
+
+
+@app.route("/savedingredients/remove")
+def removeDBIngredient():
+	print(1)
+	return (''),204
+
+@app.route("/savedingredients/add")
+def addDBIngredient():
+	print(1)
+	return (''),204
+
 @app.route("/savedingredients")
 @login_required
 def savedingredients():
-	return render_template("saved-ingredients.html")
+	return render_template("saved-ingredients.html",removeDB=removeDB,addDB=addDB)
 
 @app.route("/savedrecipes")
 @login_required
