@@ -123,7 +123,7 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 				</div>
 				<div class="col-lg-8" style="background-color: transparent">
 						<div id="recipeList" class="main-container w3-container">
-		
+
 						</div>
 					</div>
 
@@ -179,22 +179,22 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 				curRec = JSON.parse(recipeList[i]);
 				alert(curRec.label);
 				$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
-				
+
 				$('.modals').append(
 					'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
-		<div class="modal-dialog" role="document"> \
-			<div class="modal-content"> \
-				<div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' +
-						curRec.label +
-					'</h5> \
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
-								<span aria-hidden="true">&times;</span> \
-									</button> \
-										</div> \
-											<div class="modal-body' + i + '">');
-													
+						<div class="modal-dialog" role="document"> \
+							<div class="modal-content"> \
+								<div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' +
+										curRec.label +
+									'</h5> \
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
+												<span aria-hidden="true">&times;</span> \
+													</button> \
+														</div> \
+															<div class="modal-body' + i + '">');
+
 				$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img src=' + curRec.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
-	
+
 				$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + curRec.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" onclick="saverecipe(' + i + ')" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
 			}
 		</script>
