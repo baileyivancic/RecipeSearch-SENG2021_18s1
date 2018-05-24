@@ -36,6 +36,9 @@ class Controller:
 		def delIng(self,ing,userID):
 			return self.database.delIng(ing,userID)
 
+		def saveRecipe(self,recipe,userID):
+			return self.database.saveRecipe(recipe,userID)
+
 
 class User(UserMixin):
 	def __init__(self, id):
@@ -138,23 +141,13 @@ def resultsLogged():
 	return render_template("results.html", loggedin=1)
 
 @app.route("/reciever", methods=["POST"])
-def getdata():
+def getrecipedata():
 	print("Printing:")
 	data = request.form.get('recobj')
-	print(data)
+	#print(data)
+	control.saveRecipe(data,current_user.get_id())
 	
-	#print("data: ", data)
-	# pprint(request.get_data())
-	# j = json.loads(request.get_data())
-	# pprint(j)
-	print("1")
-	#print(request.data)
 	result = ''
-	# for item in data:
-	# 	# loop over every row
-	# 	result += str(item['make']) + '\n'
-	# 	print(result)
-
 	return Response(result, mimetype='application/json')
 
 @app.route("/savedresults")
