@@ -29,10 +29,30 @@ class Database(object):
 		#									 userID 		INT 	FOREIGN KEY NOT NULL,
 		#								 	 ingredient		TEXT )''')
 
+		#create table for saved recipes
+		cursor.execute('''CREATE TABLE IF NOT EXISTS
+					  	  	savedPlans(planID		INT		PRIMARY KEY NOT NULL,
+									   userID		INT 	FOREIGN KEY NOT NULL,
+									   recipes		TEXT	)''')
+
 		db.commit()
 		db.close()
 
 
+	def savePlan(self, userID, recipes):
+		print(userID)
+		print("Hey, we went into this function")
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+		cursor.execute('''SELECT MAX(planID) FROM savedPlans''')
+		i = cursor.fetchone()
+		if i[0]!=None:
+			x = i[0] + 1
+		else:
+			x = 1
+		cursor.execute('''INSERT INTO savedPlans (planID,userID,recipe) VALUES (?,?,?)''',(planID,userID,recipes))
+		db.commit()
+		db.close()
 
 
 	def register_user(self, username, password):
@@ -141,7 +161,7 @@ class Database(object):
 		db.commit()
 		db.close()
 		return new
-	
+
 	def delRecipe(self,recipe,userID):
 		db = sqlite3.connect('database.db')
 		cursor = db.cursor()
@@ -150,4 +170,3 @@ class Database(object):
 		cursor.execute('''DELETE FROM savedrecipe WHERE userID=(?) AND recipe=(?)''',(ID[0],recipe))
 		db.commit()
 		db.close()
-
