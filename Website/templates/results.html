@@ -449,7 +449,7 @@
 					var recipe = recipeObject.hits[i].recipe;
 
 					//Send to route
-					$.post("",recipe,()=>{});
+					$.post("/reciever",recipe,()=>{});
 
 					//stop from reloading the page
 					event.preventDefault();

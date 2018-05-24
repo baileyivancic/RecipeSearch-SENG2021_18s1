@@ -128,16 +128,21 @@ def home():
 def results():
 	return render_template("results.html", loggedin=0)
 
-@app.route("/results-logged", methods=["POST"])
+@app.route("/results-logged", methods=["GET"])
 @login_required
 def resultsLogged():
+	return render_template("results.html", loggedin=1)
+
+@app.route("/reciever", methods=["POST"])
+def getdata():
 	data = request.get_json()
 	result = ''
 	for item in data:
 		# loop over every row
 		result += str(item['make']) + '\n'
 		print(result)
-	return render_template("results.html", loggedin=1)
+		
+	return result
 
 @app.route("/savedresults")
 @login_required
