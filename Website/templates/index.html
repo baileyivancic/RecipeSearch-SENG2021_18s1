@@ -403,7 +403,11 @@
 				$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
 					function (data, status) {
 						localStorage.setItem("APIReturn", JSON.stringify(data));
-						window.location.href = '/results';
+						if ("{{loggedin}}" == 0) {
+							window.location.href = '/results'
+						} else if ("{{loggedin}}" == 1) {
+							window.location.href = '/results-logged'
+						}
 					});
 			}
 		});

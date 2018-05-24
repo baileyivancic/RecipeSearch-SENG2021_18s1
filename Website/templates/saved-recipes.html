@@ -125,7 +125,7 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 				</div>
 				<div class="col-lg-8" style="background-color: transparent">
 					<div id="recipeList" class="main-container w3-container">
-						<div class="col-lg-4 col-md-4 col-sm-6">
+						<!--<div class="col-lg-4 col-md-4 col-sm-6">
 							<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
 								<figure>
 									<div class="overlay">
@@ -141,7 +141,7 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 									</p>
 								</div>
 							</a>
-						</div>
+						</div>-->
 					</div>
 				</div>
 
@@ -168,7 +168,7 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 		</div>
 
 
-		<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+		<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/static/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="gtco-container">
 				<div class="row row-pb-md">
@@ -196,9 +196,7 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 					var recipeList = {{ recipes| tojson}};
 					for (var i = 0; i < recipeList.length; i++) {
 						curRec = JSON.parse(recipeList[i]);
-						alert(curRec.label);
-						$('#recipeList').append('<div class="col-lg-4 col-md-4 col-sm-6"> <a href="images/img_1.jpg" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> <i class="ti-plus"></i> </div> <img src="images/img_1.jpg" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>Fresh Mushrooms</h2> <p>Far far away, behind the word mountains, far from the countries Vokalia..</p> <p> <span class="price cursive-font">$19.15</span> </p> </div> </a> </div>');
-						alert("meme");
+						alert(curRec.url);
 						/*$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
 
 						$('.modals').append(
