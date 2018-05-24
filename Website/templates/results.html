@@ -44,6 +44,7 @@
 	<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
 	<script src="static/js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
 
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
 
 	<!-- Magnific Popup -->
 	<script src="static/js/jquery.magnific-popup.min.js"></script>
@@ -444,10 +445,19 @@
 					document.getElementById("input-box-home").value = "";
 				}
 				var recipeObject;
-				function saverecipe(number) {
+
+				function saverecipe(i) {
 					var recipe = recipeObject.hits[i].recipe;
-					
+
+					//Send to route
+					$.post("/reciever",recipeObject,()=>{});
+
+					//stop from reloading the page
+					event.preventDefault();
+
+					alert("Saved!");
 				}
+
 				$(document).ready(function () {
 
 					if ("{{loggedin}}" == 0) {
@@ -478,7 +488,18 @@
 							//alert(recipeObject.hits[i].recipe.ingredients[0]);
 							$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
 
-							$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
+							$('.modals').append(
+								'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
+									<div class="modal-dialog" role="document"> \
+										<div class="modal-content"> \
+											<div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' +
+												recipeObject.hits[i].recipe.label +
+													'</h5> \
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
+															<span aria-hidden="true">&times;</span> \
+																</button> \
+																	</div> \
+																		<div class="modal-body' + i + '">');
 
 							$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
 

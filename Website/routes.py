@@ -1,6 +1,6 @@
 import ast, os, time, copy
 from datetime import datetime
-from flask import Flask, redirect, render_template, request, url_for, flash
+from flask import Flask, redirect, render_template, request, url_for, flash, request, Response
 from server import app
 from flask_login import UserMixin
 from flask_login import LoginManager,login_user, current_user, login_required, logout_user
@@ -11,6 +11,10 @@ from database import Database
 from datetime import datetime
 import os
 import sqlite3
+import sys
+import random
+import json
+from pprint import pprint
 
 
 class Controller:
@@ -94,7 +98,7 @@ def login():
 				return redirect("/logged-in")
 			else:
 				return render_template("login.html", response=0)
-				
+
 
 	return render_template("login.html", response= 1)
 
@@ -128,9 +132,31 @@ def home():
 def results():
 	return render_template("results.html", loggedin=0)
 
-@app.route("/results-logged")
+@app.route("/results-logged", methods=["GET"])
+@login_required
 def resultsLogged():
 	return render_template("results.html", loggedin=1)
+
+@app.route("/reciever", methods=["POST"])
+def getdata():
+	print("Printing:")
+	data = request.get_json();
+	print("after")
+	#print("data: ", data)
+	# pprint(request.get_data())
+	# j = json.loads(request.get_data())
+	# pprint(j)
+	mydata = request.json # will be
+	app.logger.debug(request.json)
+	print(mydata)
+	#print(request.data)
+	result = ''
+	# for item in data:
+	# 	# loop over every row
+	# 	result += str(item['make']) + '\n'
+	# 	print(result)
+
+	return Response(result, mimetype='application/json')
 
 @app.route("/savedresults")
 @login_required
