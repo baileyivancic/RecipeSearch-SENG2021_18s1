@@ -155,9 +155,9 @@
 						</form>
 						<nav style="padding-top:12px;">
 							<ul style="height:20vh" id="ingredientList">
-								<li>dummy</li>
+								<li>dummy <span class="close">&times;</span></li>
 								{% for ing in ingredients %}
-									<li class="savedIng">{{ing}}</li>
+									<li class="savedIng">{{ing}} <span class="close">&times;</span></li>
 								{% endfor %}
 							</ul>
 						</nav>
