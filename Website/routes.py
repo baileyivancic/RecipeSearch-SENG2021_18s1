@@ -147,7 +147,6 @@ def resultsLogged():
 
 @app.route("/reciever", methods=["POST"])
 def getrecipedata():
-	print("Printing:")
 	data = request.form.get('recobj')
 	print(current_user.get_id())
 	control.saveRecipe(data,current_user.get_id())
@@ -190,4 +189,5 @@ def savedrecipes():
 @app.route("/weeklyplanner")
 @login_required
 def weeklyplanner():
-	return render_template("weekly-planner.html")
+	recipes = control.getSavedRecipes(current_user.get_id())
+	return render_template("weekly-planner.html", recipes=recipes)
