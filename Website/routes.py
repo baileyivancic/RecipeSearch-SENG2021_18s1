@@ -38,7 +38,7 @@ class User(UserMixin):
 	def is_anonymous(self):
 		return False
 
-control = Controller()
+control = Database()
 
 def check_password(user_id, password):
 	if control.isValidUser(user_id, password):
@@ -83,7 +83,7 @@ def login():
 				return redirect("/logged-in")
 			else:
 				return render_template("login.html", response=0)
-				pass
+				
 
 	return render_template("login.html", response= 1)
 
@@ -94,13 +94,11 @@ def register():
 			user = request.form["registerUser"].strip()
 			password = request.form["registerPass"].strip()
 			print("register Attempt: user:" + user + " pass: " + password)
-
-			if control.register_user(user, password) == True:
-				print("yay")
+			valid = control.register_user(user, password)
+			if valid == 1:
 				login_user(User(user), remember= False)
 				return redirect("/logged-in")
 			else:
-				print(tmp)
 				return render_template("register.html", response=0)
 
 	return render_template("register.html", response=1)

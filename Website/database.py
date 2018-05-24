@@ -25,12 +25,12 @@ class Database(object):
 		cursor.execute("SELECT EXISTS(SELECT 1 FROM loginDetails WHERE username=? AND password=?)", (username, password))
 		temp =  cursor.fetchone()
 
-		isValid = True;
-
-		print("result from db ", temp);
+		print("result from db ", temp)
 		if temp != (0, ):
 			# there is already a user using this user name
-			isValid = False;
+			db.commit()
+			db.close()
+			return 0
 		else :
 			cursor.execute('''SELECT MAX(userID) FROM loginDetails''')
 			i = cursor.fetchone()
@@ -38,12 +38,11 @@ class Database(object):
 				x = i[0] + 1
 			else:
 				x = 1
-			cursor.execute('''INSERT INTO loginDetails (userID, username, password) VALUES (?,?,?)''',
-							(x, username, password))
+			cursor.execute('''INSERT INTO loginDetails (userID, username, password) VALUES (?,?,?)''',(x, username, password))
+			db.commit()
+			db.close()
+			return 1
 
-		db.commit()
-		db.close()
-		return isValid
 
 	def isValidUser(self, username, password):
 		db = sqlite3.connect('database.db')
@@ -52,11 +51,11 @@ class Database(object):
 		cursor.execute("SELECT EXISTS(SELECT 1 FROM loginDetails WHERE username=? AND password=?)", (username, password, ))
 		temp =  cursor.fetchone()
 
-		isValid = False;
+		isValid = False
 
 		if temp != (0, ):
 			# there is already a user using this user name
-			isValid = True;
+			isValid = True
 
 
 		db.commit()
