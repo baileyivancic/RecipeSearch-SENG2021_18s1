@@ -263,7 +263,7 @@
 
 		// $('#recipeList').append('<img id="item'+i+'" src="'+ curRec.image +'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 10vh; height: 10vh;">');
 		// $('#recipeList').append('<div id="item' + i + '" name="'+curRec.label+'"<img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
-		$('#recipeList').append('<div name="'+curRec.label+'" <img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
+		$('#recipeList').append('<div name="'+curRec.uri+'" <img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
 //
 // 		$('.modals').append(
 // 			'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
@@ -318,13 +318,15 @@
 
 		$("#gen-ing-list").click(()=>{
 			$('.breakfast').children().each((i, element)=>{
-				//console.log(element)
 				$(element).children().each((x, e)=>{
-					//console.log($(e).attr('name')) ##TODO this log returns the name
 					recipeList = {{ recipes| tojson}};
 					for (var i = 0; i < recipeList.length; i++) {
 						curRec = JSON.parse(recipeList[i]);
-						console.log(curRec.ingredientLines)
+						if (curRec.uri == $(e).attr('name')) {
+							$(curRec.ingredientLines).each((num, ingredient)=>{
+								addIngredients(ingredient)
+							});
+						}
 					}
 				});
 			});

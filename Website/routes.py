@@ -194,3 +194,13 @@ def weeklyplanner():
 	# for i in recipes:
 	# 	pprint(i)
 	return render_template("weekly-planner.html", recipes=recipes)
+
+@app.route("/weeklyplannerS", methods=["POST"])
+@login_required
+def weeklyplannerS():
+	recipeID = request.form.get('???')
+	#TODO
+	recipes = control.getRecipeID(recipeID)
+	# for i in recipes:
+	# 	pprint(i)
+	return render_template("weekly-planner.html", recipes=recipes)
