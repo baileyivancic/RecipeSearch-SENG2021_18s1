@@ -152,9 +152,7 @@
 						</form>
 						<nav style="padding-top:12px;">
 							<ul style="height:20vh" id="ingredientList">
-								{% for ing in ingredients %}
-									<li class="savedIng">{{ing}}<span class="close" style="float:right;"onclick="delIng({{ing}})">&times;</span></li>
-								{% endfor %}
+
 							</ul>
 						</nav>
 					</div>
@@ -189,6 +187,28 @@
 		</div>
 	</footer>
 	<script>
+		function createNode(recstring) {
+			var node = document.createElement("LI");
+			var textnode = document.createTextNode(String(recstring));
+
+			node.appendChild(textnode);
+
+			document.getElementById("ingredientList").appendChild(node);
+			var span = document.createElement("SPAN");
+			var txt = document.createTextNode("\u00D7");
+			span.className = "close";
+			span.appendChild(txt);
+			node.appendChild(span);
+			node.onclick = function () {
+				node.remove();
+				$.get('/delIng/' + recstring);
+			}
+		}
+		var recipesNow = {{ ingredients| tojson}};
+
+		for (var i = 0; i < recipesNow.length; i++) {
+			createNode(recipesNow[i]);
+		}
 		function addIngredients() {
 			var ingredient = document.getElementById('input-box-home').value
 			$.get('/addIng/' + String(ingredient))
@@ -205,12 +225,12 @@
 			node.appendChild(span);
 			node.onclick = function () {
 				node.remove();
-				$.get('/delIng/' + ingredient)
+				$.get('/delIng/' + ingredient);
 			}
 			document.getElementById("input-box-home").value = "";
 
 		}
-		function delIng(ing){
+		function delIng(ing) {
 			alert(String(ing));
 			$.get('/delIng/' + ing);
 		}

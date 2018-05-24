@@ -116,3 +116,12 @@ class Database(object):
 		cursor.execute('''DELETE FROM savedingredient WHERE userID=(?) AND ingredient=(?)''',(ID[0],ing))
 		db.commit()
 		db.close()
+
+	def saveRecipe(self,rec,userID):
+		db = sqlite3.connect('database.db')
+		cursor = db.cursor()
+		cursor.execute("SELECT userID FROM loginDetails WHERE username=(?)",(userID,))
+		ID = cursor.fetchone()
+		cursor.execute('''INSERT INTO savedrecipe (userID,recipe) VALUES (?,?)''',(ID[0],rec))
+		db.commit()
+		db.close()
