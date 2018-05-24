@@ -68,44 +68,46 @@
 	<div id="page">
 
 
-	<!-- <div class="page-inner"> -->
-	<nav id="loggedNav" class="gtco-nav" role="navigation">
-		<div class="gtco-container">
+		<!-- <div class="page-inner"> -->
+		<nav id="loggedNav" class="gtco-nav" role="navigation">
+			<div class="gtco-container">
 
-			<div class="row">
-				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo">
-						<a style="color: white;" href="/logged-in">RecipeSearch <em>.</em> </a>
+				<div class="row">
+					<div class="col-sm-4 col-xs-12">
+						<div id="gtco-logo">
+							<a style="color: white;" href="/logged-in">RecipeSearch
+								<em>.</em>
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="col-xs-8 text-right menu-1">
-					<ul>
+					<div class="col-xs-8 text-right menu-1">
+						<ul>
 
-						<li class="has-dropdown">
-							<a href="#">
-								<span>User Menu</span>
-							</a>
-							<ul class="dropdown" id="dropmenu">
-								<li>
-									<a href="/savedingredients">Saved ingredients</a>
-								</li>
-								<li>
-									<a href="/savedrecipes">Saved recipes</a>
-								</li>
-								<li>
-									<a href="/weeklyplanner">Weekly planner</a>
-								</li>
-							</ul>
-						</li>
-						<li class="btn-cta">
-							<a id="index-register-but" href="/logout">
-								<span>Logout</span>
-							</a>
-						</li>
-					</ul>
-				</div>
+							<li class="has-dropdown">
+								<a href="#">
+									<span>User Menu</span>
+								</a>
+								<ul class="dropdown" id="dropmenu">
+									<li>
+										<a href="/savedingredients">Saved ingredients</a>
+									</li>
+									<li>
+										<a href="/savedrecipes">Saved recipes</a>
+									</li>
+									<li>
+										<a href="/weeklyplanner">Weekly planner</a>
+									</li>
+								</ul>
+							</li>
+							<li class="btn-cta">
+								<a id="index-register-but" href="/logout">
+									<span>Logout</span>
+								</a>
+							</li>
+						</ul>
+					</div>
 
-			</div>
+				</div>
 		</nav>
 
 		<!--
@@ -118,39 +120,61 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 						<h2 class="cursive-font primary-color">Saved recipes</h2>
 						<p>To add recipes to your saved list, find a recipe you like using our search, and click the "Add to saved" button that
-							appears under the recipe. CURRENTLY PLACEHOLDERS</p>
+							appears under the recipe.</p>
 					</div>
 				</div>
 				<div class="col-lg-8" style="background-color: transparent">
+<<<<<<< HEAD
 						<div id="recipeList" class="main-container w3-container">
 
 						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
-							<figure>
-								<div class="overlay">
-									<i class="ti-plus"></i>
+=======
+					<div id="recipeList" class="main-container w3-container">
+						<!--<div class="col-lg-4 col-md-4 col-sm-6">
+							<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+								<figure>
+									<div class="overlay">
+										<i class="ti-plus"></i>
+									</div>
+									<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+								</figure>
+								<div class="fh5co-text">
+									<h2>Fresh Mushrooms</h2>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+									<p>
+										<span class="price cursive-font">$19.15</span>
+									</p>
 								</div>
-								<img src="images/img_1.jpg" alt="Image" class="img-responsive">
-							</figure>
-							<div class="fh5co-text">
-								<h2>Fresh Mushrooms</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-								<p>
-									<span class="price cursive-font">$19.15</span>
-								</p>
-							</div>
-						</a>
+							</a>
+						</div>-->
+>>>>>>> 72fc1b97ba302d1e9a183ae7200d1954407e0d79
 					</div>
-
 				</div>
+
+				<!--<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay">
+								<i class="ti-plus"></i>
+							</div>
+							<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Fresh Mushrooms</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+							<p>
+								<span class="price cursive-font">$19.15</span>
+							</p>
+						</div>
+					</a>
+				</div>-->
+
 			</div>
+		</div>
 		</div>
 
 
-		<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+		<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/static/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="gtco-container">
 				<div class="row row-pb-md">
@@ -172,63 +196,67 @@ This section is goin to have a vertically scrolling list of recipes. It should h
 			</div>
 		</footer>
 		<!-- </div> -->
+		<div class="modals">
+			<div>
+				<script>
+					var recipeList = {{ recipes| tojson}};
+					for (var i = 0; i < recipeList.length; i++) {
+						curRec = JSON.parse(recipeList[i]);
+						alert(curRec.url);
+						/*$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
 
-		<script>
-			var recipeList = {{ recipes| tojson}};
-			for (var i = 0; i < recipeList.length; i++) {
-				curRec = JSON.parse(recipeList[i]);
-				alert(curRec.label);
-				$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
+						$('.modals').append(
+							'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
+		<div class="modal-dialog" role="document"> \
+			<div class="modal-content"> \
+				<div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' +
+							curRec.label +
+							'</h5> \
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
+								<span aria-hidden="true">&times;</span> \
+									</button> \
+										</div> \
+											<div class="modal-body' + i + '">');
 
-				$('.modals').append(
-					'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
-						<div class="modal-dialog" role="document"> \
-							<div class="modal-content"> \
-								<div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' +
-										curRec.label +
-									'</h5> \
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
-												<span aria-hidden="true">&times;</span> \
-													</button> \
-														</div> \
-															<div class="modal-body' + i + '">');
+						$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img src=' + curRec.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
 
-				$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img src=' + curRec.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
+						$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + curRec.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" onclick="saverecipe(' + i + ')" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
+						for (var k = 0; curRec.ingredients[k] != null; k++) {
+							$('#ingredientListModal' + i + '').append('<li class="list-group-item">' + curRec.ingredients[k].text + '</li>');
+						}*/
+					}
+				</script>
 
-				$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + curRec.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" onclick="saverecipe(' + i + ')" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
-			}
-		</script>
-
-	</div>
-
-
-
-	<!-- jQuery -->
-	<script src="static/js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="static/js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="static/js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="static/js/jquery.waypoints.min.js"></script>
-	<!-- Carousel -->
-	<script src="static/js/owl.carousel.min.js"></script>
-	<!-- countTo -->
-	<script src="static/js/jquery.countTo.js"></script>
-
-	<!-- Stellar Parallax -->
-	<script src="static/js/jquery.stellar.min.js"></script>
-
-	<!-- Magnific Popup -->
-	<script src="static/js/jquery.magnific-popup.min.js"></script>
-	<script src="static/js/magnific-popup-options.js"></script>
-
-	<script src="static/js/moment.min.js"></script>
-	<script src="static/js/bootstrap-datetimepicker.min.js"></script>
+			</div>
 
 
-	<!-- Main -->
-	<script src="static/js/main.js"></script>
+
+			<!-- jQuery -->
+			<script src="static/js/jquery.min.js"></script>
+			<!-- jQuery Easing -->
+			<script src="static/js/jquery.easing.1.3.js"></script>
+			<!-- Bootstrap -->
+			<script src="static/js/bootstrap.min.js"></script>
+			<!-- Waypoints -->
+			<script src="static/js/jquery.waypoints.min.js"></script>
+			<!-- Carousel -->
+			<script src="static/js/owl.carousel.min.js"></script>
+			<!-- countTo -->
+			<script src="static/js/jquery.countTo.js"></script>
+
+			<!-- Stellar Parallax -->
+			<script src="static/js/jquery.stellar.min.js"></script>
+
+			<!-- Magnific Popup -->
+			<script src="static/js/jquery.magnific-popup.min.js"></script>
+			<script src="static/js/magnific-popup-options.js"></script>
+
+			<script src="static/js/moment.min.js"></script>
+			<script src="static/js/bootstrap-datetimepicker.min.js"></script>
+
+
+			<!-- Main -->
+			<script src="static/js/main.js"></script>
 
 </body>
 
