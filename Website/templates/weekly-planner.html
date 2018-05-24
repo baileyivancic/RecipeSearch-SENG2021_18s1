@@ -333,15 +333,29 @@
 
 			$('.lunch').children().each((i, element)=>{
 				$(element).children().each((x, e)=>{
-					//console.log($(e).attr('name'))
-
+					recipeList = {{ recipes| tojson}};
+					for (var i = 0; i < recipeList.length; i++) {
+						curRec = JSON.parse(recipeList[i]);
+						if (curRec.uri == $(e).attr('name')) {
+							$(curRec.ingredientLines).each((num, ingredient)=>{
+								addIngredients(ingredient)
+							});
+						}
+					}
 				});
 			});
 
 			$('.dinner').children().each((i, element)=>{
 				$(element).children().each((x, e)=>{
-					//console.log($(e).attr('name'))
-
+					recipeList = {{ recipes| tojson}};
+					for (var i = 0; i < recipeList.length; i++) {
+						curRec = JSON.parse(recipeList[i]);
+						if (curRec.uri == $(e).attr('name')) {
+							$(curRec.ingredientLines).each((num, ingredient)=>{
+								addIngredients(ingredient)
+							});
+						}
+					}
 				});
 			});
 		});
@@ -360,7 +374,6 @@
 			node.onclick = function () {
 				node.remove();
 			}
-			document.getElementById("input-box-home").value = "";
 		}
 	</script>
 
