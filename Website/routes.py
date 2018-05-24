@@ -11,6 +11,10 @@ from database import Database
 from datetime import datetime
 import os
 import sqlite3
+import sys
+import random
+import json
+from pprint import pprint
 
 
 class Controller:
@@ -135,14 +139,24 @@ def resultsLogged():
 
 @app.route("/reciever", methods=["POST"])
 def getdata():
-	data = request.get_json()
+	print("Printing:")
+	data = request.get_json();
+	print("after")
+	#print("data: ", data)
+	# pprint(request.get_data())
+	# j = json.loads(request.get_data())
+	# pprint(j)
+	mydata = request.json # will be
+	app.logger.debug(request.json)
+	print(mydata)
+	#print(request.data)
 	result = ''
-	for item in data:
-		# loop over every row
-		result += str(item['make']) + '\n'
-		print(result)
+	# for item in data:
+	# 	# loop over every row
+	# 	result += str(item['make']) + '\n'
+	# 	print(result)
 
-	return result
+	return Response(result, mimetype='application/json')
 
 @app.route("/savedresults")
 @login_required
