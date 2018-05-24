@@ -165,9 +165,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a class="logo" href="/">RecipeSearch
-								<em>.</em>
-							</a>
+							<a class="logo" href="/">RecipeSearch <em>.</em> </a>
 						</div>
 					</div>
 					<div class="col-xs-8 text-right menu-1">
@@ -373,6 +371,9 @@
 		</a>
 	</div>
 
+<div class="modals">
+<div>
+
 	<script>
 
 		$("#recipeBut").click(() => {
@@ -471,8 +472,17 @@
 			//alert(recipeObject.hits[i].recipe.url);
 			if (recipeObject.hits[i] != null) {
 				//alert(recipeObject.hits[i].recipe.ingredients[0]);
-				$('#recipeList').append('<div style="height:40vh;" class="col-lg-4 col-md-4 col-sm-6"> <a href="' + recipeObject.hits[i].recipe.image + '" class="fh5co-card-item image-popup"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
+				$('#recipeList').append('<div style="height:40vh;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
 
+				$('.modals').append('<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' + recipeObject.hits[i].recipe.label + '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body' + i + '">');
+
+				$('.modal-body' + i + '').append('<table><tr><td style="width: 25%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 75%;"><img src=' + recipeObject.hits[i].recipe.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
+
+				$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + recipeObject.hits[i].recipe.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" class="btn btn-success">Save Recipe</button> </div> </div> </div> </div>');
+
+				for (var k = 0; recipeObject.hits[i].recipe.ingredients[k] != null; k++) {
+						$('#ingredientListModal' + i + '').append('<li class="list-group-item">' + recipeObject.hits[i].recipe.ingredients[k].text + '</li>');
+				}
 
 			}
 		}
@@ -490,6 +500,32 @@
 			localStorage.setItem("ingredientList", 'empty');
 		}
 
+			});
+
+			$("#ingredientInput").click(() => {
+					var recipeString = "";
+
+					$("#ingredientList li").each(function (i, li) {
+							var product = $(li).text();
+							//alert("wait");
+							product = product.replace("\u00D7", "");
+							recipeString = recipeString.concat(product, ',');
+					});
+					recipeString = recipeString.slice(0, recipeString.length - 1);
+
+					//alert(recipeString);
+					localStorage.setItem("ingredientList", recipeString);
+					if (recipeString.length == 0) {
+							alert("Please enter ingredients before searching.");
+					} else {
+							$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+									function (data, status) {
+											localStorage.setItem("APIReturn", JSON.stringify(data));
+											window.location.href = '/results';
+
+									});
+
+					}
 			});
 
 		$('#searchIngredient').click(() => {
@@ -521,28 +557,4 @@
 
 	</script>
 </body>
-<!-- <div class= "modal fade" id = "userModal" tabindex= "-1" role= "dialog" aria-labelledby ="userModal" aria-hidden= "true" style="background-image: url('static/images/loginpanel.jpg');">
-	<div class= "modal-dialog" role="document" style= "position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);">
-		<div class= "modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="userModal" style="display:inline">Login</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<input type="text" class="form-control" placeholder="Username" id="usr">
-				<input type="password" class="form-control" placeholder="Password" id="usr">
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">Login</button>
-				<button type="button" class="btn btn-primary">Register</button>
-			</div>
-		</div>
-	</div>
-</div> -->
-
 </html>
