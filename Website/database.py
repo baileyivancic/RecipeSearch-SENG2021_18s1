@@ -32,8 +32,9 @@ class Database(object):
 		#create table for saved recipes
 		cursor.execute('''CREATE TABLE IF NOT EXISTS
 					  	  	savedPlans(planID		INT		PRIMARY KEY NOT NULL,
-									   userID		INT 	FOREIGN KEY NOT NULL,
-									   recipes		TEXT	)''')
+									   userID		INT 	NOT NULL,
+									   recipes		TEXT,
+									   FOREIGN KEY (userID) REFERENCES loginDetails (userID))''')
 
 		db.commit()
 		db.close()
