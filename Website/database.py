@@ -29,11 +29,18 @@ class Database(object):
 		#									 userID 		INT 	FOREIGN KEY NOT NULL,
 		#								 	 ingredient		TEXT )''')
 
+		#create table for saved recipes
+		cursor.execute('''CREATE TABLE IF NOT EXISTS
+					  	  	savedPlans(planID		INT		PRIMARY KEY NOT NULL,
+									   userID		INT 	FOREIGN KEY NOT NULL,
+									   recipes		TEXT	)''')
+
 		db.commit()
 		db.close()
 
 
-
+	def savePlan(self, userID, recipes):
+		
 
 	def register_user(self, username, password):
 		db = sqlite3.connect('database.db')
@@ -141,7 +148,7 @@ class Database(object):
 		db.commit()
 		db.close()
 		return new
-	
+
 	def delRecipe(self,recipe,userID):
 		db = sqlite3.connect('database.db')
 		cursor = db.cursor()
@@ -150,4 +157,3 @@ class Database(object):
 		cursor.execute('''DELETE FROM savedrecipe WHERE userID=(?) AND recipe=(?)''',(ID[0],recipe))
 		db.commit()
 		db.close()
-
