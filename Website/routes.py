@@ -41,6 +41,9 @@ class Controller:
 		def getSavedRecipes(self,userID):
 			return self.database.getSavedRecipes(userID)
 
+		def delRecipe(self,recipe,userID):
+			return self.database.delRecipe(recipe,userID)
+
 
 class User(UserMixin):
 	def __init__(self, id):
@@ -145,9 +148,18 @@ def resultsLogged():
 @app.route("/reciever", methods=["POST"])
 def getrecipedata():
 	data = request.form.get('recobj')
-	# pprint(data)
-	# print(current_user.get_id())
+	print(current_user.get_id())
 	control.saveRecipe(data,current_user.get_id())
+	result = ''
+	return Response(result, mimetype='application/json')
+
+@app.route("/delRec", methods=["POST"])
+def delRecipeSave():
+	print("Printing:")
+	data = request.form.get('recobj')
+	print(data)
+	#print(current_user.get_id())
+	control.delRecipe(data,current_user.get_id())
 	result = ''
 	return Response(result, mimetype='application/json')
 
