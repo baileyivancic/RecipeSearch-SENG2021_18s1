@@ -15,8 +15,19 @@ class Database(object):
 					  		 username 		TEXT,
 							 password		TEXT)''')
 
+		cursor.execute('''CREATE TABLE IF NOT EXISTS
+				savedIngredients(userID		INT, PRIMARY KEY NOT NULL,
+								 ingredient TEXT)''')
+
 		db.commit()
 		db.close()
+
+	def addIngredient(userID, ingredient):
+		db = sqlite.connect('database.db')
+		cursor = db.cursor()
+
+		
+
 
 	def register_user(self, username, password):
 		db = sqlite3.connect('database.db')
