@@ -352,6 +352,15 @@
 		function drop(ev) {
 			ev.preventDefault();
 			var data = ev.dataTransfer.getData("text");
+<<<<<<< HEAD
+			ev.target.appendChild(document.getElementById(data).cloneNode(true));
+			document.getElementById(data).draggable = false;
+
+		function removeRec(ev) {
+
+		}
+
+=======
 			if (document.getElementById(data).className != "grid")	{
 				var newer = document.getElementById(data).cloneNode(true);
 				ev.target.appendChild(newer);
@@ -369,6 +378,7 @@
 					document.getElementById(data).remove()
 				}
 			}
+>>>>>>> 5ad8b38e8fc1167b620c66bd6cb1da06608954c3
 		}
 		$("#gen-ing-list").click(() => {
 			$('#ingredientList').empty();
