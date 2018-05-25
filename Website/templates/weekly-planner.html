@@ -352,15 +352,7 @@
 		function drop(ev) {
 			ev.preventDefault();
 			var data = ev.dataTransfer.getData("text");
-<<<<<<< HEAD
-			ev.target.appendChild(document.getElementById(data).cloneNode(true));
-			document.getElementById(data).draggable = false;
 
-		function removeRec(ev) {
-
-		}
-
-=======
 			if (document.getElementById(data).className != "grid")	{
 				var newer = document.getElementById(data).cloneNode(true);
 				ev.target.appendChild(newer);
@@ -378,12 +370,27 @@
 					document.getElementById(data).remove()
 				}
 			}
->>>>>>> 5ad8b38e8fc1167b620c66bd6cb1da06608954c3
 		}
+
 		$("#gen-ing-list").click(() => {
 			$('#ingredientList').empty();
+
 			$('.breakfast').children().each((i, element) => {
 				$(element).children().each((x, e) => {
+					recipeList = {{ recipes | tojson }};
+					for (var i = 0; i < recipeList.length; i++) {
+						curRec = JSON.parse(recipeList[i]);
+						if (curRec.uri == $(e).attr('name')) {
+							$(curRec.ingredientLines).each((num, ingredient) => {
+								addIngredients(ingredient)
+							});
+						}
+					}
+				});
+			});
+
+		$('.lunch').children().each((i, element) => {
+			$(element).children().each((x, e) => {
 				recipeList = {{ recipes | tojson }};
 				for (var i = 0; i < recipeList.length; i++) {
 					curRec = JSON.parse(recipeList[i]);
@@ -396,48 +403,33 @@
 			});
 		});
 
-		$("#save-plan").click(()=>{
-			$('.breakfast').children().each((i, element) => {
+			$('.dinner').children().each((i, element) => {
 				$(element).children().each((x, e) => {
-				recipeList = {{ recipes | tojson }};
-				for (var i = 0; i < recipeList.length; i++) {
-					curRec = JSON.parse(recipeList[i]);
-					if (curRec.uri == $(e).attr('name')) {
-						
+					recipeList = {{ recipes | tojson }};
+					for (var i = 0; i < recipeList.length; i++) {
+						curRec = JSON.parse(recipeList[i]);
+						if (curRec.uri == $(e).attr('name')) {
+							$(curRec.ingredientLines).each((num, ingredient) => {
+								addIngredients(ingredient)
+							});
+						}
 					}
-				}
+				});
 			});
 		});
 
-		$('.lunch').children().each((i, element) => {
-			$(element).children().each((x, e) => {
-				recipeList = {{ recipes | tojson }};
-			for (var i = 0; i < recipeList.length; i++) {
-				curRec = JSON.parse(recipeList[i]);
-				if (curRec.uri == $(e).attr('name')) {
-					$(curRec.ingredientLines).each((num, ingredient) => {
-						addIngredients(ingredient)
-					});
-				}
-			}
-		});
-			});
-
-		$('.dinner').children().each((i, element) => {
-			$(element).children().each((x, e) => {
-				recipeList = {{ recipes | tojson }};
-			for (var i = 0; i < recipeList.length; i++) {
-				curRec = JSON.parse(recipeList[i]);
-				if (curRec.uri == $(e).attr('name')) {
-					$(curRec.ingredientLines).each((num, ingredient) => {
-						addIngredients(ingredient)
-					});
-				}
-			}
-		});
-			});
-		});
-
+		// $("#save-plan").click(()=>{
+		// 	$('.breakfast').children().each((i, element) => {
+		// 		$(element).children().each((x, e) => {
+		// 		recipeList = {{ recipes | tojson }};
+		// 		for (var i = 0; i < recipeList.length; i++) {
+		// 			curRec = JSON.parse(recipeList[i]);
+		// 			if (curRec.uri == $(e).attr('name')) {
+		//
+		// 			}
+		// 		}
+		// 	});
+		// });
 
 
 		function addIngredients(ingredient) {
