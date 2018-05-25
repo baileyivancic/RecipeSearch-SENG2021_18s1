@@ -373,12 +373,7 @@
 		function drop(ev) {
 			ev.preventDefault();
 			var data = ev.dataTransfer.getData("text");
-			ev.target.appendChild(document.getElementById(data));
-			// var e = $("#"+data).clone()
-			// e.id = "item"+max;
-			// console.log(e.id)
-			// max++;
-			// e.insertAfter("#topRecipeList");
+			ev.target.appendChild(document.getElementById(data).cloneNode(true));
 		}
 		$("#gen-ing-list").click(() => {
 			$('#ingredientList').empty();
