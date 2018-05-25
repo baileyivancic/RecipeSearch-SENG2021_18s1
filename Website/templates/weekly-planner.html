@@ -374,7 +374,7 @@
 			$('#ingredientList').empty();
 			$('.breakfast').children().each((i, element) => {
 				$(element).children().each((x, e) => {
-					recipeList = {{ recipes | tojson }};
+				recipeList = {{ recipes | tojson }};
 				for (var i = 0; i < recipeList.length; i++) {
 					curRec = JSON.parse(recipeList[i]);
 					if (curRec.uri == $(e).attr('name')) {
@@ -414,6 +414,8 @@
 		});
 			});
 		});
+
+
 
 		function addIngredients(ingredient) {
 			var node = document.createElement("LI");
