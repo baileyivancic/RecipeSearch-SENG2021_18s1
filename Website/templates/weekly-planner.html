@@ -353,11 +353,13 @@
 			ev.preventDefault();
 			var data = ev.dataTransfer.getData("text");
 			if (document.getElementById(data).className != "grid")	{
-				ev.target.appendChild(document.getElementById(data).cloneNode(true));
+				var newer = document.getElementById(data).cloneNode(true);
+				ev.target.appendChild(newer);
 				//document.getElementById(data).draggable = false;
-				document.getElementById(data).className = "grid";
-				document.getElementById(data).id = "grid" + i.toString();
-				console.log("your id:" + document.getElementById(data).id)
+				newer.className = "grid";
+				newer.id = "grid" + i.toString();
+				console.log("your id:" + newer.id);
+				i++;
 			} else {
 				//console.log(ev.target.parentNode.nodeType+ "-" + ev.target.parentNode.nodeName)
 				//console.log(ev.target.id);
