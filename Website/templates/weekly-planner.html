@@ -374,6 +374,8 @@
 			ev.preventDefault();
 			var data = ev.dataTransfer.getData("text");
 			ev.target.appendChild(document.getElementById(data).cloneNode(true));
+			document.getElementById(data).draggable = false;
+
 		}
 		$("#gen-ing-list").click(() => {
 			$('#ingredientList').empty();
