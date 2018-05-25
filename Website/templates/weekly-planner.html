@@ -229,8 +229,8 @@
 				<div>
 					<h2 class="cursive-font primary-color">Saved recipes</h2>
 				</div>
-				<div id="recipeList" class="main-container w3-container" style="overflow-y:scroll;overflow:hidden;">
-					<div id="topRecipeList"></div>
+				<div class="main-container w3-container" style="overflow-y:scroll;overflow:hidden;">
+					<ul id="recipeList" style="overflow-y:scroll;overflow:auto;height:100vh;"></ul>
 					<!-- <img id="test" src="static/Images/banana.png" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
 				{% for i in recipes %}
 				<img id="test" src="'{{i.image}}'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
@@ -305,7 +305,7 @@
 
 			// $('#recipeList').append('<img id="item'+i+'" src="'+ curRec.image +'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 10vh; height: 10vh;">');
 			// $('#recipeList').append('<div id="item' + i + '" name="'+curRec.label+'"<img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
-			$('#recipeList').append('<div name="' + curRec.uri + '" <img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
+			$('#recipeList').append('<li draggable="true" ondragstart="drag(event)" style="cursor: pointer;"><div name="' + curRec.uri + '" <img draggable="true" ondragstart="drag(event)" style="cursor: pointer;" class="recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img draggable="true" ondragstart="drag(event)" style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div></li>');
 			//
 			// 		$('.modals').append(
 			// 			'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
@@ -357,7 +357,6 @@
 			// max++;
 			// e.insertAfter("#topRecipeList");
 		}
-
 		$("#gen-ing-list").click(() => {
 			$('#ingredientList').empty();
 			$('.breakfast').children().each((i, element) => {
