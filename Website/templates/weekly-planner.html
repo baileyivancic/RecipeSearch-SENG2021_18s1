@@ -352,7 +352,10 @@
 		function drop(ev) {
 			ev.preventDefault();
 			var data = ev.dataTransfer.getData("text");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 51b2a3cdd2e69eea7b9ec1aba903f9e7b045fa11
 			if (document.getElementById(data).className != "grid")	{
 				var newer = document.getElementById(data).cloneNode(true);
 				ev.target.appendChild(newer);
@@ -392,45 +395,35 @@
 		$('.lunch').children().each((i, element) => {
 			$(element).children().each((x, e) => {
 				recipeList = {{ recipes | tojson }};
-				for (var i = 0; i < recipeList.length; i++) {
-					curRec = JSON.parse(recipeList[i]);
-					if (curRec.uri == $(e).attr('name')) {
-						$(curRec.ingredientLines).each((num, ingredient) => {
-							addIngredients(ingredient)
-						});
-					}
+			for (var i = 0; i < recipeList.length; i++) {
+				curRec = JSON.parse(recipeList[i]);
+				if (curRec.uri == $(e).attr('name')) {
+					$(curRec.ingredientLines).each((num, ingredient) => {
+						addIngredients(ingredient)
+					});
 				}
+			}
+		});
+			});
+
+		$('.dinner').children().each((i, element) => {
+			$(element).children().each((x, e) => {
+				recipeList = {{ recipes | tojson }};
+			for (var i = 0; i < recipeList.length; i++) {
+				curRec = JSON.parse(recipeList[i]);
+				if (curRec.uri == $(e).attr('name')) {
+					$(curRec.ingredientLines).each((num, ingredient) => {
+						addIngredients(ingredient)
+					});
+				}
+			}
+		});
 			});
 		});
-
-			$('.dinner').children().each((i, element) => {
-				$(element).children().each((x, e) => {
-					recipeList = {{ recipes | tojson }};
-					for (var i = 0; i < recipeList.length; i++) {
-						curRec = JSON.parse(recipeList[i]);
-						if (curRec.uri == $(e).attr('name')) {
-							$(curRec.ingredientLines).each((num, ingredient) => {
-								addIngredients(ingredient)
-							});
-						}
-					}
-				});
-			});
+		
+		$("#save-plan").click(()=>{
+			alert("save");
 		});
-
-		// $("#save-plan").click(()=>{
-		// 	$('.breakfast').children().each((i, element) => {
-		// 		$(element).children().each((x, e) => {
-		// 		recipeList = {{ recipes | tojson }};
-		// 		for (var i = 0; i < recipeList.length; i++) {
-		// 			curRec = JSON.parse(recipeList[i]);
-		// 			if (curRec.uri == $(e).attr('name')) {
-		//
-		// 			}
-		// 		}
-		// 	});
-		// });
-
 
 		function addIngredients(ingredient) {
 			var node = document.createElement("LI");
