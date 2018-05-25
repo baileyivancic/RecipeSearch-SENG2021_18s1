@@ -352,10 +352,6 @@
 		function drop(ev) {
 			ev.preventDefault();
 			var data = ev.dataTransfer.getData("text");
-<<<<<<< HEAD
-
-=======
->>>>>>> 51b2a3cdd2e69eea7b9ec1aba903f9e7b045fa11
 			if (document.getElementById(data).className != "grid")	{
 				var newer = document.getElementById(data).cloneNode(true);
 				ev.target.appendChild(newer);
@@ -420,7 +416,7 @@
 		});
 			});
 		});
-		
+
 		$("#save-plan").click(()=>{
 			alert("save");
 		});
