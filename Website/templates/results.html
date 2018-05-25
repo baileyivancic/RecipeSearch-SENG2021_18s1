@@ -319,27 +319,21 @@
 
 
 
-					<!--<div class="col-lg-4 col-md-4 col-sm-6">
-							<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
-								<figure>
-									<img src="images/img_1.jpg" alt="Image" class="img-responsive">
-								</figure>
-								<div class="fh5co-text">
-									<h2>Fresh Mushrooms</h2>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-									<p>
-										<span class="price cursive-font">$19.15</span>
-									</p>
-								</div>
-							</a>
-						</div>-->
-
 				</div>
 			</div>
 
 			<div class="col-lg-8" style="background-color: transparent">
 				<div id="recipeList" class="main-container w3-container">
-
+						<!--<div class="col-lg-4 col-md-4 col-sm-6">
+								<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+									<figure>
+										<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+									</figure>
+									<div class="fh5co-text">
+										<h2>Fresh Mushrooms</h2>
+									</div>
+								</a>
+							</div>-->
 				</div>
 			</div>
 
@@ -364,11 +358,6 @@
 		<!-- </div> -->
 	</div>
 
-	<div class="gototop js-top active">
-		<a href="#Top" class="js-gotop">
-			<i class="icon-arrow-up"></i>
-		</a>
-	</div>
 
 	<div class="modals">
 		<div>
@@ -486,7 +475,7 @@
 						//alert(recipeObject.hits[i].recipe.url);
 						if (recipeObject.hits[i] != null) {
 							//alert(recipeObject.hits[i].recipe.ingredients[0]);
-							$('#recipeList').append('<div style="height:35vh; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
+							$('#recipeList').append('<div style="cursor: pointer;height:35%;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i + '"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + recipeObject.hits[i].recipe.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2 style="white-space: nowrap;font-size:100%">' + recipeObject.hits[i].recipe.label + '</h2> </div> </a> </div>');
 
 							$('.modals').append(
 								'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
