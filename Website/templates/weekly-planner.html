@@ -388,13 +388,14 @@
 
 		$("#save-plan").click(()=>{
 			$('.breakfast').children().each((i, element) => {
-				recipeList[i] = element.name;
-			});
-			$('.lunch').children().each((i, element) => {
-				recipeList[i+7] = element.name;
-			});
-			$('.dinner').children().each((i, element) => {
-				recipeList[i+7] = element.name;
+				$(element).children().each((x, e) => {
+				recipeList = {{ recipes | tojson }};
+				for (var i = 0; i < recipeList.length; i++) {
+					curRec = JSON.parse(recipeList[i]);
+					if (curRec.uri == $(e).attr('name')) {
+						
+					}
+				}
 			});
 		});
 
