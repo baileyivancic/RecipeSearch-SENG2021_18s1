@@ -87,6 +87,29 @@
 			background-color: #fcbe61;
 			/*border-color: #fcbe61;*/
 		}
+		#recipeList::-webkit-scrollbar {
+			width: 20px;
+		}
+		/* Track */
+
+		#recipeList::-webkit-scrollbar-track {
+			box-shadow: inset 0 0 5px grey;
+			border-radius: 10px;
+		}
+
+		/* Handle */
+
+		#recipeList::-webkit-scrollbar-thumb {
+			background-color: #FBB448;
+			border-radius: 10px;
+		}
+
+		/* Handle on hover */
+
+		#recipeList::-webkit-scrollbar-thumb:hover {
+			background-color: #fcbe61;
+			/*border-color: #fcbe61;*/
+		}
 	</style>
 </head>
 
@@ -230,7 +253,7 @@
 					<h2 class="cursive-font primary-color">Saved recipes</h2>
 				</div>
 				<div class="main-container w3-container" style="overflow-y:scroll;overflow:hidden;">
-					<ul id="recipeList" style="overflow-y:scroll;overflow:auto;height:100vh;"></ul>
+					<ul id="recipeList" style="overflow-y:scroll;overflow:auto;height:100vh;list-style-type: none;"></ul>
 					<!-- <img id="test" src="static/Images/banana.png" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
 				{% for i in recipes %}
 				<img id="test" src="'{{i.image}}'" alt="Image" draggable="true" ondragstart="drag(event)" style="display: block; width: 100%; height: 100%;">
