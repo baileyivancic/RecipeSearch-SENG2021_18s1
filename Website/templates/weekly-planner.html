@@ -367,19 +367,22 @@
 				}
 			}
 		}
+
 		$("#gen-ing-list").click(() => {
 			$('#ingredientList').empty();
+
 			$('.breakfast').children().each((i, element) => {
 				$(element).children().each((x, e) => {
-				recipeList = {{ recipes | tojson }};
-				for (var i = 0; i < recipeList.length; i++) {
-					curRec = JSON.parse(recipeList[i]);
-					if (curRec.uri == $(e).attr('name')) {
-						$(curRec.ingredientLines).each((num, ingredient) => {
-							addIngredients(ingredient)
-						});
+					recipeList = {{ recipes | tojson }};
+					for (var i = 0; i < recipeList.length; i++) {
+						curRec = JSON.parse(recipeList[i]);
+						if (curRec.uri == $(e).attr('name')) {
+							$(curRec.ingredientLines).each((num, ingredient) => {
+								addIngredients(ingredient)
+							});
+						}
 					}
-				}
+				});
 			});
 		});
 
@@ -412,7 +415,9 @@
 			});
 		});
 
-
+		$("#save-plan").click(()=>{
+			alert("save");
+		});
 
 		function addIngredients(ingredient) {
 			var node = document.createElement("LI");
