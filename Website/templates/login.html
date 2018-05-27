@@ -1,66 +1,155 @@
-<!DOCTYPE HTML>
 <html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>RecipeSearch &mdash; The casual cook's companion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="GetTemplates.co" />
+		<!-- jQuery -->
+		<script src="static/js/jquery.min.js"></script>
+		<!-- jQuery Easing -->
+		<script src="static/js/jquery.easing.1.3.js"></script>
+		<!-- Bootstrap -->
+		<script src="static/js/bootstrap.min.js"></script>
+		<!-- Waypoints -->
+		<script src="static/js/jquery.waypoints.min.js"></script>
+		<!-- Carousel -->
+		<script src="static/js/owl.carousel.min.js"></script>
+		<!-- countTo -->
+		<script src="static/js/jquery.countTo.js"></script>
 
-<head>
-    <title>Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Stellar Parallax -->
+		<script src="static/js/jquery.stellar.min.js"></script>
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="static/CSS/login.css">
+		<!-- required stylesheet for TextboxList -->
+		<link rel="stylesheet" href="static/css/TextboxList.css" type="text/css" media="screen" charset="utf-8" />
+		<!-- required stylesheet for TextboxList.Autocomplete -->
+		<link rel="stylesheet" href="static/css/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
 
-</head>
+		<!-- For some reason this file is not found. imported another file-->
+		<!-- <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script> -->
 
-<body style="background-image: url('static/Images/cooking.jpg');">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">RecipeSearch</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/homepage">Home</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active">
-                    <a href="#">Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="w3-display-middle" style="width:25%;height:25%;">
-        <div id="topbar" class="w3-bar w3-black" style="border-radius: 15px 15px 0px 0px;">
-            <div class="w3-bar-item">Login</div>
-        </div>
-        <div class="w3-container w3-padding-16" id="fullbox" style="border-radius: 0px 0px 15px 15px;background-image: url('static/Images/loginpanel.jpg');">
-            <div class="login_box">
-                <input type="text" class="form-control w3-margin" placeholder="Username" id="usr" style="text-align: center;width:20vw">
-            </div>
-            <div class="login_box">
-                <input type="password" class="form-control w3-margin" placeholder="Password" id="pass" style="text-align: center;width:20vw;">
-            </div>
-            <div style="text-align: center;">
-            <input style="width:20vw"class="btn btn-primary"id="login-btn" type="submit" value="Login">
-            </div>
-            <div style="text-align: center;">
-            <input style="width:20vw"class="btn btn-warning"id="register-btn" type="submit" value="Register" onclick="window.location.href='/register'">
-            </div>
-        </div>
-    </div>
-    <script>
-        $(document).ready(function(){
-            $("#login-btn").click( ()=>{
-                localStorage.setItem("user","logged");
-                window.location.href='/homepage';
-            });
-        });
-    </script>
+		<!-- required for TextboxList -->
+		<script src="static/js/GrowingInput.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="static/js/TextboxList.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/TextboxList.Autocomplete.js" type="text/javascript" charset="utf-8"></script>
+		<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
+		<script src="static/js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
+
+
+		<!-- Magnific Popup -->
+		<script src="static/js/jquery.magnific-popup.min.js"></script>
+		<script src="static/js/magnific-popup-options.js"></script>
+
+		<script src="static/js/moment.min.js"></script>
+		<script src="static/js/bootstrap-datetimepicker.min.js"></script>
+
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Main -->
+		<script src="static/js/main.js"></script>
+
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+
+		<!-- Animate.css -->
+		<link rel="stylesheet" href="static/css/animate.css">
+		<!-- Icomoon Icon Fonts-->
+		<link rel="stylesheet" href="static/css/icomoon.css">
+		<!-- Themify Icons-->
+		<link rel="stylesheet" href="static/css/themify-icons.css">
+		<!-- Bootstrap  -->
+		<link rel="stylesheet" href="static/css/bootstrap.css">
+
+		<!-- Magnific Popup -->
+		<link rel="stylesheet" href="static/css/magnific-popup.css">
+		<link rel="stylesheet" href="static/css/home.css">
+		<!-- Bootstrap DateTimePicker -->
+		<link rel="stylesheet" href="static/css/bootstrap-datetimepicker.min.css">
+
+		<!-- Owl Carousel  -->
+		<link rel="stylesheet" href="static/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+
+		<!-- Theme style  -->
+		<link rel="stylesheet" href="static/css/style.css">
+
+		<!-- Modernizr JS -->
+		<script src="static/js/modernizr-2.6.2.min.js"></script>
+
+	</head>
+	<!-- login modal -->
+	<!-- TODO if we want to user to have a message when he can't access the page -->
+	<!-- {% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul class=flashes>
+			{% for message in messages %}
+				<li>{{ message }}</li>
+			{% endfor %}
+				</ul>
+		{% endif %}
+	{% endwith %} -->
+	<body style="background-image: url('static/Images/login.jpg')">
+		<div class="modal-dialog" role="document" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+			<div class="modal-content" style="color: white;">
+				<div id="login">
+					<div class="modal-header">
+						<h5 class="modal-title" style="display:inline">Login</h5>
+						<button onclick="goBack()"type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<form method="POST">
+					<div class="modal-body">
+						<input type="text" class="form-control" name="loginUser" placeholder="Username" id="username" required>
+						<input type="password" class="form-control" name="loginPass" placeholder="Password" id="pass" required>
+					</div>
+					<div class="modal-footer">
+						<button id="loginBut" type="submit" name="login" value="login" class="btn btn-primary">Login</button>
+						<button id="registerBut" onclick="register()" class="btn btn-primary">Create Account</button>
+					</div>
+				</form>
+			</div>
+		</div>
 </body>
+
+<style>
+	input:required {
+	  border-width: 2px;
+	}
+
+	input:invalid {
+	  border-color: #FF6600;
+	}
+</style>
+
+<script>
+	function register() {
+		window.location.href = '/register'
+	}
+
+	function goBack() {
+		window.location.href = '/'
+	}
+
+	$(document).ready( ()=>{
+
+		document.getElementById("username").oninput = ()=>{
+			var value = document.getElementById("username").value;
+			var element = document.getElementById("username");
+
+			var response = {{ response }}
+			if ( response == 0 ) {
+				document.getElementById("username").setCustomValidity("wrong");
+			}
+
+			document.getElementById("username").setCustomValidity("");
+		}
+	});
+</script>
 </html>

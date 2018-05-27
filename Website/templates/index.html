@@ -1,0 +1,580 @@
+<!DOCTYPE HTML>
+<!--
+	Aesthetic by gettemplates.co
+	Twitter: http://twitter.com/gettemplateco
+	URL: http://gettemplates.co
+-->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RecipeSearch - The casual cook's companion</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="GetTemplates.co" />
+	<!-- jQuery -->
+	<script src="static/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="static/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="static/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="static/js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="static/js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="static/js/jquery.countTo.js"></script>
+
+	<!-- Stellar Parallax -->
+	<script src="static/js/jquery.stellar.min.js"></script>
+
+	<!-- required stylesheet for TextboxList -->
+	<link rel="stylesheet" href="static/css/TextboxList.css" type="text/css" media="screen" charset="utf-8" />
+	<!-- required stylesheet for TextboxList.Autocomplete -->
+	<link rel="stylesheet" href="static/css/TextboxList.Autocomplete.css" type="text/css" media="screen" charset="utf-8" />
+
+	<!-- For some reason this file is not found. imported another file-->
+	<!-- <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<!-- required for TextboxList -->
+	<script src="static/js/GrowingInput.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="static/js/TextboxList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="static/js/TextboxList.Autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<!-- required for TextboxList.Autocomplete if method set to 'binary' -->
+	<script src="static/js/TextboxList.Autocomplete.Binary.js" type="text/javascript" charset="utf-8"></script>
+
+
+	<!-- Magnific Popup -->
+	<script src="static/js/jquery.magnific-popup.min.js"></script>
+	<script src="static/js/magnific-popup-options.js"></script>
+
+	<script src="static/js/moment.min.js"></script>
+	<script src="static/js/bootstrap-datetimepicker.min.js"></script>
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Main -->
+	<script src="static/js/main.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="static/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="static/css/icomoon.css">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="static/css/themify-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="static/css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="static/css/magnific-popup.css">
+	<link rel="stylesheet" href="static/css/home.css">
+	<!-- Bootstrap DateTimePicker -->
+	<link rel="stylesheet" href="static/css/bootstrap-datetimepicker.min.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="static/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="static/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="static/js/modernizr-2.6.2.min.js"></script>
+
+	<style>
+		/* width */
+
+		body {
+			overflow: hidden;
+			position: fixed;
+		}
+
+		#ingredientList::-webkit-scrollbar {
+			width: 20px;
+		}
+
+		/* Track */
+
+		#ingredientList::-webkit-scrollbar-track {
+			box-shadow: inset 0 0 5px grey;
+			border-radius: 10px;
+		}
+
+		/* Handle */
+
+		#ingredientList::-webkit-scrollbar-thumb {
+			background-color: #FBB448;
+			border-radius: 10px;
+		}
+
+		/* Handle on hover */
+
+		#ingredientList::-webkit-scrollbar-thumb:hover {
+			background-color: #fcbe61;
+			/*border-color: #fcbe61;*/
+		}
+
+		.form_tags .form_tags_text {
+			visibility: hidden;
+			width: 300px;
+			background-color: black;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 5px 0;
+			position: absolute;
+			z-index: 1;
+			bottom: 100%;
+			left: 50%;
+			margin-left: -10%;
+
+			/* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.form_tags:hover .form_tags_text {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.form_tags .textboxlist {
+			line-height: 2;
+		}
+
+	</style>
+
+</head>
+
+<body style="height:200vh;">
+	<!-- <div class="page-inner"> -->
+	<nav id="loginNav" class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo">
+						<a style="color: white;" href="/">RecipeSearch <em>.</em> </a>
+					</div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li class="btn-cta" data-toggle="modal" data-target="#userModal">
+							<a id="index-login-but" href="#">
+								<span>Login</span>
+							</a>
+						</li>
+						<li class="btn-cta" data-toggle="modal" data-target="#registerModal">
+							<a id="index-register-but" href="#">
+								<span>Register</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+
+	<nav id="loggedNav" class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo">
+						<a style="color: white;" href="/logged-in">RecipeSearch
+							<em>.</em>
+						</a>
+					</div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+
+						<li class="has-dropdown">
+							<a href="#">
+								<span>User Menu</span>
+							</a>
+							<ul class="dropdown" id="dropmenu">
+								<li>
+									<a href="/savedingredients">Saved ingredients</a>
+								</li>
+								<li>
+									<a href="/savedrecipes">Saved recipes</a>
+								</li>
+								<li>
+									<a href="/weeklyplanner">Weekly planner</a>
+								</li>
+							</ul>
+						</li>
+						<li class="btn-cta">
+							<a id="index-register-but" href="/logout">
+								<span>Logout</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+
+	<div id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" data-stellar-background-ratio="0.5">
+		<section class="block">
+			<div class="carousel slide" data-ride="carousel">
+
+				<div class="carousel-inner" style="height:100vh;">
+					<div class="item active">
+						<img src="static/images/carousel/ingredients.jpg" alt="ingredients">
+					</div>
+
+					<div class="item">
+						<img src="static/images/carousel/rice.jpg" alt="rice">
+					</div>
+
+					<div class="item">
+						<img src="static/images/carousel/pizza.jpg" alt="pizza">
+					</div>
+
+					<div class="item">
+						<img src="static/images/carousel/asian-cuisine.jpg" alt="asian-cuisine">
+					</div>
+
+					<div class="item">
+						<img src="static/images/carousel/soup.jpg" alt="soup">
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="overlay" style="height:100vh;">
+
+			<div class="gtco-container" style="float:left;padding-left:10vw;">
+				<div class="row" style="width:80vw;text-align:left">
+					<div class="col-md-12 col-md-offset-0">
+						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp" id="title">
+							<h1 class="cursive-font" style="font-size:4vw">Recipes you want, from ingredients you have.</h1>
+						</div>
+
+						<div class="row row-mt-15em">
+
+							<div class="col-md-4 col-md-push-1 animate-box" style="width:70vw;float:left;margin-top:-4vh;" data-animate-effect="fadeInRight">
+								<div class="w3-bar w3-black" style="opacity:0.7;border-radius: 15px 15px 0px 0px;">
+									<button id="searchIngredient" class="w3-bar-item w3-button">
+										<i class="fa fa-cutlery w3-margin-right"></i>Search by Ingredients</button>
+									<button id="searchRecipe" class="w3-bar-item w3-button">
+										<i class="fa fa-search w3-margin-right"></i>Search by Recipe Name</button>
+
+								</div>
+								<div class="form-wrap">
+									<div class="tab">
+
+										<div class="tab-content" style="border-radius: 0px 0px 15px 15px;">
+											<div id="allCollapse">
+												<div id="RecipeCollapse" class="collapse multi-collapse">
+													<div class="tab-content-inner active" data-content="search">
+														<div>
+															<h3 class="cursive-font">Search by Recipe Name</h3>
+														</div>
+														<form action="#">
+															<div class="row form-group">
+																<div class="col-md-12" id="recipe-search" class="collapse">
+																	<input id="recipeInput" type="text" class="form-control" placeholder="e.g. Lasagna">
+																</div>
+															</div>
+														</form>
+														<div class="row form-group">
+															<div class="col-md-12">
+																<input id="recipeBut" type="submit" class="btn btn-primary btn-block" value="Search">
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div id="IngredientCollapse" class="collapse multi-collapse in">
+													<div>
+														<h3 class="cursive-font">Search by Ingredient</h3>
+													</div>
+													<form action="#">
+														<div class="row form-group">
+															<div class="col-md-12" id="ingredient-search" class="collapse">
+
+																<div class="form_tags">
+																	<span class="form_tags_text">Press enter to add an Ingredient</span>
+																	<input class="form-control" type="text" name="test" value="" id="form_tags_input">
+																</div>
+
+																<!-- <div class="input-group">
+																	<input id="input-box-home" type="text" class="form-control" placeholder="e.g. chicken, tomato, onion" style="height:45px">
+																	<span class="input-group-btn">
+																		<button style="height:45px" class="btn btn-primary btn-block" type="button" onclick="popList()">Add</button>
+																	</span>
+																</div>
+																<nav style="padding-top:12px;">
+																	<ul style="height:20vh" id="ingredientList">
+																	</ul>
+																</nav> -->
+															</div>
+														</div>
+													</form>
+													<div class="row form-group">
+														<div class="col-md-12">
+															<input id="ingredientBut" type="submit" class="btn btn-primary btn-block" value="Search">
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	t = new $.TextboxList('#form_tags_input', {});
+
+	// Click on a close button to hide the current list item
+	//Function creates a list node and appends a cross on the end to close it.
+	//Adapted from function found in https://www.w3schools.com/howto/howto_js_todolist.asp
+	function popList() {
+		var node = document.createElement("LI");
+		//Adds value in text box
+		if (document.getElementById('input-box-home').value === "") return;
+		var textnode = document.createTextNode(document.getElementById('input-box-home').value);
+		node.appendChild(textnode);
+		document.getElementById("ingredientList").appendChild(node);
+		var span = document.createElement("SPAN");
+		var txt = document.createTextNode("\u00D7");
+		span.className = "close";
+		span.appendChild(txt);
+		node.appendChild(span);
+		node.onclick = function () {
+			node.remove();
+		}
+		document.getElementById("input-box-home").value = "";
+	}
+
+	$(document).ready(function () {
+
+		//disabling login button until later
+		$("#loginBut").value = "inactive"
+		$("#loginBut").disabled = true
+		//disabling register button until later
+		$("#registerBut").value = "inactive"
+		$("#registerBut").disabled = true
+
+
+
+		if ("{{loggedin}}" == 0) {
+			console.log("false");
+			$("#loginNav").show();
+			$("#loggedNav").hide();
+		} else if ("{{loggedin}}" == 1) {
+			console.log("true");
+			$("#loginNav").hide();
+			$("#loggedNav").show();
+			{% for i in savedings %}
+				t.add("{{i}}");
+			{% endfor %}
+
+		}
+
+		$("#logout-btn").click(() => {
+			localStorage.setItem("user", "notlogged");
+			window.location.href = '/'
+		});
+
+		$("#recipeBut").click(() => {
+			var recipeName = document.getElementById("recipeInput").value;
+			if (recipeName == "") {
+				alert("Please enter a recipe before searching.");
+			} else {
+				$.get("https://api.edamam.com/search?q=" + recipeName + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					function (data, status) {
+						localStorage.setItem("APIReturn", JSON.stringify(data));
+						if ("{{loggedin}}" == 0) {
+							window.location.href = '/results'
+						} else if ("{{loggedin}}" == 1) {
+							window.location.href = '/results-logged'
+						}
+					});
+			}
+		});
+		$("#ingredientBut").click(() => {
+			var recipeString = "";
+			$(".textboxlist-bit-box-deletable").each((i, element) => {
+				var ingredient = $(element).html();
+				var end = ingredient.search("<a");
+				ingredient = ingredient.slice(0, end).trim().toLowerCase();
+				if (ingredient != "") {
+					recipeString = recipeString.concat(ingredient, ',');
+				}
+			});
+
+			recipeString = recipeString.slice(0, recipeString.length - 1);
+			//process recipeString
+			console.log(recipeString);
+			localStorage.setItem("ingredientList", recipeString);
+			if (recipeString.length == 0) {
+				alert("Please enter ingredients before searching.");
+			} else {
+
+				$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+					function (data, status) {
+
+						localStorage.setItem("APIReturn", JSON.stringify(data));
+						if ("{{loggedin}}" == 0) {
+							window.location.href = '/results'
+						} else if ("{{loggedin}}" == 1) {
+							window.location.href = '/results-logged'
+						}
+					});
+
+			}
+			// var recipeString = "";
+			// $("#ingredientList li").each(function (i, li) {
+			// 	var product = $(li).text();
+			// 	product = product.replace("\u00D7", "");
+			// 	recipeString = recipeString.concat(product, ',');
+			// });
+			// recipeString = recipeString.slice(0, recipeString.length - 1);
+			// //alert(recipeString);
+			// localStorage.setItem("ingredientList", recipeString);
+			// if (recipeString.length == 0) {
+			// 	alert("Please enter ingredients before searching.");
+			// } else {
+			// 	//alert("searching");
+			// 	$.get("https://api.edamam.com/search?q=" + recipeString + "&to=100&app_id=32f99c15&app_key=0906e0d80327015301bfe1788e84293e",
+			// 		function (data, status) {
+			// 			localStorage.setItem("APIReturn", JSON.stringify(data));
+			// 			window.location.href = '/results'
+			// 		});
+			// }
+		});
+		$('#searchIngredient').click(() => {
+			$("#IngredientCollapse").collapse("show");
+			$("#RecipeCollapse").collapse("hide");
+		});
+		$('#searchRecipe').click(() => {
+			$("#RecipeCollapse").collapse("show");
+			$("#IngredientCollapse").collapse("hide");
+		});
+
+		$('#ingredientBut').click(() => {
+			localStorage.setItem("searchType", "ingredient");
+		});
+		$('#recipeBut').click(() => {
+			localStorage.setItem("searchType", "recipe");
+		});
+
+		$("#index-login-but").click(() => {
+			//enable login button
+			window.location.href = '/login'
+		});
+
+		$("#index-register-but").click(() => {
+			//enable register button
+			window.location.href = '/register'
+		});
+
+		$("#dropbut").click(() => {
+			$("#dropmenu").dropdown('toggle');
+		});
+
+
+
+		//Useless now
+		// $('#registerBut').click(() => {
+		// 	//console.log("register: "+$("#register").attr('aria-expanded'));
+		// 	if (!$("#register").attr('aria-expanded')) {
+		// 		//console.log("NOT");
+		// 	} else{
+		// 		//console.log("collapse");
+		// 		$("#register").collapse("show");
+		// 		$("#login").collapse("hide");
+		// 	}
+		// });
+		//
+		// $('#loginBut').click(() => {
+		// 	//console.log("login: "+$("#login").attr('aria-expanded'));
+		// 	if (!$("#login").attr('aria-expanded')) {
+		// 		//console.log("NOT");
+		// 		$(loginForm).submit();
+		// 	} else {
+		// 		//console.log("collapse");
+		// 		$("#register").collapse("hide");
+		// 		$("#login").collapse("show");
+		// 	}
+		// });
+	});
+</script>
+
+<!--TODO still hope for modal I just need to do a few things -->
+<!-- login model -->
+<!-- <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
+	<div class="modal-dialog" role="document" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
+			<div id="login">
+				<div class="modal-header">
+					<h5 class="modal-title" style="display:inline">Login</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+
+			<form method="POST">
+				<div class="modal-body">
+					<input type="text" class="form-control" name="loginUser" placeholder="Username" id="usrname">
+					<input type="password" class="form-control" name="loginPass" placeholder="Password" id="pass">
+				</div>
+				<div class="modal-footer">
+					<button id="loginBut" type="submit" name="login" value="login" class="btn btn-primary">Login</button>
+				</div>
+
+		</div>
+	</div>
+</div> -->
+
+<!-- <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-expanded="false" aria-hidden="false" style="background-image: url('static/images/loginpanel.jpg');">
+	<div class="modal-dialog" role="document" style="background-image: url('static/images/loginpanel.jpg'); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+		<div class="modal-content" style="background-image: url('static/images/img_6.jpg');">
+			<div id="register">
+				<div class="modal-header">
+					<h5 class="modal-title" style="display:inline">Register</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+
+				<div class="modal-body">
+					<input type="text" class="form-control" name="registerUser" placeholder="Username" id="usr">
+					<input type="password" class="form-control" name="registerPass" placeholder="Password" id="usrpass">
+					<input type="password" class="form-control" name="registerPassCon" placeholder="Confirm Password" id="usrpasscon">
+				</div>
+				<div class="modal-footer">
+					<button id="registerBut" type="submit" name="register" value="register" class="btn btn-primary">Create Account</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</div> -->
+
+</html>

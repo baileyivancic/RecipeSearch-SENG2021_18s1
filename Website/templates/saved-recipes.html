@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<!--
+	Aesthetic by gettemplates.co
+	Twitter: http://twitter.com/gettemplateco
+	URL: http://gettemplates.co
+-->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RecipeSearch - Saved Recipes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
+	/>
+	<meta name="author" content="GetTemplates.co" />
+
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="static/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="static/css/icomoon.css">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="static/css/themify-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="static/css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="static/css/magnific-popup.css">
+
+	<!-- Bootstrap DateTimePicker -->
+	<link rel="stylesheet" href="static/css/bootstrap-datetimepicker.min.css">
+
+
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="static/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="static/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="static/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body style="background-image: url('static/Images/back.gif');">
+
+	<div id="page">
+
+
+		<!-- <div class="page-inner"> -->
+		<nav id="loggedNav" class="gtco-nav" role="navigation">
+			<div class="gtco-container">
+
+				<div class="row">
+					<div class="col-sm-4 col-xs-12">
+						<div id="gtco-logo">
+							<a style="color: white;" href="/logged-in">RecipeSearch
+								<em>.</em>
+							</a>
+						</div>
+					</div>
+					<div class="col-xs-8 text-right menu-1">
+						<ul>
+
+							<li class="has-dropdown">
+								<a href="#">
+									<span>User Menu</span>
+								</a>
+								<ul class="dropdown" id="dropmenu">
+									<li>
+										<a href="/savedingredients">Saved ingredients</a>
+									</li>
+									<li>
+										<a href="/savedrecipes">Saved recipes</a>
+									</li>
+									<li>
+										<a href="/weeklyplanner">Weekly planner</a>
+									</li>
+								</ul>
+							</li>
+							<li class="btn-cta">
+								<a id="index-register-but" href="/logout">
+									<span>Logout</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+		</nav>
+
+		<!--
+This section is goin to have a vertically scrolling list of recipes. It should have the same popup that appears when we click on a recipe that appears in the results section.
+-->
+
+		<div class="gtco-section">
+			<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+						<h2 class="cursive-font primary-color">Saved recipes</h2>
+						<p>To add recipes to your saved list, find a recipe you like using our search, and click the "Add to saved" button that
+							appears under the recipe.</p>
+					</div>
+				</div>
+				<div id="recipeList" class="main-container w3-container" style="background-color: transparent">
+					<!--<div class="col-lg-4 col-md-4 col-sm-6">
+							<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+								<figure>
+									<div class="overlay">
+										<i class="ti-plus"></i>
+									</div>
+									<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+								</figure>
+								<div class="fh5co-text">
+									<h2>Fresh Mushrooms</h2>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+									<p>
+										<span class="price cursive-font">$19.15</span>
+									</p>
+								</div>
+							</a>
+						</div>-->
+				</div>
+
+
+				<!--<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay">
+								<i class="ti-plus"></i>
+							</div>
+							<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Fresh Mushrooms</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+							<p>
+								<span class="price cursive-font">$19.15</span>
+							</p>
+						</div>
+					</a>
+				</div>-->
+
+			</div>
+		</div>
+		</div>
+
+
+		<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/static/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="gtco-container">
+				<div class="row row-pb-md">
+
+					<div class="col-md-12 text-center copyright">
+						<p>
+							<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+							<small class="block">Designed by
+								<a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images:
+								<a href="http://unsplash.com/" target="_blank">Unsplash</a>
+							</small>
+						</p>
+					</div>
+
+				</div>
+
+
+
+			</div>
+		</footer>
+		<!-- </div> -->
+		<div class="modals">
+			<div>
+
+
+
+
+
+
+				<!-- jQuery -->
+				<script src="static/js/jquery.min.js"></script>
+				<!-- jQuery Easing -->
+				<script src="static/js/jquery.easing.1.3.js"></script>
+				<!-- Bootstrap -->
+				<script src="static/js/bootstrap.min.js"></script>
+				<!-- Waypoints -->
+				<script src="static/js/jquery.waypoints.min.js"></script>
+				<!-- Carousel -->
+				<script src="static/js/owl.carousel.min.js"></script>
+				<!-- countTo -->
+				<script src="static/js/jquery.countTo.js"></script>
+
+				<!-- Stellar Parallax -->
+				<script src="static/js/jquery.stellar.min.js"></script>
+
+				<!-- Magnific Popup -->
+				<script src="static/js/jquery.magnific-popup.min.js"></script>
+				<script src="static/js/magnific-popup-options.js"></script>
+
+				<script src="static/js/moment.min.js"></script>
+				<script src="static/js/bootstrap-datetimepicker.min.js"></script>
+
+
+				<!-- Main -->
+				<script src="static/js/main.js"></script>
+				<script>
+					var stringList = [];
+					function deleterecipe(i) {
+						$("#recipeModal" + i).modal('hide');
+						$("#item" + i).hide();
+						$("#recipeModal" + i).hide();
+						stringobject = stringList[i];
+						
+						$.post("/delRec", {
+							recobj: stringobject
+						}, () => { });
+
+					}
+					function appendmodal(recipe) {
+						$('#recipeList').append('<div style="height:35vh padding:30px;; cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 recipeItem" id="item' + i + '" data-toggle="modal" data-target="#recipeModal' + i +'"> <a class="fh5co-card-item"> <figure> <div class="overlay"> </div> <img style="width:100%;" src="' + curRec.image + '" alt="Image" class="img-responsive"> </figure> <div class="fh5co-text"> <h2>' + curRec.label + '</h2> </div> </a> </div>');
+
+						$('.modals').append(
+							'<div class="modal fade" id="recipeModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="recipeModal" aria-hidden="true"> \
+		<div class="modal-dialog" role="document"> \
+			<div class="modal-content"> \
+				<div class="modal-header" style="width: 20vw;"> <h5 class="modal-title" id="recipeModal' + i + '" style="display:inline">' +
+							curRec.label +
+							'</h5> \
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
+								<span aria-hidden="true">&times;</span> \
+									</button> \
+										</div> \
+											<div class="modal-body' + i + '">');
+
+						$('.modal-body' + i + '').append('<table><tr><td style="width: 50%"><ul class="list-group" id="ingredientListModal' + i + '"> <li class="list-group-item"><b>Ingredients</b></li></ul></td> <td style="width: 50%;"><img src=' + curRec.image + ' alt="icon" class="alignnone"/></td></tr> </table>');
+
+						$('.modal-body' + i + '').append('</div><div class="modal-footer style="width: 20vw;"> <a href="' + curRec.url + '"><button type="button" class="btn btn-primary" style="float: left;" value="click">View Recipe Instructions</button></a><button type="button" onclick="deleterecipe(' + i + ')" class="btn btn-success">Delete Recipe</button> </div> </div> </div> </div>');
+						for (var k = 0; curRec.ingredients[k] != null; k++) {
+							$('#ingredientListModal' + i + '').append('<li class="list-group-item">' + curRec.ingredients[k].text + '</li>');
+						}
+					}
+					var recipeList = {{ recipes| tojson}};
+					for (var i = 0; i < recipeList.length; i++) {
+						stringList.push(recipeList[i]);
+						curRec = JSON.parse(recipeList[i]);
+						appendmodal(curRec);
+
+					}
+				</script>
+
+</body>
+
+</html>
