@@ -1,7 +1,7 @@
 # RecipeSearch - UNSW Software Engineering Major Project #1
 
 ## Disclaimer: 
-This Repository contains code for the first project of three completed within Software Engineering. This project was completed in 18s2. This was completed as a group assignment, and remains the work of the individuals listed below. You are free to view, use, run and modify this application in any way you like. **Please do not use any of the work contained within this project without explicitly attributing the original authors, otherwise you are plagiarising.** We assume no responsibility for any damage, harm or other effects that arise from using this software.
+This Repository contains code for the first project of three completed within Software Engineering. This project was completed in 18s1. This was completed as a group assignment, and remains the work of the individuals listed below. You are free to view, use, run and modify this application in any way you like. **Please do not use any of the work contained within this project without explicitly attributing the original authors, otherwise you are plagiarising.** We assume no responsibility for any damage, harm or other effects that arise from using this software.
 
 ### Group members:
 - Bailey Ivancic
