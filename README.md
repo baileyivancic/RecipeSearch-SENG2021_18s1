@@ -30,7 +30,7 @@ The app features a number of features aimed at making cooking (and finding recip
 Through these features, we think we have done a good job of trying to cover the main barriers faced by amateur cooks when trying to cook at home, specifically budget, time and inspiration. 
 
 ### Tech stack:
-The application is built on a HTML-CSS-Bootstrap-Jinja2 front-end, using Python with Flask for the back-end requests.
+The application is built on a HTML-CSS-Bootstrap-Jinja2 front-end, using Python with Flask for the back-end requests. SQL has been used for the database.
 
 ---
 
